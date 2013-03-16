@@ -1,0 +1,156 @@
+=title Sending email using Perl 6
+=timestamp 2012-09-12T10:52:02
+=author szabgab
+=keywords sub, shell, *
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+I had a little Déjà vu feeling when I wrote this code. In a way it looks very much like
+the solutions we used to have in Perl 5, before the explosion of e-mail sending modules.
+
+It is far from perfect, but it works. I use it to send out the
+<a href="/perl6-tricks-and-treats-newsletter">Perl 6 newsletter</a>.
+
+=abstract end
+
+<h2>The code</h2>
+
+<code lang="perl6">
+use v6;
+
+sub sendmail(*%mail) {
+  die "Missing $_" if not %mail{$_} for <To From Subject Text> ;
+
+  my $file = '/tmp/perl6_' ~ time ~ rand;
+
+  my $fh = open $file, :w;
+  $fh.print("To: {%mail<To>}\n");
+  $fh.print("From: {%mail<From>}\n");
+  $fh.print("Subject: {%mail<Subject>}\n");
+  $fh.print("\n");
+  $fh.print(%mail<Text>);
+  $fh.close;
+
+  shell("/usr/lib/sendmail -t < {$file}");
+
+  unlink $file;
+
+  return ;
+}
+
+sendmail(
+  To      => 'foo@perl6maven.com',
+  From    => 'bar@perl6maven.com',
+  Subject => 'Reading the Perl 6 Maven',
+  Text    => "
+Hi,
+
+how are you?
+
+I have been reading the Perl 6 Maven site for a while,
+I am even subscribed to the mailing list. Try it!
+
+http://perl6maven.com/
+
+This message was sent using the script I took from
+http://perl6maven.com/sending-email-using-perl6
+
+",
+);
+</code>
+
+If you  try this script, please change the To and From fields before running it!
+
+
+<h2>Disclaimer</h2>
+
+This script only works on Unix-ish systems where the local mail delivery
+system has been properly configured. It is also very likely that many sites
+will reject the message if you are running this on your home network,
+but I managed to send a message to my own addresses. Running it on a server
+will probably work.
+
+<h2>Warning</h2>
+
+Do NOT use this subroutine in an environment where any random person
+can supply the input fields. Be extremely cautious accepting input from the
+Internet and then using it for sending e-mail with this subroutine.
+
+
+<h2>The explanation</h2>
+
+We declare a subroutine and slurp any parameters into a hash called <hl>%mail</hl>.
+
+<code lang="perl6">
+sub sendmail(*%mail) {
+</code>
+
+Go over the 4 required fields and check if all of them were supplied.
+At this point we don't make any special check for the validity of the
+addresses. That could be a nice extra feature.
+
+<code lang="perl6">
+  die "Missing $_" if not %mail{$_} for <To From Subject Text> ;
+</code>
+
+Create a temporary file using the current timestamp and a random number.
+As I wrote, it is not perfect but it works for now.
+
+<code lang="perl6">
+  my $file = '/tmp/perl6_' ~ time ~ rand;
+</code>
+
+Open the file for writing and write the email.
+First the headers. Then an empty row.
+Then the body of the messages.
+
+<code lang="perl6">
+  my $fh = open $file, :w;
+  $fh.print("To: {%mail<To>}\n");
+  $fh.print("From: {%mail<From>}\n");
+  $fh.print("Subject: {%mail<Subject>}\n");
+  $fh.print("\n");
+  $fh.print(%mail<Text>);
+  $fh.close;
+</code>
+
+It will look like this:
+
+<code>
+To: foo@perl6maven.com
+From: bar@perl6maven.com
+Subject: Reading the Perl 6 Maven
+
+hi,
+...
+</code>
+
+The <hl>shell()</hl> function can execute an external command. In this case
+we run the sendmail program of the operating system and redirect the file to
+its standard input. This call puts the e-mail in the outgoing queue of the
+local mailing system that will deliver it when time permits.
+
+<code lang="perl6">
+  shell("/usr/lib/sendmail -t < {$file}");
+</code>
+
+We get rid of the temporary file:
+
+<code lang="perl6">
+  unlink $file;
+</code>
+
+
+<h2>Conclusion</h2>
+
+As I wrote, this is not perfect, but if you'd like to build
+a system that sends out email messages, this can be used.
+At least on Unix-ish systems.
+
+
+
+
+

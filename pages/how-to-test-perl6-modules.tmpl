@@ -1,0 +1,310 @@
+=title How to test Perl 6 modules and scripts?
+=timestamp 2012-07-22T10:52:02
+=author szabgab
+=keywords Test, ok
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+Writing Perl 6 code is fun.
+
+It is fun, but if you want to make sure your code runs even after upgrading to the next version of
+Rakudo, the best thing you can do is to test your code before upgrade and after upgrade.[1]
+
+Doing that manually would be very time-consuming, error-prone and boring. Soon you'd stop doing it which means
+you would not know if your code still works as expected or not.
+
+The best thing you can do is to write automated tests.
+
+Writing tests is of course an additional investment. It takes time and thinking, but pays off quickly.
+Any changes you might want to make to your code. Any time you upgrade Rakudo or switch to one of the
+other <a href="http://www.perl6.org/compilers/">implementations of Perl 6</a>.
+
+You can just run your tests and immediately see if everything works as earlier or if something has changed.
+
+=abstract end
+
+<h2>Test Anything Protocol</h2>
+
+<div style="text-align: right">
+<img src="/img/tap.png" alt="Test Anything Protocol" />
+</div>
+
+People familiar with the <a href="http://testanything.org/">Test Anything Protocol (aka TAP)</a> and the
+<a href="https://metacpan.org/module/Test::More">Test::Simple / Test::More</a> world of Perl 5,
+will find this familiar too. Naturally the Perl 6 test framework is still a lot smaller than that
+of the Perl 5 world, but the basics are already there.
+
+If you are not familiar with it, the idea is that there are two main parts of the testing system.
+The test script that prints out a stream of numbered <b>ok</b> and <b>not ok</b> messages with
+some additional comments, and a "consumer" that can read and process this stream of strings.
+
+A very short stream can look like this:
+
+<code>
+1..3
+ok 1 - plain text
+not ok 2 - if HTML
+ok 3 - simple HTML
+# Looks like you failed 1 tests of 3
+</code>
+
+though hopefully you will have hundreds of test cases. (Also called assertions).
+
+
+As far as I know, there is no commonly used consumer implemented in Perl 6 so we are going to use
+the <b>prove</b> command that comes with the Perl 5 testing system.
+
+The prove command would turn the above stream into a more concise report. Something that resembles this:
+
+<code>
+t/html.t .. Failed 1/3 subtests
+
+Test Summary Report
+-------------------
+t/01.t (Wstat: 0 Tests: 3 Failed: 1)
+  Failed test:  2
+Files=1, Tests=3,  7 wallclock secs ( 0.05 usr  0.00 sys +  7.29 cusr  0.24 csys =  7.58 CPU)
+Result: FAIL
+</code>
+
+This will be especially useful when you have hundreds of test assertions. Most of them passing with ok,
+which are not that interesting to see, and one or a few failing. You would not want to see 250 lines of OK
+passing on the screen and needing to scroll back to see the one failure in the 3rd row.
+
+You'd want to see the concise report that shows the details of the failing test.
+
+
+<h2>Layout of a Perl 6 distribution</h2>
+
+The Perl 6 distributions follow a similar standard as the Perl 5 distributions. Inside the project directory
+you create a lib/ subdirectory and inside that you will find the Perl 6 modules.
+
+Next to it there is a t/ subdirectory with test scripts having .t extension.
+
+The modules are named in a similar fashion to what's happening on CPAN, so for example there
+is a module called Acme::Meow. There is no "standard" for the actual project names on Github, but I
+saw a few projects using a perl6- prefix in the name of the Github repository.
+Just as Tadzik did with the
+<a href="https://github.com/tadzik/perl6-Acme-Meow">Perl 6 implementation of Acme::Meow</a>.
+
+For more detailed information see the Perl 6 wiki on
+<a href="http://wiki.perl6.org/Create%20and%20Distribute%20Modules">how to create and distribute Perl 6 Modules</a>.
+
+
+<h2>Simple test script</h2>
+
+Tests are simple Perl 6 script in the t/ directory with .t extension.
+As every Perl 6 script, it is recommended that the test scripts also start with a
+<b>use v6;</b> statement. This will avoid headaches when someone runs the test
+using perl 5 by mistake.
+
+The next statement is usually loading the <b>Test</b> module. This module
+comes with the Rakudo Perl 6 compiler and implements a few common ways to write
+assertions or test-units as I like to call them.
+
+Once the test module is loaded you can declare you plan, how many assertions are
+you going to run, how many <b>OK</b>-s to expect. Having such plan can provide an extra
+safety net in case the test script finished too early.
+
+In our simple case we plan a single test case.
+
+After the plan we start the actual test code. We load the module we would like to test.
+My almost standard module is a (badly implemented) calculator called Math. It exports
+a single function called <b>add</b>.
+
+<code lang="perl6">
+use v6;
+
+use Test;
+plan 1;
+
+use Math;
+ok add(1, 1) == 2;
+</code>
+
+The <b>&ok</b> function is provided by the Test module. It is supposed to get a boolean value, or something
+that can be converted to a boolean value and it prints out either "OK" or  "NOT OK" depending on that value.
+In addition it also increments an internal counter and prints the number.
+
+It is a a really simple function.
+
+The actual test case is using the <b>&add</b> function of the Math module and checks if add(1, 1) returns 2.
+
+If I save the above script as t/01-add.t I can then run it as:
+
+<b>perl6 t/01-add.t</b>
+
+and get this error:
+
+<code>
+===SORRY!===
+Could not find Math in any of: ...
+</code>
+
+That's because the Math module has not been installed and perl6 cannot find it. In order to make it work
+you have to tell perl6 to include the lib/ subdirectory in its search path and run the script like this:
+
+<b>perl6 -Ilib t/01-add.t</b>
+
+<code>
+1..1
+ok 1 -
+</code>
+
+As I said, that's a very simple case.
+
+The <b>&ok</b> function actually can get an additional parameter which is just a simple explanation of the test case.
+It can be very useful when trying to understand the problem.
+
+<code lang="perl6">
+use v6;
+
+use Test;
+plan 1;
+
+use Math;
+ok add(1, 1) == 2, '1+1 = 2';
+</code>
+
+And the output is
+
+<code>
+1..1
+ok 1 - 1+1 = 2
+</code>
+
+
+<h2>A failing test</h2>
+
+Let's add another test case and increment the plan to 2:
+
+<code lang="perl6">
+use v6;
+use Test;
+
+plan 2;
+use Math;
+
+ok add(1, 1) == 2, '1+1 = 2';
+ok add(1, 1, 1) == 3, '1+1+1 = 3';
+</code>
+
+The raw TAP output looks like this:
+
+<code>
+1..2
+ok 1 - 1+1 = 2
+not ok 2 - 1+1+1 = 3
+# Looks like you failed 1 tests of 2
+</code>
+
+Apparently the add function does not handle more than 2 parameters correctly.
+
+As you can see the second assertion failed and got a comment about failing 1 out of 2 tests.
+
+
+<h2>Proving your code works</h2>
+
+As you can see the above is the raw TAP stream. In order to turn it into
+a better report you could use the <hl>prove</hl> command that comes with perl 5.
+You just need to tell it to run perl6 instead of the default perl 5:
+
+
+<b>prove -e "perl6 -Ilib" t/01-add.t</b>
+
+You can also pass the name of the directory and prove will run all the test scripts
+(remember, .t extension) found in that directory:
+
+<b>prove -e "perl6 -Ilib" t/</b>
+
+Actually you can even leave out the name of the directory as prove defaults to the
+content of the t/ subdirectory:
+
+<b>prove -e "perl6 -Ilib"</b>
+
+
+The output looks like this:
+
+<code>
+t/01-add.t .. Failed 1/2 subtests
+
+Test Summary Report
+-------------------
+t/01-add.t (Wstat: 0 Tests: 2 Failed: 1)
+  Failed test:  2
+Files=1, Tests=2,  1 wallclock secs ( 0.03 usr  0.01 sys +  0.85 cusr  0.12 csys =  1.01 CPU)
+Result: FAIL
+</code>
+
+<h2>Improving the error messages with is</h2>
+
+While the <b>&ok</b> function is nice and simple, it does not provide a lot of context.
+It only tells you if the condition was True or False and the name of the test. There
+are a number of additional functions in the Test module that comes with Rakudo, which
+will provide better error messages in case of failure.
+
+The <b>&is</b> function of the Test module accepts 3 parameters.
+The actual value, the expected value and the name of the assertion.
+It will compare the actual value with the expected value and print <b>OK</b>
+if they are equal.
+
+<code lang="perl6">
+use v6;
+use Test;
+
+plan 2;
+use Math;
+
+is add(1, 1), 2, '1+1 = 2';
+is add(1, 1, 1), 3, '1+1+1 = 3';
+</code>
+
+If they are different, it will of course print <b>NOT OK</b> but it will also
+print out the expected and the actual values:
+
+<code>
+1..2
+ok 1 - 1+1 = 2
+not ok 2 - 1+1+1 = 3
+#      got: '2'
+# expected: '3'
+# Looks like you failed 1 tests of 2
+</code>
+
+This can help a lot in understanding what the real problem might be.
+
+
+<h2>More test functions</h2>
+
+There are a number of additional test functions such as <b>nok</b>, <b>isnt</b>,
+<b>todo</b>, <b>skip</b>, <b>isa_ok</b>, <b>dies_ok</b>, <b>is_deeply</b> and a few
+more, I'll mention in another article.
+
+
+<h2>Newsletters</h2>
+
+This article was distributed to the subscribers of both the
+<a href="/perl6-tricks-and-treats-newsletter">Perl 6 Tricks and Treats</a> and the
+<a href="http://szabgab.com/test_automation_tips.html">Test Automation Tips</a> newsletters
+as this happended to be in both subject.
+
+You might want to subscribe to get notification when new articles are published.
+
+
+<h2>Writing Perl 6 code</h2>
+
+Perl 6 and the Rakudo compiler are not different from any other language and their compiler.
+If you want to make sure your code survives an upgrade, the best you can do is to write and
+run automatic tests. That can quickly point out the areas where your code might need
+changes to accommodate the changes made in the compiler.
+
+I hope this will help you get started in writing Perl 6 modules.
+
+
+
+[1] This is of course not different from any other language, but it is more important in Perl 6 as
+it is still evolving much faster than other programming languages.
+

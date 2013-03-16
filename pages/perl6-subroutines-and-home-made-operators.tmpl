@@ -1,0 +1,330 @@
+=title Perl 6 subroutines and home made operators
+=timestamp 2012-09-05T10:52:02
+=author szabgab
+=keywords sub, ?, infix
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+This time together with a Perl 6 screencast to show the <b>thought operator</b>
+and the <b>+- operator</b> of Perl 6.
+
+Direct link to the <a href="http://www.youtube.com/watch?v=sBvjUi2093A">Perl 6 subroutines screencast</a>
+
+=abstract end
+
+<iframe width="960" height="720" src="http://www.youtube.com/embed/sBvjUi2093A" frameborder="0"
+allowfullscreen></iframe>
+
+
+<h2>The Thought operator</h2>
+
+I just tried the thought operator in Perl 6. Typed in this:
+
+<code>
+"szabgab" .oO "Perl 6 is cool";
+</code>
+
+and got the following:
+
+<code>
+szabgab thinks Perl 6 is cool
+</code>
+
+<h2>The +- operator</h2>
+
+I also tried the +- operator:
+
+<code>
+2.78  ~~ 10 +- 3 ?? 't' !! 'f'     # f
+7.5   ~~ 10 +- 3 ?? 't' !! 'f'     # t
+13    ~~ 10 +- 3 ?? 't' !! 'f'     # t
+13.1  ~~ 10 +- 3 ?? 't' !! 'f'     # f
+</code>
+
+I think you get the point here. We check if the value on the left
+is between 10 +- 3.
+
+~~ is the smart match operator, ?? !! are the two parts of the ternary
+operator of Perl 6 and +- is, well not everyone has the +- or the thought
+operator but if you read on you'll see how you can create one for yourself.
+
+<h2>Subroutines in Perl 6</h2>
+
+Subroutines in Perl 6 are declared using the sub keyword just as in Perl 5
+But in Perl 6, after the name of the subroutine one can provide a signature,
+describing the parameters that function accepts.
+
+<code lang="perl6">
+use v6;
+
+sub f($a, $b) {
+    return "$a - $b";
+}
+
+say f(4, 2);
+</code>
+
+
+If called with a different number of arguments then Perl will issue an error message:
+
+<code lang="perl6">
+say f(4, 2, 5);
+</code>
+
+gives this message:
+
+<code>
+===SORRY!===
+CHECK FAILED:
+Calling 'f' will never work with argument types (Int, Int, Int) (line 7)
+    Expected: :($a, $b)
+</code>
+
+or
+
+<code lang="perl6">
+say f(4);
+</code>
+
+gives this message:
+
+<code>
+===SORRY!===
+CHECK FAILED:
+Calling 'f' will never work with argument types (int) (line 7)
+    Expected: :($a, $b)
+</code>
+
+<h2>Perl 5 style in Perl 6</h2>
+
+For people who really want the <a href="http://perl5maven.com/">Perl 5</a> style subroutine declaration, they can use this code:
+
+<code lang="perl6">
+use v6;
+
+sub f {
+    return @_.perl
+}
+
+say f(4, 2);     # Array.new(4, 2)
+say f(4);        # Array.new(4)
+say f(4, 2, 3);  # Array.new(4, 2, 3)
+</code>
+
+That could work for backword compability, but that would eliminate all the nice features of Perl 6.
+
+<h2>Optional parameter</h2>
+
+What if we would like to allow the user to pass 1 or 2 parameters?
+For that case we can mark the second parameter as optional using a
+quesion mark <hl>?</hl>:
+
+<code lang="perl6">
+use v6;
+
+sub f($a, $b?) {
+    return defined($b) ?? "$a - $b" !! "$a - na";
+}
+
+say f(4, 2);    # 4 - 2
+say f(4);       # 4 - na
+</code>
+
+The <hl>??</hl>, <hl>!!</hl> pair is a the ternary operator of Perl 6.
+What we see above is that if <hl>$b</hl> is defined the <hl>$a - $b</hl>
+is returned and when <hl>$b</hl> is not defined then the word <hl>na</hl>
+will be returned instead of that value.
+
+<h2>Parameters are read-only</h2>
+
+In other cases you might be tempted to replace $b with some default value like this:
+
+<code lang="perl6">
+use v6;
+
+sub f($a, $b?) {
+    $b //= 17;
+    return defined($b) ?? "$a - $b" !! "$a - na";
+}
+
+say f(4, 2);
+say f(4);
+</code>
+
+but this will throw an exception like this:
+
+<code>
+4 - 2
+Cannot assign to a readonly variable or a value
+  in sub METAOP_TEST_ASSIGN:<//> at src/gen/CORE.setting:11782
+  in sub f at a.pl:4
+  in block  at a.pl:9
+</code>
+as arguments in Perl 6 are by default read only;
+
+<h2>Default value of a parameter</h2>
+
+There are two solutions to this, depending on what do you really want to achieve:
+
+If you only want to give a default value to <hl>$b</hl> then the best way is to add it right
+in the signature:
+
+<code lang="perl6">
+use v6;
+
+sub f($a, $b = 17) {
+    return defined($b) ?? "$a - $b" !! "$a - na";
+}
+
+say f(4, 2);    # 4 - 2
+say f(4);       # 4 - 17
+</code>
+
+In this case you don't even need the question mark '?' as the presence of a
+default value automatically makes the parameter optional.
+This still keeps <hl>$b</hl> read-only within the subroutine.
+
+<h2>Making the parameter a copy and thus changeable</h2>
+
+The other solution is to mark the <hl>$b</hl> variable as a
+<hl>copy</hl> of the original value.
+Therefore allowing the user to make changes to it:
+
+<code lang="perl6">
+use v6;
+
+sub f($a, $b? is copy) {
+    $b //= 17;
+    return defined($b) ?? "$a - $b" !! "$a - na";
+}
+
+say f(4, 2);    # 4 - 2
+say f(4);       # 4 - 17
+</code>
+
+<h2>Type restrictions on parameters</h2>
+
+We can also restrict the parameters of a subroutine to certain data types:
+
+<code lang="perl6">
+use v6;
+
+sub f($a, Int $b) {
+    return "$a - $b";
+}
+
+my $name = "foo";
+say f(4, 2);
+say f(4, $name);
+</code>
+
+The first call will succeed but the second will generate an exception:
+
+<code>
+4 - 2
+Nominal type check failed for parameter '$b'; expected Int but got Str instead
+  in sub f at example.pl:3
+  in block  at example.pl:9
+</code>
+
+
+If, instead of a variable, we were trying to pass a literal string  "foo" as in this case:
+
+<code lang="perl6">
+use v6;
+
+sub f($a, Int $b) {
+    return "$a - $b";
+}
+
+say f(4, 2);
+say f(4, "foo");
+</code>
+
+We would already get a compile time error:
+
+<code>
+===SORRY!===
+CHECK FAILED:
+Calling 'f' will never work with argument types (Int, Str) (line 8)
+    Expected: :($a, Int $b)
+</code>
+
+
+<h2>Other constraints on parameters</h2>
+
+It is also possible to provide further constraints on the parameters:
+
+<code lang="perl6">
+use v6;
+
+sub f($a, Int $b where { $b < 10 }) {
+    return "$a - $b";
+}
+
+say f(4, 2);
+say f(4, 11);
+</code>
+
+The first expression is evaluated but the second one throws an exception as the condition was not fulfilled.
+
+<code>
+4 - 2
+Constraint type check failed for parameter '$b'
+  in sub f at a.pl:3
+  in block  at a.pl:8
+</code>
+
+<h2>Creating operators in Perl 6</h2>
+
+There are of course a lot of other aspects for subroutine definition in Perl 6
+but let's now go back to our original goal, to create the +- operator and the
+<b>thought operator</b> <hl>.oO</hl>.
+
+How can one create a new operator in Perl 6?
+
+It is quite simple as an operator is just a subroutine with a funny way of calling it.
+
+Here is how to create the <b>thought operator</b>. We create a subroutine, declaring
+it to be an <hl>infix,/hl> operator with the name <hl>.oO</hl>
+
+<code lang="perl6">
+use v6;
+
+sub infix:<.oO>($name, $thought) {
+    say "$name thinks $thought"
+}
+
+'Foo' .oO 'awesome';
+</code>
+
+Prints:
+
+<code>
+Foo thinks awesome
+</code>
+
+In the other case we want to make +- an infix operator that creates a <hl>Range</hl>.
+Not something complex. Within the angle brackets we put the new operator,
+the sub has a signature of two scalars and within the block we put actual
+code that needs to be executed.
+
+<code lang="perl6">
+use v6;
+
+sub infix:<+->($a, $b) { ($a-$b) .. ($a+$b) }
+</code>
+
+Then we can use
+
+<code lang="perl6">
+say 10 ~~ 2 +- 3;
+say 4 ~~ 2 +- 3;
+</code>
+
+that will check if 10 and 4 are in the range 2-3 .. 2+3 also known as -1 .. 5.
+
+

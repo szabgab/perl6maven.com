@@ -1,0 +1,247 @@
+=title Perl 5 to Perl 6 - Scalars
+=timestamp 2012-08-09T10:52:02
+=author szabgab
+=keywords scalars, say, print, substr, length, chars, prompt, chomp, lc, uc, index, rindex, ~, ~=, x
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+While Perl 6 should be able to attract developers from other languages as
+well, it seems it will be especially interesting for people with some background
+in Perl 5. Therefore, it can be useful to have a set of articles comparing
+Perl 5 and Perl 6.
+
+In this article, we are going to look at the scalars variables,
+and some of the functions dealing with them.
+
+=abstract end
+
+<h2>print Hello World</h2>
+
+In Perl 5 you normally use <hl>print()</hl>, or starting from 5.10
+you can use <hl>say()</hl> to print to the screen. The latter will
+append a newline to whatever you had to say.
+
+In Perl 6 they work the same.
+
+<code lang="perl6">
+use v6;
+
+print "Hello World\n";
+say "Hello World";
+</code>
+
+<h2>Variable declaration using "my"</h2>
+
+In Perl 6 you almost always need to declare your variables with <hl>my</hl>.
+Think as if you had always added <hl>use strict</hl>. Just as it is done by <hl>use 5.012;</hl>
+
+There are exceptions, such as one-liners and certain constructs
+that auto-declare the scoped variables for you.
+
+<code lang="perl6">
+use v6;
+
+my $name = "Moose";
+</code>
+
+<h2>Scalar variable interpolation</h2>
+
+In Perl 6 scalar variables still interpolate in double quoted strings:
+
+<code lang="perl6">
+use v6;
+
+my $name = "Foobar";
+say "Hello $name";     # Hello Foobar
+</code>
+
+In order to make the Object Oriented people happy Perl 6 also allows calling the <hl>say</hl> method
+on scalar variables:
+
+<code lang="perl6">
+use v6;
+
+my $name = "Foobar";
+"Hello $name".say;     # Hello Foobar
+</code>
+
+<h2>Reading from standard input</h2>
+
+In Perl 5 you would use <hl>&lt;STDIN&gt;</hl>.
+
+As reading a single line from standard input is usually preceded
+by a print statement, the keyword to do that in Perl 6 is called <hl>prompt()</hl>.
+
+<code lang="perl6">
+use v6;
+
+my $line = prompt('Please type in your name: ');
+say "Hi $line, how are you?";        # Hi Foobar, how are you?
+</code>
+
+If you try this you will see that it chomps the newline off automatically.
+Repeated reading without a prompt will be explained later.
+
+In Perl 6 the file handle holding the connection to standard input is kept in the <hl>$*IN</hl> variable.
+It can be used together with the <hl>get</hl> method to read a single line from the standard input:
+
+<code lang="perl6">
+use v6;
+
+print "What's your name? ";
+my $line = $*IN.get;
+say "Hi $line, how are you?";        # Hi Foobar, how are you?
+</code>
+
+<h2>Getting part of a string (substr)</h2>
+
+The <hl>substr()</hl> function of Perl 6 is the similar to what we
+had in Perl 5, except that there is no 4 parameter version.
+As all the other functions it can also work in the object oriented way.
+
+The parameters that used to accept negative values, now require,
+that you precede the negative value with <hl>*</hl>, the whatever operator.
+
+<code lang="perl6">
+use v6;
+
+my $line = "The brown cat climbed the green tree";
+say substr $line, 4, 3;      # bro
+$line.substr(4, 3).say;      # bro
+
+say substr $line, 4, *-27;   # brown
+</code>
+
+
+<h2>Length of a string</h2>
+
+In Perl 6 there is no <hl>length()</hl> function.
+Instead, there is a function called <hl>chars()</hl>, that will return the number of characters.
+
+<code lang="perl6">
+use v6;
+
+my $a = "This is a string";
+say chars $a;  # 16
+</code>
+
+<h2>chomp</h2>
+
+In Perl 5 there is a <hl>chomp()</hl> function to remove a trailing newline
+after reading a line from the standard input or from a file.
+
+In Perl 6 this function will be almost never used as reading from
+the standard input or from files will automatically chomp
+off the newlines. In any case, in Perl 6 chomp behaves differently
+as it returns the chomped string and does NOT change the original
+string.
+
+<code lang="perl6">
+use v6;
+
+my $a = "abcd\n";
+my $b = chomp $a;
+print "<$b>"; # $b is now "abcd"
+print "<$a>"; # $a still has the trailing newline
+</code>
+
+Output:
+
+<code>
+<abcd><abcd
+>
+</code>
+
+
+<h2>defined</h2>
+
+The <hl>defined()</hl> function is the same in Perl 6 as in Perl 5,
+checking if a scalar value has any value different from undef.
+Except that in Perl 6 there are several different values which fall in this
+category.
+
+<h2>String concatenation using ~</h2>
+
+In Perl 5 dot <hl>.</hl> is used for string concatenation. I think it is a lot
+less used than one would think as in many cases we use string interpolation.
+Maybe one of the most frequent use-cases is actually the short-cut string
+concatenation.
+
+In Perl 6 the string concatenation is done using the tilde <hl>~</hl> operator.
+IMHO it will be even less used than in Perl 5, as the variable
+and code interpolation in Perl 6 is much stronger. Anyway here is
+the example:
+
+<code lang="perl6">
+use v6;
+
+my $str = "Foo" ~ "Bar";
+$str.say;      # FooBar
+</code>
+
+I think the only place where it will be used a lot is the short-cut
+version that looks like this <hl>~=</hl>
+
+<code lang="perl6">
+use v6;
+
+my $str = "Foo" ~ "Bar";
+
+$str ~= " and Moo";
+say $str;      # FooBar and Moo
+</code>
+
+This can of course lead to some confusion, as it looks quite similar to
+<hl>=~</hl>, the regex operator of Perl 5, but <hl>=~</hl> is not a
+valid operator in Perl 6.
+
+If you use it by mistake, you will get a compilation error like this:
+
+<code>
+===SORRY!===
+Unsupported use of =~ to do pattern matching;  in Perl 6 please use ~~
+</code>
+
+
+<h2>String repetition (x)</h2>
+
+String repetition that used to be the <hl>x</hl> operator stayed the same:
+
+<code lang="perl6">
+use v6;
+
+say "abc" x 3;   # abcabcabc
+</code>
+
+<h2>index, rindex</h2>
+
+The <hl>index()</hl> and <hl>rindex()</hl> functions of Perl 5, that
+can locate a substring, stayed the same in Perl 6 as well.
+
+<code lang="perl6">
+use v6;
+
+my $s = "The brown cat climbed the green tree";
+say index $s, "b";     # 4
+say rindex $s, "b";    # 18
+</code>
+
+<h2>lc, uc</h2>
+
+<hl>lc()</hl> and <hl>uc()</hl> turning strings to all lower case and all upper case
+are the same in Perl 6 as in Perl 5.
+
+<code lang="perl6">
+use v6;
+say lc "Hello World";    # hello world
+say uc "Hello World";    # HELLO WORLD
+</code>
+
+<h2>Conclusion</h2>
+
+I know these are no big tricks here, just plain code,
+but I hope this will help some people in learning Perl 6.
+

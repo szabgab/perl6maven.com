@@ -1,0 +1,98 @@
+=title Arrays with unique values
+=timestamp 2012-07-04T16:52:02
+=author szabgab
+=keywords arrays, uniq, unique
+=status show
+=index 1
+=comments 1
+=perl5url http://szabgab.com/unique-values-in-an-array-in-perl.html
+=perl5title Unique values in an array in Perl 5
+
+=abstract start
+
+How to get rid of duplicate values in an array in Perl 6?
+
+=abstract end
+
+<h2>Arrays with unique values</h2>
+
+Basically they show various ways how one can take a list
+of values and return a sublist of the same values
+after eliminating the duplicates.
+
+With Perl 6 its quite easy to eliminate duplicate values from a list as there
+is a built-in called <hl>uniq</hl> that will do the job.
+
+<code lang="perl6">
+use v6;
+
+my @duplicates = (1, 1, 2, 5, 1, 4, 3, 2, 1);
+say @duplicates.perl;           # Array.new(1, 1, 2, 5, 1, 4, 3, 2, 1)
+
+
+my @unique = uniq @duplicates;
+say @unique.perl;               # Array.new(1, 2, 5, 4, 3)
+</code>
+
+This works on strings as well:
+
+<code lang="perl6">
+use v6;
+
+my @chars = <b c a d b a a a b>;
+say @chars.perl;        # Array.new("b", "c", "a", "d", "b", "a", "a", "a", "b")
+
+my @singles = uniq @chars;
+say @singles.perl;      # Array.new("b", "c", "a", "d")
+</code>
+
+
+<h2>Perl 6 Comments</h2>
+
+A few comments to people new to Perl 6:
+
+One should start every Perl 6 script by asking for v6;
+version 6 of Perl. It is important in order to avoid
+strange error messages when you happen to run it with
+perl 5.
+
+You can add  <hl>.perl</hl> to every kind of variable and get
+back a dumped representation of the data in it. Very handy for debugging.
+
+<hl>say()</hl> is a built-in function in Perl 6 and it behaves as
+say() in Perl 5.10, printing to the screen and adding
+a newline at the end.
+
+Angle brackets < > allow one to create a list of
+values from a space separated list of items. In Perl 5
+the qw() operator was used for this.
+
+<h2>Method calls</h2>
+
+Actually <hl>uniq</hl> can also be used as a method call on the
+array object...
+
+<code lang="perl6">
+use v6;
+
+my @chars = <b c a d b a a a b>;
+
+my @singles = @chars.uniq;
+
+say @singles.perl;    # Array.new("b", "c", "a", "d")
+</code>
+
+... and some people will prefer to add the .say method call
+at the end of the expression:
+
+<code lang="perl6">
+@singles.perl.say;
+</code>
+
+though I think this isn't as clear as having the say at the beginning.
+
+<h2>How to get Perl 6 ?</h2>
+
+The developers keep an entry with up to date instructions on
+<a href="http://rakudo.org/how-to-get-rakudo">how to get Rakudo</a>.
+

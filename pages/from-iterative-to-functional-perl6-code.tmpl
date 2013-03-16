@@ -1,0 +1,110 @@
+=title From Iterative to Functional Perl 6 Code
+=timestamp 2012-07-18T12:52:02
+=author moritz
+=keywords gather, take, X, X~, ~, :=
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+Suppose you want to search for all files with a certain name, but
+you're not sure about the extension -- it could be a <b>.pod</b> or <b>.pm</b>
+or <b>.pl</b>, and there are several possible paths too.
+
+So, you generate all possible, and for each you check if they exist
+in the file system:
+
+=abstract end
+
+<code lang="perl6">
+use v6;
+
+my @paths    = < /tmp /var/tmp >;
+my $filename = 'temp123';
+my @ext      = <pod pm pl>;
+for @paths -> $p {
+    for @ext -> $e {
+        my $file = "$p/$filename.$e";
+        say $file if $file.IO.e;
+    }
+}
+</code>
+
+Ok, nothing exciting so far. Now you want all existing files in an array.
+The usual approach would be to create an array outside the loops, and
+<a href="http://doc.perl6.org/type/List#push">push</a> to it inside the loop.
+But there's a more elegant solution in Perl 6:
+
+<code lang="perl6">
+use v6;
+
+my @paths    = < /tmp /var/tmp >;
+my $filename = 'temp123';
+my @ext      = <pod pm pl>;
+my @existing-files := gather for @paths -> $p {
+    for @ext -> $e {
+        my $file = "$p/$filename.$e";
+        take $file if $file.IO.e;
+    }
+}
+</code>
+
+The <hl>gather</hl> statement collects all the values that <hl>take</hl> is called with.
+And more than that, it does the collection lazily. That is, the loops
+are only run if somebody accesses elements of <b>@existing-files</b>. So if you
+only ever need the first element, no further accesses to the file system are
+performed after the first one -- and you didn't even have to build that
+stopping into your code directly.
+
+The laziness is also the reason for using the bind operator <hl>:=</hl> on
+<b>@existing-files</b>; assignment is mostly eager, and ruins the effect of
+laziness.
+
+I am fond of the functional programming style, and often want to get
+rid of explicit loops. Perl 6 makes this easy with so-called
+<b>meta operators</b>. The <hl>X</hl> operator builds the cross product of two
+or more lists, and you can combine it with the concatenation operator
+<hl>~</hl> to concatenate the elements into strings right away:
+
+<code lang="perl6">
+use v6;
+
+my @paths    = < /tmp /var/tmp >;
+my $filename = 'temp123';
+my @ext      = <pod pm pl>;
+my @existing-files := grep { .IO.e },
+                  (@paths X~ '/' X~ $filename X~ '.' X~ @ext);
+</code>
+
+Or, if you want to do the concatenation of <b>/</b> and <b>.</b> to the filename
+directly:
+
+<code lang="perl6">
+my @existing-files := grep { .IO.e },
+                  (@paths X~ "/$filename." X~ @ext);
+</code>
+
+As a final touch-up, Perl 6 provides a nice syntax for creating closures
+that only consist of method calls:
+
+<code lang="perl6">
+my @existing-files := grep *.IO.e,
+                  (@paths X~ "/$filename." X~ @ext);
+</code>
+
+The method call on the <b>Whatever Star</b> <hl>*</hl> is transformed at compile
+time into a closure that calls a method of the same name on the argument
+you pass to it.
+
+So now the code is free of temporary variables (for which you have to find
+a name, which always annoys me), and is shorter than the initialization
+leading up to it.
+
+<hr>
+
+Moritz Lenz is a long-time Perl programmer,
+<a href="http://perlgeek.de/blog-en/">blogs about Perl 6</a> and is a core
+developer of the Rakudo Perl 6 Compiler.
+
+

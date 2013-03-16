@@ -1,0 +1,144 @@
+=title Writing an HTTP Server in Perl 6
+=timestamp 2012-07-04T16:52:02
+=author szabgab
+=keywords HTTP
+=status draft
+=index 1
+=comments 1
+
+=abstract start
+
+
+=abstract end
+
+
+Back in June 2011, I recoreded a screencast explaining how to use the then latest RAkudo * release that
+came with the HTTML::Server::Simple module. If you are interested, it is still mostly relevant.
+(Except that the msi is now created by the Rakudo team and not by myself.)
+
+Direct link to the <a href="http://www.youtube.com/watch?v=VJi1hsB4vN0">HTTP Server in Perl 6 screencast</a>
+
+<iframe width="560" height="349" src="http://www.youtube.com/embed/VJi1hsB4vN0" frameborder="0" allowfullscreen></iframe>
+
+
+<b>panda install HTTP::Server::Simple</b>
+
+<a href="http://rakudo.org/">Rakudo</a> where you will find a link to
+<a href="https://github.com/rakudo/star/downloads">the download page</a> in Github.
+
+There you can pick the latest Windows Installer download it to your local disk and run the exe file.
+
+Rakudo Star also comes with HTTP::Server::Simple, a Perl 6 module to implement simple web servers.
+Just type in
+
+<code lang="perl6">
+use v6;
+
+use HTTP::Server::Simple;
+HTTP::Server::Simple.new.run;
+</code>
+
+and you have a working web server.
+Of course if you kill this web server you will also kill the Perl 6 REPL but we don't need it any more now.
+
+We will take a look at the <a href="https://github.com/mberends/http-server-simple/">examples</a> 
+that are part of the HTTP::Server::Simple package. The first examples: 01-simple-base.pl6 is about the same
+as we typed in. It looks like this:
+
+  use HTTP::Server::Simple;
+  my HTTP::Server::Simple $server .= new; 
+  $server.run;
+
+The first line loads the module as usual.
+In the second line
+
+  my HTTP::Server::Simple $server
+  
+declares a scalar variable called $server that must be of type HTTP::Server::Simple
+
+The
+
+   .= new;
+   
+part calls the constructor of the same class and assigns the result back to the left hand side.
+Finally 
+
+  $server.run;
+
+calls the run method on the object launching the web server on its default port of 8080.
+
+
+The second example ( 02-simple-small.pl6 ) is slightly more complex:
+
+
+  use v6;
+  use HTTP::Server::Simple;
+  my $NL = "\x0D\x0A";
+  
+  class Example::Simple::Small is HTTP::Server::Simple {
+    has %!header;
+    has $!path;
+    has $!query_string;
+    method header ( $key, $value ) {
+        %!header{$key} = $value;
+    }
+    method path ($path) {
+        $!path = $path;
+    }
+    method query_string ($query_string) {
+        $!query_string = $query_string;
+    }
+    # override the request handler of the base class
+    method handle_request () {
+        print "HTTP/1.0 200 OK";
+        print "$NL$NL";
+        say "<html>\n<body>";
+        say "{self.WHAT} at {$!host}:{$!port}";
+        say q{<table border="1">};
+        for %!header.keys -> $key {
+            my $value = %!header{$key};
+            say "<tr><td>{$key}</td><td>{$value}</td></tr>";
+        }
+        say "</table>";
+        say "Path: {$!path}<br/>";
+        say "Query string: {$!query_string}<br/>";
+        say "</body>\n</html>";
+    }
+  }
+  my Example::Simple::Small $server .= new;
+  $server.run; # now browse http://localhost:8080/whatever?name=value
+
+It starts by making sure this code is only consumed by a perl 6 compiler, loads the module and then
+declares a new class called Example::Simple::Small subclassing the HTTP::Server::Simple.
+   
+  class Example::Simple::Small is HTTP::Server::Simple {
+
+This is followed by the definition of 3 private attributes and then 3 methods to update those attributes.
+The main method (handle_request) will first print the name of the class, the host name and the port-number.
+Then it will print an HTML table showing the details of the request header.
+Finally it also prints the path of the request and the query string. These are the essential parts of
+any HTTP request.
+
+This is of course very bare bones but it allows you to start playing with this and 
+start implementing web applications using Perl 6.
+
+I am also sure that in any real application you will use a templating system and
+will not embed html in the Perl code.
+
+
+<h2>End</h2>
+
+Thank you for watching this video. If you liked it, please upvote it and comment on 
+it to encourage me to make more such screencasts.
+
+Oh, and don't forget to <a href="http://www.youtube.com/gabor529">subscribe</a> to the channel!
+
+<hr />
+This entry was also sent out as part of the 
+<a href="/perl6_tricks_and_treats.html">Perl 6 Tricks and Treats</a>.
+Visit <a href="http://mail.szabgab.com/mailman/listinfo/perl6">here to subscribe</a>.
+<hr />
+
+Watch more <a href="/perl6.html">Perl 6</a> related screencasts.
+  
+

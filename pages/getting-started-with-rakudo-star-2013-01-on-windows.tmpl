@@ -1,0 +1,118 @@
+=title Getting started with Rakudo * (2013.01) on Windows
+=timestamp 2013-03-15T20:52:02
+=author szabgab
+=keywords p6doc, panda, Rakudo, Windows, MSI
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+After several months break, a few days ago I rebuild Rakudo on the server and re-generated the
+Perl 6 Maven pages. This promptly broke the site. The fix was easy, and as expected the bug was mine.
+
+Today I decided to try Rakudo on my Windows machine as well, but I went for the easy
+route and installed the pre-built msi file.
+
+=abstract end
+
+<h2>Downloading Rakudo * for Windows</h2>
+
+<a href="http://rakudo.org/">Rakudo Star</a> is a package that includes <a href="http://rakudo.org/">Rakudo, the Perl 6 compiler</a>,
+the <a href="http://parrot.org/">Parrot Virtual Machine</a>, documentation and a set of Perl 6 modules.
+
+You can <a href="http://rakudo.org/downloads/star/">download the latest version of Rakudo *</a> from their site.
+At the time of this writing the latest source code version of <b>Rakudo *</b> was 2013.02, but only the previous
+release had pre-compiled version, so I installed the MSI file of the 2013.01 version. (These are monthly releases.)
+
+If you do the same, a few thing you should know:
+
+<h2>Notes from the installation</h2>
+
+You can install by clicking on a few buttons, but as I recall it did not say it has finished. It just did.
+
+It will install into c:\rakudo. Currently you don't have a choice.
+
+It will add a menu item called <b>Rakudo Perl 6</b>. Clicking on the item will run Perl 6 and you'll find yourself
+inside the Perl 6 REPL. You can go ahead and type <hl>"hello".say</hl> just to make sure you are in the right place.
+Then you can go ahead and start playing with Perl 6 inside the REPL. You can close the REPL by typing <b>exit</b>.
+
+<h3>PATH</h3>
+
+If you write a Perl 6, for example creating the hello.pl file, open a command window (Start/Run/cmd) but the
+installation did not put the perl6.exe in the PATH. You can configure the PATH environment variable in the
+Control Panel. This will take effect for all the cmd windows you launched after the setting. So you probably need
+to exit from all the cmd windows and open a new one.
+
+You can also configure it for the specific cmd window you opened by typing:
+
+set PATH=%PATH%;c:\rakudo\bin
+
+After doing it manually, <hl>perl6 -v</hl> worked from the command line.
+
+Typing <hl>perl6</hl> will get you in the same REPL mentioned earlier.
+
+You can run your scripts typing <hl>perl6 hello.pl</hl>
+
+
+<h3>Documentation</h3>
+
+Even after configuring PATH environment variable, you still cannot use the
+<hl>p6doc</hl> command.
+If you create a file called <b>c:\rakudo\bin\p6doc.bat</b> with the following content:
+
+@%~dp0perl6.exe %~dp0p6doc %*
+
+you will be able to type <hl>p6doc Str</hl>.
+
+
+<h3>Perl 6 Modules</h3>
+
+After a bit of searching I found that the <b>c:\rakudo\lib\parrot\4.10.0\languages\perl6\lib</b>
+is the location where the Perl 6 modules coming with Rakudo * are installed.
+I have not found any easy way to list them. Well, except of running dir.
+
+You can type <hl>p6doc URI</hl> to read the documentation of the URI module.
+(It had some Unicode issues on my computer.)
+
+<h2>Module installation</h2>
+
+Just as with p6doc, you cannot use <b>panda</b> out-of-the-box either.
+You need to create a file called c:\rakudo\bin\panda.bat with the following content:
+
+@%~dp0perl6.exe %~dp0panda %*
+
+Then you can use <hl>panda</hl> to install additional modules.
+
+On the first use panda will fetch the list of modules available for Perl 6
+and will put it in <b>c:\rakudo\lib\parrot\4.10.0\languages\perl6\site\panda\projects.json</b>
+You can see the list by typing <hl>panda list</hl>.
+
+If you'd like to use HTML::Template you can install it by typing 
+<hl>panda install --notests HTML::Template</hl>.
+
+We need to skip testing for now, as panda has a bug that requires the presence of the 
+<b>prove</b> commnad from Perl 5, and even if it is there, panda will blow up in a nasty
+way if one of the tests fail. Unfortunately the tests of HTML::Template currently fail.
+
+<h3>The Windows bat files</h3>
+
+An explanation for the bat file, in case you are wondering:
+
+<ul>
+<li>The leading @ turns off echoing the command.</li>
+<li>%~dp0 is the path to the directory where the bat file currently executed can be found, it already includes the
+trailing back-slash \</li>
+<li>%* includes all the command line parameters</li>
+</ul>
+
+<h2>All set</h2>
+
+So there were a few issues that need to be fixed, but in general the experience was not bad.
+(For example the bat files will be already included in the next release of Rakudo * and I think
+panda has been fixed since then.)
+
+Once you have done this, you can start writing Perl 6 code.
+
+Enjoy!
+

@@ -1,0 +1,327 @@
+=title Looping over a list of values one at a time, two at a time and more
+=timestamp 2012-08-02T09:52:02
+=author szabgab
+=keywords for, Z, zip, kv, @, %, ?
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+In this article we are going to look at looping over lists, arrays, hashes. We are also
+going to look at how to go over a list of values in pairs and how to go over two lists in parallel.
+
+=abstract end
+
+<h2>Looping over a list of values one at a time, two at a time and more</h2>
+
+In Perl 6 the standard way to iterate over the elements of
+a list or an array is by using the <b>for</b> statement.
+A simple version of it looks like this:
+
+
+<code lang="perl6">
+use v6;
+
+my @fellows = <Foo Bar Baz>;
+for @fellows -> $name {
+    say $name;
+}
+</code>
+
+This will print out the three values one under the other.
+
+<code>
+Foo
+Bar
+Baz
+</code>
+
+A quick explanation of the syntax:
+
+@fellows is an array with 3 elements in it.
+
+The loop variable ($name) in the above case is automatically
+declared in the loop so one does not need to declare it using "my",
+and it is still not global. It is scoped to the block of the loop.
+Actually it is a parameter of that block.
+
+<h2>Looping over keys of a hash</h2>
+
+The same way we can loop over keys of a hash - after
+fetching them using the "keys" function.
+
+<code lang="perl6">
+use v6;
+
+my %phone = (
+    "Foo" => 123,
+    "Bar" => 456,
+);
+
+for keys %phone -> $name {
+    say "$name -- { %phone{$name} }";
+}
+</code>
+
+The output is:
+
+<code>
+Foo -- 123
+Bar -- 456
+</code>
+
+The declaration of hashes in Perl 6 is similar to that in
+Perl 5, but when accessing individual elements in the hash, it
+keeps the % prefix. Thus the value of the key "Foo" will
+be  %phone{"Foo"}. Similarly if $name contains "Foo" we can
+use the %phone{$name} expression to get back the relevant value.
+
+As mentioned earlier the string interpolation of hashes requires
+curly braces around the statement.
+
+<h2>Loop over every two elements in a list</h2>
+
+What if we have an array of pairs of values,
+and we would like to go over all the pairs?
+We could do that by assigning the array to a hash
+and then going over the keys just in the next example:
+
+<code lang="perl6">
+use v6;
+
+my @phones = <Foo 123 Bar 456 Moo 789>;
+my %temp = @phones;
+for %temp.keys -> $name {
+    say "$name {%temp{$name}}";
+}
+</code>
+
+Not only is the use of the temporary hash disturbing, but it
+also loses the original order of the pairs.
+Sometimes the order is important.
+
+The nice thing about the for loop in Perl 6 is, that it also allows
+the looping over groups of values. In our case we can go over
+every two elements preserving the order:
+
+<code lang="perl6">
+use v6;
+
+my @phones = <Foo 123 Bar 456 Moo 789>;
+for @phones -> $name, $number {
+    say "$name  $number";
+}
+</code>
+
+The output is:
+
+<code>
+Foo 123
+Bar 456
+Moo 789
+</code>
+
+
+<h2>Going over elements of a hash</h2>
+
+If you'd like to go over all the pairs in a hash,
+you can use the <b>for</b> loop with two parameters
+and the <b>kv</b> method of hashes that returns the
+key-value pairs.
+
+<code lang="perl6">
+use v6;
+
+my %phone = (
+    "Foo" => 123,
+    "Bar" => 456,
+);
+
+for %phone.kv -> $key, $value {
+    say "$key $value";
+}
+</code>
+
+That still does not indicate any specific order
+(similarly to "each" in Perl 5) but now both the key
+and the value are in simple scalars.
+
+
+<h2>Looping over any number of elements</h2>
+
+
+You can also iterate over any number of elements:
+
+Let's say we just extracted the results of the Spanish Liga football
+games from the soccer website http://soccernet.espn.go.com/ .
+Those come in groups of 4 values:
+
+<code>
+home team,
+score of home team
+score of guest team
+guest team
+</code>
+
+
+<code lang="perl6">
+use v6;
+
+my @scores = <
+    Valencia          1 1  Recreativo_Huelva
+    Athletic_Bilbao   2 5  Real_Madrid
+    Malaga            2 2  Sevilla_FC
+    Sporting_Gijon    3 2  Deportivo_La_Coruna
+    Valladolid        1 0  Getafe
+    Real_Betis        0 0  Osasuna
+    Racing_Santander  5 0  Numancia
+    Espanyol          3 3  Mallorca
+    Atletico_Madrid   3 2  Villarreal
+    Almeria           0 2  Barcelona
+>;
+
+for @scores -> $home, $home_score, $guest_score, $guest {
+    say "$home $guest $home_score : $guest_score";
+}
+</code>
+
+We can loop over the values using a for statement with
+4 scalar variables.
+
+The output will look like this:
+
+<code>
+Valencia Recreativo_Huelva 1 : 1
+Athletic_Bilbao Real_Madrid 2 : 5
+Malaga Sevilla_FC 2 : 2
+Sporting_Gijon Deportivo_La_Coruna 3 : 2
+Valladolid Getafe 1 : 0
+Real_Betis Osasuna 0 : 0
+Racing_Santander Numancia 5 : 0
+Espanyol Mallorca 3 : 3
+Atletico_Madrid Villarreal 3 : 2
+Almeria Barcelona 0 : 2
+</code>
+
+<h2>Missing values</h2>
+
+One should ask the question what happens if the list runs out of
+values in the middle, of a multi-value iteration? That is,
+what happens to the following loop?
+
+<code lang="perl6">
+use v6;
+
+for (1, 2, 3, 4, 5) -> $x, $y {
+    say "$x $y";
+}
+</code>
+
+In this case Rakudo throws an exception when it finds out it
+does not have enough values for the last iteration. It will look
+like this, (with a bunch of trace information afterwards).
+
+<code>
+1 2
+3 4
+Not enough positional parameters passed; got 1 but expected 2
+  in block
+</code>
+
+In order to avoid the exception we could tell the loop that the second and
+subsequent values are optional by adding a question mark after the variable
+
+<code lang="perl6">
+use v6;
+
+for (1, 2, 3, 4, 5) -> $x, $y? {
+        say "$x $y";
+}
+</code>
+
+the output looks like this:
+
+<code>
+1 2
+3 4
+use of uninitialized value of type Mu in string context  in block  at a.pl:4
+
+5
+</code>
+
+As you can see, Rakudo gives a warning due to the use of an undefined value,
+but the last iteration is still finished.
+
+<h2>Default value</h2>
+
+You can even set a default value. In case there are not enough values in the last
+iteration, the $y variable will get 0 as a value.
+
+<code lang="perl6">
+use v6;
+
+for (1, 2, 3, 4, 5) -> $x, $y = 0 {
+        say "$x $y";
+}
+</code>
+
+Output:
+
+<code>
+1 2
+3 4
+5 0
+</code>
+
+
+<h2>Iterating over more than one array in parallel</h2>
+
+In the last example I'd like to show a totally different case.
+What if you have two (or more) array you'd like to combine somehow?
+How can you go over the elements of two arrays in parallel?
+
+<code lang="perl6">
+use v6;
+
+my @chars   = <a b c>;
+my @numbers = <1 2 3>;
+
+for @chars Z @numbers -> $letter, $number {
+    say "$letter $number";
+}
+</code>
+
+The <b>Z</b> infix operator version of the <b>zip</b> function allows
+the parallel use of two lists.
+
+The result looks like this:
+
+<code>
+a 1
+b 2
+c 3
+</code>
+
+The <b>Z</b> operator can be used more than once in a single expression:
+
+<code lang="perl6">
+use v6;
+
+my @operator  = <+ - *>;
+my @left      = <1 2 3>;
+my @right     = <7 8 9>;
+
+for @left Z @operator Z @right -> $a, $o, $b {
+    say "$a $o $b";
+}
+</code>
+
+Will result in this output:
+
+<code>
+1 + 7
+2 - 8
+3 * 9
+</code>
+

@@ -1,0 +1,280 @@
+=title Perl 5 to Perl 6 - Arrays
+=timestamp 2012-08-14T16:51:03
+=author szabgab
+=keywords arrays, qw, .perl, circumfix, .., ^, loop, for, foreach, keys, split
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+In the previous article we looked at
+<a href="http://perl6maven.com/perl5-to-perl6-scalars">scalars varaiables and some scalar functions</a>,
+and how they changed from Perl 5 to Perl 6.
+
+Remember there is a lot more you can do with scalars, I just listed the things that
+seemed to be the most important in Perl 5 and how do they translate
+to Perl 6!
+
+This time, we are going to look at arrays.
+
+=abstract end
+
+<h2>Creating arrays, Data::Dumper, debug prints</h2>
+
+Creating an array in Perl 6 can be the same as in Perl 5
+For debugging prints one will use the <hl>.perl</hl> method
+instead of some <hl>Data::Dumper</hl>.
+
+<code lang="perl6">
+use v6;
+
+my @numbers = ("one", "two", "three");
+say @numbers.perl;   # Array.new("one", "two", "three")
+</code>
+
+In Perl 6, there is no need for the parentheses around lists:
+
+<code lang="perl6">
+use v6;
+
+my @digits = 1, 3, 6;
+say @digits.perl;  # Array.new(1, 3, 6)
+</code>
+
+<h2>quote word qw() is no longer used</h2>
+
+The Perl 5 <hl>qw()</hl> operator is replaced by the angle brackets:
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+say @names.perl;  # Array.new("foo", "bar", "baz")
+</code>
+
+<h2>Array interpolation in strings</h2>
+
+Arrays do NOT interpolate any more in double quoted strings:
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+say "@names";                        # @names
+</code>
+
+You can safely write the following without escaping the at mark:
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+say "joe@names.org";                 # joe@names.org
+</code>
+
+If you do want to interpolate the values of an array you have
+to put it inside curly braces:
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+say "names: {@names}";               # names: foo bar baz
+</code>
+
+You can read about more interesting ways to
+<a href="/perl6-scalar-array-and-hash-interpolation">interpolate arrays</a>.
+
+<h2>Elements of an array, sigil invariance</h2>
+
+When accessing elements of an array in Perl 6, the sigil does
+NOT change! This will be very strange for Perl 5 programmers,
+but it has some advantages in the long run.
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+say @names[0];                    # foo
+</code>
+
+<h2>Interpolation of an array element</h2>
+
+As a more special case, an array element can be interpolated within
+a double-quoted string without and curly braces.
+The term <b>post-circumfix</b> is the generic name for square-brackets or
+curly-braces after a variable. In general, variables with post-circumfix
+can be be interpolated.
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+say "name: @names[0]";            # name: foo
+</code>
+
+<h2>Number of elements in an array</h2>
+
+In Perl 6, ther recommended way to fetch the number of elements in an array,
+is to use the elems() method and the corresponding function.
+Actually I think the object oriented writing is much nicer here:
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+say elems @names;                   # 3
+say @names.elems;                   # 3
+</code>
+
+<h2>Ranges</h2>
+
+Ranges are available in Perl 6 just as in Perl 5:
+
+<code lang="perl6">
+use v6;
+
+my @d = 1..11;
+say @d.perl;    # Array.new(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+</code>
+
+The same works with scalar variables on either side:
+
+<code lang="perl6">
+use v6;
+
+my $start = 1;
+my $end = 11;
+
+my @d = $start .. $end;
+say @d.perl;  # Array.new(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+</code>
+
+A probably even more interesting aspect of ranges is that you can tell
+them to exclude the end-points by using a caret <hl>^</hl> on either,
+or both, ends of the range:
+
+<code lang="perl6">
+use v6;
+
+my $start = 1;
+my $end = 11;
+
+my @d = $start ^..^ $end;
+say @d.perl;  # Array.new(2, 3, 4, 5, 6, 7, 8, 9, 10)
+</code>
+
+The range operator works with characters as well
+
+<code lang="perl6">
+use v6;
+
+my @chars = ('a' .. 'd');
+say @chars.perl;    # Array.new("a", "b", "c", "d")
+</code>
+
+<h2>for and foreach loop</h2>
+
+The C-style version of the Perl 5 <hl>for</hl> loop is now called <hl>loop</hl>,
+but I won't show it here as it is way better to use the
+the iterator style for loop that most people in Perl 5 write as <hl>foreach</hl>.
+
+In Perl 6, it is spelled as <hl>for</hl> and looks like this:
+
+<code lang="perl6">
+use v6;
+for 1..3 -> $i {
+    say $i; 
+}
+</code>
+
+The output is
+
+<code>
+1
+2
+3
+</code>
+
+The same works on arrays as well:
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+for @names -> $n {
+    say $n;
+}
+</code>
+
+Output:
+
+<code>
+foo
+bar
+baz
+</code>
+
+BTW, this is one of the cases where you don't need to declare a variable
+using <hl>my</hl>. The looping variable is automatically declared for you
+and scoped to the block of the for loop.
+
+<h2>Iterating over the indexes of an array</h2>
+
+If you need to iterate over the indexes of an array then you could use the
+range from 0 to the the highest index. That is one less than the number of
+elements in the array. You could write <hl>@names.elems -1</hl> as the right
+end of the range, or you can tell the range to exclude the end value, using
+the caret:
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+for 0 ..^ @names.elems -> $i {
+    say "$i {@names[$i]}";
+}
+</code>
+
+The output:
+
+<code>
+0 foo
+1 bar
+2 baz
+</code>
+
+Alternatively, you can pick a suggestions from <a href="http://perlgeek.de/blog-en/">Moritz Lenz</a>:
+
+<code lang="perl6">
+use v6;
+
+my @names = <foo bar baz>;
+for @names.keys -> $i {
+    say "$i {@names[$i]}";
+}
+</code>
+
+The <hl>keys()</hl> method borrowed from the hashes will return all the indexes
+of an array. Even if your array has "holes" in it, elements with undef
+as value, keys() will still include the indexes of such elements.
+
+
+<h2>split</h2>
+
+<hl>split()</hl> acts similar to its Perl 5 counterpart, but the defaults do not
+apply any more, and you should read the spec anyway.
+
+<code lang="perl6">
+use v6;
+
+say "a,b,c".split(',').perl;  # ("a", "b", "c").list
+</code>
+
+
+<h2>Conclusion</h2>
+
+That's it for today. There are a lot more things to say about arrays,
+but this is probably enough for one reading.
+

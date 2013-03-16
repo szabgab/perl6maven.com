@@ -1,0 +1,233 @@
+=title How does interpolation of scalars, arrays and hashes work in Perl 6
+=timestamp 2012-07-26T09:52:02
+=author szabgab
+=keywords scalar, array, hash
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+When writing a large application that needs to generate all kinds of reports and page,
+you would probably want to separate
+
+When building up strings from various pieces of data you often need to concatenate values.
+
+Without interpolation this would mean lots of <hl>~</hl> signs and probably lots of quotations.
+
+Luckily Perl 6 has a much better way for this. Perl 6 allows you to embed variables
+into strings, and when the string gets evaluated, it interpolates the value of your variable
+in the string.
+
+People coming from Shell, Perl or Ruby might be familiar with some of this.
+
+Or maybe they are not.
+
+=abstract end
+
+<h2>Scalar, Array and Hash interpolation</h2>
+
+If you place a scalar variable in a double quoted string
+Perl 6 will put the value of the scalar in the the string just
+as it happens in Perl 5.
+
+
+<code lang="perl6">
+use v6;
+
+my $name = "Foo";
+say "Hello $name, how are you?";
+</code>
+
+And the output will look like this:
+
+<code>
+Hello Foo, how are you?
+</code>
+
+Arrays and Hashes are not interpolated in the same way, but there
+is a much more extended way for interpolating such variables.
+
+Within a string anything you put in curly braces will be interpolated
+so if you have an array you can write:
+
+<code lang="perl6">
+use v6;
+
+my @names = <Foo Bar Moo>;
+say "Hello {@names}, how are you?";
+</code>
+
+to get this output:
+
+<code>
+Hello Foo Bar Moo, how are you?
+</code>
+
+The problem here is that based on that output you don't know
+if there were 3 elements in that array or two: "Foo Bar" and "Moo",
+or just one: "Foo Bar Moo".
+
+<h2>Interpolating expressions</h2>
+
+That's not a real problem.
+
+The curly braces in the double quoted string allow you to put <hl>any</hl>
+expression between them. The expression will be evaluated and the result will
+be interpolated:
+
+You can write:
+
+<code lang="perl6">
+use v6;
+
+my @names = <Foo Bar Moo>;
+say "Hello { join(', ', @names) } how are you?";
+</code>
+
+And the output will look like:
+
+<code>
+Hello Foo, Bar, Moo how are you?
+</code>
+
+While this still does not exactly show how many values are there, it provide
+a much bigger flexibility.
+
+As a side note, in case you prefer object oriented code.
+You could write the above code as follows:
+
+<code lang="perl6">
+say "Hello { @names.join(', ') } how are you?";
+</code>
+
+Which will yield the same output as above.
+
+<h2>Debugging prints</h2>
+
+For ultimate debugging purposes, the best way to print is of course using the .perl
+method of the array:
+
+<code lang="perl6">
+say "Names: { @names.perl }";
+</code>
+
+That will print
+
+<code>
+Names: Array.new("Foo", "Bar", "Moo")
+</code>
+
+
+What if you'd also like to see the name of your variable as well?
+Then you can rely on the fact that arrays are not normally interpolated
+in strings and write:
+
+<code lang="perl6">
+say "@names = { @names.perl }";
+</code>
+
+That will print
+
+<code>
+@names = Array.new("Foo", "Bar", "Moo")
+</code>
+
+<h2>Just expressions</h2>
+
+<code lang="perl6">
+use v6;
+
+say "Take 1+4";
+</code>
+
+will print
+
+<code>
+Take 1+4
+</code>
+
+as expected.
+
+As I wrote you can put any expression in the curly braces, so you can also write
+
+<code lang="perl6">
+use v6;
+
+say "Take {1+4}";
+</code>
+
+that will print
+
+<code>
+Take 5
+</code>
+
+I wonder if I could turn it into something to print
+<a href="http://en.wikipedia.org/wiki/Take_Five">Take Five</a>?
+
+<h2>Interpolating Hashes</h2>
+
+There is nothing special in interpolating hashes either.
+It works just the same as
+
+<code lang="perl6">
+use v6;
+
+my %phone = (
+    foo => 1,
+    bar => 2,
+);
+
+say "%phone = { %phone } ";
+</code>
+
+will print
+
+<code>
+%phone = foo   1 bar  2
+</code>
+
+Just as in the case of the arrays, I don't think this is very useful as it is unclear
+which are the keys and which are the values.
+
+For debugging purposes, you'd better use the .perl method and write:
+
+<code lang="perl6">
+say "%phone = { %phone.perl } ";
+</code>
+
+which will print:
+
+<code>
+%phone = ("foo" => 1, "bar" => 2).hash
+</code>
+
+that's already a usable representation of the data.
+
+<h2>Interpolating multidimensional arrays</h2>
+
+Just to complete the picture I'd like to show a two dimensional
+array and how it looks when printed with the .perl method.
+Interpolated in a string.
+
+<code lang="perl6">
+use v6;
+
+my @matrix = (
+    [1, 2],
+    [3, 4],
+);
+
+say "@matrix = { @matrix.perl }";
+</code>
+
+Output:
+
+<code>
+@matrix = Array.new([1, 2], [3, 4])
+</code>
+
+I think it makes it very clear what is in the array.
+
+

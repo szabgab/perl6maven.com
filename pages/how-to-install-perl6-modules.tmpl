@@ -1,0 +1,58 @@
+=title How to install Perl 6 modules
+=timestamp 2012-08-26T21:56:00
+=author szabgab
+=keywords Panda, CPAN
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+One of the biggest limitation of Perl 6 is the lack of access to the wealth of the
+<a href="http://cpan.org/">Perl 5 CPAN</a>. This does not mean though that
+there are no CPAN-like modules for Perl 6. There are a few, and some of them even work.
+
+According to the latest count, there are over 100 modules available. Let's see how can we
+install them.
+
+=abstract end
+
+<h2>Overview</h2>
+
+In the current system each package must have a Github repository. There are no releases.
+The installer fetches the latest from Github.
+
+The official <a href="http://modules.perl6.org/">list of modules</a> has a one-line explanation
+of each module and a link to their Github repository.
+
+There is not a lot of <a href="/projects">module documentation</a>, but whatever there is, is processed and displayed on
+the Perl 6 Maven site.
+
+
+<h2>Installation</h2>
+
+Currently the best tool to install Perl 6 modules is <a href="https://github.com/tadzik/panda/">Panda</a>
+written by <a href="http://ttjjss.wordpress.com/">tadzik (Tadeusz Sośnierz)</a>.
+
+Assuming you already have <a href="/starting-again-with-rakudo-perl6">Rakudo installed</a>, you can install
+Panda by following these steps:
+
+<code>
+git clone https://github.com/tadzik/panda.git
+cd panda
+perl6 bootstrap.pl
+</code>
+
+This should install a few modules and Panda itself to <hl>~/.perl6</hl> on Linux
+and to <hl>c:\Users\USERNAME\.perl6</hl> on Windows.
+
+You have to change the <hl>PATH</hl> environment variable to include the <hl>~/.perl6/bin</hl> directory.
+
+Then you should be able to run <hl>panda list</hl> to list all the available modules
+and <hl>panda install HTML::Template</hl> to install the Perl 6 implementation of HTML::Template.
+
+When you encounter installation problems, please report them either via the Perl 6 IRC channel
+or via the Perl6-users mailing list. Check the <a href="http://www.perl6.org/community/">Perl 6 community</a>
+page for details.
+
+

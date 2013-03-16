@@ -1,0 +1,271 @@
+=title Is a value IN a given list of values?
+=timestamp 2012-07-31T09:52:02
+=author szabgab
+=keywords junctions, any, all, none, ??, !!
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+How to find out if a given value is among some values?
+Similar to the IN operator in SQL or what you might expect from sets.
+
+=abstract end
+
+<h2>Is a value IN a given list of values?</h2>
+
+In Perl 6 there is the any() function that provides some functionality
+similar to the IN word in SQL. Let's see how it works:
+
+<h2>Is this a weekday?</h2>
+
+<code lang="perl6">
+use v6;
+
+my @weekdays = <Monday Tuesday Wednesday
+    Thursday Friday Saturday Sunday>;
+
+my $day = "Tuesday";
+say $day eq any(@weekdays)
+    ?? "$day is a weekday"
+    !! "$day is NOT a weekday";
+</code>
+
+The above code will print
+
+<code>
+Tuesday is a weekday
+</code>
+
+What happens here is that perl will try to compare each element
+in the @weekdays array with the content of the $day scalar using <hl>eq</hl>.
+If <hl>any</hl> of them results in true then the expression is true.
+
+<h2>Ternary operator in Perl 6</h2>
+
+Side note:
+The <hl>??</hl> <hl>!!</hl> pair is the ternary operator of Perl 6. Its syntax is
+
+<code>
+CONDITION   ??    VALUE_IF_TRUE    !!    VALUE_IF_FALSE;
+</code>
+
+In other languages (including Perl 5) it is usually written as ? :
+but apparently it is not used that often so in order to please
+<a href="http://en.wikipedia.org/wiki/David_A._Huffman">David A. Huffman</a>
+and to give way for other, more frequently used operations,
+this operator became longer in Perl 6.
+
+<h2>Is it still a weekday ?</h2>
+
+For the completeness let's see what happens when none
+of the values match:
+
+<code lang="perl6">
+use v6;
+
+my @weekdays = <Monday Tuesday Wednesday
+    Thursday Friday Saturday Sunday>;
+
+my $other = "Holiday";
+say $other eq any(@weekdays)
+    ?? "$other is a weekday"
+    !! "$other is NOT a weekday";
+</code>
+
+The same code but without a matching value will print:
+
+<code>
+Holiday is NOT a weekday
+</code>
+
+<h2>Compare numbers with less than</h2>
+
+In the next example we'll see that the <hl>any</hl> function
+can be used with other comparison operators such
+as the numerical less than operator:
+
+<code lang="perl6">
+use v6;
+
+my @numbers = (6, -12, 20);
+say any(@numbers) < 0
+    ?? "There is a negative number"
+    !! "No negative number here";
+</code>
+
+The result is:
+
+<code>
+There is a negative number
+</code>
+
+You can use other operators as well.
+
+It works in case there is no negative number too:
+
+<code lang="perl6">
+use v6;
+
+my @positive_numbers = (6, 12, 20);
+say any(@positive_numbers) < 0
+    ?? "There is a negative number"
+    !! "No negative number here";
+</code>
+
+Output:
+
+<code>
+No negative number here
+</code>
+
+<h2>Other keywords: none, all, one</h2>
+
+There are other functions too, not only the *any*
+function: (all, one and none)
+
+
+<code lang="perl6">
+use v6;
+
+my @positive_numbers = (6, 12, 20);
+say none(@positive_numbers) < 0
+    ?? "No negative number here"
+    !! "There is a negative number";
+</code>
+
+Will print:
+
+<code>
+No negative number here
+</code>
+
+<code lang="perl6">
+use v6;
+
+my @positive_numbers = (6, 12, 20);
+say all(@positive_numbers) > 0
+    ?? "All are positive numbers"
+    !! "There is a NOT positive number";
+</code>
+
+Will print:
+
+<code>
+All are positive numbers
+</code>
+
+Use whichever fits the best the sentence you are writing.
+
+<h2>Writing it shorter</h2>
+
+Sometimes you have a value and need to check
+if it equals to any of the listed values:
+
+<code lang="perl6">
+use v6;
+
+my $n = 12;
+say ($n == 23 or $n == 42) ?? "ok" !! "not ok";  # not ok
+</code>
+
+With the <hl>any</hl> function you can also write like this:
+
+<code lang="perl6">
+use v6;
+
+my $n = 12;
+say $n == any(23, 42) ?? "ok" !! "not ok";  # not ok
+</code>
+
+The any function also has an infix operator version
+which is the single pipe, so you can also write this:
+
+<code lang="perl6">
+use v6;
+
+my $n = 12;
+say $n == 23|42 ?? "ok" !! "not ok";  # not ok
+</code>
+
+<h2>Junctions</h2>
+
+What all these keywords and the relevant operators do is actually
+creating a data type that is called a <hl>Junction</hl>.
+It is a scalar value that holds multiple values in an unordered way.
+Similar to a set.
+
+The first example could be written like this:
+
+<code lang="perl6">
+use v6;
+my $weekdays = any <Monday Tuesday Wednesday Thursday Friday Saturday Sunday>;
+my $day = "Tuesday";
+
+say $day eq $weekdays
+    ?? "$day is a weekday"
+    !! "$day is NOT a weekday";
+</code>
+
+Here we created a junction instead of an array,
+and then used this junction in the comparison.
+
+<h2>Other operations on Junctions</h2>
+
+In addition to the comparison operations we saw earlier,
+we can do other operations on junctions. The operation
+will be executed on each one of the values in the junction
+and the result will be a new junction with the changed values:
+
+<code lang="perl6">
+use v6;
+
+my $numbers = any(23, 42);
+$numbers.perl.say;
+
+$numbers++;
+$numbers.perl.say;
+</code>
+
+This will print the perl representation of the junction:
+
+<code lang="perl6">
+any(23, 42)
+any(24, 43)
+</code>
+
+<h2>Functions on Junctions</h2>
+
+You can even pass junctions as parameters to functions.
+The function will be executed on each value separately
+in an undefined order, and the result will be another
+junction. For example if we would like to create the
+3 character version of the months we can use the following
+code:
+
+<code lang="perl6">
+use v6;
+my $months = any <January February March April May June
+    July August September October November December>;
+
+my $short_names = substr($months, 0, 3);
+$short_names.perl.say;
+</code>
+
+Which should print
+
+<code>
+any("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
+  "Sep", "Oct", "Nov", "Dec");
+</code>
+
+<h2>Other Resource</h2>
+
+The weekday example is based on the
+<a href="http://perlgeek.de/blog-en/perl-5-to-6/08-junctions.html">blog entry of Moritz Lenz</a>
+I recommend looking at his Perl 6 and
+<a href="http://perlgeek.de/blog-en/perl-5-to-6/">Perl 5 to Perl 6 blogs</a>.
+
+That's it for now.
+

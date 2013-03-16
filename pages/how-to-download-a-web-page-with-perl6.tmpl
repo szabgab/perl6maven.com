@@ -1,0 +1,96 @@
+=title How to download a web page with Perl 6
+=timestamp 2012-09-21T16:52:02
+=author szabgab
+=keywords LWP::Simple, Date, get, m:i, grep
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+Because of various personal issues I stopped using IRC a while ago. Once in a while I am still joinng
+the #perl6 channel on, when I have an urgent question, but usually
+I have enough other distractions.
+
+As I publish articles about Perl 6, once in a while people mention my name, or paste a link to
+my web site. I don't have time to follow the channel, but I'd like to know when something related
+to my work is mentioned.
+
+Or just smile <b>I was mentioned on ze Internets!</b>
+
+Luckily <a href="http://www.perlgeek.de/">Moritz Lenz</a> runs an IRC bot that
+creates <a href="http://irclog.perlgeek.de/">beautiful logs</a> of various IRC channels.
+Including that of <a href="http://irclog.perlgeek.de/perl6/">Perl 6</a>.
+
+We are going to write a script that downloads the page containing today's log and check
+if certain strings were mentioned. If they were, we can dispatch an e-mail.
+
+=abstract end
+
+<h2>Monitoring a web site</h2>
+
+Thanks to the <a href="https://github.com/cosimo/perl6-lwp-simple">LWP::Simple</a> module of <a href="http://my.opera.com/cstrep/blog/">Cosimo Streppone</a>, this is a simple task.
+
+(Check here <a href="/how-to-install-perl6-modules">how to install Perl 6 modules</a>.)
+
+<code lang="perl6">
+use v6;
+
+use LWP::Simple;
+
+sub MAIN($day = 0) {
+    my $d = Date.today() - $day;
+    say $d;
+
+    my @strings = <szabgab maven>;
+
+    my $html = LWP::Simple.get('http://irclog.perlgeek.de/perl6/' ~ $d);
+
+    if @strings.grep(-> $p { $html ~~ m:i/$p/ }) {
+        say 'found';
+        my @rows = split /\n/, $html;
+        say @rows.elems;
+        for @strings -> $s {
+            for @rows.grep({ m:i/$s/ }) -> $r {
+                say "$s -- $r";
+            }
+        }
+    }
+}
+</code>
+
+Checking out the web site of the <a href="http://irclog.perlgeek.de/perl6/">Perl 6 IRC logs</a>,
+you will see that every day has its own page. The name of the page is built from the date in 
+YYYY-MM-DD format.
+
+How can we get that?
+
+Perl 6 has a <hl>Date</hl> class which has a constructor called <hl>today</hl> It returns a
+<hl>Date</hl> object, which happens to be in that exact format, when stringified.
+So generating of today's URL is just a matter of
+
+<code lang="perl6">
+my $d = Date.today();
+my $url = 'http://irclog.perlgeek.de/perl6/' ~ $d;
+</code>
+
+As I wanted to be able to check earlier dates as well, I let the
+<hl>MAIN</hl> subroutine <a href="/parsing-command-line-arguments-perl6">define a command line argument</a>
+for <hl>$day</hl>. That should represent the number of days in the past. It defaults to 0, which means today.
+
+<hl>LWP::Simple.get()</hl> download the content of a page and we assign it to the <hl>$html</hl> variable.
+
+As we allow for multiple strings to look for we use <hl>grep</hl> to check the original HTML with each one of the
+expected strings. The <hl>m:i</hl> prefix makes our regex to be case insensitive.
+
+<code lang="perl6">
+@strings.grep(-> $p { $html ~~ m:i/$p/ })
+</code>
+
+Then we split the html to work on rows and print out the rows that have any of the strings we are monitoring.
+
+A better approach would be to parse the HTML and check the strings in the right places, but for now this works
+well enough.
+
+<a href="/sending-email-using-perl6">Sending e-mail</a> was left as an exercise to you.
+

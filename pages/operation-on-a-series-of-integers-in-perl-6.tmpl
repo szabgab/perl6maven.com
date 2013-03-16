@@ -1,0 +1,86 @@
+=title Operation on a Series of Integers in Perl 6
+=timestamp 2012-07-07T12:55:00
+=author szabgab
+=keywords loop, for, foreach, Range
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+Iterating over a series of integers in a range is similar in Perl 6
+to the same code in Perl 5 except of slightly different format of the
+foreach loop that is spelled only as <hl>for</hl> now.
+
+=abstract end
+
+<code lang="perl6">
+my $x = 23;
+my $z = 27;
+
+for $x .. $z -> $i {
+    say $i;
+}
+</code>
+
+Will print the numbers 23, 24, 25, 26, 27 as expected.
+
+<h2>C-style loop</h2>
+
+C-style, 3-part for loops are also available in Perl 6 and they are
+called <hl>loop</hl> but they are not really recommended.
+Better to use the for loop as described above.
+You could say this, but it has the same issues with off-by-one errors
+as we have already learned to avoid in Perl 5.
+
+<code lang="perl6">
+my $x = 23;
+my $z = 27;
+loop (my $i = $x; $i <= $z; $i++) {
+    say $i;
+}
+</code>
+
+
+<h2>Series</h2>
+
+Iterating over every 2nd number is also possible with the for loop
+of Perl 6 but this time, instead of 2 dots, we are using 3.
+Instead of a Range we are talking about a Series here.
+
+We set the first two element of te series and the upper limit.
+
+<code lang="perl6">
+my $x = 23;
+my $z = 27;
+for $x, $x+2 ... $z  -> $i {
+	say $i;
+}
+</code>
+
+This will print 23, 25, 27
+
+You could play with it more. Just one thing to remember, you have to have the upper
+to be exact:
+
+<code lang="perl6">
+for 1, 3 ... 7  -> $i {
+	say $i;
+}
+</code>
+
+This will work and print 1, 3, 5, 7
+
+OTOH this
+
+<code lang="perl6">
+for 1, 3 ... 8  -> $i {
+	say $i;
+}
+</code>
+
+will freak out Rakudo which will be stuck in a loop trying to reach infinity.
+
+And beyond.
+
+

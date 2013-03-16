@@ -1,0 +1,278 @@
+=title Parsing command line arguments in Perl 6
+=timestamp 2012-09-14T10:52:03
+=author szabgab
+=keywords @*ARGS, @ARGV, MAIN, :, !
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+When writing a program, one of the best ways to make it reusable
+is by accepting parameters on the command line.
+
+For example if you are writing a program that needs to parse a log file,
+you might want to supply the name of the logfile on the command line.
+
+If the application needs to send an e-mail report, it is more generic if
+the user can supply the address as a command line parameter: --to boss@company
+
+How can you let your Perl 6 application to accept command line arguments?
+
+=abstract end
+
+When Perl 6 is launched it fills the system variable <hl>@*ARGS</hl>
+with all the values from the command line. A simple script like the
+following can demonstrate what we get:
+
+<code lang="perl6">
+use v6;
+
+say @*ARGS.perl;
+</code>
+
+Save as cli.pl6 and run
+
+<b>perl6 cli.pl6 first --second "third and fourth"</b>
+
+The output will be
+
+<code>
+Array.new("first", "--second", "third and fourth")
+</code>
+
+The <hl>@*ARGS</hl> in Perl 6 is the same as <hl>@ARGV</hl> in Perl 5.
+It does NOT contain the name of the executable itself as it is done in C and Python for example.
+
+We could now write some code that goes over the values in <hl>@*ARGS</hl>, but luckily Perl 6 provides
+a built-in mechanism for that. It is the same mechanism that works for <a href="/perl6-subroutines">Perl 6
+subroutines</a>.
+After all the command line parameters of a program are very similar to the arguments of a function.
+
+<h2>MAIN</h2>
+
+There is a special name in Perl 6 called <hl>MAIN</hl>. If your main program file
+contains a subroutine called MAIN, that subroutine will be executed when the program is
+launched.
+
+Furthermore, the signature of that subroutine is the expected list of arguments of the whole program.
+
+Let's see a simple example:
+
+<code lang="perl6">
+use v6;
+
+sub MAIN($source) {
+  say "source: $source";
+}
+</code>
+
+Save it as cli.pl6 and run it as <b>perl6 cli.pl6</b>.
+
+You will get:
+
+<code>
+Usage:
+  cli.pl6 <source>
+</code>
+
+That's because the <hl>MAIN</hl> subroutine expects a single positional argument
+that will be assigned t the <hl>$source</hl> variable.
+
+Now run <b>perl6 cli.pl6 input.txt</b>.
+
+The output will be:
+
+<code>
+source: input.txt
+</code>
+
+That means, the command line parameter was accepted and the MAIN sub was called with <hl>$source</hl> having the value
+"input.txt".
+
+<h2>Boolean argument with a default value</h2>
+
+In the next example, we extended the signature. In addition to the <hl>$source</hl>
+field we are now expecting a boolean value to be assigned to <hl>$debug</hl>.
+We also gave it a default value, making this parameter optional.
+
+<code lang="perl6">
+use v6;
+
+sub MAIN($source, Bool $debug = False) {
+  say "source: $source";
+  say "debug:  $debug";
+}
+</code>
+
+Save the code and run it as <b>perl6 cli.pl6</b>.
+
+You will find the output quite clear. We have to supply the source parameter
+and optionally the debug parameter.
+
+<code>
+Usage:
+  cli.pl6 <source> [<debug>]
+</code>
+
+Let's try it again running it with one parameter: <b>perl6 cli.pl6 data.txt</b>
+
+We get this output:
+
+<code>
+source: data.txt
+debug:  False
+</code>
+
+And try it again, now supplying both parameters: <b>perl6 cli.pl6 data.txt True</b>
+
+<code>
+source: data.txt
+debug:  True
+</code>
+
+You cannot pass the values in the opposite order and the boolean values must be <hl>True</hl> or <hl>False</hl>.
+
+If we try something else: <b>perl6 cli.pl6 data.txt 1</b> we get the usage message again:
+
+<code>
+Usage:
+  cli.pl6 <source> [<debug>]
+</code>
+
+<h2>Named parameter</h2>
+
+As in regular subroutines, Perl 6 allows to turn arguments into named parameter.
+
+Put a colon <hl>:</hl> in front of the variable name to turn it into a named variable:
+
+<code lang="perl6">
+use v6;
+
+sub MAIN($source, Bool :$debug = False) {
+  say "source: $source";
+  say "debug:  $debug";
+}
+</code>
+
+Let's see what happens if we execute the code without any parameter: <b>perl6 cli.pl6</b>
+
+The usage message indicated that now we need to used the --debug flag if we want to turn on
+debugging and that the named parameters must come <b>before</b> the positional parameters.
+
+<code>
+Usage:
+  cli.pl6 [--debug] <source>
+</code>
+
+Try this: <b>perl6 cli.pl6 data.txt</b>
+
+<code>
+source: data.txt
+debug:  False
+</code>
+
+And now try <b>perl6 cli.pl6 --debug data.txt</b>
+
+<code>
+source: data.txt
+debug:  True
+</code>
+
+You cannot change the order of the parameters as positional parameters have
+to arrive after the named parameters. try <b>perl6 cli.pl6 data.txt --debug</b>
+and you'll get the usage message.
+
+<h2>All the parameters are named</h2>
+
+In the next example we turn the source parameter to be named as well by preceding it
+with a colon <hl>:</hl>:
+
+<code lang="perl6">
+use v6;
+
+sub MAIN(:$source, Bool :$debug = False) {
+  say "source: $source";
+  say "debug:  $debug";
+}
+</code>
+
+Try without any parameters: <b>perl6 cli.pl6</b> and get:
+
+<code>
+use of uninitialized value of type Any in string context  in method Str at ...
+
+source:
+debug:  True
+</code>
+
+That happens because named parameters are optional and the code will run without any parameter.
+When we try to print the content of the <hl>$source</hl> variable, it will be undef and generate
+this warning.
+
+
+There are several ways to fix this:
+
+We could set a default value, even if that is an empty string:
+
+<code lang="perl6">
+sub MAIN(:$source = '', Bool :$debug = False) {
+</code>
+
+<h2>Required parameters</h2>
+<img src="/img/exclamation_point.png" alt="Exclamation point" style="float:right" />
+
+We could also tell Perl, that <hl>$source</hl> is a required parameter by adding
+a trailing exclamation point <hl>!</hl>.
+
+
+<code lang="perl6">
+sub MAIN(:$source!, Bool :$debug = False) {
+</code>
+
+Try to run the program now without any parameter <b>perl6 cli.pl6</b>
+
+and you'll get the new usage message.
+
+<code>
+Usage:
+  code\cli.pl6 --source=<Any> [--debug]
+</code>
+
+You could, of course, declare that the $source variable should be an integer
+<hl>Int</hl> or some other data type, if that was the requirement.
+For example like this:
+
+<code lang="perl6">
+sub MAIN(Int :$source!, Bool :$debug = False) {
+</code>
+
+In that case the usage message will indicate the required data type:
+
+<code>
+Usage:
+  code\cli.pl6 --source=<Int> [--debug]
+</code>
+
+In order to supply the value for the source, currently you have to use exactly the above form
+
+<b>perl6 cli.pl6 --source=data.txt</b>
+
+<code>
+source: data.txt
+debug:  False
+</code>
+
+If you happen to try the other common way:
+
+<b>perl6 cli.pl6 --source data.txt</b>
+
+You will get the usage message as <a href="http://rakudo.org/">Rakudo</a>
+currently does not yet support this form.
+
+
+<h2>Conclusion</h2>
+
+There is more of course, but I think this can already get you started
+writing applications Perl 6 that accept parameters on the command line.
+

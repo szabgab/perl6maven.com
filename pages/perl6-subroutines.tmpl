@@ -1,0 +1,353 @@
+=title Perl 6 subroutines
+=timestamp 2012-08-07T15:52:02
+=author szabgab
+=keywords sub, slurpy, *, multi, ?
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+In this article we will look at how subroutines can be defined in Perl 6.
+
+=abstract end
+
+<h2>Subroutines in Perl 6</h2>
+
+I have been thinking for some time now on how to teach subroutines
+in Perl 6, and I don't have a good answer yet.
+For now, instead of some methodological introductions, I'll just
+try to throw together a few examples and we'll see if something
+comes out of that?
+
+In Perl 6, just as in Perl 5 one can define a subroutine without
+specifying the list of parameters. When someone calls that
+subroutine, the values are found in the private array called @_.
+
+<code lang="perl6">
+use v6;
+
+foo('a', 'b', 'c');
+
+sub foo {
+    say @_.join(':');  # a:b:c
+}
+</code>
+
+There is more to even that in Perl 6 than in Perl 5, but let's
+look at the nicer examples of Perl 6:
+
+In Perl 6, one can define a real signature for the subroutines
+and let the language, or rather the implementation, check if
+a valid set of arguments were passed.
+
+Actually, instead of checking if the right number of arguments
+were passed, Perl will not even call the function if you did
+not give the correct list of arguments.
+
+I can already hear the people getting worried about the
+flexibility of passing an arbitrary number of arguments and then
+letting the function figure it out.
+Don't worry. You can have that too in Perl 6.
+
+<h2>Simple scalar parameters</h2>
+
+The most basic example I usually show is the add function with
+two parameters. That's usually enough in Perl 5, but very
+far from that in Perl 6.
+
+<code lang="perl6">
+use v6;
+
+sub add($a, $b) {
+    return $a+$b;
+}
+
+say add(2, 3);    # 5
+</code>
+
+
+Then if you try to call this with 3 parameters like this:
+
+<code lang="perl6">
+say add(2, 3, 4);
+</code>
+
+Rakudo will throw a compile-time exception as it cannot
+find the appropriate function.
+
+<code>
+===SORRY!===
+CHECK FAILED:
+Calling 'add' will never work with argument types (int, int, int) (line 7)
+    Expected: :($a, $b)
+</code>
+
+<h2>Subroutine with arbitrary number of parameters</h2>
+
+That would be the time to show how to define a subroutine
+that can get arbitrary number of values, but that requires
+introducing two concepts at a time. So I'll have to
+find a better set of examples.
+
+Anyway, if we would like to implement a sum() subroutine
+that can get any number of values we need to define it like this:
+
+<code lang="perl6">
+use v6;
+
+sub sum(*@values) {
+    my $sum = 0;
+    for @values -> $v {
+        $sum += $v
+    }
+    return $sum;
+}
+
+say sum(2, 3);      # 5
+say sum(2, 3, 4);   # 9
+</code>
+
+We have to define the expected parameter as a <hl>slurpy</hl> array
+by preceding its <hl>@</hl> sigil with a <hl>*</hl>.
+It will then accept any number of values as parameter, and put them in
+the @values array.
+
+I can call it either with literal scalars
+
+<code lang="perl6">
+say sum(2, 3);      # 5
+</code>
+
+or even with a list of arrays and scalars mixed
+
+<code lang="perl6">
+my @a = (2, 3, 4);
+my $z = 5;
+say sum(@a, $z);  # 14
+</code>
+
+We already saw the for loop earlier, if you don't recall it,
+here is the link: <a href="/perl6-looping-over-a-list-of-values-one-at-a-time-two-at-a-time-and-more">Looping over a list of values one at a time, two at a time and more</a>
+
+<h2>Reduction operator</h2>
+
+Of course this is not really a good example anyway as that
+function should be using the reduction operator
+(see S03-operators)...
+
+<code lang="perl6">
+sub sum(*@values) {
+    return [+] @values;
+}
+</code>
+
+... and of course no one should write a function for that.
+
+The reduction operator is one of the meta-operators of Perl 6.
+It is a prefix version of an infix operator, but I digress.
+
+
+<h2>Passing arrays and hashes</h2>
+
+In Perl 5, we had to learn about references in order to be able to
+pass more than one array or hash to a subroutine. That also meant
+the subroutine always has full access to the original data structure.
+Effectively call-by-reference. The subroutine could change
+the passed parameter by accident. Not really clean coding.
+
+In Perl 6, there are no such references and there is no need for them.
+If you'd like to accept a real array or hash as a parameter for a subroutine,
+you can declare that in the signature of the subroutine.
+
+For example I have a script that generates html pages from
+templates and I have some code like this:
+(Mine was using HTML::Template but that's not relevant now so
+I am just printing out the parameters.)
+
+<code lang="perl6">
+use v6;
+
+sub process_template($input, $output, %params) {
+    say "open $input";
+    say "replace {%params.perl}";
+    say "save $output";
+}
+
+my %data = (
+    fname => "Foo",
+    lname => "Bar",
+);
+
+process_template("index.tmpl", "index.html", %data);
+</code>
+
+the output
+
+<code>
+open index.tmpl
+replace ("fname" => "Foo", "lname" => "Bar").hash
+save index.html
+</code>
+
+Now I know this example does not show the real power of having
+several complex data structures in the parameter list.
+I could have written:
+
+<code lang="perl6">
+sub xyz($input, @value, %data) { }
+</code>
+
+and then pass a scalar, an array and a hash.
+I just don't have a good example for that yet.
+
+Anyway, the above example had a bit of data multiplication and the
+name of the output file could have been generated from the name
+of the template. It is the same name, just with different extension.
+
+So I could write the code like this, passing only the name of the
+template and generating the name of the output file from that:
+
+<code lang="perl6">
+use v6;
+
+sub process_template($input, %params) {
+    my $output = substr($input, 0, *-4) ~ "html";
+    say "open $input";
+    say "replace {%params.perl}";
+    say "save $output";
+}
+
+my %data = (
+    fname => "Foo",
+    lname => "Bar",
+);
+
+process_template("index.tmpl", %data);
+</code>
+
+The output is
+
+<code>
+open index.tmpl
+replace ("fname" => "Foo", "lname" => "Bar").hash
+save index.html
+</code>
+
+In this code <hl>~</hl> is the concatenation operator
+
+
+<h2>Multiple signatures</h2>
+
+That's ok, but there are cases when the name
+of the template and the output file are different.
+So I need both versions. In Perl 6, it is not a problem,
+I can just define both of the functions, telling Perl
+that they are multies - so it won't think I am redefining
+a function by mistake.
+
+<code lang="perl6">
+use v6;
+
+multi sub process_template($input, %params) {
+    my $output = substr($input, 0, *-4) ~ "html";
+    say "open $input";
+    say "replace {%params.perl}";
+    say "save $output";
+}
+
+multi sub process_template($input, $output, %params) {
+    say "open $input";
+    say "replace {%params.perl}";
+    say "save $output";
+}
+
+my %data = (
+    fname => "Foo",
+    lname => "Bar",
+);
+
+process_template("index.tmpl", %data);
+process_template("from.tmpl", "to.html", %data);
+</code>
+
+The output will be:
+
+<code>
+open index.tmpl
+replace ("fname" => "Foo", "lname" => "Bar").hash
+save index.html
+open from.tmpl
+replace ("fname" => "Foo", "lname" => "Bar").hash
+save to.html
+</code>
+
+For every function call Rakudo will look for a function that matches
+the signature and call that function.
+If no match is found it will throw an exception.
+For example, in our case, calling without a hash will throw a compile-time exception:
+
+<code lang="perl6">
+process_template("from.tmpl", "to.html");
+</code>
+
+<code>
+===SORRY!===
+CHECK FAILED:
+Calling 'process_template' will never work with argument types (str, str) (line 23)
+    Expected any of:
+    :($input, %params)
+    :($input, $output, %params)
+</code>
+
+Sometimes that's what we want. In other cases we might want to allow
+the user to call the above functions without providing any parameters.
+We could write two additional functions without the %params but that
+is just unnecessary code duplication. Instead we can declare the hash as optional
+by adding a question mark <hl>?</hl> at the end of the parameter:
+
+<h2>Optional parameters</h2>
+
+<code lang="perl6">
+multi sub process_template($input, %params?) {
+
+multi sub process_template($input, $output, %params?) {
+</code>
+
+
+If we defined our functions that way we could call
+
+<code lang="perl6">
+process_template("from.tmpl", "to.html");
+</code>
+
+and it would know how to find the right subroutine leaving
+the %params hash empty.
+
+The problem is, that in this case calling
+
+<code lang="perl6">
+process_template("index.tmpl", %data);
+</code>
+
+will generate a compile-time error:
+
+<code>
+Ambiguous call to 'process_template'; these signatures all match:
+:($input, %params?)
+:($input, $output, %params?)
+
+  in block  at a.pl:21
+</code>
+
+That happens because the $output parameter could accept both the second string
+or the hash (as a reference). In order to avoid that we can tell the subroutine,
+that the $output variable must be a string by putting <hl>Str</hl> in front of the variable.
+
+<code lang="perl6">
+multi sub process_template($input, Str $output, %params?) {
+</code>
+
+As you can see, there is a lot more one can do with signatures, but I think
+this is enough for today.
+

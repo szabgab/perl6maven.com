@@ -1,0 +1,293 @@
+=title Perl 6 Regexes
+=timestamp 2012-07-10T11:52:02
+=author szabgab
+=keywords regex, regexes
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+Making the first steps learning regular expressions in Perl 6.
+
+=abstract end
+
+<h2>Perl 6 regex</h2>
+
+Let's start by saying that in Perl 6 we call these thing a Regexes
+not Regular Expressions, but you'd be forgiven if you used
+either name. Just don't get into an argument with someone from
+a University.
+
+<h2>Regex operator</h2>
+
+In Perl 6 the smart match ~~ operator is used for regex matching.
+
+For negative matching use the !~~ operator.
+
+<h2>Basic usage</h2>
+
+Let's start with a simple example.
+
+<code lang="perl6">
+use v6;
+
+my $str = 'abc123';
+
+if $str ~~ m/a/ {
+    say "Matching";
+}
+
+if $str !~~ m/z/ {
+    say "No z in $str";
+}
+</code>
+
+Both conditions will be true so both the word "Matching" and
+"No z in abc123" will be printed
+
+<h2>Special characters</h2>
+
+An important change from the way the regular expressions worked
+in Perl 5 (and thus in any language that claims to be Perl compatible),
+is that in Perl 6, any non-alphanumeric character needs
+to be escaped. Even if they don't currently have any special
+meaning. Otherwise you'll get a compilation error.
+
+I think, this can make all the regexes look more cryptic,
+as we will see a lot more character escaping,
+but I already saw people escaping various non-alpha characers in
+a rather random way. So this requirement will make it clear which are
+real special characters and which are not..
+
+It will also direct us to pick cleaner solutions even if they are more wordy.
+
+In the next example we will have to escape the - sign:
+
+<code lang="perl6">
+use v6;
+
+my $str = 'abc - 123';
+
+if $str ~~ m/-/ {
+    say "Matching";
+}
+</code>
+
+Generates:
+
+<code>
+===SORRY!===
+Unrecognized regex metacharacter - (must be quoted to match literally) at line 6, near "/) {\n    s"
+</code>
+
+<code lang="perl6">
+use v6;
+
+my $str = 'abc - 123';
+
+if $str ~~ m/\-/ {
+    say "Matching";
+}
+</code>
+
+works, and prints <b>Matching</b>.
+
+<h2>New special characters</h2>
+
+We will have to be very careful as there are going to
+be a number of cases that can easily trip up anyone who
+already uses regular expressions. For example the pound key <hl>#</hl>
+is now a special character by default meaning a comment.
+
+So you'd better escape it when you really want to match a # character.
+
+The following example seems to be a bug in Rakudo as it should not even
+compile but in fact it runs and prints "match 'a'"
+
+<code lang="perl6">
+use v6;
+
+my $str = 'abc # 123';
+
+if $str ~~ m/(#.)/ {
+    say "match '$/'";
+}
+</code>
+
+Gives this error message;
+
+<code>
+===SORRY!===
+Unrecognized regex metacharacter ( (must be quoted to match literally) at line 6, near "#.)/ {\n   "
+</code>
+
+This is the correct regex, escping #:
+
+<code lang="perl6">
+use v6;
+
+my $str = 'abc # 123';
+
+if $str ~~ m/(\#.)/ {
+    say "match '$/'";
+}
+</code>
+
+
+<h2>The Match variable of Perl 6</h2>
+
+I ran a bit forward with that example. Let me explain.
+
+Every time there is a regex operation a localized version of
+the <hl>match variable $/</hl> is set to the actual match.
+That variable has a lot more power than simply containing the match.
+We'll talk about that later but for now see this example:
+
+<code lang="perl6">
+use v6;
+
+my $str = 'abc123';
+
+if $str ~~ m/a/ {
+    say "Matching   '$/'";       # Matching  'a'
+}
+
+if $str !~~ m/z/ {
+    say "No z in $str   '$/'";   # No z in abc123  ''
+}
+</code>
+
+
+<h2>Spaces in a Perl 6 regex</h2>
+
+Regex in Perl 6 disregard spaces by default. People who are used to
+the Perl 5 style regular expressions - which means basically
+every programming language that has a regular expression library -
+will usually think as spaces being significant in the regular
+expressions.
+
+We will have to unlearn that, and think about the individual
+bits and pieces that are the tokens we would like to match.
+
+Basically Perl 6 regexes work as if you always had the /x modifier on
+which in Perl 5 means disregard spaces and treat # as start of comment.
+
+<code lang="perl6">
+use v6;
+
+my $str = 'The black cat climbed to the green tree.';
+
+if $str ~~ m/black/ {
+    say "Matching '$/'";     # Matching 'black'
+}
+
+if $str ~~ m/black cat/ {
+    say "Matching '$/'";
+} else {
+    say "No match as whitespaces are disregarded";  # prints this
+}
+</code>
+
+As we can see in the above example, the space in the regex does
+not match the space in the string.
+
+so you ask <b>How can I match a white-space with the Perl 6 regex?</b>
+
+The following will all match and print "Matching 'black cat'"
+and the text after it.
+
+<code lang="perl6">
+use v6;
+
+my $str = 'The black cat climbed to the green tree.';
+
+if $str ~~ m/black\scat/ {
+    say "Matching '$/' - Perl 5 style white-space meta character works";
+}
+
+if $str ~~ m/black \s cat/ {
+    say "Matching '$/' - Meta white-space matched, real space is disregarded";
+}
+
+if $str ~~ m/black  ' '  cat/ {
+    print "Matching '$/' - ";
+    say "the real Perl 6 style would be to use strings embedded in regexes";
+}
+
+if $str ~~ m/black <space> cat/ {
+    print "Matching '$/' - ";
+    say "or maybe the Perl 6 style is using named character classes ";
+}
+</code>
+
+In any case this points out that we could have written:
+
+<code lang="perl6">
+use v6;
+
+my $str = 'The black cat climbed to the green tree.';
+
+if $str ~~ m/  b l a c k <space> c a t/ {
+    say "Matching '$/' - a regex in Perl 6 is just a sequence of tokens";
+}
+</code>
+
+You can see, that you can embed literal strings in the regex
+using single quotes and there are new types of character classes,
+using angle brackets.
+
+
+<h2>Matching everything</h2>
+
+The . (dot) is a meta-character that will be ready to match
+any character.
+
+As opposed to the Perl 5 regular expressions,
+in Perl 6 this really includes everything. Even newlines.
+
+If you want to match any character, except newline you can use the
+<hl>\N</hl> special character class.
+
+<code lang="perl6">
+use v6;
+
+my $str = 'The black cat climbed to the green tree.';
+
+if $str ~~ m/c./ {
+    say "Matching '$/'";      # 'ck'
+}
+
+my $text = "
+The black cat
+climbed the green tree";
+
+if $text ~~ m/t./ {
+    say "Matching '$/'";
+}
+</code>
+
+The first regex matches and prints <b>'ck'</b>, the result of the second reges is on two lines:
+<pre>
+'t
+'
+</pre>
+
+Using <hl>\N</hl>:
+
+<code lang="perl6">
+use v6;
+
+my $text = "
+The black cat
+climbed the green tree";
+
+if $text ~~ m/t\N/ {
+    say "Matching '$/'";     # 'th'    of the word 'the'
+}
+</code>
+
+In the last example you can see that <hl>\N</hl> can match the letter h
+but not the newlines.
+
+

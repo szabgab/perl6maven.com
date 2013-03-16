@@ -1,0 +1,190 @@
+=title Perl 6 files
+=timestamp 2012-08-16T18:52:02
+=author szabgab
+=keywords open, :r, :w, :a, get, chomp, lines, close, slurp, write, append
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+While learning the internal logic and syntax of a language can be interesting,
+without I/O, especially without reading and writing files, it won't be too useful.
+
+It is quite important for me that the Perl 6 Maven site will present Perl 6
+in a way, that already provides the tools to you to use it.
+
+So this time, we are going to deal with files.
+
+=abstract end
+
+<h2>Open a file</h2>
+
+As in other high level languages, one has to open a file in order to read
+from it, or to write to it. In Perl6 it is done by the <hl>open()</hl>
+function imported from the IO class. It can receive one or two parameters:
+
+The name of the file and the mode. The mode can be <hl>:r</hl> for
+reading, <hl>:w</hl> for writing, and <hl>:a</hl> for appending.
+It defaults to reading so we can write the following code:
+
+<code lang="perl6">
+$fh = open $filename;
+</code>
+
+Which is the same as this one:
+
+<code lang="perl6">
+$fh = open $filename, :r;
+</code>
+
+Once we have an open file handle, we can use the <hl>get</hl> method
+(<hl>$fh.get</hl>) to read one line from the given file.
+
+One could read many lines using consecutive calls to the <hl>get</hl> method,
+but there are better ways to do that.
+
+<code lang="perl6">
+use v6;
+
+my $filename = "data.txt";
+
+my $fh = open $filename;
+my $line = $fh.get;
+say $line;
+</code>
+
+Important to note, especially to Perl 5 programmers, that the newline from the end of the line is removed.
+That is, the <hl>get</hl> method autochomps.
+
+<h2>Process a file line by line</h2>
+
+The <hl>lines()</hl> method of the filehandle will return all the lines lazily.
+This means, in the following code the file is read line-by-line into
+the $line variable by the for loop. It won't start by reading all
+the lines and iterating over them. Thus, this is a useful construct
+even on huge files.
+
+<code lang="perl6">
+use v6;
+
+my $filename = "path/to/data.txt";
+
+my $fh = open $filename, :r;
+for $fh.lines -> $line {
+    say $line;
+}
+</code>
+
+
+<h2>Writing to a file</h2>
+
+In order to write to a file first we need to open the file for writing
+using the <hl>:w</hl> mode. If this is successful we get back a filehandle 
+on which we can use the regular output methods such as print() or say().
+
+<code lang="perl6">
+use v6;
+
+my $filename = "temp.txt";
+
+my $fh = open $filename, :w;
+$fh.say("hello world");
+$fh.print("second line\n");
+$fh.close;
+</code>
+
+While theoretically it is not required to close the file handle,
+it is a good practice, and besides, currently if you don't call
+<hl>close</hl>, the file won't be saved.
+
+<h2>Appending to a file</h2>
+
+If we open a file for writing using the <hl>:w</hl> modifier,
+the file automatically gets truncated to the empty file
+and the only content it will have is what we added to it.
+
+Sometime, for example in log files, we would like to keep the
+original file intact and add lines of data at the end of it.
+For that purpose we can open the file with the <hl>:a</hl> (append)
+modifier.
+
+<h2>slurp</h2>
+
+Perl 6 has a built in function to <hl>slurp</hl> in files.
+That is, to read the contents of a whole file into a scalar 
+variable.
+
+<code lang="perl6">
+use v6;
+
+my $filename = 'data.txt';
+
+my $data = slurp $filename;
+say $data.chars;
+say $data;
+</code>
+
+The <hl>chars</hl> method, returns the number of characters in the string.
+As you can see for this operation to work, you don't need to open the file.
+
+<h2>lines of file</h2>
+
+Unlike the Perl 5 implementation of the <hl>slurp()</hl> function,
+in Perl 6, it is not aware of its environment, so the following code might
+be a bit surprising for Perl 5 developers.
+It reads the entire file in the first element of the array:
+
+<code lang="perl6">
+use v6;
+
+my $filename = 'data.txt';
+
+my @content = slurp $filename;
+say @content.elems;            # 1
+</code>
+
+The <hl>elems</hl> method return the number of elements in the array.
+
+If you would like to read all the lines in the elements of the array
+the <hl>lines()</hl> functions is needed:
+
+<code lang="perl6">
+use v6;
+
+my $filename = 'authors.txt';
+
+my @content = slurp $filename;
+say @content.elems;            # 1
+
+my @lines = lines $filename;
+say @lines.elems;              # 1 !!!
+</code>
+
+The problem with that code is that the <hl>lines</hl> function, if applied
+to a plain scalar, will return the lines in that string. Basically splitting
+the string at newlines. Therefore, in order to use lines, we need the file handle.
+
+The long solution looks like this:
+
+<code lang="perl6">
+my $fh = open $filename;
+my @rows = lines $fh;
+say @rows.elems;
+</code>
+
+However, there is a nicer solution. We can turn the name of the file
+into an <hl>IO</hl> object and we can use the <hl>lines</hl> method
+on that object:
+
+<code lang="perl6">
+my @all = $filename.IO.lines;
+say @all.elems;
+</code>
+
+Of course, if we only wanted to know the number of lines in the file, we could
+stack the <hl>elems</hl> method at the end:
+
+<code lang="perl6">
+say $filename.IO.lines.elems;
+</code>

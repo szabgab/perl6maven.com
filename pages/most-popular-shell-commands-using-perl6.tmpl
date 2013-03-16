@@ -1,0 +1,204 @@
+=title Most popular shell commands using Perl 6
+=timestamp 2012-07-12T22:52:02
+=author szabgab
+=keywords sort, for, open
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+A few weeks ago brian d foy posted a
+<a href="http://www.learning-perl.com/?p=302">challenge</a> to create
+a list of most popular shell commands. Assuming of course a Linux/Unix system.
+
+He was also expecting it in <b>Perl 5</b>, but I thought
+showing a solution in <b>Perl 6</b> would be also interesting.
+
+While of course this specific situation does not come up on a Windows system,
+the more generic question can be asked with any kind of log-file. On Windows,
+Mac, Linux, Unix or any other operating system.
+
+=abstract end
+
+<h2>The problem</h2>
+
+When using a Linux or Unix system, every command you type in the shell will be saved in
+a history file. That file is a simple text file, in which each line is a command you typed in.
+It makes it easy for you to search for a command you typed in recently, and execute it again.
+Maybe with slight modification.
+
+An environment variable controls the size of this file.
+
+The challenge was to show the commands based on popularity.
+
+My understanding of the problem was to count exact duplicates of lines in the file,
+and then show the lines with the most repetition. This means the following are
+3 different commands:
+
+<code>
+git commit -m "taking the code apart"
+git status
+git commit -m "putting everything back again"
+</code>
+
+Another interpretation would be to use only the first
+element of each line when comparing lines.
+In that case the above 3 lines would all count to be <b>git</b> commands.
+
+You could also have other interpretations, that will require more complex
+ways to compare the lines. You could, for example, think about the above 3 lines as
+being 2 <b>git commit</b> commands and one <b>git status</b>. That might be interesting,
+though then you could also think abot <b>git st</b> which, at least in my personal
+configuration, is an alias for <b>git status</b>. Should those be counted
+as the same command or two different ones?
+
+<h2>History on Windows</h2>
+
+On MS Windows, if you are using the <b>cmd</b> window
+you can see the history of your commands by pressing <b>F7</b>.
+You can even list the history by running <b>doskey /history</b>
+and then you can redirect the output of that command to a text file.
+
+<code>
+doskey /history > history.txt
+</code>
+
+Once you do that, you can use the same script to list the most popular commands.
+
+<h2>The solution</h2>
+
+Let' see the most simple case. Basically we have a file and
+we would like to check how many times each line appears and show them
+in a descending order.
+
+<code lang="perl6">
+#!/usr/bin/env perl6
+use v6;
+
+my $file = %*ENV<HOME> ~ '/.bash_history';
+my %count;
+
+my $fh = open $file;
+for $fh.lines -> $line {
+	%count{$line}++;
+}
+for %count.keys.sort({ %count{ $_ } }).reverse -> $k {
+	say "$k {%count{$k}}";
+}
+</code>
+
+Let's take it apart.
+
+The first line, <b>#!/usr/bin/env perl6</b> is just the sh-bang.
+Interesting only for Unix-ish system, but making no harm on Windows either.
+
+<b>use v6;</b> is an important line. It prevents you from accidentally running this script
+with perl 5, and then spending valuable time trying to figure out the "syntax errors".
+
+<hl>%*ENV</hl> is the hash containing all the environment variables of your system.
+The percentage sign is familiar from Perl 5. The <hl>*</hl> means this is a system variable.
+The name of this prefix is <b>twigil</b>.
+
+<code lang="perl6">
+%*ENV<HOME>
+</code>
+
+fetches the value of the HOME environment variable and <b>tilde ~</b>
+concatenates it with the next string, forming the full path to the history file.
+We assign it to a lexical variable called <b>$file</b>, that we just declared using
+the <b>my</b> keyword.
+
+BTW instead of the above, you might want to write the following:
+
+<code lang="perl6">
+my $file = @*ARGS[0];
+</code>
+
+That will let you provide the name of the history file on the command line.
+
+
+Then we declare a hash called <b>%count</b>
+
+As you can see variables you declare have single prefixes ($ for scalars and % for hashes)
+called <b>sigils</b>.
+
+<code lang="perl6">
+my $fh = open $file;
+</code>
+
+opens the file for reading and assigns the file-handle to $fh.
+
+<b>$fh.lines</b> returns all the lines in the file.
+
+<code lang="perl6">
+for $fh.lines -> $line {
+}
+</code>
+
+The for loop iterates over all the values returned by <b>$fh.lines</b>, all the lines,
+assigns each value to $line, the variable we put on the right hand side of the arrow,
+and executes the block.
+There is no need to declare the $line variable. It is basically a parameter of the
+block after it, and it is only visible in that block.
+
+<code lang="perl6">
+%count{$line}++;
+</code>
+
+We access a single element of the hash and increment it by one.
+
+As you might have noticed, when accessing an element of a hash with
+a key that is a string literal, we use < and > signs around the hash key.
+We use curly braces { and } when we are using a variable, or any other expression
+as the key.
+
+<h2>Sorting</h2>
+
+The next part of the code is a bit more complex.
+Let's see it step by step:
+
+<b>%count.keys</b> returns the keys of the hash.
+<b>sort({ %count{ $_ } })</b> takes all the elements and sorts them by
+the value of each element. The only problem is, that by default it will sort
+them in ascending order. So we call <b>.reverse</b> to turn the list
+around to descendng order.
+
+Inside the for loop we print <b>$k</b> which is the loop varible holding
+the key (the current line) and the respective value <b>%count{$k}</b>.
+Perl 6 allows embedding any perl expression inside a double-quoted string.
+Scalars (as $k) can be embedded without any ceremony. For any other expression
+you only need to put it within curly braces. The result of the expression will
+be embedded in the string. The usual name of this code embedding
+is <b>interpolation</b>.
+
+<code lang="perl6">
+for %count.keys.sort({ %count{ $_ } }).reverse -> $k {
+	say "$k {%count{$k}}";
+}
+</code>
+
+That's it about this example.
+
+<h2>The result</h2>
+
+If you are interested, on my system these are the 10 most popular commands:
+
+<code>
+git st 649
+ll 359
+alpine 277
+svn st 235
+git add . 234
+git push 151
+cd 150
+git diff 147
+cd .. 130
+fetchmail  128
+</code>
+
+
+In another article we'll try to see how the more complex interpretation
+of the original challenge can be implemented.
+
+
