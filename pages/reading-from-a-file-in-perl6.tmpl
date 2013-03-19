@@ -1,0 +1,55 @@
+=title Reading from a file in Perl 6
+=timestamp 2013-03-19T20:52:02
+=author szabgab
+=keywords open, get, read, IO, lines
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+It can be interesting to do operations on existing data structures in Perl 6, but without Input and Output,
+that would have limited usability in the real world.
+
+Therefore reading from files is a critical operation.
+
+=abstract end
+
+<h2>Read line-by-line</h2>
+
+The <hl>open</hl> function will open a file, by default for reading thought you could explicitly tell it by passing
+<hl>:r</hl> as a second parameter.
+Open will return the filehandle, an instance of the IO class.
+
+The <hl>get</hl> method will read and return one line from the file. The trailing newline will be automatically removed.
+(Perl 5 developers will think that get automatically calls chomp as well.)
+
+<code lang="perl6">
+my $fh = open $filename;
+my $line = $fh.get;
+</code>
+
+You can also read all the lines of a file in a while loop.
+As opposed to Perl 5, there is not implicit check for defined-ness in such a while loop.
+You have to explicitly add the word defined in the condition. Otherwise the reading will
+stop on the first empty line.
+
+<code lang="perl6">
+my $fh = open $filename;
+while (defined my $line = $fh.get) {
+    say $line;
+}
+</code>
+
+A style that is probably much more Perl 6-ish would be to use the <hl>lines</hl> method in a <hl>for</hl> loop.
+The <hl>lines</hl> method will lazily (!) read all the lines of the file, assign it to the <hl>$line</hl> variable
+and execute the block.
+
+<code lang="perl6">
+my $fh = open $filename;
+for $fh.lines -> $line {
+    say $line;
+}
+</code>
+
+

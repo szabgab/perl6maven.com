@@ -88,10 +88,10 @@ On the first use panda will fetch the list of modules available for Perl 6
 and will put it in <b>c:\rakudo\lib\parrot\4.10.0\languages\perl6\site\panda\projects.json</b>
 You can see the list by typing <hl>panda list</hl>.
 
-If you'd like to use HTML::Template you can install it by typing 
+If you'd like to use HTML::Template you can install it by typing
 <hl>panda install --notests HTML::Template</hl>.
 
-We need to skip testing for now, as panda has a bug that requires the presence of the 
+We need to skip testing for now, as panda has a bug that requires the presence of the
 <b>prove</b> commnad from Perl 5, and even if it is there, panda will blow up in a nasty
 way if one of the tests fail. Unfortunately the tests of HTML::Template currently fail.
 
