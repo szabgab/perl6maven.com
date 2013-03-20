@@ -1,0 +1,68 @@
+=title Reading and writing JSON in Perl 6
+=timestamp 2013-03-19T20:52:02
+=author szabgab
+=keywords JSON, 
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+In the last couple of years JSON became the defacto format to exchange data between applications.
+It can be used between applications written in different languages running on different operating systems.
+
+=abstract end
+
+There is a Perl 6 module calle JSON::Tiny that can convert between a string representing a
+JSON data structure and a real data structure in Perl 6. The module comes with Rakudo *.
+
+Currently the documentation the module has is a comment that shows the basics:
+
+<code lang="perl6">
+use JSON::Tiny;
+my $json = to-json([1, 2, "a third item"]);
+my $copy-of-original-data-structure = from-json($json);
+</code>
+
+Let's see a couple of examples:
+
+<h2>Converting an array to JSON</h2>
+
+<code lang="perl6">
+use v6;
+
+use JSON::Tiny;
+
+my @names = <foo bar baz>;
+my $json = to-json(@names);
+say $json;  # [ "foo", "bar", "baz" ]
+</code>
+
+<h2>Converting a hash to JSON</h2>
+
+
+<code lang="perl6">
+use v6;
+
+use JSON::Tiny;
+
+my %phones = (
+    foo => 123,
+    bar => 456,
+    baz => 789,
+);
+my $json = to-json(%phones);
+say $json;  # { "foo" : 123, "bar" : 456, "baz" : 789 }
+</code>
+
+
+#     my $copy-of-original-data-structure = from-json($json);
+# 
+
+<code lang="perl6">
+my $fh = open $filename;
+while (defined my $line = $fh.get) {
+    say $line;
+}
+</code>
+
