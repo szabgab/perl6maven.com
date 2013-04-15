@@ -55,9 +55,18 @@ my $json = to-json(%phones);
 say $json;  # { "foo" : 123, "bar" : 456, "baz" : 789 }
 </code>
 
+<h2>Converting from JSON to Perl</h2>
 
-#     my $copy-of-original-data-structure = from-json($json);
-# 
+
+<h2>Files and JSON</h2>
+
+In many cases you need to read a file in JSON format and convert it to
+a Perl 6 data structure, or the other way around you need to convert
+and internal data structure and save it as JSON. The JSON::Tiny module
+does not provide facilities for that, but it is quite easy to do it
+in Perl 6.
+
+
 
 <code lang="perl6">
 my $fh = open $filename;
