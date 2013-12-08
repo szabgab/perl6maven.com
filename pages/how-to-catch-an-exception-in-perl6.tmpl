@@ -1,0 +1,69 @@
+=title How to catch an exception in Perl 6
+=timestamp 2013-12-08T21:52:02
+=author szabgab
+=keywords  CATCH
+=status show
+=index 1
+=comments 1
+
+=abstract start
+
+In Perl 6 every block acts as a try exception if there is a <hl>CATCH</hl>
+block in it. Inside the <hl>CATCH</hl> block one can use a <hl>default</hl>
+block to catch all the exceptions.
+
+=abstract end
+
+<code lang="perl6">
+use v6;
+
+my $x = 10;
+my $y = 0;
+
+my $z = $x / $y;
+
+my $exception;
+{
+	say $z;
+	CATCH {
+		default {
+			$exception = $_;
+		}
+	}
+}
+
+if ($exception) {
+	say "There was an exception: $exception";
+}
+
+say "still running";
+</code>
+
+Output:
+
+<code>
+There was an exception: Divide by zero
+still running
+</code>
+
+One very important thing to note here.
+The actual exception was caused bye the division:
+<hl>my $z = $x / $y;</hl>.
+
+That did not throw an exception yet. The exception was thrown
+only when we tried to <b>use</b> the variable that had an
+invalid value.
+
+The actual exception object is in <hl>$_</hl>, but we copied
+it to a variable just so we can have it outside the block.
+In most cases this is not really necessary.
+
+What is important though, is that it is not just a simple string
+as the above output would suggest.
+
+It is actually an instance of the <hl>X::Numeric::DivideByZero</hl> class.
+It has methods such as <hl>backtrace</hl> that returns a list of <hl>Backtrace::Frame</hl>
+instances. Each <hl>Backtrace::Frame</hl> instance has several attributes including
+<hl>file</hl> and <hl>line</hl> that can help identify where
+the exception was created and where was it thrown.
+
