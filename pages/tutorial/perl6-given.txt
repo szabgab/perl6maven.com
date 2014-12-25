@@ -1,0 +1,17 @@
+=title Calculator - given
+=timestamp 2015-01-01T01:02:15
+=author szabgab
+=keywords given, when
+=status show
+
+The <emp>given - when</emp> construct (known in other languages as case or switch)
+can make the previous example much more compact.
+
+Perl compares the value of $operator (the topic) with each one of the values next to the when
+keywords. When if finds one that fits the appropriate block is executed and perl jumps to the
+next command after the given block.
+
+If non of the when values fit the (optional) default block is evaluated.
+
+<include file="examples/scalars/calculator_given.p6" />
+

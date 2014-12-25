@@ -1,0 +1,11 @@
+=title Numerical operations
+=timestamp 2015-01-01T01:02:04
+=author szabgab
+=keywords
+=status show
+
+
+Numerical operator can be used on the scalar values.
+
+<include file="examples/scalars/numerical_operators.p6" />
+

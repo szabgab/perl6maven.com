@@ -1,0 +1,12 @@
+=title Ternary Operator
+=timestamp 2015-01-01T01:02:12
+=author szabgab
+=keywords
+=status show
+
+<include file="examples/scalars/ternary.p6" />
+
+<pre>
+COND ?? VALUE_IF_TRUE !! VALUE_IF_FALSE
+</pre>
+

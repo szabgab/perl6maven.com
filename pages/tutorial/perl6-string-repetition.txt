@@ -1,0 +1,8 @@
+=title String repetition
+=timestamp 2015-01-01T01:02:09
+=author szabgab
+=keywords x
+=status show
+
+<include file="examples/scalars/string_repetition.p6" />
+

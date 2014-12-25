@@ -1,0 +1,18 @@
+=title Hello World - interpolation
+=timestamp 2015-01-01T01:02:02
+=author szabgab
+=keywords 
+=status show
+=index 1
+=comments 1
+
+We can put scalar variables within regular strings. Their value will be interpolated into the string.
+
+<include file="examples/scalars/hello_world_variable_interpolation.p6" />
+
+prints
+
+<pre>
+Hello Foo
+</pre>
+

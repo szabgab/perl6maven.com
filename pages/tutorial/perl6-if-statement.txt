@@ -1,0 +1,12 @@
+=title if statement - comparing values
+=timestamp 2015-01-01T01:02:08
+=author szabgab
+=keywords if, else
+=status show
+
+You can compare two values or scalar variables using the <emp>if</emp>
+statement and one of the comparison operators.
+
+<include file="examples/scalars/if.p6" />
+
+

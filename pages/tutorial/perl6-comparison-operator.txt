@@ -1,0 +1,40 @@
+=title Comparison Operators
+=timestamp 2015-01-01T01:02:13
+=author szabgab
+=keywords eq, ne, gt, lt, ge, le
+=status show
+
+Two sets of relation operators. One is to compare numerically
+the other is to compare as strings, based on the ASCII table.
+
+<table>
+<tr><td> Numeric  </td><td> String  (ASCII) </td><td> Meaning </td></tr>
+<tr><td>   ==     </td><td>   eq    </td><td> equal                 </td></tr>
+<tr><td>   !=     </td><td>   ne    </td><td> not equal             </td></tr>
+<tr><td>   &lt;   </td><td>   lt    </td><td> less than             </td></tr>
+<tr><td>   &gt;   </td><td>   gt    </td><td> greater than          </td></tr>
+<tr><td>   &lt;=  </td><td>   le    </td><td> less than or equal    </td></tr>
+<tr><td>   &gt;=  </td><td>   ge    </td><td> greater then or equal </td></tr>
+</table>
+
+See also S03-operators.pod
+
+<code lang="perl6">
+3 == 4               # false
+'35' eq 35.0         # false
+'35' == 35.0         # true
+13 > 2               # true
+13 gt 2              # false !!!
+"hello" == "world"   # throws exception
+"hello" eq "world"   # false
+"hello" == ""        # throws exception
+"hello" eq ""        # false
+</code>
+
+<include file="examples/scalars/comparison_operators.p6" />
+
+<pre>
+Cannot convert string to number: base-10 number must begin with valid digits or '.'
+</pre>
+
+

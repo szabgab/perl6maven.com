@@ -1,0 +1,8 @@
+=title String functions: substr
+=timestamp 2015-01-01T01:02:18
+=author szabgab
+=keywords substr
+=status show
+
+<include file="examples/scalars/string_functions_substr.p6" />
+

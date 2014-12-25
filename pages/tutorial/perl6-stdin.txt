@@ -1,0 +1,19 @@
+=title Reading from the keyboard
+=timestamp 2015-01-01T01:02:03
+=author szabgab
+=keywords STDIN, print, prompt
+=status show
+=index 1
+=comments 1
+
+Ask the user what's her name
+
+When prompting the user with a question it is probably the best to use the <emp>prompt</emp> function.
+Similarly to <emp>say</emp> it prints to the screen, but without the newline at the end.
+Then it waits for the user to type in something.
+
+It reads up to the ENTER the user presses, but passes over only the the part before the
+newline. (Perl 5 users could think about it as having autochomp)
+
+<include file="examples/scalars/read_stdin.p6" />
+

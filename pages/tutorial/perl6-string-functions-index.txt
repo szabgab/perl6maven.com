@@ -1,0 +1,9 @@
+=title String functions: index
+=timestamp 2015-01-01T01:02:15
+=author szabgab
+=keywords index
+=status show
+
+<include file="tutorial/scalars/string_functions_index.p6" />
+
+

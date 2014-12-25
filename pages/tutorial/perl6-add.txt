@@ -1,0 +1,12 @@
+=title Automatically convert string to number
+=timestamp 2015-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+As we can see - in this case - Perl 6 does not care that you typed
+in a string, the numeric + adds together the two numbers.
+
+<include file="examples/scalars/add.p6" />
+
+

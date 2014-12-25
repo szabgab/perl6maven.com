@@ -1,0 +1,17 @@
+=title String operators
+=timestamp 2015-01-01T01:02:06
+=author szabgab
+=keywords ~, ~=
+=status show
+
+
+<include file="examples/scalars/string_operators.p6" />
+
+<pre>
+~ concatenates two strings.
+</pre>
+
+As it can be seen from the above example any operation
+can be interpolated into a string using the curly brace syntax.
+
+

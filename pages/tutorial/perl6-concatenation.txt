@@ -1,0 +1,8 @@
+=title String concatenation
+=timestamp 2015-01-01T01:02:07
+=author szabgab
+=keywords ~
+=status show
+
+<include file="examples/scalars/concat.p6" />
+

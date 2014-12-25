@@ -1,0 +1,9 @@
+=title Comparing values - Calculator
+=timestamp 2015-01-01T01:02:16
+=author szabgab
+=keywords 
+=status show
+
+<include file="examples/scalars/calculator.p6" />
+
+

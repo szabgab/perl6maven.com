@@ -1,0 +1,26 @@
+=title 
+=timestamp 2015-01-01T01:02:10
+=author szabgab
+=keywords if
+=status show
+
+<sect1 id="perl6-if">
+<title>Other forms of the if statement</title>
+<literallayout>
+if COND {
+}
+
+if COND {
+} else {
+}
+
+
+if COND {
+} elsif COND {
+} elsif COND {
+} else {
+}
+</literallayout>
+</sect1>
+
+

@@ -1,0 +1,27 @@
+=title Boolean expressions (logical operators)
+=timestamp 2015-01-01T01:02:14
+=author szabgab
+=keywords and, or, orelse, xor, not
+=status show
+
+<table>
+<tr><td>and</td><td>&amp;&amp;</td></tr>
+<tr><td>or</td><td>||</td></tr>
+<tr><td>orelse</td><td>//</td></tr>
+<tr><td>xor</td><td>^^</td></tr>
+<tr><td>not</td><td>!</td></tr>
+</table>
+
+<code lang="perl6">
+if COND and COND {
+}
+
+if COND or COND {
+}
+
+if not COND {
+}
+</code>
+
+<include file="examples/scalars/logical_operators.p6" />
+
