@@ -1,0 +1,58 @@
+=title Hello World
+=timestamp 2015-01-01T01:01:06
+=author szabgab
+=keywords say, ", ;
+=status show
+=index 1
+=comments 1
+
+
+One usually starts by saying something to the audience.
+We do this using the <b>say</b> keyword.
+Not only does it print to the screen, it also adds a newline at the end of the string.
+As you can see strings are marked by double-quotes <b>"</b> at both their ends.
+The statements in Perl 6 end with semi-colon <b>;</b>
+
+<include file="tutorial/intro/hello_world.p6" />
+
+The same can be written in Object Oriented style:
+
+<include file="tutorial/intro/hello_world_oop.p6" />
+
+You could run either of these by typing <b>perl6 hello_world.p6</b> or <b>perl6 hello_world_oop.p6</b> respectively.
+
+Actually you don't even need all the 3 lines, this example would also work if you ran it by writing <b>perl6 hello_world_bare.p6</b>.
+
+<include file="tutorial/intro/hello_world_bare.p6" />
+
+<h2>sh-bang - only for Unix/Linux</h2>
+
+The first line in the first example is called the <b>she-bang</b> or <b>sh-bang</b>. In general it is not necessary,
+but if you would like to let the users run your Perl 6 code without explicitely typing in perl6 before the name of the script, then you need this line.
+At least on Unix/Linux systems. It tells the Unix/Linux shell you are using to look for the first executable called "perl6" in your <b>PATH</b> and
+run the script using that interpreter. In addition to the sh-bang line, you will also have to set the executable bit on the file. You do that by typing
+<b>chmod u+x hello_world.p6</b>. Once you have both, you can run your script as <b>./hello_world.p6</b>. If the directory where the script is located
+is listed in the <b>PATH</b> environment variable, then you can even run it as <b>hello_world.p6</b>.
+
+<h2>The file extension</h2>
+
+I used the file extension <hl>p6</hl> to indicate this is a Perl 6 script though it is not necessary. Some people just use the regular <hl>pl</hl>
+extension. Actually the extension does not matter on Unix systems. It only matters as some editors base their syntax highlighting on the extension of the file.
+
+<h2>use v6;</h2>
+
+This line tells perl that the following code requires Perl 6 or higher. The code will run correctly without this, if you run it with perl6. What happens if someone
+tries to run your script by mistake using perl 5? <b>perl hell_world_bare.p6</b> and the output is:
+
+<include file="tutorial/intro/hello_world_bare.err" />
+
+That looks bad. People will immediately come to you and tell you <b>your code is broken!</b>. You don't want to hear that do you?
+
+So what happens if someone runs the code with the <b>use v6;</b> in it using perl 5? <b>perl hello_world.p6</b> The output looks like this:
+
+<include file="tutorial/intro/hello_world.err" />
+
+Now the problem is much clearer. (Though it would be nice if the error message printed by perl 5 was something like:
+<b>This code requires Perl v6.0.0. You ran it using v5.20.1.</b>
+
+

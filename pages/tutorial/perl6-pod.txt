@@ -1,0 +1,11 @@
+=title POD - Plain Old Documentation
+=timestamp 2015-01-01T01:01:08
+=author szabgab
+=keywords POD
+=status show
+=index 1
+=comments 1
+
+<include file="examples/intro/documentation.p6" />
+
+See also the <a href="http://perlcabal.org/syn/S26.html">Synopsis 26</a> that describes the Perl 6 pods.

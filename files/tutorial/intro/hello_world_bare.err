@@ -1,0 +1,4 @@
+String found where operator expected at books/examples/intro/hello_world_bare.p6 line 1, near "say "Hello Perl 6 World""
+	(Do you need to predeclare say?)
+syntax error at books/examples/intro/hello_world_bare.p6 line 1, near "say "Hello Perl 6 World""
+Execution of books/examples/intro/hello_world_bare.p6 aborted due to compilation errors.

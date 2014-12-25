@@ -1,0 +1,19 @@
+=title Development Environment
+=timestamp 2015-01-01T01:01:04
+=author szabgab
+=keywords vim, Emacs, Padre
+=status show
+=index 1
+=comments 1
+
+Any text editor.
+
+<a href="http://padre.perlide.org/">Padre, the Perl IDE</a> has some Perl 6 support.
+
+<command>vim</command> with syntax highlighting using
+<a href="http://github.com/hinrik/vim-perl">vim-perl</a>
+
+<command>emacs</command> with perl6 mode using utils/cperl-mode.el
+from the Pugs repository.
+
+

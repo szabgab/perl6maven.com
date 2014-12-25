@@ -1,0 +1,2 @@
+Perl v6.0.0 required--this is only v5.20.1, stopped at books/examples/intro/hello_world.p6 line 2.
+BEGIN failed--compilation aborted at books/examples/intro/hello_world.p6 line 2.

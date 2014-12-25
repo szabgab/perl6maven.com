@@ -1,0 +1,20 @@
+=title Running Rakudo
+=timestamp 2015-01-01T01:01:05
+=author szabgab
+=keywords 
+=status show
+=index 1
+=comments 1
+
+Version information: <b>/path/to/somedir/rakudo/perl6 -v</b>
+
+I added /path/to/somedir/rakudo/ to the PATH variable so I can also
+type: <b>perl6 -v</b>
+
+One-liner: <b>perl6 -e "say 42"</b>
+
+Help: <b>perl6 -h</b>
+
+Interactive Perl 6 console
+<b>perl6</b>
+
