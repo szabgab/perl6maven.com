@@ -17,3 +17,4 @@ that has lot of other links.
   <li>If you prefer mailing list then I'd recommend the perl6-users mailing list. Send an empty e-mail to perl6-users-subscribe@perl.org and follow the instructions. Also check out the <a href="http://www.nntp.perl.org/group/perl.perl6.users/">archive of the Perl 6 users mailing list</a></li>
 </ul>
 
+The Rakudo Star distribution that we are going to use also includes a draft version of the <b>Using Perl 6</b> book in the <b>docs/</b> folder. Check it out.
