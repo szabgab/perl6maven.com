@@ -1,14 +1,19 @@
-=title Installing Rakudo
+=title Installing Rakudo Perl 6
 =timestamp 2015-01-01T01:01:03
 =author szabgab
 =keywords Linux, OSX, Windows, Rakudo, MoarVM
+=archive 1
 =status show
+
+=abstract start
 
 Unless you want to actually develop Rakudo itself, the recommendation is to install the <b>Rakudo Star</b> package.
 It contains the Rakudo compiler, documentation, and some extra modules.
 It can automatically build MoarVM, so you don't need to worry about that.
 
 Windows users are even more spoiled, as the Rakudo development team provides ready-made binaries of Rakudo Star in msi format.
+
+=abstract end
 
 <h2>Linux / OSX</h2>
 
