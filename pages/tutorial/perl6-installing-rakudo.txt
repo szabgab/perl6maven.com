@@ -3,8 +3,6 @@
 =author szabgab
 =keywords Linux, OSX, Windows, Rakudo, MoarVM
 =status show
-=index 1
-=comments 1
 
 Unless you want to actually develop Rakudo itself, the recommendation is to install the <b>Rakudo Star</b> package.
 It contains the Rakudo compiler, documentation, and some extra modules.

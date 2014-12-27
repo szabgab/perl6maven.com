@@ -3,8 +3,6 @@
 =author szabgab
 =keywords 
 =status show
-=index 1
-=comments 1
 
 We can put scalar variables within regular strings. Their value will be interpolated into the string.
 

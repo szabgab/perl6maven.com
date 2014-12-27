@@ -1,7 +1,6 @@
 =title Perl 6 Tutorial
 =timestamp 2012-06-27T19:55:00
 =status show
-=index 0
 =comments 0
 
 

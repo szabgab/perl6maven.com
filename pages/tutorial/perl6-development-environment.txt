@@ -3,8 +3,6 @@
 =author szabgab
 =keywords vim, Emacs, Padre
 =status show
-=index 1
-=comments 1
 
 Any text editor.
 

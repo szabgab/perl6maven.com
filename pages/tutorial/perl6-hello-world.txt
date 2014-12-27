@@ -3,8 +3,6 @@
 =author szabgab
 =keywords say, ", ;
 =status show
-=index 1
-=comments 1
 
 
 One usually starts by saying something to the audience.

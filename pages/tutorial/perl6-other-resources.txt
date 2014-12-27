@@ -3,9 +3,6 @@
 =author szabgab
 =keywords IRC
 =status show
-=index 1
-=comments 1
-
 
 There are lots of free resources for learning Perl 6. Probably the most central place is the <a href="http://www.perl6.org/">Perl 6 community site</a>,
 that has lot of other links.

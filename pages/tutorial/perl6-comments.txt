@@ -3,8 +3,6 @@
 =author szabgab
 =keywords comments, #
 =status show
-=index 1
-=comments 1
 
 <include file="examples/intro/comments.p6" />
 

@@ -3,8 +3,6 @@
 =author szabgab
 =keywords POD
 =status show
-=index 1
-=comments 1
 
 <include file="examples/intro/documentation.p6" />
 

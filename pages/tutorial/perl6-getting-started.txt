@@ -3,8 +3,6 @@
 =author szabgab
 =keywords Rakudo, MoarVM, JVM, Niecza, CLR, Perlito, Pugs
 =status show
-=index 1
-=comments 1
 
 Perl 6 is a specification and a set of tests.
 Any compiler that passes all the tests is considered to be a valid Perl 6 compiler.
