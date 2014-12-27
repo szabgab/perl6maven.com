@@ -3,7 +3,7 @@
 =author szabgab
 =keywords open, :r, :w, :a, get, chomp, lines, close, slurp, write, append, read
 =status show
-=index 1
+=archive 1
 =comments 1
 
 =abstract start

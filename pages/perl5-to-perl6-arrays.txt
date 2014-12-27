@@ -3,7 +3,7 @@
 =author szabgab
 =keywords arrays, qw, .perl, circumfix, .., ^, loop, for, foreach, keys, split
 =status show
-=index 1
+=archive 1
 =comments 1
 
 =abstract start

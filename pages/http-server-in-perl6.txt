@@ -3,7 +3,7 @@
 =author szabgab
 =keywords HTTP
 =status draft
-=index 1
+=archive 1
 =comments 1
 
 =abstract start

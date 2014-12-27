@@ -3,7 +3,7 @@
 =author moritz
 =keywords gather, take, X, X~, ~, :=
 =status show
-=index 1
+=archive 1
 =comments 1
 
 =abstract start
