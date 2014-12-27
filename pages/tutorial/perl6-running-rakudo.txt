@@ -9,7 +9,11 @@
 Version information: <b>/path/to/somedir/rakudo/perl6 -v</b>
 
 I added /path/to/somedir/rakudo/ to the PATH variable so I can also
-type: <b>perl6 -v</b>
+type: <b>perl6 -v</b> which gave me:
+
+<pre>
+This is perl6 version 2014.12 built on MoarVM version 2014.12
+</pre>
 
 One-liner: <b>perl6 -e "say 42"</b>
 
