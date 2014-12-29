@@ -35,6 +35,8 @@ This will install the <b>perl6</b> executable in the <b>install/bin</b> subdirec
 
 Visit the <a href="http://rakudo.org/downloads/star/">download page</a> to find the latest .msi file.
 
+You can also <a href="http://perltricks.com/article/135/2014/11/18/Building-Perl-6-with-Visual-Studio-2013">build Rakudo from source</a> using Visual Studio 2013 Commmunity Edition.
+
 For up-to-date instructions, please visit
 the <a href="http://rakudo.org/how-to-get-rakudo/">Rakudo web site</a>.
 
