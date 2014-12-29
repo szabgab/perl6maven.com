@@ -4,6 +4,6 @@
 =keywords 
 =status show
 
-<include file="examples/scalars/calculator.p6" />
+<include file="tutorial/scalars/calculator.p6" />
 
 

@@ -13,5 +13,5 @@ Then it waits for the user to type in something.
 It reads up to the ENTER the user presses, but passes over only the the part before the
 newline. (Perl 5 users could think about it as having autochomp)
 
-<include file="examples/scalars/read_stdin.p6" />
+<include file="tutorial/scalars/read_stdin.p6" />
 

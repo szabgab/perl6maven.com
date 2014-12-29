@@ -31,7 +31,7 @@ See also S03-operators.pod
 "hello" eq ""        # false
 </code>
 
-<include file="examples/scalars/comparison_operators.p6" />
+<include file="tutorial/scalars/comparison_operators.p6" />
 
 <pre>
 Cannot convert string to number: base-10 number must begin with valid digits or '.'

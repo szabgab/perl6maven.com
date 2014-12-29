@@ -4,5 +4,5 @@
 =keywords ~
 =status show
 
-<include file="examples/scalars/concat.p6" />
+<include file="tutorial/scalars/concat.p6" />
 

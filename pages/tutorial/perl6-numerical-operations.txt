@@ -7,5 +7,5 @@
 
 Numerical operator can be used on the scalar values.
 
-<include file="examples/scalars/numerical_operators.p6" />
+<include file="tutorial/scalars/numerical_operators.p6" />
 

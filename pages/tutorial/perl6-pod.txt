@@ -4,6 +4,6 @@
 =keywords POD
 =status show
 
-<include file="examples/intro/documentation.p6" />
+<include file="tutorial/intro/documentation.p6" />
 
 See also the <a href="http://perlcabal.org/syn/S26.html">Synopsis 26</a> that describes the Perl 6 pods.

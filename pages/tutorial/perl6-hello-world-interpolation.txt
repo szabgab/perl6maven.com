@@ -6,7 +6,7 @@
 
 We can put scalar variables within regular strings. Their value will be interpolated into the string.
 
-<include file="examples/scalars/hello_world_variable_interpolation.p6" />
+<include file="tutorial/scalars/hello_world_variable_interpolation.p6" />
 
 prints
 

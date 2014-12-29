@@ -4,5 +4,5 @@
 =keywords 
 =status show
 
-<include file="examples/scalars/junctions.p6" />
+<include file="tutorial/scalars/junctions.p6" />
 

@@ -7,6 +7,6 @@
 As we can see - in this case - Perl 6 does not care that you typed
 in a string, the numeric + adds together the two numbers.
 
-<include file="examples/scalars/add.p6" />
+<include file="tutorial/scalars/add.p6" />
 
 

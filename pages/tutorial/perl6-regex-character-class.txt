@@ -1,0 +1,15 @@
+=title Character clas
+=timestamp 2012-01-01T01:01:06
+=author szabgab
+=keywords 
+=status draft
+
+(before ranges)
+
+<[abc]>
+
+Negated character class
+
+<-["]>
+
+

@@ -4,7 +4,7 @@
 =keywords comments, #
 =status show
 
-<include file="examples/intro/comments.p6" />
+<include file="tutorial/intro/comments.p6" />
 
 See also <a href="http://perlcabal.org/syn/S02.html#Multiline_Comments">Multiline Comments</a> and <a href="http://perlcabal.org/syn/S02.html#Embedded_Comments">Embedded Comments</a>
 in the Synopsis.

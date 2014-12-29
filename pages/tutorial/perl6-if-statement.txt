@@ -7,6 +7,6 @@
 You can compare two values or scalar variables using the <emp>if</emp>
 statement and one of the comparison operators.
 
-<include file="examples/scalars/if.p6" />
+<include file="tutorial/scalars/if.p6" />
 
 

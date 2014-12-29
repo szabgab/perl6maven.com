@@ -23,5 +23,5 @@ if not COND {
 }
 </code>
 
-<include file="examples/scalars/logical_operators.p6" />
+<include file="tutorial/scalars/logical_operators.p6" />
 

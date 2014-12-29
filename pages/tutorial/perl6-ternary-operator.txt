@@ -4,7 +4,7 @@
 =keywords
 =status show
 
-<include file="examples/scalars/ternary.p6" />
+<include file="tutorial/scalars/ternary.p6" />
 
 <pre>
 COND ?? VALUE_IF_TRUE !! VALUE_IF_FALSE

@@ -4,5 +4,5 @@
 =keywords substr
 =status show
 
-<include file="examples/scalars/string_functions_substr.p6" />
+<include file="tutorial/scalars/string_functions_substr.p6" />
 

@@ -4,5 +4,5 @@
 =keywords 
 =status show
 
-<include file="examples/scalars/chained_comparison.p6" />
+<include file="tutorial/scalars/chained_comparison.p6" />
 

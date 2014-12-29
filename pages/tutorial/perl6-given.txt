@@ -13,5 +13,5 @@ next command after the given block.
 
 If non of the when values fit the (optional) default block is evaluated.
 
-<include file="examples/scalars/calculator_given.p6" />
+<include file="tutorial/scalars/calculator_given.p6" />
 
