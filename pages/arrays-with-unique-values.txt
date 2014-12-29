@@ -5,7 +5,7 @@
 =status show
 =archive 1
 =comments 1
-=perl5url http://szabgab.com/unique-values-in-an-array-in-perl.html
+=perl5url http://perlmaven.com/unique-values-in-an-array-in-perl
 =perl5title Unique values in an array in Perl 5
 
 =abstract start
