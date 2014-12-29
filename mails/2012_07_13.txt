@@ -1,0 +1,15 @@
+=subject Most popular shell commands using Perl 6
+
+Hi,
+
+A few weeks ago brian d foy posted a challenge to create
+a list of most popular shell commands. Assuming of course
+a Linux/Unix system and using Perl.
+I think he did not explicitly say Perl 5 :)
+
+I wrote a version in Perl 6 that can also handle Windows machines:
+
+   http://perl6maven.com/most-popular-shell-commands-using-perl6
+
+Enjoy
+   Gabor

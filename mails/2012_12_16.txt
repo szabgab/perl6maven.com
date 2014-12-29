@@ -1,0 +1,29 @@
+=subject The 2012 Perl 6 Coding Contest
+
+hi,
+
+as you might have noticed I did not have a lot of time
+to do anything Perl 6 related in the last 3 months.
+I hardly had time for any articles.
+
+In the meantime I hope you have followed the Perl 6 Advent calendar.
+If you have not done it, it is still not too late.
+Visit http://perl6advent.wordpress.com/ and you'll already find 16 articles.
+
+
+Anyway, I am sending this message as I just noticed that Carl Masak
+has announced the 3rd annual Perl 6 Coding Contest.
+It started 2 days ago, and will end on 18th January 2013.
+
+You have 5 tasks to solve.
+
+    http://strangelyconsistent.org/blog/the-2012-perl-6-coding-contest
+
+
+enjoy
+   Gabor
+
+ps. I think this can be a good excuse to improve your Perl 6 skills
+and this could be a good project to extend invitation to your friends,
+to try Perl 6.
+

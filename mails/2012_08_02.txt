@@ -1,0 +1,31 @@
+=subject Looping over a list of values one at a time, two at a time and more
+
+Hi again,
+
+I've heard that some people reading the articles published
+on the Perl 6 Maven site got to #perl6 IRC channel and started
+to get involved. This is awesome! Keep doing it.
+
+This reminds me that one of my objectives with the Perl 6 Maven
+site is to enlarge the circle of people who are learning, and
+starting to use Perl 6.
+
+The question how?
+
+Or maybe who?
+
+Who do you think could be interested in Perl 6?
+
+Today's article is about iterating over elements of lists, arrays, hashes also
+introducing the big Z. No it is neither Zorro nor Zorg.
+
+  http://perl6maven.local/perl6-looping-over-a-list-of-values-one-at-a-time-two-at-a-time-and-more
+
+
+regards
+   Gabor
+ps. My standard request would be to share the article.
+There are 3 sharing buttons on the page, and if you are reading
+Hacker News http://news.ycombinator.com/ , that would be a perfect
+place to post this article.
+

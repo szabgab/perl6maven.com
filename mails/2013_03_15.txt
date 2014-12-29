@@ -1,0 +1,27 @@
+=subject Getting started with Rakudo * (2013.01) on Windows
+
+hi,
+
+a few days ago I rebuild Rakudo on my Linux machine, but I
+also wanted to try it on Windows. I am glad that the
+Rakudo team already provides MSI file for easy installation
+on Windows.
+
+In this article I described my experience with the most recent
+MSI package and explained how to fix the minor flaws I found.
+
+   http://perl6maven.com/getting-started-with-rakudo-star-2013-01-on-windows
+
+Perl 6 Maven social widgets
+===========================
+
+Last time I mentioned that I added the social icons to the tutorial pages,
+but it turns out they were broken for most of the time.
+I fixed them now so you can +1 the articles on Google+.
+I am sure it does not need explanation that Google takes the +-es
+and the number of shares in account for the regular searches as well.
+
+
+enjoy
+   Gabor
+

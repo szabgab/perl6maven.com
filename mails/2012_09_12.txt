@@ -1,0 +1,18 @@
+=subject Sending email using Perl 6
+
+hi,
+
+as far as I know there is no Perl 6 module yet for sending e-mail
+so I wrote a subroutine to handle the task for this newsletter.
+
+In this article I show it:
+
+    http://perl6maven.com/sending-email-using-perl6
+
+Enjoy
+   Gabor
+ps. A few days ago I wrote an article listing the most popular perl-related web sites
+based on Alexa http://szabgab.com/most-popular-perl-sites.html
+There is a section for Perl 6 related sites with the 4 top-most entries.
+What other sites would you include in the list?
+

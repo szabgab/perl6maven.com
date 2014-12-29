@@ -1,0 +1,10 @@
+Emails were sent using
+
+   perl6 -Ilib script/sendmail.pl6 mails/file.tmpl   perl6@szabgab.com
+
+and then they need to be approved via the Mailman interface.
+
+The emails can be sent from either the desktop of Gabor or the server.
+
+but for now I just copy-paste the content of the files to my e-mail client and send them manually.
+

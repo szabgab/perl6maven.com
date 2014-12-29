@@ -1,0 +1,55 @@
+=subject Reading from a file
+
+hi,
+
+Besides the article on reading from a file, that you can, err, read here:
+
+    http://perl6maven.com/reading-from-a-file-in-perl6
+
+there are a couple of announcements too:
+
+The source of Perl 6 Maven in raw format
+=========================================
+
+I pushed the source files of the Perl 6 Maven articles
+to Github.
+
+    https://github.com/szabgab/perl6maven.com
+
+So far this only contains the articles in their "source" format
+which is a mix of POD, HTML, and XML, but I am also planning
+to push out the source files of the Perl 6 tutorial I wrote
+and that I should refresh:
+
+    http://perl6maven.com/tutorial/
+
+I am also planning to release the code that generates the site.
+I just have to do some clean-up work before I dare to do it.
+
+
+Searching the Perl 6 Maven site?
+==================================
+
+As I had a long break from Perl 6 I forgot almost everything I knew
+so when I tried to read from a file I had to look for examples.
+I could not find anything in the documentation of Perl 6 nor could
+I find it (easily) on the Perl 6 Maven site. I needed a search and
+added one.
+
+On the navigation bar you will find a text-box, where you can type your
+query. It is keyword based so only values that were added to the index
+can be found (and as I just checked, even that might be a bit buggy),
+but it is a start. Let me know how does it work (or not) for you,
+and which keywords are you missing?
+See
+
+     http://perl6maven.com/
+
+enjoy
+   Gabor
+
+ps. I know very few people are currently interested in Perl 6,
+but I am sure a little more publicity will help. A bit.
+So don't forget to share the above links on Google+, or on your favorite
+social network.
+

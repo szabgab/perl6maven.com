@@ -1,0 +1,73 @@
+=subject Starting again with Rakudo Perl 6: Welcome Perl 6 Maven!
+
+Hi,
+
+I hope you still remember me, and this newsletter.
+
+This is the Perl6 Tricks and Treats newsletter,
+that you signed up, probably on my web site:
+http://szabgab.com/perl6_tricks_and_treats.html
+
+It has been a while ago. The last message was
+sent more than a year ago.
+
+That was the time when I decided I should focus on
+Perl 5 to avoid confusion on my web site.
+
+Since then, Rakudo has improved a lot and today
+I can announce a new web site where I am going to
+move all the Perl 6 content from szabgab.com.
+That will probably help avoiding any confusion.
+
+This is where I am going to publish my new articles
+and new screencasts about Perl 6.
+
+I also plan to collect other Perl 6 related resources
+and provide a unified and clear way to learn Perl 6,
+and eventually to become a Perl 6 Maven.
+
+Let me welcome you to the new Perl 6 Maven site:
+
+    http://perl6maven.com/
+
+
+Currently the site is a set of static pages generated
+with a Perl 6 script using HTML::Template. That will
+certainly change, but I will only use Perl 6 for
+that site, and not Perl 5. If that means some things will
+take longer to add, and I might have to shave a few yaks
+before I can add a new feature. So be it.
+That's the way I might also help the advancement of the
+Perl 6 ecosystem.
+
+
+For now I'll keep this newsletter and even invite more
+people to sign up. Later I'll switch to use something
+written in Perl 6.
+(Luckily this is ok, as Mailman is written in Python
+and not Perl 5 :)
+
+I though I might finish this with a sentence like
+
+"So just sit back and watch!"
+
+but I'd actually like you take active part in the
+creation of this web site and in improving our Perl 6
+skils. So if you have not touched Perl 6 recently than
+grab the latest Rakudo and start typing!
+
+My first mini-article on the new site is about
+
+    Starting again with Rakudo Perl 6
+
+    http://perl6maven.com/starting-again-with-rakudo-perl6
+
+So go read and start writing Perl 6 code
+
+regards
+   Gabor Szabo
+   http://szabgab.com/
+   http://perl6maven.com/
+
+ps. This message was sent using Perl 6
+

@@ -1,0 +1,21 @@
+=subject Is 2015 going to be the Year of Perl 6 ?
+
+Hi there!
+
+I have not published anything Perl 6 related for more than a year,
+but just as last year, I have quickly published two articles today:
+
+
+The technical one explain how to install the latest release of  Rakudo Perl 6
+http://perl6maven.com/tutorial/perl6-installing-rakudo
+
+In the non-technical one I ask:
+
+Is 2015 going to be the year of Perl 6 ?
+http://perl6maven.com/is-2015-going-to-be-the-year-of-perl6
+
+Let's see what the answer will be?
+
+Happy New Year!
+   Gabor
+

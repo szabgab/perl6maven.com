@@ -1,0 +1,13 @@
+=subject Operation on a Series of Integers in Perl 6
+
+Hi,
+
+another article has been updated and moved to the Perl 6 Maven site:
+
+   Operation on a Series of Integers in Perl 6
+   http://perl6maven.com/operation-on-a-series-of-integers-in-perl-6
+
+
+Enjoy
+   Gabor
+

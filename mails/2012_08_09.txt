@@ -1,0 +1,18 @@
+=subject Perl 5 to Perl 6 - Scalars
+
+Hi there,
+
+I am back from my short vacation, getting back full speed
+updating the old Perl 6 articles and creating new ones.
+
+The article today can be more interesting for Perl 5 developers,
+who are interested in learning the changes in Perl 6.
+
+   http://perl6maven.com/perl5-to-perl6-scalars
+
+
+regards
+   Gabor
+ps. In case you are overwhelmed by the articles, you can always
+rely on the archive: http://perl6maven.com/archive to
+check previous articles.

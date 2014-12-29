@@ -1,0 +1,26 @@
+=subject From Iterative to Functional Perl 6 Code
+
+Hi,
+
+this is the first guest post on Perl 6 Maven and I am really happy about it.
+
+Moritz Lenz, a core developer of the Rakudo Perl 6 Compiler and a long time
+Perl 6 blogger is showing how to locate a file in the filesystem
+when you are unsure its location or its extension.
+
+This is a simple example that can help concentrate on the Perl 6 features
+he is showing that makes the solution interesting.
+
+The article is here:
+
+   http://perl6maven.com/from-iterative-to-functional-perl6-code
+
+Keywords: gather, take, X, X~, ~, :=
+
+Enjoy
+   Gabor
+
+ps. I have added a Reddit button to the article and posted it in the programming
+section. If you liked the article, please help use gain some traction over there
+and upvote it. Thank you.
+

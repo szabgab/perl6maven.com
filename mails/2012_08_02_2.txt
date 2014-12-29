@@ -1,0 +1,15 @@
+=subject URL fixed [was Looping over a list of values one at a time, two at a time and more]
+
+Sorry for the duplicate e-mail. I managed to include the URL
+of my development machine. :(
+
+This is the correct one.
+
+
+  http://perl6maven.com/perl6-looping-over-a-list-of-values-one-at-a-time-two-at-a-time-and-more
+
+
+regards
+   Gabor
+
+Thank to Nicolas Walker for quickly alerting me.

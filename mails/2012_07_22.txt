@@ -1,0 +1,41 @@
+=subject How to test Perl 6 modules and scripts?
+
+Hi,
+
+a couple of days ago the core Rakudo and Perl 6 developer
+asked around how should they handle breakages across
+versions of Rakudo. They are not yet declaring it to
+be "stable" or "production" version, but they would like
+to make it easier for people to start writing Perl 6 code
+*and* to ensure relatively smooth upgrade.
+
+Some of the responses on PerlMonks made me think people
+somehow accept the fact that all the dynamic languages
+(Python, PHP, Ruby and even Perl 5) have broken backward
+compatibility to some extent.
+
+Even if that was "just" to fix a potential security hole.
+
+OTOH they expect Rakudo and Perl 6 to be "stable".
+
+I ranted about this a bit on my blog
+http://szabgab.com/looking-for-a-stable-language.html
+but eventually the only reasonable solution
+I know is to write lots of automatic tests and run
+them both before and after upgrade.
+
+To make it easier I wrote an article
+
+    How to test Perl 6 modules and script?
+    http://perl6maven.com/how-to-test-perl6-modules
+
+regards
+    Gabor
+ps. The articles on Perl 6 Maven now have 3 social buttons
+Reddit, Twitter and Google+.
+
+Don't forget to share the article with your
+followers/circles/friends/etc. It will help to spread the
+word about Perl 6 and make me happy too :)
+
+

@@ -1,0 +1,69 @@
+=subject Perl 6 Advent calendar and Rakudo 2013.11
+
+Hi there!
+
+Long time no mail.
+
+In the last year or so, I hardly had any time to follow
+the development of Perl 6, but there is a little project
+I am planning to write in Perl 6 now, so last month I
+started to check again.
+
+
+Getting started with Rakudo * 2013.11
+======================================
+
+Specifically I tried to set up my environment with Rakudo 2013.10
+Unfortunately some modules were missing from that distribution.
+
+Then I tried it again with the 2013.11 release. There again I
+bumped into a problem, that panda, the "cpan client" of Perl 6
+did not work. This was due to a server problem, but I decided
+I'll just bite the bullet and rewrite the script generating
+the Perl 6 Maven site to use Template::Mojo that already
+comes with Rakudo *.
+
+Once I did that I could re-generate the main pages of the
+site, but then I found out I need another module, one that
+does not come with Rakudo *, to rebuild the tutorial part.
+http://perl6maven.com/tutorial/
+
+That's a very basic and probably very incorrect XML parser
+I wrote in Perl 6 a while ago. I did not really had to 
+install it as I could just tell perl6 to look for it
+in another place using the -I command line flag.
+
+(Yes, I could have done the same with the Templating system,
+but I realized this only after I already rewrote that part.)
+
+Anyway, it turned out the XML parser stopped working since
+I last ran it in February. Luckily Tobias Leich (FROGGS)
+helped me in the Perl 6 IRC channel and fixed that XML module.
+
+Armed with all this I could re-generate the site and publish
+the new article on how to get started with Rakudo 2013.11:
+
+http://perl6maven.com/getting-started-with-rakudo-star-2013-11-on-osx
+
+
+Perl 6 Advent Calendar
+==============================
+
+Some parts of the tech community like to celebrate Christmas
+by preparing an Advent Calendar. This basically means they 
+write an article every day from 1st December till 24 December.
+More-or-less.
+
+The Perl 6 Advent calendar can be found here:
+
+https://perl6advent.wordpress.com/
+
+It even has a table of contents:
+
+https://perl6advent.wordpress.com/2013/11/30/perl-6-advent-calendar-2013-table-of-contents/
+
+
+enjoy!
+   Gabor
+
+

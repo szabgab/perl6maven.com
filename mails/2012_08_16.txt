@@ -1,0 +1,21 @@
+=subject Perl 6 files
+
+Hi there,
+
+A quick message as I am already in Germany, 
+with both hands in Perl.
+
+The article today is about reading and writing files in Perl 6:
+
+  http://perl6maven.com/perl6-files
+
+Thanks a lot to those who sent me their question regarding Perl 6,
+some really useful issues there that will be addressed later.
+
+As I am going to see some of the core Perl 6 developers,
+it would be awesome if you could send me your questions and
+concerns regarding Perl 6.
+
+
+   Gabor
+

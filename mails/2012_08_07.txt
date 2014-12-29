@@ -1,0 +1,27 @@
+=subject Perl 6 subroutines
+
+Hi there,
+
+I am on a sort-of vacation spending a lot of hours in a
+swimming pool and trying to rest in the rest of the time.
+Nevertheless I am trying to move forward with the Perl 6
+articles.
+
+This time it is about subroutines.
+
+They are way more complex and more powerful than in Perl 5:
+
+   http://perl6maven.com/perl6-subroutines
+
+though as a side effect I also introduce the reduction operator.
+
+regards
+   Gabor
+ps. I also added a warning to the pages telling
+random visitors that this site is about Perl 6 and not Perl 5.
+I should probably make it dependent on the (lack of) a cookie
+so i'll be able to show it only to the random new visitor, and not
+to the regular readers, like you.
+
+What do you think about the wording?
+

@@ -1,0 +1,22 @@
+=subject Regexes in Perl 6 and commenting is enabled
+
+Hi,
+
+another article has been updated and moved to the Perl 6 Maven site:
+
+   Perl 6 Regexes
+   http://perl6maven.com/perl6-regexes
+
+In addition I enabled commenting on the web site using the Disqus
+commenting service.
+
+Enjoy
+   Gabor
+
+Here is a question for you:
+
+Currently there are 230 people subscribed to this newsletter.
+Some of you click on the links I send and probably read the articles,
+but many don't.
+
+How can I make the articles more interesting so more people will read them?

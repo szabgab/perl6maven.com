@@ -1,0 +1,47 @@
+=subject Arrays with unique values
+
+Hi,
+
+first of all, happy 4th of July to the readers from the USA.
+You are probably taking a day off and not reading this, but anyway :)
+
+
+News
+====
+
+Moritz Lentz has announced the creation of http://doc.perl6.org/
+---------------------------------------------------------------
+
+For background see:
+
+   http://perlgeek.de/blog-en/perl-6/2012-doc-perl6-org-and-p6doc.html
+
+
+
+Carl Mäsak started a month of blogging
+---------------------------------------------------------------
+
+He will build a game in Perl 6 blogging about it every day in July.
+Here is the announcement with links to the first 3 entries:
+
+   http://strangelyconsistent.org/blog/another-month-of-blogging-adventure-game-here-i-come
+
+
+Perl 6 Maven
+=============
+
+Arrays with unique values
+-------------------------
+
+This is a refreshed version of the first article I sent out
+via the this newsletter, back on 12 March 2009.
+
+The examples still work, though the output is a bit different that it
+was 3 years ago:
+
+   http://perl6maven.com/arrays-with-unique-values
+
+Enjoy!
+   Gabor
+   http://perl6maven.com/
+

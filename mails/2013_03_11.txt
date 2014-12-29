@@ -1,0 +1,68 @@
+=subject Comments on the Perl 6 tutorial
+
+hi,
+
+as you might have noticed, I did not have a lot of time
+to do anything Perl 6 related in the last couple of months.
+
+I was mostly focusing on getting the Perl 5 Maven site
+http://perl5maven.com/ more popular, and that seems to
+be working.
+
+So maybe I'll have some time again to turn my attention
+to Perl 6 as well.
+
+
+Perl 6 Maven broken and fixed
+===============================
+
+Yesterday I rebuilt Rakudo which broke the Perl 6 Maven site.
+If you are following the RSS feed of the site then you might
+have noticed the breakage. Sorry for that.
+
+I had code that looked like this:
+
+   qq{ Title: { $page.title } }
+
+This worked on earlier versions of Rakudo, but apparently that
+was a bug. As I understood from a little chat in the IRC channel
+is that if I want to use the {} statement interpolation in a string,
+then I cannot use curly braces as the delimiters for qq.
+
+According to this Rakudo was broken earlier and I used this broken 
+feature so my code only worked by accident.
+
+I had to fix my code:
+
+   qq[ Title: { $page.title } ]
+
+This was of course frustrating, but on the other hand no other part
+of my code got broken in the past 6 months, so Rakudo might be
+quite stable.
+
+
+Perl 6 Maven: Comments on the tutorials
+========================================
+
+Earlier I had comments enabled on the articles only,
+but not on the pages of the tutorial. Today I enabled
+the comments there too. I hope you will use it.
+
+
+Hello World
+============
+Instead of writing totally new articles I am going to add more
+detailed text to the tutorial pages.
+
+The first one I attacked was the "Hello World" example:
+
+     http://perl6maven.com/tutorial/perl6-hello-world
+
+enjoy
+   Gabor
+
+ps. I also added the social icons to the tutorial pages.
+It seems that Google takes in account all the +1-s a page
+receives via Google+. So if you like a page, please
+click on the G+1 icon on the right hand side.
+

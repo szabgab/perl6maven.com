@@ -1,0 +1,32 @@
+=subject Perl 6 subroutines and home made operators
+
+hi,
+
+this is the return of some videos!
+
+I started to go over the old Perl 6 video recordings to see which one
+is still relevant, which one needs a little fixing and which one do
+I need to throw out.
+
+Today's article includes some explanation on subroutine definitions
+and creating the thought operator so you'll be able to write
+
+   Gabor .oO( 'Perl 6 is awesome' )
+
+People who are frequent to the #perl6 IRC channel will recognize the expression.
+
+The article with the embedded video is here:
+
+  http://perl6maven.com/perl6-subroutines-and-home-made-operators
+
+The video needed some annotation as there are a few places where the
+old code needs some fixing.
+
+
+Enjoy
+   Gabor
+
+ps. If you like the article, please share it.
+Especially think to post it on Reddit and Hacker news, and if
+someone has already shared it, please up-vote it!
+

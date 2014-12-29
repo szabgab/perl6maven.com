@@ -1,0 +1,41 @@
+=subject How to install Perl 6 modules
+
+Wow, it has been almost 2 weeks since I sent the last message!
+
+I hope you were all on vacation and did not miss any of the action.
+
+I sent the previous message while I was already in Germany,
+in a town called Perl, just 1 km from Schengen on the
+German/Luxembourg/France border.
+
+A couple of Perl 5 big shots and almost the entire Perl 6 development
+team was there.
+
+An me.
+
+The 3-days meeting was called the
+
+  Perl Reunification Summit
+
+organized by Liz and Wendy ( Elizabeth Mattijsen and Wendy van Dijk).
+
+The main subject was - how to get Perl 5 and Perl 6 talk to each other?
+
+Both the compilers and the communities.
+
+I am sure we are going to hear a lot about this meeting, and I hope
+we'll see lots of results in a few months. In case you'd like to read
+a bit more about this, here is what Liz wrote:
+
+  http://blogs.perl.org/users/liz/2012/08/as-some-of-you-may.html
+
+
+Compared to that, the current article is a bit pale and short.
+I just described how can you install and use external modules
+in Perl 6:
+
+  http://perl6maven.com/how-to-install-perl6-modules
+
+regards
+   Gabor
+

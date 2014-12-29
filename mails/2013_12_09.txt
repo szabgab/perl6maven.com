@@ -1,0 +1,36 @@
+=subject How to catch an exception in Perl 6
+
+Hi there!
+
+I know it was only 2 days ago that I restarted this newsletter
+and now I am here again.
+
+This is that small project I mentioned in the previous message.
+I started to write it and as I re-learn Perl 6, I will post
+my questions, and the answer I found in relatively short posts.
+
+It probably won't have any logical order.
+
+Anyway, the title of this mail is the title of the post:
+
+http://perl6maven.com/how-to-catch-an-exception-in-perl6
+
+
+Reminder: Perl 6 Advent Calendar
+===================================
+
+Instead of reading my short articles, you'd probably gain
+a lot more following the Perl 6 Advent calendar which is written
+by people who actually know Perl 6:
+
+https://perl6advent.wordpress.com/
+
+It even has a table of contents:
+
+https://perl6advent.wordpress.com/2013/11/30/perl-6-advent-calendar-2013-table-of-contents/
+
+
+enjoy!
+   Gabor
+
+

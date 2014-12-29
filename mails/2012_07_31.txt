@@ -1,0 +1,23 @@
+=subject Is a value IN a given list of values?
+
+Hi,
+
+I am sorry if I am even less coherent than usual, but I was up
+till 4 am yesterday trying to set up the index page of the
+Perl 6 Maven site.
+
+As probably usual it did not work out, but after having a
+few hours sleep I managed to finish it. It's not something
+very interesting, I just united the index from the tutorial
+http://perl6maven.com/tutorial/ and from the regular pages
+of the the site into a single index page: http://perl6maven.com/index
+
+The post of today is an updated version of an earlier post. It starts
+out as a simple problem, but then uses the opportunity to show the
+new form of the ternary operator and junctions.
+
+  http://perl6maven.com/perl6-is-a-value-in-a-given-list-of-values
+
+regards
+    Gabor
+

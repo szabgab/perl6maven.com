@@ -1,0 +1,92 @@
+=subject Read module documentation on-line
+
+Hi,
+
+first let me include some external news and then update
+about the Perl Maven site.
+
+The French Perl workshop ( http://journeesperl.fr/fpw2012/ )
+was held during the last 2 days. Several Perl 6 developers
+took part and gave presentations.
+Despite this, we also saw the scheduled release of Rakudo *.
+
+
+News
+=====
+
+Moritz Lentz has announced the June 2012 release of "Rakudo *".
+---------------------------------------------------------------
+
+It contains the latest release of the Rakudo compiler, Parrot,
+some modules and documentation.
+
+If you are learning Perl 6, this might be a good package
+to start with.
+
+For the detailed announcement, see
+
+   http://rakudo.org/2012/06/30/rakudo-star-2012-06-released/
+
+
+Carl Mäsak describes the solution to Enumerating trees
+---------------------------------------------------------------
+
+This was the 5th, and final task in the Perl 6 Coding Contest 2011.
+
+In a nutshell, you were supposed to draw all the different trees
+with N nodes and N-1 vertices. Without duplications.
+
+  http://strangelyconsistent.org/blog/t5-enumerating-trees
+
+
+
+Stefan O'Rear announced the release of Niecza Perl 6 v19
+---------------------------------------------------------------
+
+Niecza is a Perl 6 compiler targeting the Common Language Runtime;
+Both Mono and Microsoft .NET are known to work.
+
+For details see
+
+   http://www.nntp.perl.org/group/perl.perl6.announce/2012/06/msg679.html
+
+
+
+Update to the Perl 6 Maven site:
+================================
+
+As mentioned earlier, in addition to the articles I'll publish
+about Perl 6, I am also trying to collect all the existing content
+and display in a useful way.
+
+Partially because *I* need them for exploring and using Perl 6,
+but I hope this will be also useful for you too.
+
+The first thing I was trying to display is the documentation
+of the existing 3rd-party Perl 6 modules.
+
+I based the information on what Panda supplies, processed
+the POD using a naive and very partial POD parser
+https://github.com/szabgab/perl6-Pod-Parser
+and created the pages.
+
+Visit the Perl 6 Maven web site and check out the links
+"Projects" and "Authors". http://perl6maven.com/
+
+If you find a module where the POD was not or was not
+sufficiently parsed, please let me know or just file
+a ticket for the Pod::Parser with the name of the module.
+I'll try to fix those ASAP.
+
+I would like to add some search capability to it and
+a better display of the source code. Maybe even the
+results of some code analysis, so people learning a
+feature of the language could find examples how to
+use that feature.
+
+For now, that's it.
+
+Enjoy!
+   Gabor
+   http://perl6maven.com/
+

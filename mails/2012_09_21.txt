@@ -1,0 +1,11 @@
+=subject Would you like to know when Rakudo, Niecza or Pugs are mentioned on CNN?
+
+hi,
+
+This article shows you how to download a web page using Perl 6:
+
+   http://perl6maven.com/how-to-download-a-web-page-with-perl6
+
+enjoy
+   Gabor
+

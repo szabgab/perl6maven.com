@@ -1,0 +1,32 @@
+=subject Perl 5 to Perl 6 - Arrays
+
+Hi there,
+
+This is the second part in the Perl 5 to Perl 6 series.
+This time we are looking at arrays and loops and a bit
+about ranges ..
+
+    http://perl6maven.com/perl5-to-perl6-arrays
+
+
+YAPC::EU
+========
+
+Next week I'll be in Germany at YAPC::EU,
+where I am going to meet with most of the core
+Perl 6 developers. I hope I'll be able to have a
+conversation with about the future of Perl 6.
+
+Guest posts
+============
+
+I'd also like to get at least some of them to
+write guest posts for the Perl 6 Maven, but I am
+sure they will ask me what should they write about?
+
+So I'd like to get your opinion on this.
+What kind of articles would *you* like to read?
+
+regards
+   Gabor
+

@@ -1,0 +1,33 @@
+=subject How does interpolation of scalars, arrays and hashes work in Perl 6
+
+Hi,
+
+let me thank the people who shared the previous articles on Twitter or Google+.
+It helps a lot reaching new people.
+
+Special thanks to Patterner0 who posted the previous article on Reddit
+http://www.reddit.com/r/perl/comments/wyrlt/how_to_test_perl_6_modules_and_scripts/
+This post brought in quite a number of visitors.
+
+
+This new article is describing the variable interpolation in Perl 6
+or "How to embed an expression in a string?"
+
+    http://perl6maven.com/perl6-scalar-array-and-hash-interpolation
+
+Perl 6 Tutorial
+================
+
+A couple of days ago I move my old Perl 6 slides to the new site.
+I went over the first 4 chapters to make sure the code works, though
+I am sure there are a lot of things that need to be improved.
+
+I published it under the link "Tutorial" on the site and I am
+planning to turn it into something that is usable as a
+Perl 6 tutorial. Please check it, and send me any comments you have.
+http://perl6maven.com/tutorial/
+
+
+regards
+    Gabor
+

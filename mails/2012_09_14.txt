@@ -1,0 +1,14 @@
+=subject Parsing command line arguments in Perl 6
+
+hi,
+
+There are about 20-30 modules on CPAN handing the command line arguments
+of a Perl 5 script.
+
+In Perl 6, there is a built-in mechanism:
+
+   http://perl6maven.com/parsing-command-line-arguments-perl6
+
+enjoy
+   Gabor
+
