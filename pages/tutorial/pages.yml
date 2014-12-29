@@ -45,4 +45,24 @@
     - perl6-lines
     - perl6-exercise-print-sum-of-numbers
     - perl6-solution-print-sum-of-numbers
+- id: perl6-lists-array
+  title: Perl 6 Lists and Arrays
+    - perl6-list-literals
+    - perl6-list-assignment
+    - perl6-lists
+    - perl6-loop-over-elements
+    - perl6-array
+    - perl6-array-elements
+    - perl6-array-assignment
+    - perl6-command-line-options
+    - perl6-process-csv-file
+    - perl6-join
+    - perl6-arrays-uniq
+    - perl6-looping-over-elements
+    - perl6-looping-over-many-elements
+    - perl6-loop-missing-values
+    - perl6-iterating-over-more-than-one-array
+    - perl6-zip
+    - perl6-xx
+    - perl6-sort
 

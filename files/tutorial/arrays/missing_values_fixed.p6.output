@@ -1,0 +1,6 @@
+1 2
+3 4
+use of uninitialized value of type Mu in string context
+   in block <anon> at examples/arrays/missing_values_fixed.p6:5
+5
+done

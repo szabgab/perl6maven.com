@@ -1,0 +1,25 @@
+=title Looping over any number of elements
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+You can also iterate over any number of elements:
+
+Let's say we just extracted the results of the Spanish Liga football
+games from the soccer website http://soccernet.espn.go.com/ .
+Those come in groups of 4 values:
+
+home team,
+score of home team
+score of guest team
+guest team
+
+
+We can loop over the values using a for statement with
+4 scalar variables:
+
+<include file="tutorial/arrays/looping_over_many_elements.p6" />
+
+

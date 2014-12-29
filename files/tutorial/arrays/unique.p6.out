@@ -1,0 +1,4 @@
+Array.new(1, 1, 2, 5, 1, 4, 3, 2, 1)
+Array.new(1, 2, 5, 4, 3)
+Array.new("b", "c", "a", "d", "b", "a", "a", "a", "b")
+Array.new("b", "c", "a", "d")

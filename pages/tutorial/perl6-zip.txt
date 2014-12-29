@@ -1,0 +1,19 @@
+=title Z as in zip
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+The Z infix operator version of the zip function allows
+the parallel use of two lists.
+
+Or that of more:
+
+<include file="tutorial/arrays/z_on_more.p6" />
+
+Output:
+
+<include file="tutorial/arrays/z_on_more.p6.out" />
+
+

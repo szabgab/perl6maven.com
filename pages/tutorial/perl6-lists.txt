@@ -1,0 +1,9 @@
+=title Swap two values
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+<include file="tutorial/arrays/lists.p6" />
+
+

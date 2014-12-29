@@ -1,0 +1,17 @@
+=title Iterating over more than one array in parallel
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords Z, zip
+=status show
+
+In the next example I'd like to show a totally different case.
+What if you have two (or more) array you'd like to combine somehow?
+How can you go over the elements of two arrays in parallel?
+
+<include file="tutorial/arrays/z.p6" />
+
+Output:
+
+<include file="tutorial/arrays/z.p6.out" />
+
+

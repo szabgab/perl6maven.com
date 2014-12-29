@@ -1,0 +1,29 @@
+=title Missing values
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+One should ask the question what happens if the list runs out of
+values in the middle, of a multi-value iteration? That is,
+what happens to the follow loop?
+
+<include file="tutorial/arrays/missing_values.p6" />
+
+In this case Rakudo throws an exception when it finds out it
+does not have enough values for the last iteration. It will look
+like this, (with a bunch of trace information afterwards).
+
+<include file="tutorial/arrays/missing_values.p6.output" />
+
+In order to avoid the exception we could tell the loop that the second and
+subsequent values are optional by adding a question mark after the variable
+
+<include file="tutorial/arrays/missing_values_fixed.p6" />
+
+This will work but generate the following output:
+
+<include file="tutorial/arrays/missing_values_fixed.p6.output" />
+
+

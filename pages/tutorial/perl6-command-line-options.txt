@@ -1,0 +1,13 @@
+=title Command line options
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords @*ARGS
+=status show
+
+
+@*ARGS is the array maintained by language that holds the values supplied on the comman line.
+It does NOT include the nam
+
+<include file="tutorial/arrays/color_menu_option.p6" />
+
+

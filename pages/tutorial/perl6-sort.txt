@@ -1,0 +1,9 @@
+=title sort values
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords sort
+=status show
+
+<include file="tutorial/arrays/sort.p6" />
+
+

@@ -1,0 +1,4 @@
+1 2
+3 4
+Not enough positional parameters passed; got 1 but expected 2
+  in block <anon> at examples/arrays/missing_values.p6:4

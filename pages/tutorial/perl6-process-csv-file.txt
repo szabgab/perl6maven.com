@@ -1,0 +1,12 @@
+=title Process CSV file
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords CSV
+=status show
+
+
+<include file="tutorial/arrays/sample_csv_file.csv" />
+
+<include file="tutorial/arrays/process_csv_file.p6" />
+
+

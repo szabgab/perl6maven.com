@@ -1,0 +1,18 @@
+=title List Assignment
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+<pre>
+my ($x, $y, $z);
+($x, $y, $z) = f();  # if f() returns (2, 3, 7) then it is nearly the same as $x=2; $y=3; $z=7;
+($x, $y, $z) = f();  # if f() returns (2, 3, 7, 9), then ignore 9
+($x, $y, $z) = f();  # if f() returns (2, 3);  then $z will be undef
+</pre>
+
+A regular question on job interviews:
+How can we swap the values of 2 variables, let say $x and $y?
+
+

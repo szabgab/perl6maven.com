@@ -1,0 +1,8 @@
+Array.new("bar", "bu", "foo", "moose")
+Array.new(4, 17, 23)
+Array.new("bu", "foo", "bar", "moose")
+Array.new("bu", "foo", "bar", "moose")
+Array.new("bu", "foo", "bar", "moose")
+Array.new("bu", "foo", "bar", "moose")
+("bu", "moo", "foo", "bar", "moose")
+("bu", "bar", "foo", "moo", "moose")

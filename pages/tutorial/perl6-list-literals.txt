@@ -1,0 +1,15 @@
+=title List Literals, list ranges
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+Things in () separated by commas are called a list of things. Actually you don't even need the parentheses for the list, it just clarifies precedence.
+A list is an ordered set of scalar values.
+Examples of lists:
+
+<include file="tutorial/arrays/list_literals.p6" />
+
+We actually don't even need the parentheses in most of the cases.
+

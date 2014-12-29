@@ -1,0 +1,10 @@
+=title Array elements (create menu)
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+<include file="tutorial/arrays/color_menu.p6" />
+
+
