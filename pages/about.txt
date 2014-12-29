@@ -1,6 +1,7 @@
 =title About Perl 6 Maven
 =timestamp 2012-06-27T19:55:00
 =status show
+=comments 0
 
 Some people consider Perl 6 as the next major version of Perl, others think it is a sibling of
 Perl 5 in the family of Perl languages.

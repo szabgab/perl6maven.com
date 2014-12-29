@@ -22,7 +22,7 @@
     - perl6-string-repetition
     - perl6-if-statement
     - perl6-ternary-operator
-    - perl6-comparison-operator
+    - perl6-comparison-operators
     - perl6-boolean-expressions
     - perl6-chained-comparison
     - perl6-comparing-values
