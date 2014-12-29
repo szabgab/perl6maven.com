@@ -1,0 +1,13 @@
+=title Open file modes
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords open, :r, :w, :a
+=status show
+
+
+<pre>
+:r  - read
+:w  - write
+:a  - append
+</pre>
+

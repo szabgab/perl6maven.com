@@ -1,0 +1,11 @@
+=title Read all the lines with get
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+
+<include file="tutorial/files/read_file_line_by_line.p6" />
+
+

@@ -1,0 +1,32 @@
+=title Read line from file
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords open
+=status show
+
+
+As in other high level languages one has to open a file in order to read
+from it or to write to it. In Perl 6 it is done by the open()
+function imported from the IO class. It can receive several parameter
+but thw two are very important:
+The name of the file and the mode.
+In order to open a file for reading the mode need to be :r.
+The function either returns a file handle that should be placed in a
+scalar variable or returns undef in case of failure.
+
+<command>$fh = open $filename, :r</command>
+
+Once we have an open file handler we can use the get method ($fh.get)
+to read one line from the given file.
+
+One could read many lines using consecutive calls to the get method
+but there are better ways to do that.
+
+Currently I think Rakudo throws an exception if the file cannot
+be opened but I think the spec says that it should just return undef.
+
+The specifications of all the IO of Perl 6 can be found in
+S32-setting-library/IO.pod
+
+<include file="tutorial/files/read_one_line.p6" />
+

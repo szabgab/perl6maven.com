@@ -1,0 +1,11 @@
+=title die
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+
+die() will print the message on the standard error and stop the execution of the program.
+
+<include file="tutorial/files/die.p6" />
+

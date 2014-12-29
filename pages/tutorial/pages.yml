@@ -30,3 +30,19 @@
     - perl6-string-functions-index
     - perl6-string-functions-substr
     - perl6-super-or
+- id: perl6-files
+  title: Files in Perl 6
+    - perl6-exit
+    - perl6-warn
+    - perl6-die
+    - perl6-twigils-and-special-variables
+    - perl6-read-from-file
+    - perl6-read-all-the-lines-with-get
+    - perl6-process-file
+    - perl6-write-file
+    - perl6-open-file-modes
+    - perl6-slurp
+    - perl6-lines
+    - perl6-exercise-print-sum-of-numbers
+    - perl6-solution-print-sum-of-numbers
+

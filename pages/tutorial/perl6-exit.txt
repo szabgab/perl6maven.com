@@ -1,0 +1,14 @@
+=title exit
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords exit
+=status show
+
+Before starting to deal with files let's look at a couple of
+function that can help us.
+
+exit() allows us to exit the program at any point without the need
+to run to the last line of the code.
+
+<include file="tutorial/files/exit.p6" />
+

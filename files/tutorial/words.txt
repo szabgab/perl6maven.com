@@ -1,0 +1,4 @@
+This is a sample file
+use in some of the examples in the Perl 6 training class
+It can be used to count how many times each word appears
+in a file

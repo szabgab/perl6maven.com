@@ -1,0 +1,13 @@
+=title slurp
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords slurp
+=status show
+
+
+Perl 6 has a built in mode to slurp in files, that is to read
+the contents of a whole file into a scalar variable.
+
+<include file="tutorial/files/slurp_file.p6" />
+
+

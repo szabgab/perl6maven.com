@@ -1,0 +1,17 @@
+=title Process a file line by line
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+<include file="tutorial/files/read_file.p6" />
+
+The lines() method of the file handle can return either all the
+lines, some of the lines. As it does it lazily in the above code
+we get an iterator behavior so the file is read line-by-line into
+the $line variable by the for loop.
+
+This script is very similar to what the unix cat command does.
+
+

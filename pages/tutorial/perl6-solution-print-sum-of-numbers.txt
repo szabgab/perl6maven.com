@@ -1,0 +1,8 @@
+=title Solution: Print sum of numbers
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+<include file="tutorial/files/statistics.p6" />
+

@@ -1,0 +1,18 @@
+=title Read lines into array
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+
+We have not learned about arrays yet but let me show what happens
+when we put the result of the slurp() call into an array. all the
+content of the file ends up in as the first and only element of the
+array.
+
+If you want to read every line into a separate element of the array
+you need to use the lines() function.
+
+<include file="tutorial/files/read_file_into_array.p6" />
+
+
