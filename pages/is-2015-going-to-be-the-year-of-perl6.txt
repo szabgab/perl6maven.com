@@ -1,0 +1,61 @@
+=title Is 2015 going to be the year of Perl 6 ?
+=timestamp 2014-12-29T12:52:02
+=author szabgab
+=keywords FOSDEM, 2015
+=status show
+=archive 1
+
+=abstract start
+
+Another year went by without any activity on the Perl 6 Maven site.
+
+I just looked at the e-mails of the <a href="/perl6-tricks-and-treats-newsletter">newsletter</a>
+and the previous one was sent out on December 9, 2013.
+
+So what's new?
+
+=abstract end
+
+In the last year, besides including Perl 6 related blog posts in the
+<a href="http://perlweekly.com/">Perl Weekly newsletter</a>
+I have not been following the development of Perl 6 at all.
+
+What I did hear about is some strange announcement about a talk Larry Wall is going to
+give at FOSDEM in February 2015:
+<a href="https://fosdem.org/2015/schedule/event/get_ready_to_party/">Get ready to party!</a>
+
+To quote:
+
+<quote>"2015 will be the year that Perl 6 officially launches for production use."</quote>
+
+I won't be able to attend, but this sounds really promising.
+
+I have started to use Perl 6 many years ago and I do so on and off. (The last 2 years were mostly off).
+Once in a while I get enthusiastic, publish a few articles, update the <a href="/tutorial">tutorial</a>
+a bit. You might recall I even <a href="/perl6-training-course">taught</a> Perl 6 several times.
+Then soon I get tired. I have to remind myself that while one day Perl 6 might become the "best programming language"
+for whatever value of "best" we use, but it is not there yet.
+
+I remind myself that I need to focus on the <a href="http://perlmaven.com/">Perl Maven</a> site that covers Perl 5.
+That's what people use, that's where they need help. And so I managed to turn the Perl Maven site into one of the
+most popular sites about Perl.
+
+So I don't know if this time it is for real, but I think this is the first time that Larry gives a talk with
+such a description. So the developers might be really close to something that can be used by more than a handful of
+really optimistic and enthusiastic people.
+
+Let's give it a try.
+
+Let's see if I can stick to writing about Perl 6.
+
+Let's see if this site can be turned into another popular site where many people will find solutions for
+their Perl 6 related questions. Obviously this largely depends on the readyness of Perl 6 itself,
+but it also depends how much energy I can invest in it. 
+
+Let me make this - to increase the readership of this site - to be (one of) my early New Year's resolution.
+
+For a starter I have updated the source code generating this site and put it on <a href="https://github.com/szabgab/Perl6-Maven">GitHub</a>.
+I also put most of the content of this site in <a href="https://github.com/szabgab/perl6maven.com">another Github repo</a>.
+(Some parts still need conversion from some old format to the the one used now.)
+
+

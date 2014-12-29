@@ -11,11 +11,11 @@ Each article has a file in the pages/ subdirectory with .txt extension
 
 The header of each file has the following attributes:
 
-    =title The title of the article
-    =timestamp 2012-07-04T16:52:02     (when the article is published, used for the /archive page, the /atom feed and the / front page)
-    =author szabgab                    (a key in the authors.txt file)
-    =keywords a,b,c                    (comma separated list)
-    =status show                       (draft or show)
+    =title     The title of the article
+    =timestamp 2012-07-04T16:52:02        (when the article is published, used for the /archive page, the /atom feed and the / front page)
+    =author    szabgab                    (a key in the authors.txt file)
+    =keywords  a,b,c                      (comma separated list)
+    =status    show                       (draft or show)
 
 Optional fields:
 
