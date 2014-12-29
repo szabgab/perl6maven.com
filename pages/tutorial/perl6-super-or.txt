@@ -1,5 +1,5 @@
 =title Super-or (junctions)
-=timestamp 2015-01-01T01:02:15
+=timestamp 2012-01-01T01:02:15
 =author szabgab
 =keywords 
 =status show

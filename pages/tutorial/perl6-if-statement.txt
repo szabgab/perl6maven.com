@@ -1,5 +1,5 @@
 =title if statement - comparing values
-=timestamp 2015-01-01T01:02:08
+=timestamp 2012-01-01T01:02:08
 =author szabgab
 =keywords if, else
 =status show

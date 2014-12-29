@@ -1,5 +1,5 @@
 =title Getting started
-=timestamp 2015-01-01T01:01:01
+=timestamp 2012-01-01T01:01:01
 =author szabgab
 =keywords Rakudo, MoarVM, JVM, Niecza, CLR, Perlito, Pugs
 =status show

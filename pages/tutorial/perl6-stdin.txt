@@ -1,5 +1,5 @@
 =title Reading from the keyboard
-=timestamp 2015-01-01T01:02:03
+=timestamp 2012-01-01T01:02:03
 =author szabgab
 =keywords STDIN, print, prompt
 =status show

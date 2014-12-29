@@ -1,5 +1,5 @@
 =title String repetition
-=timestamp 2015-01-01T01:02:09
+=timestamp 2012-01-01T01:02:09
 =author szabgab
 =keywords x
 =status show

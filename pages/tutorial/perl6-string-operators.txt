@@ -1,5 +1,5 @@
 =title String operators
-=timestamp 2015-01-01T01:02:06
+=timestamp 2012-01-01T01:02:06
 =author szabgab
 =keywords ~, ~=
 =status show

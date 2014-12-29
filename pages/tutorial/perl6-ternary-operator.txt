@@ -1,5 +1,5 @@
 =title Ternary Operator
-=timestamp 2015-01-01T01:02:12
+=timestamp 2012-01-01T01:02:12
 =author szabgab
 =keywords
 =status show

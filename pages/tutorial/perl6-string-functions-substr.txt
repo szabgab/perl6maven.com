@@ -1,5 +1,5 @@
 =title String functions: substr
-=timestamp 2015-01-01T01:02:18
+=timestamp 2012-01-01T01:02:18
 =author szabgab
 =keywords substr
 =status show

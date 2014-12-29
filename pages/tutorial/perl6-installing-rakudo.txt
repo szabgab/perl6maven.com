@@ -1,5 +1,5 @@
 =title Installing Rakudo Perl 6
-=timestamp 2015-01-01T01:01:03
+=timestamp 2014-12-29T10:01:03
 =author szabgab
 =keywords Linux, OSX, Windows, Rakudo, MoarVM
 =archive 1
