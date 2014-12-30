@@ -87,4 +87,17 @@
     - perl6-slurp-hash
     - perl6-kv
     - perl6-loop-over-hash
+- id: perl6-subroutines
+  title: Subroutines
+    - perl6-subroutines-in-perl6
+    - perl6-subroutines-simple-scalar-parameters
+    - perl6-subroutines-arbitrary-parameters
+    - perl6-arrays-and-hashes-as-arguments
+    - perl6-multiple-signatures
+    - perl6-optional-parameters
+    - perl6-named-only-parameters
+    - perl6-subroutines-definition
+    - perl6-subroutines-fibonacci
+    - perl6-creating-operators
+    - perl6-create-operator
 

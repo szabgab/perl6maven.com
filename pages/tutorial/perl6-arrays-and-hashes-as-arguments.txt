@@ -1,0 +1,57 @@
+=title Passing arrays and hashes
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+In Perl 5 we had to learn about references in order to be able to
+pass more than one array or hash to a subroutine. That also meant
+the subroutine always has full access to the original data structure.
+Effectively a call-by-reference thing. So the subroutine could change
+the passed parameter by accident. Not really clean coding.
+
+
+In Perl 6 there are no such references and there is no need for them.
+If you'd like to accept a real array or hash as a parameter for a subroutine
+you can declare that in the signature of the subroutine.
+
+
+For example I have a script that generates html pages from
+templates and I have some code like this:
+(Mine was using the HTML::Template from the November wiki project
+http://www.november-wiki.org/ but that's not relevant now so
+I am just printing out the parameters.)
+
+<include file="tutorial/subroutines/array_hash_arguments.p6" />
+
+the output
+
+<include file="tutorial/subroutines/array_hash_arguments.p6.out" />
+
+Now I know this example does not show the real power of having
+several complex data structures in the parameter list.
+I could have written:
+
+<code>
+sub xyz($input, @value, %data) { }
+</code>
+
+and then pass a scalar, an array and a hash.
+I just don't have a good example for that yet.
+
+
+Anyway the above example had a bit of data multiplication and the
+name of the output file could have been generated from the name
+of the template.  It is the same name just with different extension.
+
+
+So I could write the code like this, passing only the name of the
+template and generating the name of the output file from that:
+
+<include file="tutorial/subroutines/process_template.p6.out" />
+
+In this code ~ is the concatenation operator
+(replacing the . from Perl 5).
+
+
+

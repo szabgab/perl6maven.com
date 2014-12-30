@@ -1,0 +1,16 @@
+=title Named only parameters
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+The user can decide to pass the parameters in as key-value pairs.
+
+Parameters that are declared as positional can always passed as named but if
+the variable name is prefixed with a colon : then it can only be passed
+as a named argument and it is optional. To make a named-only parameter
+required put an exclamation mark ! after it:  :$b!
+
+<include file="tutorial/subroutines/required_params_named.p6" />
+
+

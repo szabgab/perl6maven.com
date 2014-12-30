@@ -1,0 +1,36 @@
+=title Multiple signatures
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+That's ok but there are cases when the name
+of the template and the output file are different.
+So I need both versions. In Perl 6 it is not a problem,
+I can just define both of the functions, telling Perl
+that they are multies - so it won't think I am redefining
+a function by mistake.
+
+<include file="tutorial/subroutines/multiple_signatures.p6" />
+
+The output will be:
+
+<include file="tutorial/subroutines/multiple_signatures.p6.out" />
+
+For every function call Rakudo will look for a function that matches
+the signature and call that function.
+If no match is found it will throw an exceptions so calling without a hash
+will throw a run-time exception:
+
+<code>
+process_template("from.tmpl", "to.html");
+
+Non-Associative argument for %params in call to process_template
+</code>
+
+Sometimes that's what we want. In other cases we might want to allow
+the user to call the above functions without providing any parameters.
+We could write two additional functions without the %params but that just
+unnecessary code duplication. Instead we can declare the hash as optional:
+
+

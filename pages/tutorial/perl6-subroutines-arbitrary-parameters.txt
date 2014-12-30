@@ -1,0 +1,25 @@
+=title Subroutine with arbitrary number of parameters
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+That would be the time to show how to define a subroutine
+that can get arbitrary number of values, but that requires
+introducing two concepts at a time. So I'll have to
+find a better set of examples.
+
+
+Anyway, if we would like to implement a sum() subroutine
+that can get any number of values we need to define it like this:
+
+<include file="tutorial/subroutines/slurpy_argument.p6" />
+
+That is, we have to say that the expected parameter is a slurpy array.
+The * means it is slurpy, the @ still means it is an array.
+It will then accept any value as parameter and put them in the @values
+array.
+
+
+So I can call it either with literal scalars
+or even with a list of arrays and scalars mixed

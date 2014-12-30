@@ -1,0 +1,9 @@
+=title Create your own operator
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+<include file="tutorial/other/create_operator.p6" />
+

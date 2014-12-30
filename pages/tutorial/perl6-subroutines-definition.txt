@@ -1,0 +1,16 @@
+=title No parameter definition - perl 5 style
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+You can also use the old Perl 5 style way to defined functions.
+
+
+In such case you would not define a signature and any value passed
+to the subroutine will show up in the internal @_ variable.
+Any array or hash will be flattened.
+
+<include file="tutorial/subroutines/definitions.p6" />
+
+

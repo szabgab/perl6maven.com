@@ -1,0 +1,38 @@
+=title Subroutines in Perl 6
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+For more details look at <a href="http://perlcabal.org/syn/S06.html">S06</a>.
+
+I have been thinking for some time now on how to teach subroutines
+in Perl 6 and I don't have a good answer yet.
+So for now, instead of some methodological introduction I'll just
+try to throw together a few examples and we'll see if something
+comes out of that?
+
+
+In Perl 6 just as in Perl 5 one can define a subroutine without
+specifying the list of parameters. When someone calls that
+subroutine the values are found in the private array called @_.
+There is more to even that in Perl 6 than in Perl 5 but let's
+look at the nicer examples of Perl 6:
+
+
+In Perl 6 one can define real signature for the subroutines
+and let the language, or rather the implementation, check if
+the valid set of arguments were passed.
+
+
+Actually, instead of checking if the right number of arguments
+were passed Perl will not even call the function if you did
+not give the correct list of arguments.
+
+
+I can already hear the people getting worried about the
+flexibility of passing an arbitrary number of arguments and then
+letting the function figure it out.
+Don't worry. You can have that in Perl 6 too.
+

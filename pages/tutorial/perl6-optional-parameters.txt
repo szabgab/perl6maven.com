@@ -1,0 +1,39 @@
+=title Optional parameters
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+<code>
+    multi sub process_template($input, %params?) {
+
+    multi sub process_template($input, $output, %params?) {
+</code>
+
+If we defined our functions that way we could call
+
+<code>
+    process_template("from.tmpl", "to.html");
+</code>
+
+and it would know how to find the right subroutine leaving
+the %params hash empty.
+
+Side note: this part is not yet implemented so the above code
+won't yet work.
+
+There is a lot more one can do with signatures but I think
+this is enough for today.
+
+
+Question mark (?) after the variable name means it is an optional varible.
+
+<code>
+    multi sub process_template($input, %params?) {
+</code>
+
+<include file="tutorial/subroutines/optional_params.p6" />
+
+
+

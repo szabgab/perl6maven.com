@@ -1,0 +1,6 @@
+open index.tmpl
+replace {"lname" => "Bar", "fname" => "Foo"}
+save index.html
+open from.tmpl
+replace {"lname" => "Bar", "fname" => "Foo"}
+save to.html

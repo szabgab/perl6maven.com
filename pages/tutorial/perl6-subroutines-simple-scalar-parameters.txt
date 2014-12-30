@@ -1,0 +1,38 @@
+=title Simple definition with required parameters
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords sub, return
+=status show
+
+In order do define a subroutine in Perl 6 we use the "sub" keyword.
+Then comes the name of the subroutine with a list of parameters.
+After that comes a block that implements the subroutin where you
+can use the variables defined in the signature.
+
+In the most simple case shown in the example we have two scalar variables
+($a and $b) as parameters. In this case the parameters are required.
+The user of the sub has to supply them though there are several way to do that.
+
+
+The simple way is just to provide the in the same order as they are shown
+in the signature.
+
+
+The most basic example I usually show is the add function with
+two parameters. That's usually enough in Perl 5 but very
+far from that in Perl 6.
+
+
+Positional parameters:
+
+<include file="tutorial/subroutines/required_params.p6" />
+
+Then if you try to call this with 3 parameters like this:
+
+<code>
+say add(2, 3, 4);
+</code>
+
+Rakudo will throw a run-time exception as it cannot
+find the appropriate function.
+
