@@ -1,0 +1,12 @@
+=title Class Methods
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+The "method" keyword can be used to create methods for the class.
+
+<include file="tutorial/classes/point_03.p6" />
+
+

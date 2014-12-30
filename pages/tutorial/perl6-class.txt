@@ -1,0 +1,25 @@
+=title Simple Point class
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+In Perl 6 we define classes with the "class" keyword. It can be used either
+as the first line of a files or infront of a block defining the class.
+
+The has keyword is used to create attributes and the various twigils can be 
+used to fine tune the meaning of those attributes.
+
+Using dot (.) as the twigil will create a public attribute meaning it will
+automatically create and accessor for that attribute.
+
+When a class is defined it automatically provides a constructor called new
+that can get a hash to set the attributes.
+
+WHAT helps with introspection so we can ask what class does an object belong to.
+
+By default the accessors are read only so you cannot assign to them.
+
+<include file="tutorial/classes/point_01.p6" />
+
+

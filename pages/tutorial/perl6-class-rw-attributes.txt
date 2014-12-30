@@ -1,0 +1,12 @@
+=title Read/write attributes and accessors
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+Setting the "rw" trait on the attribute will also generate
+a read-write accessor that is an lvalue so you assign to it.
+
+<include file="tutorial/classes/point_02.p6" />
+
+

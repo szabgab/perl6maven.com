@@ -1,0 +1,10 @@
+=title Method with parameters
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+Methods can have parameters, just as any subroutine would have.
+
+<include file="tutorial/classes/point_05.p6" />
+

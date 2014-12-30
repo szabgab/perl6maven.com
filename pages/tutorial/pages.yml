@@ -131,4 +131,17 @@
   title: Junctions in Perl 6
     - perl6-junctions-introduction
     - perl6-more-about-junctions
+- id: perl6-modules
+  title: Modules in Perl 6
+    - perl6-modules-export
+- id: perl6-oop
+  title: Object Oriented Perl 6
+    - perl6-class
+    - perl6-class-rw-attributes
+    - perl6-class-rw-methods
+    - perl6-class-private-attributes
+    - perl6-class-method-with-params
+    - perl6-class-inheritance
+    - perl6-classx
+
 

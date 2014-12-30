@@ -1,0 +1,11 @@
+=title Exporting subs from modules
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+When I last checked, exporting from modules was not yet implemented in Rakudo.
+
+<include file="tutorial/modules/A.pm" />
+
+<include file="tutorial/modules/export.p6" />

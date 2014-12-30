@@ -1,0 +1,14 @@
+=title Private Attributes
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+Using exlamation mark as the twigil indicates tha the attribute
+is private. So  has $!x will create a variable that can be accessed
+from within the class bug which won't have an accessor from the
+outside world.
+
+<include file="tutorial/classes/point_04.p6" />
+
+

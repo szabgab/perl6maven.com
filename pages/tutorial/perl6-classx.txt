@@ -1,0 +1,9 @@
+=title Classes in Perl 6
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+<include file="tutorial/oop/class.p6" />
+
+

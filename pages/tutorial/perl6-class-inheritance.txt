@@ -1,0 +1,11 @@
+=title Inheritence of classes
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+Classes can inherit using the "is" keyword.
+
+<include file="tutorial/classes/point_06.p6" />
+
+
