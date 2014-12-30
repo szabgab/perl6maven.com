@@ -127,4 +127,8 @@
     - perl6-regex-grammar-with-error-handling
     - perl6-regex-grammar-extendable-form
     - perl6-regex-grammar-subclass
+- id: perl6-junctions
+  title: Junctions in Perl 6
+    - perl6-junctions-introduction
+    - perl6-more-about-junctions
 

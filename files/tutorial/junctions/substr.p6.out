@@ -1,0 +1,3 @@
+any("Hello", "World")
+any("Hello", "World")
+any(1)

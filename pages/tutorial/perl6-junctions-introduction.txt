@@ -1,0 +1,13 @@
+=title Junctions
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+As we already seen in a previous chapter we 
+can use a junction to check if a values is among a given
+set of values
+
+<include file="tutorial/junctions/intro.p6" />
+
+

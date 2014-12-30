@@ -1,0 +1,5 @@
+any(any(1), any(1))
+any(any("The", "The big"), any("big", "big cat"))
+any(any(undef, undef), any(undef, undef))
+any(any(Any), any(Any))
+any(any(Any), any(Any))

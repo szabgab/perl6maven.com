@@ -1,0 +1,17 @@
+=title More tutorial with Junctions
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+<include file="tutorial/junctions/operators.p6" />
+
+<include file="tutorial/junctions/substr.p6" />
+
+<include file="tutorial/junctions/j.p6" />
+
+<include file="tutorial/junctions/x.p6" />
+
+<include file="tutorial/junctions/any.p6" />
+
+
