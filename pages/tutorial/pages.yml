@@ -199,4 +199,9 @@
     - who-in-perl6
     - zip-in-perl6
     - other
+- id: appendix-perl6-resources
+  title: Appendix
+    - perl6-grok
+    - perl6-proto
+    - thanks
 

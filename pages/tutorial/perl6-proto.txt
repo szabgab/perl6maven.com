@@ -1,0 +1,27 @@
+=title Using 3rd party Perl 6 modules
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+see proto in Github
+
+One of the best ways to learn Perl 6 is to read examples. There are two great
+places to fine Perl 6 examples. One of the is the test suit of Perl 6 that
+can is currently in the Pugs repository.
+The other one is a set of 3rd perty modules written in Perl 6.
+They are mostly hosted on Gihub and can be installed by proto.
+
+In order to get started the first thing you need to do is to install proto.
+For this you need to a have a git client and type in the following command:
+
+
+$ git clone git://github.com/masak/proto.git
+
+this will clone the git repository of protio to your computer.
+
+proto is mostly written in Perl 6 with a bootstrap script that is written in Perl 5.
+If you don't have rakudo installed, the Perl 5 part of proto can do it for you before
+starting its Perl 6 part. Just cd in the proto/ directory that was created by the
+git clone command and
+

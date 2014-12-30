@@ -1,0 +1,15 @@
+=title Thanks
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+I'd like to thank the following people who helped writing the book and fixing issues.
+
+<ul>
+<li>Ștefan Suciu</li>
+<li>Demian Riccardi</li>
+<li>Thomas Maier</li>
+<li>Andrew Pam</li>
+<li>Raiph Mellor</li>
+</ul>

@@ -1,0 +1,9 @@
+=title grok and App::Grok
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords grok
+=status show
+
+grok is a command line tool written in Perl 5 that should be the 'perldoc'
+command of Perl 6. In Padre we are using it to display the Perl 6 documentation.
+
