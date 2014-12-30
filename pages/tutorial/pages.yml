@@ -81,7 +81,7 @@
   title: Perl 6 Hashes
     - perl6-hashes-definition
     - perl6-fetching-data-from-hash
-    - parl6-multidimensional-hashes
+    - perl6-multidimensional-hashes
     - perl6-count-words
     - perl6-overview-of-hashes
     - perl6-slurp-hash
