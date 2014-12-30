@@ -1,0 +1,13 @@
+=title Multidimensional hashes
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+<include file="tutorial/hash/multi.p6" />
+
+Output
+
+<include file="tutorial/hash/multi.p6.out" />
+
+

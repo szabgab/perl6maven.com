@@ -1,0 +1,26 @@
+=title Looping over keys of a hash
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+The same way we can loop over keys of a hash - after
+fetching them using the "keys" function.
+
+
+The declaration of hashes in Perl 6 is similar to that in
+Perl 5 but when access individual elements in the hash it
+now keeps the % prefix. Thus the value of the key "Foo" will
+be  %phone{"Foo"}. Similarly if $name contains "Foo" we can
+use the %phone{$name} expression to get back the relevant value.
+
+
+As mentioned earlier the string interpolation of hashes requires
+curly braces around the statement.
+
+<include file="tutorial/hash/loop_over_hash.p6" />
+
+Output
+
+<include file="tutorial/hash/loop_over_hash.p6.out" />
+

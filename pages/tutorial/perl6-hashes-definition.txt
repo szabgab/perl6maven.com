@@ -1,0 +1,16 @@
+=title Hashes (Associative Arrays)
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords hash, %
+=status show
+
+A hash (also called associative array) is a set of key,value pairs
+where the keys are unique strings and the values can have any, err value.
+
+Hashes always start with a % (percentage) sign.
+
+<include file="tutorial/hash/create_hash.p6" />
+
+Output
+<include file="tutorial/hash/create_hash.p6.out" />
+

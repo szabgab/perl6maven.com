@@ -1,0 +1,1 @@
+("person" => ["Foo", "Bar"]).hash

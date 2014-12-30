@@ -77,5 +77,14 @@
     - perl6-reduction-operators
     - perl6-reduction-triangle
     - perl6-cross-operators
-
+- id: perl6-hashes
+  title: Perl 6 Hashes
+    - perl6-hashes-definition
+    - perl6-fetching-data-from-hash
+    - parl6-multidimensional-hashes
+    - perl6-count-words
+    - perl6-overview-of-hashes
+    - perl6-slurp-hash
+    - perl6-kv
+    - perl6-loop-over-hash
 

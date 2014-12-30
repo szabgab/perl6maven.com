@@ -1,0 +1,12 @@
+=title kv
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords kv
+=status show
+
+<include file="tutorial/hash/print_hash_kv.p6" />
+
+Output
+
+<include file="tutorial/hash/print_hash_kv.p6.out" />
+
