@@ -1,0 +1,18 @@
+=title Method invocation in assignment
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords .=
+=status show
+
+In Perl 6 it extends to the . operator that allows the call
+of methods on objects. Consider the following example.
+The subst method can substitude one substring by another one
+but instead of changing the original string, by default it returns
+the changed string.
+
+If you'd like to change the original string you can write
+<emp>$str = $str.subst('B', 'X');</emp>
+or you can write its shortcut version.
+
+<include file="tutorial/arrays/assignment_operators.p6" />
+

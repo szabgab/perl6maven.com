@@ -1,0 +1,14 @@
+=title Cross operators
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+Cross operators
+
+<include file="tutorial/arrays/cross_operators.p6" />
+
+Output
+
+<include file="tutorial/arrays/cross_operators.p6.out" />
+

@@ -65,4 +65,17 @@
     - perl6-zip
     - perl6-xx
     - perl6-sort
+- id: perl6-meta-operators
+  title: Meta Operators
+    - perl6-what-are-the-meta-operators
+    - perl6-assignment-operators
+    - perl6-method-invocation-in-assignment
+    - perl6-function-calling-in-assignment
+    - perl6-negated-relation-operators
+    - perl6-reversed-operators
+    - perl6-hyper-operators
+    - perl6-reduction-operators
+    - perl6-reduction-triangle
+    - perl6-cross-operators
+
 

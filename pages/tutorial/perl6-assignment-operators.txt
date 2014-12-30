@@ -1,0 +1,13 @@
+=title Assignment Operators
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords +=
+=status show
+
+
+We are used to the shortcut opertators from many languages.
+They change the value that would have not been changed by merely participating
+in an operation.
+
+<include file="tutorial/arrays/assignment_shortcut.p6" />
+

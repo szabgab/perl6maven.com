@@ -1,0 +1,23 @@
+=title Calling a function during assignment
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords  
+=status show
+
+The same can be used with functions so instead of writing
+<emp>my $lower = min($lower,  $new_value);</emp>
+you can write
+<emp>$lower min= $new_value;</emp>
+
+<include file="tutorial/arrays/assignment_function_shortcuts.p6" />
+
+This should even work with the comma operator effectively pusing more
+values on an array but it is not yet implemented in Rakudo
+
+<code>
+my @a = (1, 2, 3);
+@a ,= 4;
+@a.say;
+</code>
+
+

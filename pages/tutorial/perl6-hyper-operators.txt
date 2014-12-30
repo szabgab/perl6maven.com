@@ -1,0 +1,44 @@
+=title Hyper Operators
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+Hyper operators are really interesting. They allow the extrapolation of
+a scalar operator to operate on a list of scalars.
+
+The real operators are actually unicode characters but using regular doubled
+angle-brackets also work.
+
+
+Normally the arrows point inside, towards the operator and there are two
+lists on the two sides of the operator.
+
+
+This will apply the regular infix operator to the pairs as taken from the two
+lists on the two sides and return a list with the same length.
+
+
+If the list on one side is longer than on the other side perl throws an
+exception "Non-dwimmy hyperoperator cannot be used  on arrays of different sizes or dimensions."
+
+
+In order to make the operator dwimmy you need to turn the arrows around to point to the
+operand that should dwim. It can be either or both operands. If an operand is being pointed at
+(that is if it is supposed to dwim) then in case that operand is too short, perl will automatically
+use the last value of it repeatadly as long as the other side  needs pairs.
+
+
+You can make both sides dwimmy if you don't know up front which one will be longer and if you want
+to make them work in both ways.
+
+
+As a special case if one side is a single scalar and if the arrow points in its direction then
+that value will be paired with each one of the values from the array on the other side.
+
+<include file="tutorial/arrays/hyper.p6" />
+
+There is a lot more to hyper operators but for now this should be enough.
+
+<include file="tutorial/arrays/hyper.p6.out" />
+

@@ -1,0 +1,27 @@
+=title Negated Relation Operators
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+
+The equality operators in Perl 6 are == for comparing numerical values
+and eq for comparing strings. The negated version are the same just with an
+exclamation mark ( ! ) in front of them. So the would look like !== and !eq.
+
+Luckily those both have their own Short-cut version that are spelled
+!= and ne as one, at least with Perl 5 background, would expect.
+
+
+Other operators too have negated versions so you can write
+!>=  which means not greate than (for numbers) and you can write
+!gt  which is the same for strings. I am not fully sold why do we need thes.
+
+
+One advantage I can see is that if you create an operator called I
+then you will automatically get one that looks like !I which would
+be its negation.
+
+<include file="tutorial/arrays/negated_operators.p6" />
+

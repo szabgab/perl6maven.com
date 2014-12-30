@@ -1,0 +1,15 @@
+=title Reduction Triangle operators
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+The ~ in front of the operator is only needed for the stringification of the list
+to inject spaces between the values when printed.
+
+<include file="tutorial/arrays/triangle_operators.p6" />
+
+Output
+
+<include file="tutorial/arrays/triangle_operators.p6.out" />
+

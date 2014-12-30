@@ -1,0 +1,20 @@
+=title What are the meta operators
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+There are 6 types of Meta-operators that each enhance the behavior of the regular operators.
+Some of these operators can also be found in Perl 5 and in other languages. Others are more
+special to Perl 6.
+Assignment Operators
+Negated Relation Operators
+Reversed operators
+Hyper operators
+Reduction operators
+and
+Cross operators
+
+See also <a href="http://perlcabal.org/syn/S03.html#Meta_operators">S03</a>
+
+
