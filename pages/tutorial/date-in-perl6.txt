@@ -1,0 +1,8 @@
+=title date
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords date
+=status show
+
+Perl 5: POSIX::strftime
+

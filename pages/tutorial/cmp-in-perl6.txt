@@ -1,0 +1,10 @@
+=title cmp
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords cmp
+=status show
+
+Probably will have an external module implementing its behavior partially.
+
+Perl 5: there is limited support to this in File::Compare
+

@@ -1,0 +1,8 @@
+=title chmod
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords chmod
+=status show
+
+chmod - changing the user rights on a file or a directory
+

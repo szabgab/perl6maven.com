@@ -1,0 +1,14 @@
+=title Other UNIX command
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+setenv/set/alias
+processing all the files in a directory (or in a tree)
+
+which
+bc
+
+bash: for i in *; do echo $i; done
+

@@ -1,0 +1,11 @@
+=title touch
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords touch
+=status show
+
+Is not directly implemented. Most of its features can be easily implemented.
+if (my $f = open("filename", :r)) { $f.close};   # is touch -a
+if (my $f = open("filename", :a)) { $f.close};   # is touch
+if (my $f = open("filename", :w)) { $f.close};   # will create the file if it does not exist
+

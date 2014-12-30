@@ -1,0 +1,17 @@
+=title Unix commands in Perl 6
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+In shell script we don't usually read in a file to memory, instead we do
+several passes on the same file in order to extract data.
+
+
+In a high-level language such as Perl 6 we can read in all the content of the
+file and have better ways to fetch verious pieces of information. This ease
+is of course only relevent for files that can fit into memory. If we have
+to deal with files larger than the free memory in the computer we cannot
+read all of it into memory so either we have to do several passes on a file
+or make our algorithm more clever.
+

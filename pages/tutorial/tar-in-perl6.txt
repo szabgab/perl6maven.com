@@ -1,0 +1,10 @@
+=title tar
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords tar
+=status show
+
+There is no implementation in Perl 6.
+
+In Perl 5 one can use the Archive::Tar module for this.
+

@@ -1,0 +1,11 @@
+=title tail
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords tail
+=status show
+
+tail displays the last few lines of a file or from a listing received via pipe.
+It is often used to see the last few entries in a file listing.
+
+There is no direct implementation in Perl 6 but one can easily read.
+

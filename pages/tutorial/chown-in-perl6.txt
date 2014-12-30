@@ -1,0 +1,9 @@
+=title chown
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords chown
+=status show
+
+chown - change the ownership of the file
+not yet implemented in Pugs
+

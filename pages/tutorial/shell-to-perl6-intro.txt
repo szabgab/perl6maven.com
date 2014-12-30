@@ -1,0 +1,11 @@
+=title Intro
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+Perl 5 already was a good replacement for any shell programming.
+With the new features Perl 6 improves this even further.
+
+In this section we will see several examples especially for shell programmers.
+

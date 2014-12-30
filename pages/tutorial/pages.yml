@@ -155,4 +155,48 @@
     - perl5-to-perl6-files
     - perl5-to-perl6-modules
     - perl5-to-perl6-cheatsheet
+- id: shell-to-perl6
+  title: Shell to Perl 6
+    - shell-to-perl6-intro
+    - filters-in-perl6
+    - awk-in-perl6
+    - cat-in-perl6
+    - cd-in-perl6
+    - chmod-in-perl6
+    - chown-in-perl6
+    - cmp-in-perl6
+    - compress-in-perl6
+    - cut-in-perl6
+    - date-in-perl6
+    - diff-in-perl6
+    - df-in-perl6
+    - dos2unix-in-perl6
+    - du-in-perl6
+    - file-in-perl6
+    - find-in-perl6
+    - grep-in-perl6
+    - gzip-in-perl6
+    - head-in-perl6
+    - kill-in-perl6
+    - ln-in-perl6
+    - ls-in-perl6
+    - mkdir-in-perl6
+    - mv-in-perl6
+    - ps-in-perl6
+    - popd-in-perl6
+    - pushd-in-perl6
+    - pwd-in-perl6
+    - rmdir-in-perl6
+    - rm-in-perl6
+    - sed-in-perl6
+    - sort-in-perl6
+    - tail-in-perl6
+    - tar-in-perl6
+    - touch-in-perl6
+    - uniq-in-perl6
+    - unix2dos-in-perl6
+    - wc-in-perl6
+    - who-in-perl6
+    - zip-in-perl6
+    - other
 

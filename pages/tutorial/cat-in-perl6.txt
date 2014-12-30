@@ -1,0 +1,28 @@
+=title cat
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+In shell scripts cat is usually used to read in a file to be processed by other tools
+in Perl 6 you can slurp in a file:
+
+my @rows = "data.txt".slurp;
+my @rows = slurp "data.txt";
+
+but you can also read them as one sting:
+
+my $file = slurp "data.txt";
+
+It is also used to its original purpose - to concatenate several files -
+UNIX: cat a.txt b.txt > new.txt
+
+Perl 6:
+my $out = open "new.txt", :w err die "Could not open new.txt";
+$out.say("a.txt".slurp)
+
+<!--
+The problem - in this case - with slurp that it automatically removes newlines
+"input.txt".slurp.grep:{/\d\d\d\d}.say("output.txt");
+-->
+

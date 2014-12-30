@@ -1,0 +1,8 @@
+=title find
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords find
+=status show
+
+The File::Find standard module provides comparable functionality.
+

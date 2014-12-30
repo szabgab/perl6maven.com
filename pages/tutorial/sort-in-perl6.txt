@@ -1,0 +1,12 @@
+=title sort
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords sort
+=status show
+
+Perl has an internal sort function that can even sort on arbitrary criteria.
+
+"input.txt".slurp.sort.say                       will sort the rows of the line according to the ASCII table
+"input.txt".slurp.sort:{ $^a &lt;=&gt; $^b }.say       will sort the rows 
+
+

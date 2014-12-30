@@ -1,0 +1,23 @@
+=title uniq
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords uniq
+=status show
+
+The UNIX uniq command drops the duplicate values from it input and prints out the result.
+Usually it is used in a pipe so it receives file rows and prints them on the screen
+(or passes them to the next command in the pipe chain).
+
+In Perl 6 we have a uniq function that receives a list of values and returns 
+the same list after dropping any duplicate value.
+
+"input.txt".slurp.uniq.map:{ "$_\n" }.say  
+
+and this will work once slurp is fixed:
+
+"input.txt".slurp.uniq.say  
+
+will print out the uniq rows in the input.txt file to the screen
+
+
+

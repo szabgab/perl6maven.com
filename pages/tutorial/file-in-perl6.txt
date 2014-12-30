@@ -1,0 +1,10 @@
+=title file
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords file
+=status show
+
+No implementation in Perl 5 or 6
+
+my $result = `file $filename`;
+

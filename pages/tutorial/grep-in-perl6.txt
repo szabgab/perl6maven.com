@@ -1,0 +1,15 @@
+=title grep
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords grep
+=status show
+
+The grep command takes a pattern and for each input row it decides if the pattern matches on that row.
+
+The grep function can also take a pattern and for each element in the input list decide if the pattern matches.
+
+grep PATTERN FILE
+
+"FILE".slurp.grep(/PATTERN/).
+
+
