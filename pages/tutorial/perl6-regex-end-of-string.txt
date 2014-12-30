@@ -1,0 +1,26 @@
+=title End of string anchors
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+of course the above regex will match things
+that are not phone numbers as well:
+
+<include file="tutorial/regex2/end_of_string_anchors_needed.p6" />
+
+^ always matches the beginning of the string
+$ always matches the end       of the string
++ (and *, ?) are the same quantifiers as earlier 
+
+<include file="tutorial/regex2/end_of_string_anchors.p6" />
+
+On the other hand if you'd like to match beginning 
+or end of line, those are  ^^ and $$. So no need
+for special mode for this.
+Also if you want to match a newline you can use \n
+and if you want to match any character except newline
+(the old meaning of .) then just use \N.
+
+

@@ -1,0 +1,23 @@
+=title Match Any character
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords ., \n, \N
+=status show
+
+The . (dot) is a meta-character that will be ready to match 
+any character.
+
+As opposed to the Perl regular expressions in Perl 6 this includes
+newlines
+
+If you want to match any character except newline you can use the 
+\N special character class.
+
+There are also some non-alnum characters that
+have special meaning though their meaning might 
+be (a bit) different than in PCRE:
+A . can match any character. Even newline.
+
+<include file="tutorial/regex2/match_any_character.p6" />
+
+

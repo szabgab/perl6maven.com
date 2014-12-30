@@ -1,0 +1,13 @@
+=title Match digit
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+Just as in PCRE some letters have special meaning
+if the are following a back-slash:
+\d means a digit.
+
+<include file="tutorial/regex2/match_digit.p6" />
+
+

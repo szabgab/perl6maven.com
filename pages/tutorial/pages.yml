@@ -100,4 +100,31 @@
     - perl6-subroutines-fibonacci
     - perl6-creating-operators
     - perl6-create-operator
+- id: perl6-regex
+  title: Perl 6 Regexes
+    - perl6-regex-intro
+    - perl6-regex-match-digit
+    - perl6-regex-match-any-character
+    - perl6-regex-escape-characters
+    - perl6-regex-match-spaces
+    - perl6-regex-end-of-string
+    - perl6-regex-ranges
+    - perl6-regex-arithmetic
+    - perl6-regex-quantifier
+    - perl6-regex-quantifier2
+    - perl6-regex-matching-words-fail
+    - perl6-regex-alternates
+    - perl6-regex-match-object
+    - perl6-regex-match-object-capture
+    - perl6-regex-named-regex
+    - perl6-regex-capture-with-quantifier
+    - perl6-regex-reuse-capture
+    - perl6-regex-word-boundary
+    - perl6-regex-rules
+    - perl6-regex-token
+    - perl6-regex-replace
+    - perl6-regex-grammar
+    - perl6-regex-grammar-with-error-handling
+    - perl6-regex-grammar-extendable-form
+    - perl6-regex-grammar-subclass
 

@@ -1,0 +1,32 @@
+=title Regexes in Perl 6
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords regex, ~~
+=status show
+
+
+You can still use m// as a regex but
+as you can see spaces in the regex are non significant. 
+It is quite similar to the effect of /x option in PCRE.
+
+<pre>
+In Perl 6 the smart match <command>~~</command> operator 
+is used for regex matching.
+
+For negative matching use the <command>!~~</command> operator.
+</pre>
+
+<include file="tutorial/regex2/simple.p6" />
+
+Regex in Perl 6 disregard spaces by default. People who are used to
+the Perl 5 style regular expressions - which means basically 
+every programming language that has a regular expression library -
+will usuall think as spaces being significant in the regular expressions.
+
+We will have to unlearn that and think about the individual bits and pieces
+that are the tokens we would like to match.
+
+Basically Perl 6 regexes work as if you always had the /x modifyer on
+which in Perl 5 means disregard spaces and treat # as start of comment.
+
+

@@ -1,0 +1,44 @@
+1q[abcdef 7]
+ x_regex => q[abcdef 7]
+  alpha => q[a]
+  alpha => q[b]
+  alpha => q[c]
+  alpha => q[d]
+  alpha => q[e]
+  alpha => q[f]
+  digit => q[7]
+
+111111111111111111111#<failed match>
+2q[abcdef 7]
+ y_regex => q[abcdef 7]
+  alpha => q[a]
+  alpha => q[b]
+  alpha => q[c]
+  alpha => q[d]
+  alpha => q[e]
+  alpha => q[f]
+  digit => q[7]
+
+222222#<failed match>
+3q[abcdef 7]
+ x_token => q[abcdef 7]
+  alpha => q[a]
+  alpha => q[b]
+  alpha => q[c]
+  alpha => q[d]
+  alpha => q[e]
+  alpha => q[f]
+  digit => q[7]
+
+333333#<failed match>
+4q[abcdef 7]
+ x_rule => q[abcdef 7]
+  alpha => q[a]
+  alpha => q[b]
+  alpha => q[c]
+  alpha => q[d]
+  alpha => q[e]
+  alpha => q[f]
+  digit => q[7]
+
+444444#<failed match>

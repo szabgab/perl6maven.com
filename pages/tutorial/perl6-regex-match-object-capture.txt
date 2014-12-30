@@ -1,0 +1,15 @@
+=title Capture
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+but it can be used in other ways as well
+using parentheses around parts of the regex
+will capture those parts:
+
+<include file="tutorial/regex2/match_object_capture.p6" />
+
+the matches are also available as $0, $1, ...
+
+

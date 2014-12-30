@@ -1,0 +1,6 @@
+match words: foo, bar, moo
+foo bar moo
+first:  foo
+second: bar
+third:  moo
+all: foo | bar | moo

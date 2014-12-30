@@ -1,0 +1,11 @@
+=title Quantifier 2
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+OTOH you might want to be a bit flexible with that number of digits
+in the prefix:
+
+<include file="tutorial/regex2/quantifier2.p6" />
+

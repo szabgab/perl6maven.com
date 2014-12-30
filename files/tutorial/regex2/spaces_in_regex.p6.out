@@ -1,0 +1,4 @@
+No match as whitespaces are disregarded
+Matching - Perl 5 style white-space meta character works
+Matching the real Perl 6 style would be to use strings embedded in regexes
+Matching - or maybe the Perl 6 style is using named character classes 

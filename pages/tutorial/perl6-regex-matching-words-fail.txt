@@ -1,0 +1,23 @@
+=title Match several words
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+This won't match as there are more words
+
+<include file="tutorial/regex2/matching_word_fails.p6" />
+
+so we need to add a regex for the separators , and spaces
+and we put the whole thing in a [] which is a (non-capturing)
+grouping, apply a quantifier on that but we also need
+to add another word matching regex for the last word
+
+<include file="tutorial/regex2/match_several_words.p6" />
+
+It could be also written this way:
+The generic quantifier can also get
+a separator on its right hand side.
+
+<include file="tutorial/regex2/match_several_words2.p6" />
+

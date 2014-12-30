@@ -1,0 +1,6 @@
+2 + 3 OK
+2 + 4  OK
+2 + 3 x exception received: Invalid value after the second operand
+2 + exception received: Missing second operand
+2 3 exception received: missing operator
+2 - 3 exception received: Invalid operator

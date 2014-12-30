@@ -1,0 +1,28 @@
+q[a]
+
+q[aa]
+
+#<failed match>
+q[baab]
+
+#<failed match>
+#<failed match>
+q[bab]
+
+q[baaab]
+
+q[baaab]
+
+q[baaaab]
+
+#<failed match>
+q[baaab]
+
+#<failed match>
+range:
+#<failed match>
+q[xyyx]
+
+q[xyyyx]
+
+#<failed match>

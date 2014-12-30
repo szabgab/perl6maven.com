@@ -1,0 +1,28 @@
+=title Match object
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+<indexterm><primary>$/</primary></indexterm>
+
+Every time there is a regex operation a localized version of 
+the match variable $/ gets set to the actual match. 
+That variable has a lot more power than simply containing the match.
+We'll talk about that later but for now see this example
+
+What was printed there, when printing the
+result of a regex match?
+$/ holds the match and is printed automatically
+but it could be also printed by itself:
+
+<include file="tutorial/regex2/match_object.p6" />
+
+<pre>
+$/.from  starting position of the match
+$/.to    end position of the match
+$/.chars number of characters matched
+$/.Str   matched text
+$/.orig  original matched string
+</pre>
+

@@ -1,0 +1,13 @@
+=title Reuse capture
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+You can also reuse the matches within the regex
+
+Let's see an example (based on the perl 6 book)
+to try to find repeated words:
+
+<include file="tutorial/regex2/reuse_capture.p6" />
+

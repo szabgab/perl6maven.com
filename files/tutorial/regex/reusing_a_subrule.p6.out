@@ -1,0 +1,16 @@
+#<failed match>
+q[22]
+ 0 => q[2]
+
+#<failed match>
+q[22]
+ digit => q[2]
+
+q[2234255]
+ digit => q[2]
+ digit => q[5]
+
+q[2]
+
+q[5]
+

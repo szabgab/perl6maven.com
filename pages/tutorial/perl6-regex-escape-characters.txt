@@ -1,0 +1,26 @@
+=title Escape characters
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+An important change from the way the reular expressions worked in Perl 5
+is that in Perl 6 any non-alphanumeric character needs to be escaped.
+Even if they don't currently have any special meaning or
+you'll get a "Statement not terminated properly" error during 
+compilation. In a way this will make all the regexes look less clean
+as we will seen a lot more character escaping but it might force us
+to pick cleaner solution even if they are more wordy.
+
+So for exmple we will have to escpe the = sign or the dash: - .
+
+To allow further extension of the regexes
+Any other non-alnum character must be escaped:
+
+<include file="tutorial/regex2/escape_characters.p6" />
+
+We will have to be very careful as there are going to be a number of cases
+that can easily trip up anyone who already uses regular expressions.
+For example the pound key # is now a special character by default meaning a comment.
+
+So you'd better escape it when you really mean to match a # character.

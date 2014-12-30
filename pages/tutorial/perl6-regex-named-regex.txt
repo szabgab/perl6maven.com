@@ -1,0 +1,12 @@
+=title Named Regex
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+<include file="tutorial/regex2/named_regex.p6" />
+
+let's create the named regexes for the word and duplicate:
+
+<include file="tutorial/regex2/named_regex2.p6" />
+

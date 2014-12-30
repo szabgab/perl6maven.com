@@ -1,0 +1,14 @@
+=title Spaces in regex
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords 
+=status show
+
+
+Matching space(s) can be done in several ways
+
+<include file="tutorial/regex2/spaces_in_regex.p6" />
+
+You can see that once can embed literal strings in the regex using single quotes
+and there are new type of character classes witing angle brackets.
+

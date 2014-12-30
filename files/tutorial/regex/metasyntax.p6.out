@@ -1,0 +1,15 @@
+q[erste bank and the masodik]
+ frst => q[erste]
+ scnd => q[masodik]
+
+q[erste]
+
+q[masodik]
+
+---
+q[erste bank and the masodik]
+ scnd => q[masodik]
+
+True
+q[masodik]
+

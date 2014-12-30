@@ -1,0 +1,15 @@
+=title Alternates
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+Alternates with first match wins:
+
+<include file="tutorial/regex2/alternates.p6" />
+
+Alternates with longest token match: 
+(not implemented yet)
+say 'monday' ~~ m/ mon | monday /;
+
+

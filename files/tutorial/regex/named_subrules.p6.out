@@ -1,0 +1,37 @@
+q[10]
+ num => q[10]
+
+q[123]
+ num => q[123]
+
+#<failed match>
+q[7]
+ num => q[7]
+
+#<failed match>
+#<failed match>
+q[.]
+ dot => q[.]
+
+q[1.2.3.4]
+ ip => q[1.2.3.4]
+  num => q[1]
+  dot => q[.]
+  num => q[2]
+  dot => q[.]
+  num => q[3]
+  dot => q[.]
+  num => q[4]
+
+#<failed match>
+#<failed match>
+q[999.0.0.9]
+ ip => q[999.0.0.9]
+  num => q[999]
+  dot => q[.]
+  num => q[0]
+  dot => q[.]
+  num => q[0]
+  dot => q[.]
+  num => q[9]
+
