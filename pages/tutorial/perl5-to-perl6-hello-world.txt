@@ -1,0 +1,12 @@
+=title Hello World
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+The print() is the same as in Perl 5 but there is a shorter way using say(). 
+That will probably be more common in the future as it also appends a newline at 
+the end of the values it prints. (Actually Perl 5.10 already has this feature)
+
+<include file="tutorial/p526/hello_world.p6" />
+

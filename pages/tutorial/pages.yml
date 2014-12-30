@@ -143,5 +143,16 @@
     - perl6-class-method-with-params
     - perl6-class-inheritance
     - perl6-classx
-
+- id: perl5-to-perl6
+  title: Perl 5 to Perl 6
+    - p526-intro
+    - perl5-to-perl6-hello-world
+    - perl5-to-perl6-scalars
+    - perl5-to-perl6-arrays
+    - perl5-to-perl6-hashes
+    - perl5-to-perl6-control-structures
+    - perl5-to-perl6-functions
+    - perl5-to-perl6-files
+    - perl5-to-perl6-modules
+    - perl5-to-perl6-cheatsheet
 

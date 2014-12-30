@@ -1,0 +1,8 @@
+=title Control Structures
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+<include file="tutorial/p526/control_structures.p6" />
+

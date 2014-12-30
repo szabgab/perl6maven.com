@@ -1,0 +1,17 @@
+=title Intro
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords
+=status show
+
+While there are many similarities between Perl 5 and Perl 6 there are also a few
+substantial changes. This chapter tries to ease the transition for Perl 5 programmers
+to Perl 6.
+
+In this chapter you won't find strongest operators of Perl 6. What I am trying to
+show here is that given a Perl 5 program how one can more-or-less straight forward
+translate it to Perl 6.
+
+See also the <a href="http://svn.pugscode.org/pugs/docs/Perl6/">documentation</a>
+
+

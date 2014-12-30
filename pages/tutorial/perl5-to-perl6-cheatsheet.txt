@@ -1,0 +1,16 @@
+=title Perl 5 to Perl 6
+=timestamp 2012-01-01T01:02:05
+=author szabgab
+=keywords die 
+=status show
+
+<code>
+@ARGV                    @$ARGS
+$0                       $PROGRAM_NAME
+foreach my $s (@arr) {}  for @arr -> $s { }
+
+$#array                   
+scalar @array            @array.elems    (@array.length not yet implemented ?)
+
+</code>
+

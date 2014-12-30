@@ -1,0 +1,41 @@
+#<failed match>
+q[a]
+
+#<failed match>
+q[1.2]
+ number => q[1.2]
+
+q[1.2]
+
+#<failed match>
+q[1]
+ number => q[1]
+
+q[2.1]
+ number => q[2.1]
+
+q[3]
+ number => q[3]
+
+#<failed match>
+q[1]
+ number => q[1]
+
+q[3.4]
+ number => q[3.4]
+
+#<failed match>
+E
+q[3.6]
+ number => q[3.6]
+  integer => q[3]
+  fraction => q[.6]
+
+q[3.6]
+ integer => q[3]
+ fraction => q[.6]
+
+q[3]
+
+q[.6]
+
