@@ -1,3 +1,6 @@
+###Status
+[![Build Status](https://travis-ci.org/szabgab/try-travis.png)](https://travis-ci.org/szabgab/try-travis)
+
 These are the source files of the Perl 6 Maven site http://perl6maven.com/
 
 The code behind the website can be found in https://github.com/szabgab/Perl6-Maven
