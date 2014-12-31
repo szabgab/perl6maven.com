@@ -1,5 +1,5 @@
 ###Status
-[![Build Status](https://travis-ci.org/szabgab/try-travis.png)](https://travis-ci.org/szabgab/try-travis)
+[![Build Status](https://travis-ci.org/szabgab/perl6maven.com.png)](https://travis-ci.org/szabgab/perl6maven.com)
 
 These are the source files of the Perl 6 Maven site http://perl6maven.com/
 
