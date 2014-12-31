@@ -43,5 +43,5 @@ Tutorial
 ---------
 
 The source of the tutorial is in the pages/tutorial/  subdirectory.
-The  pages.yml file contains the hierarchy of the pages.
+The pages.yml file contains the hierarchy of the pages.
 
