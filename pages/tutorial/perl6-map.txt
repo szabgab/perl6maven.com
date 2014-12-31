@@ -1,4 +1,4 @@
-=title Transform arrays and list using map
+=title Transform arrays and lists using map
 =timestamp 2014-12-31T14:02:05
 =author szabgab
 =keywords map, $_, $^number
@@ -18,7 +18,7 @@ to some other kind of value. Perl 5 used the same <b>map</b> keyword. In Python 
 <h2>map as a function</h2>
 
 In the first example we created an array of 3 numbers and then used the <b>map</b> function to create a new array that will contain the duplicate
-of each original value. The variable <b>$_</b> contains the current element of the array. Effectively <b>map</b> is a look that iterates
+of each original value. The variable <b>$_</b> contains the current element of the array. Effectively, <b>map</b> is a loop that iterates
 over the array on the right hand side, assigns each element to <b>$_</b> variable, executes the code in the block, and collects the results.
 The collected list is assigned to the array on the left hand side of the <b>=</b> assignment.
 
