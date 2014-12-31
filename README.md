@@ -19,12 +19,18 @@ The header of each file has the following attributes:
 
 Optional fields:
 
-    =archive 1                         (boolean should the page be included in the /archive /atom and / front page?)
-    =comments 1                        (boolean should commenting be enabled on that page?)
+    =archive 1
+    =comments 1
+
+=archive 1                         (boolean should the page be included in the /archive /atom and / front page?)
+=comments 1                        (boolean should commenting be enabled on that page?)
 
 
-    =perl5url a-URL-to-perlmaveb-site
-    =perl5title Title to be used
+    =perl5url
+    =perl5title
+
+=perl5url a-URL-to-perlmaven-site
+=perl5title Title to be used
 
 Today most of the people who are searching for a solution in perl are actually looking for something Perl 5 releted.
 These keywords are used to add a link to the page pointing to the related article on the Perl Maven site covering Perl 5.
