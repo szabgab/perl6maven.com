@@ -1,7 +1,7 @@
 =title Grammar
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords grammar
 =status show
 
 <include file="tutorial/regex2/add.p6" />

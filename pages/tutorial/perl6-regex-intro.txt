@@ -1,7 +1,7 @@
 =title Regexes in Perl 6
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords regex, ~~
+=keywords regex, ~~, !~~
 =status show
 
 
@@ -10,10 +10,10 @@ as you can see spaces in the regex are non significant.
 It is quite similar to the effect of /x option in PCRE.
 
 <pre>
-In Perl 6 the smart match <command>~~</command> operator 
+In Perl 6 the smart match <b>~~</b> operator 
 is used for regex matching.
 
-For negative matching use the <command>!~~</command> operator.
+For negative matching use the <b>!~~</b> operator.
 </pre>
 
 <include file="tutorial/regex2/simple.p6" />

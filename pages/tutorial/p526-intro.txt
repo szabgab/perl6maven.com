@@ -1,7 +1,6 @@
 =title Intro
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
 =status show
 
 While there are many similarities between Perl 5 and Perl 6 there are also a few

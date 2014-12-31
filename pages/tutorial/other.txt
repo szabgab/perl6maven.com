@@ -1,7 +1,7 @@
 =title Other UNIX command
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords which, bc
 =status show
 
 setenv/set/alias

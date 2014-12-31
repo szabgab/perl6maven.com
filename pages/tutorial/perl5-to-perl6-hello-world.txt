@@ -1,7 +1,7 @@
 =title Hello World
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords print, say
 =status show
 
 The print() is the same as in Perl 5 but there is a shorter way using say(). 

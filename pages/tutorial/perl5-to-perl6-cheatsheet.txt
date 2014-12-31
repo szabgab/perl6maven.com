@@ -1,7 +1,7 @@
 =title Perl 5 to Perl 6
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords die 
+=keywords @ARGV, $0, foreach, $#array, scalar
 =status show
 
 <code>

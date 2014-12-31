@@ -1,7 +1,7 @@
 =title Tokens
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords token, :s, :ratchet
 =status show
 
 <include file="tutorial/regex2/tokens.p6" />

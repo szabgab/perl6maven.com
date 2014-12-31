@@ -1,7 +1,7 @@
 =title Named only parameters
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords :
 =status show
 
 The user can decide to pass the parameters in as key-value pairs.

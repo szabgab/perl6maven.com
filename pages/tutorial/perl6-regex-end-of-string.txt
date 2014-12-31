@@ -1,7 +1,7 @@
 =title End of string anchors
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords ^, $, ^^, $$
 =status show
 
 
@@ -10,9 +10,11 @@ that are not phone numbers as well:
 
 <include file="tutorial/regex2/end_of_string_anchors_needed.p6" />
 
-^ always matches the beginning of the string
-$ always matches the end       of the string
-+ (and *, ?) are the same quantifiers as earlier 
+<ul>
+  <li>^ always matches the beginning of the string</li>
+  <li>$ always matches the end       of the string</li>
+  <li>+ (and *, ?) are the same quantifiers as earlier</li>
+</ul>
 
 <include file="tutorial/regex2/end_of_string_anchors.p6" />
 

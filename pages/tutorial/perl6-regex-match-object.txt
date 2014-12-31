@@ -1,10 +1,8 @@
 =title Match object
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords die 
+=keywords $/, $/.from, $/.to, $/.chars, $/.Str, $/.orig
 =status show
-
-<indexterm><primary>$/</primary></indexterm>
 
 Every time there is a regex operation a localized version of 
 the match variable $/ gets set to the actual match. 

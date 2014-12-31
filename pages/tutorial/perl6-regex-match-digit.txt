@@ -1,7 +1,7 @@
 =title Match digit
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords \d
 =status show
 
 Just as in PCRE some letters have special meaning

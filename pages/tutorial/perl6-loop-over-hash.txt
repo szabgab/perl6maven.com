@@ -1,7 +1,7 @@
 =title Looping over keys of a hash
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords die 
+=keywords for, keys
 =status show
 
 The same way we can loop over keys of a hash - after

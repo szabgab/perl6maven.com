@@ -1,7 +1,7 @@
 =title Files
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords open, <$fh>, <FILE>
 =status show
 
 <include file="tutorial/p526/files.p6" />

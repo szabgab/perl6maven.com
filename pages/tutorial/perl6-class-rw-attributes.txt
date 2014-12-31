@@ -1,7 +1,7 @@
 =title Read/write attributes and accessors
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords die 
+=keywords is rw, has
 =status show
 
 Setting the "rw" trait on the attribute will also generate

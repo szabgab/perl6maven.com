@@ -1,7 +1,7 @@
 =title Regex Quantifier 
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords **
 =status show
 
 You might want to be more specific with the quantifier:

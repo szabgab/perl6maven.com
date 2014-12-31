@@ -1,7 +1,7 @@
 =title Inheritence of classes
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords is
 =status show
 
 Classes can inherit using the "is" keyword.

@@ -1,7 +1,7 @@
 =title Simple Point class
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords die 
+=keywords class, has, $.x, WHAT, .new
 =status show
 
 In Perl 6 we define classes with the "class" keyword. It can be used either

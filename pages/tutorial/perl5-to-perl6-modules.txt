@@ -1,7 +1,7 @@
 =title Modules, Classes
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords package, module
 =status show
 
 <include file="tutorial/p526/modules.p6" />

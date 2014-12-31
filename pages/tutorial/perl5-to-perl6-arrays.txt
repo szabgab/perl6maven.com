@@ -1,7 +1,7 @@
 =title Arrays
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords @, Dumper, scalar, length, size, $array[]
 =status show
 
 <include file="tutorial/p526/arrays.p6" />

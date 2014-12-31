@@ -1,7 +1,7 @@
 =title Hashes
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords %, keys, values, each, exists, $hash{}
 =status show
 
 <include file="tutorial/p526/hashes.p6" />

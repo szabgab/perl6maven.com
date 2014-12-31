@@ -1,7 +1,7 @@
 =title Subroutine with arbitrary number of parameters
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords die 
+=keywords *@values
 =status show
 
 That would be the time to show how to define a subroutine

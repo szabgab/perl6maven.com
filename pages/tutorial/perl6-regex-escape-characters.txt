@@ -1,7 +1,7 @@
 =title Escape characters
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords \-, \=, \, \\, '-', '='
 =status show
 
 An important change from the way the reular expressions worked in Perl 5

@@ -1,7 +1,7 @@
 =title Alternates
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords ||
 =status show
 
 Alternates with first match wins:

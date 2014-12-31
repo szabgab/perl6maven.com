@@ -1,7 +1,7 @@
 =title More tutorial with Junctions
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords
+=keywords |
 =status show
 
 <include file="tutorial/junctions/operators.p6" />
