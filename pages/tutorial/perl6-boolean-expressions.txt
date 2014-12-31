@@ -1,7 +1,7 @@
 =title Boolean expressions (logical operators)
 =timestamp 2012-01-01T01:02:14
 =author szabgab
-=keywords and, or, orelse, xor, not
+=keywords and, or, orelse, xor, not, &&, ||, //, ^^, !
 =status show
 
 <table>

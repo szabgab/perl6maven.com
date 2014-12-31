@@ -1,7 +1,7 @@
 =title Chained comparisons
 =timestamp 2012-01-01T01:02:15
 =author szabgab
-=keywords 
+=keywords <=, >=
 =status show
 
 <include file="tutorial/scalars/chained_comparison.p6" />

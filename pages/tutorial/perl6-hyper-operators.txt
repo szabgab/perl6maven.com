@@ -1,7 +1,7 @@
 =title Hyper Operators
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords die 
+=keywords >>+<<, >>+>>, <<+>>
 =status show
 
 Hyper operators are really interesting. They allow the extrapolation of

@@ -1,7 +1,7 @@
 =title Calling a function during assignment
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords  
+=keywords min=
 =status show
 
 The same can be used with functions so instead of writing

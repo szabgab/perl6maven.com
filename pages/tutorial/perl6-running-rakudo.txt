@@ -3,6 +3,8 @@
 =author szabgab
 =keywords -v, -e
 =status show
+=perl5url http://perlmaven.com/perl-on-the-command-line
+=perl5title Perl on the command line
 
 Version information: <b>/path/to/somedir/rakudo/perl6 -v</b>
 

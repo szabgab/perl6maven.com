@@ -1,7 +1,7 @@
 =title Looping over a list of values one at a time, two at a time and more
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords for, ->
 =status show
 
 

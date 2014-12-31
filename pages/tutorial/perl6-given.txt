@@ -1,7 +1,7 @@
 =title Calculator - given
 =timestamp 2012-01-01T01:02:15
 =author szabgab
-=keywords given, when
+=keywords given, when, default
 =status show
 
 The <emp>given - when</emp> construct (known in other languages as case or switch)

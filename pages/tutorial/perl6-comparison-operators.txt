@@ -1,7 +1,7 @@
 =title Comparison Operators
 =timestamp 2012-01-01T01:02:13
 =author szabgab
-=keywords eq, ne, gt, lt, ge, le
+=keywords eq, ne, gt, lt, ge, le, ==, !=, <, >, <=, >=
 =status show
 
 Two sets of relation operators. One is to compare numerically

@@ -1,9 +1,8 @@
 =title Looping over any number of elements
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords 
+=keywords for
 =status show
-
 
 You can also iterate over any number of elements:
 

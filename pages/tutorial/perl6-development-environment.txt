@@ -3,15 +3,17 @@
 =author szabgab
 =keywords vim, Emacs, Padre, editor
 =status show
+=perl5url http://perlmaven.com/perl-editor
+=perl5title Perl Editors
 
 Any text editor.
 
 <a href="http://padre.perlide.org/">Padre, the Perl IDE</a> has some Perl 6 support.
 
-<command>vim</command> with syntax highlighting using
+<b>vim</b> with syntax highlighting using
 <a href="http://github.com/hinrik/vim-perl">vim-perl</a>
 
-<command>emacs</command> with perl6 mode using utils/cperl-mode.el
+<b>emacs</b> with perl6 mode using utils/cperl-mode.el
 from the Pugs repository.
 
 

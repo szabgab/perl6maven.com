@@ -1,7 +1,7 @@
 =title Loop over elements of list with for
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords for
+=keywords for, ->
 =status show
 
 <include file="tutorial/arrays/arrays.p6" />
