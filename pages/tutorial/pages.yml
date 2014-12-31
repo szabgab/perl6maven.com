@@ -65,6 +65,7 @@
     - perl6-zip
     - perl6-xx
     - perl6-sort
+    - perl6-map
 - id: perl6-meta-operators
   title: Meta Operators
     - perl6-what-are-the-meta-operators
