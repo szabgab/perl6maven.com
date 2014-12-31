@@ -1,0 +1,41 @@
+=subject map to transform arrays in Perl 6
+
+Hi again,
+
+still in 2014 :)
+
+As a response to my previous post wondering if 2015 is going to be the "year of Perl 6"
+but Raiph Mellor also pointed us to article Larry Wall wrote on 24 December for
+the Perl 6 Advent calendar:
+
+http://perl6advent.wordpress.com/2014/12/24/day-24-seeing-wrong-right/
+
+It's worth reading, but let me also quote it here:
+
+"Either way, it doesn't really matter, because there's no stopping Perl 6 now. After a few final tweaks,
+sometime in 2015 we'll finally be at a point where we can just decide when to tag the next release as 6.0.0.beta.
+And maybe we'll keep it in beta until 2015-12-25 or so."
+
+So it might be time to start the engines.
+
+I am enthusiastic as usual, and this time I plan to stick to it for a few months to see if things get picked up.
+You can certainly help my spreading the word!
+
+
+I've started to relearn Perl 6, started to update the slides on the Perl 6 Maven site.
+Even adding new ones:
+
+
+Transform arrays and list using map
+http://perl6maven.com/tutorial/perl6-map
+
+
+I'll understand if you don't have time to read it this year, but the next one is close.
+
+regards
+   Gabor
+
+
+ps. I know it has been a while since you signed up and you might have changed interest. If you'd like to unsubscribe from
+this list, there is a link at the bottom of this e-mail that will lead you to the standard Mailman unsubscribe page.
+
