@@ -3,6 +3,8 @@
 =author szabgab
 =keywords map, $_, $^number
 =status show
+=perl5url http://perlmaven.com/transforming-a-perl-array-using-map
+=perl5title Transforming a Perl array using map
 
 =abstract start
 
