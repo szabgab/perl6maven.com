@@ -1,0 +1,11 @@
+=title Continuous Integration for Perl 6 modules using Travis-CI
+=timestamp 2012-07-18T12:52:02
+=author szabgab
+=keywords Travis-CI
+=status draft
+=archive 1
+=comments 1
+
+=abstract start
+
+=abstract end
