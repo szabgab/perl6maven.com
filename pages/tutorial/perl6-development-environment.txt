@@ -1,7 +1,7 @@
 =title Development Environment
 =timestamp 2012-01-01T01:01:04
 =author szabgab
-=keywords vim, Emacs, Padre
+=keywords vim, Emacs, Padre, editor
 =status show
 
 Any text editor.

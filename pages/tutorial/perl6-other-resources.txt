@@ -1,7 +1,7 @@
 =title Other resources
 =timestamp 2012-01-01T01:01:02
 =author szabgab
-=keywords IRC
+=keywords IRC, mailing list
 =status show
 
 There are lots of free resources for learning Perl 6. Probably the most central place is the <a href="http://www.perl6.org/">Perl 6 community site</a>,

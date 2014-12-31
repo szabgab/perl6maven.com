@@ -4,6 +4,8 @@
 =keywords Linux, OSX, Windows, Rakudo, MoarVM
 =archive 1
 =status show
+=perl5url http://perlmaven.com/installing-perl-and-getting-started
+=perl5title Installing and getting started with Perl
 
 =abstract start
 
