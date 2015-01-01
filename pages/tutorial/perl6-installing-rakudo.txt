@@ -22,9 +22,9 @@ Windows users are even more spoiled, as the Rakudo development team provides rea
 Visit the <a href="http://rakudo.org/downloads/star/">download page</a> to find the latest .tar.gz file.
 
 <code>
-$ wget http://rakudo.org/downloads/star/rakudo-star-2014.12.tar.gz
-$ tar xzf rakudo-star-2014.12.tar.gz
-$ cd rakudo-star-2014.12
+$ wget http://rakudo.org/downloads/star/rakudo-star-2014.12.1.tar.gz
+$ tar xzf rakudo-star-2014.12.1.tar.gz
+$ cd rakudo-star-2014.12.1
 $ perl Configure.pl --backend=moar --gen-moar
 $ make
 $ make rakudo-test
