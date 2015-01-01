@@ -32,7 +32,7 @@ script:
   - ../perl6-travis-ci/run_tests.sh
 </code>
 
-<b>git add<b>, <b>git commit</b> and the <b>git push</b>.
+<b>git add</b>, <b>git commit</b> and the <b>git push</b>.
 
 Once this file reaches GitHub, and from that point every time you push out any of the changes you have,
 will start a new Travis-CI process.
