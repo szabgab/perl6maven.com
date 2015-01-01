@@ -8,4 +8,140 @@
 
 =abstract start
 
+<a href="https://travis-ci.org/">Travis-CI</a> is a service that offers Continuous Integration to open source project hosted on GitHub free of charge.
+It supports a number of languages, including several versions of Perl 5, but it does not support Perl 6 <a href="https://github.com/travis-ci/travis-ci/issues/2978">yet</a>.
+
+In this article you'll see how can you set up a Perl 6 based project to use the Travis-CI infrastructure using a binary version of Rakudo Star 2014.12.1.
+
 =abstract end
+
+Go to <a href="https://travis-ci.org/">Travis-CI</a>, sign up, let in synchronize with your GitHub repository and then in your <a href="https://travis-ci.org/profile/">account</a>
+switch the specific project <b>on</b>.
+
+In the GitHub repository of your project add a file called <b>.travis.yml</b> with the following content:
+
+<code>
+branches:
+  except:
+    - gh-pages
+language: c
+before_install:
+  - git clone https://github.com/szabgab/perl6-travis-ci.git ../perl6-travis-ci
+  - ../perl6-travis-ci/install_rakudo.sh
+script:
+  - ../perl6-travis-ci/run_tests.sh
+</code>
+
+<b>git add<b>, <b>git commit</b> and the <b>git push</b>.
+
+Once this file reaches GitHub, and from that point evey time you push out any of the changes you have,
+will start a new Travis-CI process.
+
+Travis-CI will first get a copy of the current state of your project then the commands in the <b>.travis.yml</b>
+will be executed. The <b>before_install</b> part tells Travis-CI to
+clone the <a href="https://github.com/szabgab/perl6-travis-ci">perl6-travis-ci</a> repository I created.
+Once that has been cloned it will run the <b>install_rakudo.sh</b> script from the repository.
+That script download the binary version of Rakudo Star 2014.12.1 I built for this purpose.
+
+Then the <b>script</b> part will be executed which will use the <b>prove</b> command of Perl 5 which happens to
+be available on the system, (It has 5.14.x) to run
+
+<code>
+prove -ve "perl6 -Ilib"
+</code>
+
+That will run all the test in the <b>t/</b> directory.
+
+You can then add a Travis-CI badge  to the README.md file of your project to show the current status of the project by
+adding the following code:
+
+<code>
+###Status
+[![Build Status](https://travis-ci.org/USER/PROJECT.png)](https://travis-ci.org/USER/PROJECT)
+</code>
+
+where you'd replace USER and PROJECT with your GitHub username and the name of the repository respectively.
+
+<h2>Examples</h2>
+
+I have set up the repository with the <a href="https://github.com/szabgab/perl6maven.com">content of this site</a>,
+and with the <a href="https://github.com/szabgab/Perl6-Maven">source code of this site</a> to use Travis-CI.
+You can take a look at the <b>.travis.yml</b> and the <b>README.md</b> files in both projects.
+
+
+<h2>Dependencies</h2>
+
+On thing that the current scripts don't handle yet is installing the dependencies of the module before running
+the tests. For now you'll need to add manually the list of dependencies using the <b>install_module.sh</b> script.
+
+In this example I have installed the YAML and Web modules.
+
+<code>
+branches:
+  except:
+    - gh-pages
+language: c
+before_install:
+  - git clone https://github.com/szabgab/perl6-travis-ci.git ../perl6-travis-ci
+  - ../perl6-travis-ci/install_rakudo.sh
+  - ../perl6-travis-ci/install_module.sh YAML
+  - ../perl6-travis-ci/install_module.sh Web
+script:
+  - ../perl6-travis-ci/run_tests.sh
+</code>
+
+
+<h2>Building Rakudo Star for Travis-CI</h2>
+
+Let me also include the instructions how I built Rakudo Star that is used in this process:
+
+Create a <a href="https://www.digitalocean.com/?refcode=0d4cc75b3a74">Digital Ocean Droplet</a>  (1GB Ram Ubuntu 12.04.05 x64).
+I am using the older version of Ubuntu because AFAIK that's what Travis-CI is using.
+
+Once the Droplet is created, Digital Ocean gives me the IP address of the machine:
+
+First thing  is to update all the packages on the server so it won't be exposed to already fixed security issues. Not
+even during the short period while I am building Rakudo Star.
+
+If you want to follow these instruction you'll replace the <b>IP</b> with the IP address given by Digital Ocean
+and later you might need to replace the version number of Rakudo Star.
+
+<code>
+$ ssh root@IP
+
+# aptitude update
+# aptitude -y safe-upgrade
+# sudo reboot
+</code>
+
+After the machine reboots comes the building:
+
+<code>
+$ ssh root@IP
+
+# aptitude -y install gcc make
+# wget  http://rakudo.org/downloads/star/rakudo-star-2014.12.1.tar.gz
+# tar xzf rakudo-star-2014.12.1.tar.gz
+# cd rakudo-star-2014.12.1
+# perl Configure.pl --backends=moar --gen-moar --prefix=/home/travis/rakudo-2014-12-1-2
+# make
+# make install
+# cd /home/travis
+# tar czf rakudo-2014-12-1-2.tar.gz rakudo-2014-12-1-2
+# exit
+</code>
+
+I used an extra digit to represent the version numbers of my own experiments and this was number 2.
+
+Then I can copied the resulting file to my local machine:
+
+<code>
+$ scp root@IP:/home/travis/rakudo-2014-12-1.tar.gz .
+</code>
+
+Finally I've uploaded it to the download directory of <a href="http://dwimperl.com/">DWIM Perl</a>.
+
+
+Enjoy, and <a href="http://github.com/szabgab/perl6-travis-ci">send me improvements</a>.
+
+
