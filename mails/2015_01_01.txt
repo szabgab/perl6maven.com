@@ -1,0 +1,26 @@
+=subject Continuous Integration for Perl 6 modules using Travis-CI
+
+Happy New Year!
+
+Based on what Larry Wall wrote
+
+http://perl6advent.wordpress.com/2014/12/24/day-24-seeing-wrong-right/
+
+we can expect Perl 6 to be officially released this year which means soon
+thousands of people will start writing code in it. Those people will want
+to have high quality and well tested modules.
+
+So you, as an earlier adopter, can still make a huge impact on the speed of adoption
+of Perl 6 by building some of the most wanted modules:
+http://modules.perl6.org/
+
+In order to make it easier to test your Perl 6 module I have created a set of shell
+scripts that allow you to use Travis-CI to have Continuous Integration for
+your Perl 6 module.
+
+The article today explains how:
+
+http://perl6maven.com/continuous-integration-for-perl6-modules-using-travis-ci
+
+regards
+    Gabor
