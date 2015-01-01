@@ -34,7 +34,7 @@ script:
 
 <b>git add<b>, <b>git commit</b> and the <b>git push</b>.
 
-Once this file reaches GitHub, and from that point evey time you push out any of the changes you have,
+Once this file reaches GitHub, and from that point every time you push out any of the changes you have,
 will start a new Travis-CI process.
 
 Travis-CI will first get a copy of the current state of your project then the commands in the <b>.travis.yml</b>
