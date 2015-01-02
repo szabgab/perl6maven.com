@@ -1,0 +1,69 @@
+=title Running external command from Perl 6 (shell, QX)
+=timestamp 2012-07-04T16:52:02
+=author szabgab
+=keywords shell, run, QX, system, `
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+Perl 6 and it ecosystem has a wealth of commands that you could use instead of shell commands,
+but there might be cases when you want to run an external command.
+
+=abstract end
+
+<h2>shell</h2>
+
+The <hl>shell</hl> function receives a string that is exactly the same as you'd type on the command line
+and executes the external command on your behalf. It connects the standard output, standard error and standard
+input to whatever your Perl 6 code had. This can be useful for interactive programs that you want to
+wrap with your code.
+
+<include file="tutorial/shell/run_ssh_with_shell.p6" />
+
+Here we run the <b>ssh</b> command, pass to it the name of the server and the command (uptime)
+to be executed on the remote server.
+When Perl 6 executes this command, the output of the command will be printed on the screen and when it asks
+for input whatever we type will be sent to the command. Specifically becasue this was the first time I ran
+ssh to that server, it first aske me if I recognize the RSA fingerprint of the server. I could type in 'yes'
+and the process continued.
+
+<code>
+$ perl6 run_ssh.p6 
+The authenticity of host 'perl6maven.com (173.255.196.65)' can't be established.
+RSA key fingerprint is fd:18:2c:05:81:b8:59:54:30.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'perl6maven.com' (RSA) to the list of known hosts.
+
+13:55:57 up 27 days,  2:20,  0 users,  load average: 0.07, 0.09, 0.06
+Command finished
+Proc::Status.new(exit => 0, pid => Any, signal => 0)
+</code>
+
+The text 'Command finished' is printed only after the external command has finished.
+
+The value returned by the <b>shell</b> command is a Proc::Status object.
+
+<h2>QX</h2>
+
+<include file="tutorial/shell/run_ssh_with_qx.p6" />
+
+The QX function also receives the string that you'd type on the command line, but instead of printing the output to the
+screen it will return it to the caller and we can assign it to a scalar variable.
+
+In this example we used the same ssh command and it will work now, because the previous time we have already accepted the
+RSA fingerprint. If we ran this script the first time, it would seem to be "stuck" as it was waiting for input from the user.
+
+<code>
+Command finished
+ 14:04:11 up 27 days,  2:28,  0 users,  load average: 0.10, 0.07, 0.05
+</code>
+
+In this case too perl will wait till the external command finished and <b>qx</b> returns ithe output.
+The big difference is that this output has not been printed to the screen yet, it can be found in the <b>$out</b> variable.
+
+We can print it out - so we can see it - using the <b>say</b> function, or we could analyze the output in the script.
+For example we could split up the output and put each value in a variable.
+
+

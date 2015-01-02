@@ -159,6 +159,7 @@
 - id: shell-to-perl6
   title: Shell to Perl 6
     - shell-to-perl6-intro
+    - running-external-commands-from-perl6
     - filters-in-perl6
     - awk-in-perl6
     - cat-in-perl6

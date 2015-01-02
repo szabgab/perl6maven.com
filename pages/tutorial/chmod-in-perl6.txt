@@ -6,3 +6,5 @@
 
 chmod - changing the user rights on a file or a directory
 
+See <a href="http://doc.perl6.org/routine/chmod">chmod<a> form <a href="http://doc.perl6.org/type/IO%3A%3APath">IO::Path</a>.
+
