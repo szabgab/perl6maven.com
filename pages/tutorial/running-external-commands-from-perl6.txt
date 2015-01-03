@@ -1,5 +1,5 @@
 =title Running external command from Perl 6 (shell, QX)
-=timestamp 2012-07-04T16:52:02
+=timestamp 2015-01-03T11:15:02
 =author szabgab
 =keywords shell, run, QX, system, `
 =status show
