@@ -1,0 +1,14 @@
+=subject Running external commands from Perl 6 (shell, QX)
+
+As I was just told on the perl6-users mailing list
+http://www.nntp.perl.org/group/perl.perl6.users/2015/01/msg1879.html
+(subscribe at http://perl6.org/archive/lists/ )
+the features is currently being discussed, but if you would like to
+run some external program, you can already use either the shell or the QX functions.
+
+I tried to describe them in this article:
+
+http://perl6maven.com/tutorial/running-external-commands-from-perl6
+
+regards
+    Gabor
