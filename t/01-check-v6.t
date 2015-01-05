@@ -44,7 +44,7 @@ for @files -> $file {
 	if %SKIP_SYNTAX{$path} {
 		skip "Syntax of '$path'";
 	} else {
-		my $out = QX("perl6 -c $path");
+		my $out = QX("$*EXECUTABLE -c $path");
 		is $out.chomp, 'Syntax OK', "Syntax of '$path' is ok";
 	}
 }
