@@ -11,6 +11,3 @@ In this chapter you won't find strongest operators of Perl 6. What I am trying t
 show here is that given a Perl 5 program how one can more-or-less straight forward
 translate it to Perl 6.
 
-See also the <a href="http://svn.pugscode.org/pugs/docs/Perl6/">documentation</a>
-
-
