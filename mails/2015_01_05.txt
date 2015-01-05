@@ -1,0 +1,10 @@
+=subject Getting started with Bailador
+
+Bailador is a minimalistic port of the Perl Dancer web framework to Perl 6.
+I've started to play with it and in the hope that you'll also want to
+try it I am sharing my first attempts.
+
+http://perl6maven.com/getting-started-with-bailador
+
+regards
+    Gabor

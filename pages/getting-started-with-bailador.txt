@@ -1,0 +1,86 @@
+=title Getting Started with Bailador
+=timestamp 2015-01-05T23:12:02
+=author szabgab
+=keywords Bailador, web, get
+=status show
+=archive 1
+=comments 1
+
+
+=abstract start
+
+<a href="https://github.com/tadzik/Bailador/">Bailador</a> is a bare-bones port of the
+<a href="http://perldancer.org/">Perl Dancer</a> web development framework. It comes with a few examples.
+In this article we'll take a look at the basics to get started writing a web application.
+
+=abstract end
+
+
+<a href="http://rakudo.org/">Rakudo Start</a> already includes the latest version of Bailador, so
+once you <a href="/tutorial/perl6-installing-rakudo">installed Rakudo</a> you don't need to worry about further installations.
+
+
+You can just create a single file like this
+
+<include file="bailador/first.pl" />
+
+and run it as <b>perl6 first.pl</b>.
+
+It will launch a small web-server and let you know that you can access it via port 3000:
+
+<code>
+perl6 files/bailador/first.pl 
+Entering the development dance floor: http://0.0.0.0:3000
+[2015-01-03T22:39:13Z] Started HTTP server.
+</code>
+
+In Bailador we need to map HTTP request methods, and the path on the server to anonymous subroutines
+that will returnt the content. In this example we mapped the <b>get</b> HTTP request for the root
+of the site <b>/</b> we told it to return the string <b>hello world</b>. If you launch the application
+and then browse to <a href="http://0.0.0.0:3000/">http://0.0.0.0:3000/</a> you will see this text.
+
+We can also map other path-es. For example this code:
+
+<code lang="perl6">
+get '/about' => sub {
+    "about me"
+}
+</code>
+
+will map the <a href="http://0.0.0.0:3000/about">http://0.0.0.0:3000/about</a> url to return "about me".
+
+<h2>Placeholder in the path</h2>
+
+Parts of the path can be placeholders starting with a colon <b>:</b>
+
+<code lang="perl6">
+get '/hello/:name' => sub ($name) {
+    "Hello $name!"
+};
+</code>
+
+The <b>:name</b> part can match any string except of a slash <b>/</b> and the value it matched will be assigned to the <b>$name</b> variable
+of the anonymous subroutine.
+
+You can have more than one such placeholders, and the actual name of the placeholder does not matter. The values caught by the
+placeholders will be assigned to the parameters of the function in the same order as they've appeared in the url.
+
+<code lang="perl6">
+get '/hello/:first/:family' => sub ($fname, $lname) {
+    "Hello $fname! And hi $lname!"
+};
+</code>
+
+In this example whatever the <b>:first</b> placeholder catches will be assigned to the <b>$fname</b> parameter, and whatever
+was caught by the <b>:family</b> placeholder, will be assigned to the <b>$lname</b> parameter. For example the url
+<a href="http://0.0.0.0:3000/hello/Foo/Bar">http://0.0.0.0:3000/hello/Foo/Bar</a> will generate the response:
+
+<code>
+Hello Foo! And hi Bar!
+</code>
+
+Of course having the same placeholder and the same variable name would probably make the code easier to understand.
+
+This is the full version of this second script:
+
+<include file="bailador/second.pl" />
