@@ -144,6 +144,9 @@
     - perl6-class-method-with-params
     - perl6-class-inheritance
     - perl6-classx
+- id: perl6-testing
+  title: Testing in Perl 6
+    - perl6-test-skip
 - id: perl5-to-perl6
   title: Perl 5 to Perl 6
     - p526-intro

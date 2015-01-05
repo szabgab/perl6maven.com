@@ -29,6 +29,9 @@ for @files -> $file {
 	#say $file;
 	#say $found;
 	ok $found, "File '$path' has 'use v6'";
+
+	my $out = QX("perl6 -c $path");
+	is $out.chomp, 'Syntax OK', "Syntax of '$path' is ok";
 }
 
 
