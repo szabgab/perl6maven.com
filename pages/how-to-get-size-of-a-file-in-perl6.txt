@@ -1,0 +1,19 @@
+=title How to get the size of a file in Perl 6
+=timestamp 2012-07-04T16:52:02
+=author szabgab
+=keywords -s, :s, size
+=status draft
+=archive 1
+=comments 1
+=perl5url http://perlmaven.com/how-to-get-the-size-of-a-file-in-perl
+=perl5title How to get the size of a file in Perl
+
+=abstract start
+
+Given a path to a file in a variable <b>my $file = "path/to/file.jpg"</b> we can determine the size of the file using the
+IO class and its <b>s</b> method: <b>$file.IO.s</b>.
+
+=abstract end
+
+<include file="files/file_size.pl6" />
+
