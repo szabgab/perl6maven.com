@@ -1,5 +1,5 @@
 =title How to get the size of a file in Perl 6
-=timestamp 2012-07-04T16:52:02
+=timestamp 2015-01-08T22:36:02
 =author szabgab
 =keywords -s, :s, size
 =status draft
