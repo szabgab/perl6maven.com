@@ -1,0 +1,57 @@
+=title Running Perl 6 - based web application on Digital Ocean
+=timestamp 2015-01-01T08:46:02
+=author szabgab
+=keywords Digital Ocean
+=status draft
+=archive 1
+=comments 1
+
+=abstract start
+
+
+=abstract end
+
+
+Create an account on <a href="https://www.digitalocean.com/?refcode=0d4cc75b3a74">Digital Ocean</a> and then create a Droplet.
+
+(I've created one with 512Mb memory running Ubuntu 14.04 for $5/month)
+
+<code>
+$ ssh root@IP
+
+# aptitude update
+# aptitude -y safe-upgrade
+# sudo reboot
+</code>
+
+<code>
+$ ssh root@IP
+
+# aptitude -y install nginx git
+
+# mkdir /home/travis
+# cd /home/travis
+# wget http://dwimperl.com/download/rakudo-2014-12-1-2.tar.gz
+# tar xzf rakudo-2014-12-1-2.tar.gz 
+
+
+# adduser --disabled-password --gecos "Foo Bar"   foobar
+# mkdir /home/foobar/.ssh
+# cp .ssh/authorized_keys /home/foobar/.ssh/
+# chown -R foobar.foobar /home/foobar/.ssh/
+# exit
+</code>
+
+Configure nginx
+
+
+<code>
+$ ssh foobar@IP
+$ mkdir work
+$ cd work
+$ git clone https://github.com/szabgab/Perl6-Maven
+$ git clone https://github.com/szabgab/perl6maven.com 
+$ cd Perl6-Maven
+$ time /home/travis/rakudo-2014-12-1-2/bin/perl6 -Ilib script/generate.p6 --indir=/home/gabor/work/perl6maven.com --outdir=/home/gabor/perl6maven/ 
+</code>
+
