@@ -1,10 +1,19 @@
-=title pwd
-=timestamp 2012-01-01T01:02:05
+=title Current Working Directory in Perl 6 (cwd, pwd, $*CWD)
+=timestamp 2015-01-09T18:02:05
 =author szabgab
-=keywords pwd
+=keywords pwd, $*CWD, cwd
 =status show
+=archive 1
 
+=abstract start
 
+In Perl 6 the special variable <b>$*CWD</b> contains the current working directory
+as an instance of the <a href="http://doc.perl6.org/type/IO%3A%3APath">IO::Path</a> class.
 
+=abstract end
 
+You can just use that variable as and even if you change directory using the <a href="/tutorial/cd-in-perl6">chdir</a>
+function, the <b>$*CWD</b> variable will be up-to-date.
+
+<include file="tutorial/shell/cwd.pl6" />
 

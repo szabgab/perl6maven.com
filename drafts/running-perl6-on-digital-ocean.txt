@@ -45,13 +45,3 @@ $ ssh root@IP
 Configure nginx
 
 
-<code>
-$ ssh foobar@IP
-$ mkdir work
-$ cd work
-$ git clone https://github.com/szabgab/Perl6-Maven
-$ git clone https://github.com/szabgab/perl6maven.com 
-$ cd Perl6-Maven
-$ time /home/travis/rakudo-2014-12-1-2/bin/perl6 -Ilib script/generate.p6 --indir=/home/gabor/work/perl6maven.com --outdir=/home/gabor/perl6maven/ 
-</code>
-

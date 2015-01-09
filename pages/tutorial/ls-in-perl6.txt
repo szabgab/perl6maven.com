@@ -1,9 +1,18 @@
-=title ls
+=title ls or dir in Perl 6
 =timestamp 2012-01-01T01:02:05
 =author szabgab
 =keywords ls, dir, glob
 =status show
 
+=abstract start
+
+People who come from the Unix command line world might wonder how to run the external <b>ls</b> command and how to capture
+its results, but there is no need for it in Perl 6. The built-in <b>dir</b> function will return everything in a given directory.
+
+=abstract end
+
+
+<include file="tutorial/shell/ls.pl6" />
 
 <a href="http://doc.perl6.org/routine/dir">dir</a> will return the list of "things" in the given directory.
 

@@ -2,7 +2,7 @@
 =timestamp 2015-01-08T22:36:02
 =author szabgab
 =keywords -s, :s, size
-=status draft
+=status show
 =archive 1
 =comments 1
 =perl5url http://perlmaven.com/how-to-get-the-size-of-a-file-in-perl
