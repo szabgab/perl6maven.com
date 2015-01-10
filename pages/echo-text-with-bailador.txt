@@ -1,0 +1,62 @@
+=title Echo text with Bailador
+=timestamp 2015-01-10T14:52:02
+=author szabgab
+=keywords 
+=status show
+=archive 1        
+
+=abstract start
+
+After <a href="http://perl6maven.com/getting-started-with-bailador">getting started with Bailador</a> serving simple text,
+let's now see how can we accept input from the user and echo it back.
+
+This isn't a complex task either, we are going slowly here.
+
+=abstract end
+
+<h2>Echo with POST</h2>
+
+For this we had to create two routes as unfortunatelly at this point Bailador that came with Rakudo Start could not yet handle GET parameters.
+
+<include file="bailador/echo_post.pl6" />
+
+The positive side is that we can see how to create a route that will handle POST requests which was already working.
+
+The first route <b>get '/' => sub {</b> will serve a GET request and it will return an HTML snippet
+which was included in the script. (I know, we'll start using templates soon.)
+That HTML snippet included a form with a single text-box and a submit button. The <b>form</b> has
+an <b>action</b> leading to the <b>/echo</b> URL, and it has a <b>method="POST"</b>. This means that when the user clicks on the
+submit button, the browser will send back a POST request.
+
+The second route we have <b>post '/echo' => sub {</b> will handle the POST request to the <b>/echo</b> path.
+
+The <b>request</b> function provided by Bailador returns the object representing the current request
+in the form of a <a href="https://github.com/tadzik/Bailador/blob/master/lib/Bailador/Request.pm">Bailador::Request</a> object.
+
+It has several methods, one of them is the <b>params</b> method that returns a hash where the keys are the parameter
+names (in our case it was <b>text</b>), and the values are, well, the values.
+
+We save that value the <b>$text</b> variable, and we use <b>//</b>, the defined-or operator to set the variable to the empty string in case
+the user has not supplied any value. Then we concatenate that text using the <b>~</b> concatenation operator, to form an "html" string.
+Then we just send back that string and our small echo server is ready to work.
+
+
+<h2>Echo with GET</h2>
+
+Since the release of Rakudo Star 2014.12, Bailador was patched and it can now handle the GET requests as well.
+Here is how you could write the echo script:
+
+<include file="bailador/echo_get.pl6" />
+
+In this case I left out the temporary variables <b>$text</b> and <b>$html</b>, they were not necessary in the previous example
+either, but they could be used here too.
+In addition, I had to add the following to the script:
+
+<code lang="perl6">
+use lib '/home/gabor/work/Bailador/lib';
+</code>
+
+That points to the cloned GitHub repository of Bailador and it makes sure the script will load Bailador.pm from
+this directory instead of the directory of Rakudo.
+
+
