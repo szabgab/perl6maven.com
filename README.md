@@ -22,18 +22,13 @@ The header of each file has the following attributes:
 
 Optional fields:
 
-    =archive 1
-    =comments 1
-
-=archive 1                         (boolean should the page be included in the /archive /atom and / front page?)
-=comments 1                        (boolean should commenting be enabled on that page?)
+    =archive 1                      (boolean should the page be included in the /archive /atom and / front page?)
+    =comments 1                     (boolean should commenting be enabled on that page?)
 
 
-    =perl5url
-    =perl5title
+    =perl5url a-URL-to-perlmaven-site
+    =perl5title Title to be used
 
-=perl5url a-URL-to-perlmaven-site
-=perl5title Title to be used
 
 
 To include an external file add:
@@ -50,4 +45,28 @@ Tutorial
 
 The source of the tutorial is in the pages/tutorial/  subdirectory.
 The pages.yml file contains the hierarchy of the pages.
+
+
+Skeleton header and content
+----------------------------
+
+=title
+=timestamp 2015-01-04T16:52:02
+=author szabgab
+=keywords
+=status draft
+=archive 1
+=perl5url
+=perl5title
+
+=abstract start
+
+=abstract end
+
+<include file="" />
+
+<code lang="perl6">
+</code>
+
+
 
