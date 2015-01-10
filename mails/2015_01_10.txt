@@ -1,0 +1,31 @@
+=subject Echo text with Bailador
+
+In this article I continue what I started earlier:
+
+http://perl6maven.com/getting-started-with-bailador
+
+and create a new route to echo back text the user types in a form:
+
+http://perl6maven.com/echo-text-with-bailador
+
+(It also involved some patching of Bailador).
+
+
+Earlier article I forgot to e-mail
+==================================
+
+I am not sure why, but apparently I've forgotten
+to send e-mail for two articles I posted in the last couple of days:
+
+
+How to get the size of a file in Perl 6
+http://perl6maven.com/how-to-get-size-of-a-file-in-perl6
+
+and
+
+Current Working Directory in Perl 6 (cwd, pwd, $*CWD)
+http://perl6maven.com/tutorial/pwd-in-perl6
+
+
+regards
+    Gabor
