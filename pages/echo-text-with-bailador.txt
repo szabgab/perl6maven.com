@@ -16,7 +16,7 @@ This isn't a complex task either, we are going slowly here.
 
 <h2>Echo with POST</h2>
 
-For this we had to create two routes as unfortunatelly at this point Bailador that came with Rakudo Start could not yet handle GET parameters.
+For this we had to create two routes as unfortunatelly at this point Bailador that came with Rakudo Star could not yet handle GET parameters.
 
 <include file="bailador/echo_post.pl6" />
 
