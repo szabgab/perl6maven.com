@@ -7,7 +7,7 @@
 
 =abstract start
 
-After <a href="http://perl6maven.com/getting-started-with-bailador">getting started with Bailador</a> serving simple text,
+After <a href="/getting-started-with-bailador">getting started with Bailador</a> serving simple text,
 let's now see how can we accept input from the user and echo it back.
 
 This isn't a complex task either, we are going slowly here.

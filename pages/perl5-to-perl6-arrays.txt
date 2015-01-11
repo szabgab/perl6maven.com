@@ -9,7 +9,7 @@
 =abstract start
 
 In the previous article we looked at
-<a href="http://perl6maven.com/perl5-to-perl6-scalars">scalars varaiables and some scalar functions</a>,
+<a href="/perl5-to-perl6-scalars">scalars varaiables and some scalar functions</a>,
 and how they changed from Perl 5 to Perl 6.
 
 Remember there is a lot more you can do with scalars, I just listed the things that
