@@ -1,0 +1,36 @@
+=title Timestamp and elapsed time in Perl 6
+=timestamp 2015-01-11T11:11:11
+=author szabgab
+=keywords time, now, Instant, Duration
+=status show
+=archive 1
+
+=abstract start
+
+Handling dates and time is tricky. No matter what programming language you use.
+
+=abstract end
+
+<h2>Timestamp</h2>
+
+Perl 6 provides two functions returning the number of seconds from the epoch (1970 January 1).
+
+The <b>now</b> function returns an <a href="http://doc.perl6.org/type/Instant">Instant</a> object
+that holds the number of seconds since the epoch with a precision of up to 6 digits after
+the decimal point. 
+
+The <b>time</b> function returns the number of seconds since the epoch less the number of leap seconds.
+So in January 2015 <b>now</b> return 35 seconds more than <b>time</b>.
+
+<include file="tutorial/shell/now_and_time.pl6" />
+
+<h2>Elapsed time in Perl 6</h2>
+
+If you want to measure elapsed time of some code snippet, probably the best is to save the result of the <b>now</b> function at
+the two points in the execution: before the snippet and after the snippet and then take the difference of
+the two <a href="http://doc.perl6.org/type/Instant">Instant</a> objects resulting in a <a href="http://doc.perl6.org/type/Duration">Duration</a>
+object.
+
+
+<include file="tutorial/shell/elapsed_time.pl6" />
+
