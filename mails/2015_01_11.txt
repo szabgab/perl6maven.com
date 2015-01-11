@@ -1,0 +1,15 @@
+=subject Timestamp and elapsed time in Perl 6
+
+The article today covers the "time" and "now" functions:
+
+http://perl6maven.com/tutorial/timestamp
+
+Perl 6 Users mailing list
+========================
+
+BTW I learned about the difference between the 'now' and 'time' functions
+on the Perl 6 Users mailing list.  You can subscribe to it by sending an
+email to perl6-users-subscribe@perl.org
+
+and you can look at its archives here: http://www.nntp.perl.org/group/perl.perl6.users/
+
