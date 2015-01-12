@@ -16,7 +16,7 @@ In this article we'll take a look at the basics to get started writing a web app
 =abstract end
 
 
-<a href="http://rakudo.org/">Rakudo Start</a> already includes the latest version of Bailador, so
+<a href="http://rakudo.org/">Rakudo Star</a> already includes the latest version of Bailador, so
 once you <a href="/tutorial/perl6-installing-rakudo">installed Rakudo</a> you don't need to worry about further installations.
 
 
