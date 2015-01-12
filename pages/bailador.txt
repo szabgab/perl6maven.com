@@ -1,0 +1,23 @@
+=title Bailador
+=timestamp 2015-01-12T22:00:00
+=author szabgab
+=keywords Bailador
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+<a href="https://github.com/tadzik/Bailador/">Bailador</a> is route-based web development framework trying to imitate the Perl Dancer framework
+which in turn started as a clone of the Ruby Sinatra project.  The Perl 6 Maven site runs on it and there are a number of articles describing it:
+
+=abstract end
+
+<ul>
+  <li><a href="/getting-started-with-bailador">Getting Started with Bailador</a></li>
+  <li><a href="/echo-text-with-bailador">Echo text with Bailador</a></li>
+</ul>
+
+
+
+
