@@ -1,0 +1,20 @@
+=subject Learn X in Y minutes
+
+I just noticed an earlier mail from Liz (aka. Elizabeth Mattijsen ) linking to this page:
+
+http://learnxinyminutes.com/docs/perl6/
+
+It is a nice resource if you'd like to get up-to-speed in Perl 6 and you only have Y minutes.
+
+In other news, one of the readers asked me if there is a binary distribution of Rakudo Star
+for Linux. As I don't know about any (other) such thing and as I already have the one
+I built for the Travis-CI integration ( http://perl6maven.com/continuous-integration-for-perl6-modules-using-travis-ci )
+I figured it would not hurt to create a page for it on the DWIM Perl web site:
+
+http://dwimperl.com/perl6.html
+
+So in case you don't want to compile Rakudo Star for yourself you can use this.
+
+Gabor
+
+
