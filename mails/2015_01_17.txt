@@ -1,0 +1,11 @@
+=subject Introduction to Perl 6 using REPL: scalars (screencast)
+
+Hi,
+
+I have prepared and published this screencast in 2010, but apparently it is still
+mostly correct. So now reposting on the Perl6Maven site.
+
+http://perl6maven.com/introduction-to-perl6-screencast-scalars
+
+Gabor
+
