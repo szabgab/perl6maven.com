@@ -1,0 +1,104 @@
+=title Introduction to Perl 6 using REPL: scalars
+=timestamp 2015-01-17T07:52:02
+=author szabgab
+=keywords screencast, scalars, Rakudo, interpolation
+=status show
+=archive 1
+
+=abstract start
+
+This screencast was first published in July 2010, but the examples are mostly still correct.
+
+=abstract end
+
+
+See the notes for some changes in Perl 6 and mistakes I made during the recording.
+
+<iframe width="640" height="510" src="http://www.youtube.com/embed/Lp8E6OiFlEM?cc_load_policy=1" frameborder="0" allowfullscreen></iframe>
+
+<a href="http://www.rakudo.org/">Rakudo</a>
+
+IRC: <a href="webchat.freenode.net/?channels=perl6">#perl6 on irc.freenode.net</a>
+
+<h2>REPL</h2>
+
+<code>
+$ perl6
+
+> say 42
+42
+
+> say "hello"
+hello
+
+> "hello".say
+hello
+
+> slurp '01.p6'
+</code>
+
+<include file="examples/01.p6" />
+
+<code>
+> EVAL slurp '01.p6'
+Hello world
+</code>
+
+Instead of <b>eval</b> Perl 6 has <b>EVAL</b> now.
+
+
+<code>
+> slurp '02.p6'
+</code>
+
+<include file="examples/02.p6" />
+
+Scalars - variables starting with a <b>$</h> sign - can actually contain any value, including arrays and hashes, but that will be discussed later.
+
+Variables need to be declared, except in the REPL which is used in the screencast.
+
+Variable interpolation!
+
+<code>
+> EVAL slurp '02.p6'
+Please type in your name: Foo
+Hello Foo, how are you?
+>
+</code>
+
+<b>prompt</b> is automatically removing the newline from the end of the input. It is chomp-ing the input.
+
+<code>
+> EVAL slurp '03.p6'
+When were you born? 2000
+You are younger than Perl by 13 years
+
+> slurp '03.p6'
+</code>
+
+<include file="examples/03.p6" />
+
+No need for parentheses around the condition of the <b>if</b> statement.
+
+In Perl 6 string-interpolation of any expression is possible by putting the expression inside
+curly braces within the double-quoted string. The result of the expression will be embedded
+in the string.
+
+<code>
+> slurp '04.p6'
+</code>
+
+<include file="examples/04.p6" />
+
+Chained conditionals.
+
+<code>
+> slurp '05.p6'
+</code>
+
+<include file="examples/05.p6" />
+
+<b>3|7|13</b> - a junction.
+
+
+
