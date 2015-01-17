@@ -53,7 +53,7 @@ Instead of <b>eval</b> Perl 6 has <b>EVAL</b> now.
 
 <include file="examples/02.p6" />
 
-Scalars - variables starting with a <b>$</h> sign - can actually contain any value, including arrays and hashes, but that will be discussed later.
+Scalars - variables starting with a <b>$</b> sign - can actually contain any value, including arrays and hashes, but that will be discussed later.
 
 Variables need to be declared, except in the REPL which is used in the screencast.
 
