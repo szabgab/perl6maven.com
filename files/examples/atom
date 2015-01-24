@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<link href="http://perl6maven.com/atom" rel="self" />
+<title>Perl 6 Maven</title>
+<id>http://perl6maven.com/</id>
+<updated>2015-01-17T07:52:02Z</updated>
+<entry>
+  <title>Introduction to Perl 6 using REPL: scalars</title>
+  <summary type="html"><![CDATA[<p>
+This screencast was first published in July 2010, but the examples are mostly still correct.
+<p>
+]]></summary>
+  <updated>2015-01-17T07:52:02Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/introduction-to-perl6-screencast-scalars" />  <id>http://perl6maven.com/introduction-to-perl6-screencast-scalars</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>Bailador</title>
+  <summary type="html"><![CDATA[<p>
+<a href="https://github.com/tadzik/Bailador/">Bailador</a> is route-based web development framework trying to imitate the Perl Dancer framework
+which in turn started as a clone of the Ruby Sinatra project.  The Perl 6 Maven site runs on it and there are a number of articles describing it:
+<p>
+]]></summary>
+  <updated>2015-01-12T22:00:00Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/bailador" />  <id>http://perl6maven.com/bailador</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>Timestamp and elapsed time in Perl 6</title>
+  <summary type="html"><![CDATA[<p>
+Handling dates and time is tricky. No matter what programming language you use.
+<p>
+]]></summary>
+  <updated>2015-01-11T11:11:11Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/tutorial/timestamp" />  <id>http://perl6maven.com/tutorial/timestamp</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>Echo text with Bailador</title>
+  <summary type="html"><![CDATA[<p>
+After <a href="/getting-started-with-bailador">getting started with Bailador</a> serving simple text,
+let's now see how can we accept input from the user and echo it back.
+<p>
+This isn't a complex task either, we are going slowly here.
+<p>
+]]></summary>
+  <updated>2015-01-10T14:52:02Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/echo-text-with-bailador" />  <id>http://perl6maven.com/echo-text-with-bailador</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>Current Working Directory in Perl 6 (cwd, pwd, $*CWD)</title>
+  <summary type="html"><![CDATA[<p>
+In Perl 6 the special variable <b>$*CWD</b> contains the current working directory
+as an instance of the <a href="http://doc.perl6.org/type/IO%3A%3APath">IO::Path</a> class.
+<p>
+]]></summary>
+  <updated>2015-01-09T18:02:05Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/tutorial/pwd-in-perl6" />  <id>http://perl6maven.com/tutorial/pwd-in-perl6</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>How to get the size of a file in Perl 6</title>
+  <summary type="html"><![CDATA[<p>
+Given a path to a file in a variable <b>my $file = "path/to/file.jpg"</b> we can determine the size of the file using the
+IO class and its <b>s</b> method: <b>$file.IO.s</b>.
+<p>
+]]></summary>
+  <updated>2015-01-08T22:36:02Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/how-to-get-size-of-a-file-in-perl6" />  <id>http://perl6maven.com/how-to-get-size-of-a-file-in-perl6</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>Getting Started with Bailador</title>
+  <summary type="html"><![CDATA[<p>
+<a href="https://github.com/tadzik/Bailador/">Bailador</a> is a bare-bones port of the
+<a href="http://perldancer.org/">Perl Dancer</a> web development framework. It comes with a few examples.
+In this article we'll take a look at the basics to get started writing a web application.
+<p>
+]]></summary>
+  <updated>2015-01-05T23:12:02Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/getting-started-with-bailador" />  <id>http://perl6maven.com/getting-started-with-bailador</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>Running external command from Perl 6 (shell, QX)</title>
+  <summary type="html"><![CDATA[<p>
+Perl 6 and it ecosystem has a wealth of commands that you could use instead of shell commands,
+but there might be cases when you want to run an external command.
+<p>
+]]></summary>
+  <updated>2015-01-03T11:15:02Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/tutorial/running-external-commands-from-perl6" />  <id>http://perl6maven.com/tutorial/running-external-commands-from-perl6</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>Continuous Integration for Perl 6 modules using Travis-CI</title>
+  <summary type="html"><![CDATA[<p>
+<a href="https://travis-ci.org/">Travis-CI</a> is a service that offers Continuous Integration to open source project hosted on GitHub free of charge.
+It supports a number of languages, including several versions of Perl 5, but it does not support Perl 6 <a href="https://github.com/travis-ci/travis-ci/issues/2978">yet</a>.
+<p>
+In this article you'll see how can you set up a Perl 6 based project to use the Travis-CI infrastructure using a binary version of Rakudo Star 2014.12.1.
+<p>
+]]></summary>
+  <updated>2015-01-01T08:46:02Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/continuous-integration-for-perl6-modules-using-travis-ci" />  <id>http://perl6maven.com/continuous-integration-for-perl6-modules-using-travis-ci</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+<entry>
+  <title>Transform arrays and lists using map</title>
+  <summary type="html"><![CDATA[<p>
+The <b>map</b> function allows us to create a compact expression transforming each element of an array or that of a list
+to some other kind of value. Perl 5 used the same <b>map</b> keyword. In Python this is usually accomplished with
+<b>list comprehension</b>.
+<p>
+]]></summary>
+  <updated>2014-12-31T14:02:05Z</updated>
+  <link rel="alternate" type="text/html" href="http://perl6maven.com/tutorial/perl6-map" />  <id>http://perl6maven.com/tutorial/perl6-map</id>
+<author>
+  <name>szabgab</name>
+</author>
+</entry>
+</feed>
