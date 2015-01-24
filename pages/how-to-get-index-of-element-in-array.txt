@@ -2,7 +2,7 @@
 =timestamp 2015-01-24T16:52:02
 =author szabgab
 =keywords grep-index, index
-=status draft
+=status show
 =archive 1
 =perl5url http://perlmaven.com/how-to-get-index-of-element-in-array
 =perl5title How to get the index of specific element (value) of an array?
