@@ -1,0 +1,12 @@
+=subject How to get the index of specific element of an array in Perl 6 ?
+
+Hi,
+
+a week gone by without a Perl 6 Maven post. Sorry about that. Now a quick one
+I needed when I started work on a module for logging:
+
+http://perl6maven.com/how-to-get-index-of-element-in-array
+
+regards
+  Gabor
+
