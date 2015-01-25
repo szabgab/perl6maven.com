@@ -1,0 +1,12 @@
+=subject How to connect to the #perl6 IRC channel and try Perl 6 on-line
+
+Hi,
+
+another one of the ealier screencasts moved to the Perl 6 Maven site with new
+notes on the page:
+
+http://perl6maven.com/how-to-use-perl6-without-installing-it
+
+regards
+  Gabor
+
