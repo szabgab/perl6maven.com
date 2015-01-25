@@ -1,0 +1,58 @@
+=title How to connect to the #perl6 IRC channel and try Perl 6 on-line
+=timestamp 2015-01-25T12:30:00
+=author szabgab
+=keywords IRC
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+The Perl 6 developers hang out on the <b>#perl6</b> channel on frenode.net. This screencast will show how to connect to
+the channel using a browser and how to get help on the channel.
+
+=abstract end
+
+<iframe width="640" height="510" src="http://www.youtube.com/embed/2M3f3uAqMWg?cc_load_policy=1" frameborder="0" allowfullscreen></iframe>
+
+<a href="http://webchat.freenode.net/">web interface to Freenode</a>. Pick some username and type in the name of the channel: <b>#perl6</b>.
+You'll also need to answer the CAPTCHA that appears on that page.
+
+In the channel you can type <b>rakudo:</b> followed by some Perl 6 expression. An eval-bot will take your code, execute it and post
+the output to the channel. This way you can try Rakudo Perl 6 without even installing it, and it is a good way to
+discuss features and ask questions.
+
+For example you can type:
+
+<code>
+rakudo: say 19+23
+</code>
+
+and it will print back:
+
+<code>
+<+camelia> rakudo-{parrot,moar} f12020: OUTPUT
+</code>
+
+The name of the eval-bot has changed since I recorded the video a few years ago. Today, instead of <b>p6eval</b> the eval-bot is called <b>camelia</b>.
+If you'd like to try Perl 6 on IRC without even bothering the people on the channel you can type:
+
+<code>
+/msg camelia rakudo: 19+23
+</code>
+
+this will open another tab in the web-based IRC client and <b>camelia</b> will answer you there.
+
+You can click on the label of that tab and from that point on you can have a private conversation with
+<b>camelia</b> the eval-bot.
+
+If you wonder why do you need to prefix your command with <b>rakudo:</b> then you should know tha there are several
+back-ends running on the server and you can ask each one of them separatey to evaluate your code. For example you can type in
+
+<code>
+std: 19 23
+</code>
+
+and then <b>std</b> the Standard Grammar  of Perl 6 will check if your snippet is syntactically correct.
+It won't evaluate it, but it can tell you about the syntax.
+
