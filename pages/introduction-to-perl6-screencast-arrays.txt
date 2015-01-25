@@ -1,0 +1,156 @@
+=title Perl 6 screencast - part 2 - arrays
+=timestamp 2015-01-17T07:52:02
+=author szabgab
+=keywords screencast, arrays
+=status draft
+=archive 1
+
+=abstract start
+
+=abstract end
+
+
+This article is about <a href="/perl6.html">Perl 6</a>. If you are looking for solution regarding
+the current production version of Perl 5, please check out the <a href="/perl_tutorial.html">Perl tutorial</a>.
+<hr>
+
+Direct link to the <a href="http://www.youtube.com/watch?v=TbjNXtU2u_0">Perl 6 arrays screencast</a>
+
+Create an array, print the values:
+
+<include file="examples/arrays/01.p6" />
+
+<code>
+$ perl6 01.p6
+
+Foo Bar Moo
+</code>
+
+
+Print the values in a way more useful for debugging:
+
+<include file="examples/arrays/01_perl.p6" />
+
+<code>
+$ perl6 01_perl.p6
+
+Array.new("Foo", "Bar", "Moo")
+</code>
+
+Element of an array:
+
+<include file="examples/arrays/01_element.p6" />
+
+<code>
+$ perl6 01_element.p6
+
+Bar
+</code>
+
+Perl 5 users should note, the sigil has not changed! In Perl 6 there is sigil-invariance.
+
+
+<include file="examples/arrays/01_all_elements.p6" />
+
+<code>
+$ perl6 01_all_elements.p6
+
+Foo Bar Moo
+</code>
+
+<No need for parentheses around the elements of a list in assignment:
+
+<include file="examples/arrays/01_no_parens.p6" />
+
+<code>
+$ perl6 01_no_parens.p6
+
+Foo Bar Moo
+</code>
+
+
+<h2>Interpolation</h2>
+
+Normally arrays don't interpolate in a string:
+
+<include file="examples/arrays/02_interpolate.p6" />
+
+<code>
+$ perl6 02_interpolate.p6
+
+Hello @names how are you?
+</code>
+
+
+However if we put quare brackets after the arrat then we can achive interpolation:
+
+<include file="examples/arrays/02_interpolate_with_square.p6" />
+
+<code>
+$ perl6 02_interpolate_with_square.p6
+
+Hello Foo Bar Moo how are you?
+</code>
+
+
+We can interpolate a single element of the array:
+
+<include file="examples/arrays/02_interpolate_element.p6" />
+
+<code>
+$ perl6 02_interpolate_element.p6
+
+Hello Bar how are you?
+</code>
+
+
+A more generic way would be to put the expression in curly braces:
+
+<include file="examples/arrays/02_interpolate_with_curly.p6" />
+
+<code>
+$ perl6 02_interpolate_with_curly.p6
+
+Hello Foo Bar Moo how are you?
+</code>
+
+<h2>Interpolate expression</h2>
+
+Inside the curly braces we can put any expression. Perl 6 will evaluate the expression
+and the result will be interpolated in the string.
+
+<include file="examples/arrays/03.p6" />
+
+<code>
+$ perl6 03.p6
+
+Hello Foo; Bar; Moo how are you?
+</code>
+
+
+<h2>Pointy brackets</h2>
+
+Using pointy brackets to create an array:
+ 
+<include file="examples/arrays/04.p6" />
+
+<code>
+$ perl6 04.p6
+
+Hello Foo Bar Moo how are you?
+</code>
+
+<h2>for-loop</h2>
+
+Iterating over the elements of an array using the <b>for</b> loop:
+
+<include file="examples/arrays/05.p6" />
+
+<code>
+$ perl6 05.p6
+
+Foo
+Bar
+Moo
+</code>
+
