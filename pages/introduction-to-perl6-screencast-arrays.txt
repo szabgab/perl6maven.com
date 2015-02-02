@@ -1,20 +1,20 @@
 =title Perl 6 screencast - part 2 - arrays
-=timestamp 2015-01-17T07:52:02
+=timestamp 2015-01-02T10:52:02
 =author szabgab
-=keywords screencast, arrays
-=status draft
+=keywords arrays, <, {, qw, for, ->
+=status show
 =archive 1
 
 =abstract start
 
+In this screencast I provide a basic introduction to arrays in Perl 6.
+
 =abstract end
 
+Instead of using the REPL, in what you would now type EVAL instead of eval, here I am showing you the examples running from the command line.
 
-This article is about <a href="/perl6.html">Perl 6</a>. If you are looking for solution regarding
-the current production version of Perl 5, please check out the <a href="/perl_tutorial.html">Perl tutorial</a>.
-<hr>
+<iframe width="640" height="510" src="http://www.youtube.com/embed/TbjNXtU2u_0?cc_load_policy=1" frameborder="0" allowfullscreen></iframe>
 
-Direct link to the <a href="http://www.youtube.com/watch?v=TbjNXtU2u_0">Perl 6 arrays screencast</a>
 
 Create an array, print the values:
 
@@ -25,7 +25,6 @@ $ perl6 01.p6
 
 Foo Bar Moo
 </code>
-
 
 Print the values in a way more useful for debugging:
 
@@ -58,7 +57,7 @@ $ perl6 01_all_elements.p6
 Foo Bar Moo
 </code>
 
-<No need for parentheses around the elements of a list in assignment:
+No need for parentheses around the elements of a list in assignment:
 
 <include file="examples/arrays/01_no_parens.p6" />
 
@@ -81,8 +80,7 @@ $ perl6 02_interpolate.p6
 Hello @names how are you?
 </code>
 
-
-However if we put quare brackets after the arrat then we can achive interpolation:
+However, if we put quare brackets after the arrat then we can achive interpolation:
 
 <include file="examples/arrays/02_interpolate_with_square.p6" />
 
@@ -102,7 +100,6 @@ $ perl6 02_interpolate_element.p6
 
 Hello Bar how are you?
 </code>
-
 
 A more generic way would be to put the expression in curly braces:
 
@@ -130,7 +127,7 @@ Hello Foo; Bar; Moo how are you?
 
 <h2>Pointy brackets</h2>
 
-Using pointy brackets to create an array:
+Using pointy brackets to create an array is like <b>qw</b> in Perl 5.
  
 <include file="examples/arrays/04.p6" />
 
