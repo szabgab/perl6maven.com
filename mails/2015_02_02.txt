@@ -1,0 +1,30 @@
+=subject Introduction to Perl 6: arrays (and some Perl 6 news)
+
+Hi,
+
+another one of the earlier screencasts moved to the Perl 6 Maven site with new
+notes on the page:
+
+http://perl6maven.com/introduction-to-perl6-screencast-arrays
+
+
+Other Perl 6 news:
+
+a perl5 to perl6 translator - update by Flávio Glock
+http://blogs.perl.org/users/flavio_s_glock/2015/01/a-perl5-to-perl6-translator---update.html
+
+Fosdem 2015: It's Christmas! by Mark Keating
+http://blogs.perl.org/users/shadowcat_mdk/2015/02/fosdem-2015-its-christmas.html
+
+Gotanda Lands 
+Rakudo on MoarVM got 20% faster
+https://p6weekly.wordpress.com/2015/01/26/2015-04-gotanda-lands/
+
+
+Perl 6 For Mere Mortals by Curtis 'Ovid' Poe
+http://www.slideshare.net/Ovid/perl-6-for-mere-mortals
+
+
+regards
+  Gabor
+
