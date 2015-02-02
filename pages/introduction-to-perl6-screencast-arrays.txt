@@ -1,5 +1,5 @@
-=title Perl 6 screencast - part 2 - arrays
-=timestamp 2015-01-02T10:52:02
+=title Introduction to Perl 6: arrays
+=timestamp 2015-02-02T10:52:02
 =author szabgab
 =keywords arrays, <, {, qw, for, ->
 =status show
