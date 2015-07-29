@@ -1,5 +1,5 @@
 =title Installing Rakudo Perl 6
-=timestamp 2015-07-01T23:01:03
+=timestamp 2015-07-29T20:01:03
 =author szabgab
 =keywords Linux, OSX, Windows, Rakudo, MoarVM
 =archive 1
@@ -22,9 +22,9 @@ Windows users are even more spoiled, as the Rakudo development team provides rea
 Visit the <a href="http://rakudo.org/downloads/star/">download page</a> to find the latest .tar.gz file.
 
 <code>
-$ wget http://rakudo.org/downloads/star/rakudo-star-2015.06.tar.gz
-$ tar xzf rakudo-star-2015.06.tar.gz
-$ cd rakudo-star-2015.06
+$ wget http://rakudo.org/downloads/star/rakudo-star-2015.07.tar.gz
+$ tar xzf rakudo-star-2015.07.tar.gz
+$ cd rakudo-star-2015.07
 $ perl Configure.pl --backend=moar --gen-moar
 $ make
 $ make rakudo-test
