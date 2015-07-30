@@ -11,9 +11,16 @@
 <a href="https://travis-ci.org/">Travis-CI</a> is a service that offers Continuous Integration to open source project hosted on GitHub free of charge.
 It supports a number of languages, including several versions of Perl 5, but it does not support Perl 6 <a href="https://github.com/travis-ci/travis-ci/issues/2978">yet</a>.
 
-In this article you'll see how can you set up a Perl 6 based project to use the Travis-CI infrastructure using a binary version of Rakudo Star 2014.12.1.
+In this article you'll see how can you set up a Perl 6 based project to use the Travis-CI infrastructure using the latest version of Rakudo Star.
 
 =abstract end
+
+Follow the instructions for <a href="http://docs.travis-ci.com/user/languages/perl6/">Perl 6 on Travis-CI</a>.
+
+
+<h2>Old Article</h2>
+
+In this article you'll see how can you set up a Perl 6 based project to use the Travis-CI infrastructure using a binary version of Rakudo Star 2015.07.
 
 Go to <a href="https://travis-ci.org/">Travis-CI</a>, sign up, let in synchronize with your GitHub repository and then in your <a href="https://travis-ci.org/profile/">account</a>
 switch the specific project <b>on</b>.
@@ -91,9 +98,46 @@ script:
 </code>
 
 
-<h2>Building Rakudo Star for Travis-CI</h2>
+<h2>Building Rakudo Star for Travis-CI on Vagrant</h2>
 
 Let me also include the instructions how I built Rakudo Star that is used in this process:
+
+<code>
+$ git clone git@github.com:szabgab/perl6-travis-ci.git
+$ cd perl6-travis-ci
+$ vagrant up
+$ vagrant ssh
+</code>
+
+<code>
+$ sudo mkdir /home/travis
+$ sudo chown vagrant.vagrant /home/travis/
+$ sudo aptitude -y install gcc make
+</code>
+
+<code>
+$ wget http://rakudo.org/downloads/star/rakudo-star-2015.07.tar.gz
+$ tar xzf rakudo-star-2015.07.tar.gz
+$ cd rakudo-star-2015.07
+$ perl Configure.pl --backends=moar --gen-moar --prefix=/home/travis/rakudo-2015-07-01
+$ make
+$ make install
+$ cd /home/travis
+$ tar czf rakudo-2015-07-01.tar.gz rakudo-2015-07-01
+$ mv rakudo-2015-07-01.tar.gz /vagrant
+$ exit
+</code>
+
+I used an extra number to represent the version numbers of my own experiments.
+
+Finally I've uploaded rakudo-2015-07-01.tar.gz to the download directory of <a href="http://dwimperl.com/">DWIM Perl</a>.
+
+Enjoy, and <a href="http://github.com/szabgab/perl6-travis-ci">send me improvements</a>.
+
+
+<h2>Extra steps for Building Rakudo Star for Travis-CI on a Digital Ocean Droplet</h2>
+
+Earlier I built Rakudo Start for Travis-CI on a Digital Ocean Droplet. Let me add a few releevant words here:
 
 Create a <a href="https://www.digitalocean.com/?refcode=0d4cc75b3a74">Digital Ocean Droplet</a>  (1GB Ram Ubuntu 12.04.05 x64).
 I am using the older version of Ubuntu because AFAIK that's what Travis-CI is using.
@@ -114,34 +158,6 @@ $ ssh root@IP
 # sudo reboot
 </code>
 
-After the machine reboots comes the building:
+After the machine reboots comes the building of Rakudo Star as has been described above.
 
-<code>
-$ ssh root@IP
-
-# aptitude -y install gcc make
-# wget  http://rakudo.org/downloads/star/rakudo-star-2014.12.1.tar.gz
-# tar xzf rakudo-star-2014.12.1.tar.gz
-# cd rakudo-star-2014.12.1
-# perl Configure.pl --backends=moar --gen-moar --prefix=/home/travis/rakudo-2014-12-1-2
-# make
-# make install
-# cd /home/travis
-# tar czf rakudo-2014-12-1-2.tar.gz rakudo-2014-12-1-2
-# exit
-</code>
-
-I used an extra digit to represent the version numbers of my own experiments and this was number 2.
-
-Then I can copied the resulting file to my local machine:
-
-<code>
-$ scp root@IP:/home/travis/rakudo-2014-12-1.tar.gz .
-</code>
-
-Finally I've uploaded it to the download directory of <a href="http://dwimperl.com/">DWIM Perl</a>.
-
-
-Enjoy, and <a href="http://github.com/szabgab/perl6-travis-ci">send me improvements</a>.
-
-
+Then I can copied the resulting file to my local machine before uploading it to <a href="http://dwimperl.com/">DWIM Perl</a>.
