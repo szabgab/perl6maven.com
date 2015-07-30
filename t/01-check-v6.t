@@ -23,6 +23,10 @@ my %SKIP_SYNTAX = (
 	'files/tutorial/regex/ini_processor.p6' => 1,
 	'files/tutorial/subroutines/optional_parameters.p6' => 1,
 	'files/tutorial/regex2/add.p6' => 1,
+
+	'files/tutorial/regex/metasyntax.p6' => 1,
+	'files/tutorial/regex/optional_character.p6' => 1,
+	'files/tutorial/regex/quantifiers.p6' => 1,
 );
 
 my @files = rdir('files').grep( -> $f { substr($f, *-3) eq '.p6' }).grep( -> $f { not %SKIP{$f} });
