@@ -49,7 +49,7 @@ engine. Only the hash atfter it.
 % my ($h) = @_;
 </code>
 
-Lines in the template that start with <hl>%<hl> are considered Perl 6 code.
+Lines in the template that start with <hl>%</hl> are considered Perl 6 code.
 Snippets that that are embedded in <hl>&lt;%=  %&gt;</hl> tags are values interpolated
 in the HTML document:
 
