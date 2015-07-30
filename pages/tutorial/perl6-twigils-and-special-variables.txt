@@ -16,7 +16,7 @@ and the name of the variable.
 
 Examples:
 <ul>
- <li><emp>$*PROGRAM_NAME</emp> relative path to the currently running Perl 6 script.</li>
+ <li><emp>$*PROGRAM-NAME</emp> relative path to the currently running Perl 6 script.</li>
  <li><emp>$*PROGRAM</emp> full path to the currently running Perl 6 cript</li>
  <li><emp>$*CWD</emp> contains a path to the current working directory.</li>
  <li><emp>$*IN</emp> is the standard input (STDIN). You can read a line using $*IN.get</li>

@@ -29,4 +29,3 @@ The specifications of all the IO of Perl 6 can be found in
 S32-setting-library/IO.pod
 
 <include file="tutorial/files/read_one_line.p6" />
-
