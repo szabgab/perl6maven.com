@@ -35,7 +35,7 @@ if (@*ARGS[0] eq "--index") {
 sub collect_podfiles {
     # for now assume we run in the same directory where pugs is and the docs are in
     # ./docs/Perl6
-    my $ROOT = dirname($PROGRAM_NAME) ~ "/..";
+    my $ROOT = dirname($*PROGRAM-NAME) ~ "/..";
     my $dir = $ROOT ~ "/docs/Perl6";
     say "processing $dir tree" if $DEBUG;
     my $prefix_length = $dir.chars;
@@ -64,10 +64,10 @@ sub index_pods {
     mkdir $index_dir if not -e $index_dir;
     # TODO: go over all the files in the standard directory, whatever the standard will be
     
-    #my @files = list_files(dirname($PROGRAM_NAME));
+    #my @files = list_files(dirname($*PROGRAM-NAME));
     #say @files.perl;
     my %data;
-    for list_files(dirname($PROGRAM_NAME)) -> $podfile {
+    for list_files(dirname($*PROGRAM-NAME)) -> $podfile {
         say "Processing '$podfile'";
         my $fh = open $podfile err die "Could not open '$podfile'\n";
         my $row = 0;
@@ -157,11 +157,11 @@ sub dirname($path is copy) {
 
 sub usage {
     say "Usage:";
-#    say "    $PROGRAM_NAME --index";
-#    say "    $PROGRAM_NAME --keyword KEYWORD";
-    say "    $PROGRAM_NAME PODFILE     - display the given podfile";
-    say "    $PROGRAM_NAME --list      - list the available podfiles";
-    say "    $PROGRAM_NAME --menu      - menu driven podviewer";
+#    say "    $*PROGRAM-NAME --index";
+#    say "    $*PROGRAM-NAME --keyword KEYWORD";
+    say "    $*PROGRAM-NAME PODFILE     - display the given podfile";
+    say "    $*PROGRAM-NAME --list      - list the available podfiles";
+    say "    $*PROGRAM-NAME --menu      - menu driven podviewer";
     exit;
 }
 

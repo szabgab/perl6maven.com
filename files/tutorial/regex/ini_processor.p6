@@ -2,7 +2,7 @@
 use v6;
 
 my $dir;
-if ($*PROGRAM_NAME ~~ m/^ (.*) \/ .* $/) {
+if ($*PROGRAM-NAME ~~ m/^ (.*) \/ .* $/) {
     $dir = $0;
 }
 #say $dir;

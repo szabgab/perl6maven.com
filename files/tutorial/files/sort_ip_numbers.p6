@@ -3,7 +3,7 @@ use v6;
 
 my $filename = @*ARGS.shift;
 if not $filename {
-    say "Usage: $*PROGRAM_NAME filename";
+    say "Usage: $*PROGRAM-NAME filename";
     exit;
 }
 

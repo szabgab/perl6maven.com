@@ -1,7 +1,7 @@
 =title Twigils and special variables
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords $*, $*PROGRAM_NAME, $*PROGRAM, $*CWD, $*IN, @*INC, $*PID, $EXECUTABLE_NAME, $*EXECUTABLE, $*TMPDIR
+=keywords $*, $*PROGRAM-NAME, $*PROGRAM, $*CWD, $*IN, @*INC, $*PID, $EXECUTABLE_NAME, $*EXECUTABLE, $*TMPDIR
 =status show
 
 

@@ -6,7 +6,7 @@
 
 <code>
 @ARGV                    @$ARGS
-$0                       $PROGRAM_NAME
+$0                       $*PROGRAM-NAME
 foreach my $s (@arr) {}  for @arr -> $s { }
 
 $#array                   
