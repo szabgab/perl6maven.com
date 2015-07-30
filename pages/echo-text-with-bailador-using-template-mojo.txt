@@ -1,0 +1,69 @@
+=title Echo text with Bailador using Template::Mojo
+=timestamp 2015-07-30T23:12:02
+=author szabgab
+=keywords Bailador, Template::Mojo
+=status show
+=archive 1        
+
+=abstract start
+
+After <a href="/getting-started-with-bailador">getting started with Bailador</a> serving simple text,
+we saw how we can accept input from the user and <a href="/echo-text-with-bailador">echo it back</a>, but we had the HTML
+snippets embedded in our Perl 6 code. That can work for really small applications, but if we would like
+to build a real web application we need to move the HTML out to externale template files.
+
+Bailador user Template::Mojo as its default templating system.
+
+=abstract end
+
+<h2>Bailador web appication</h2>
+
+In our example we use two files. One of them is the main Perl 6 script called <hl>app.pl6</hl>
+and the other one is the <hl>views/echo.tt</hl> located in the <hl>views</hl> subdirectory:
+
+<include file="bailador/echo_template/app.pl6" />
+
+The application has 3 routes. The <hl>/</hl> route returns an HTML snippet still embedded in the Perl 6 code,
+displaying a link to the <hl>/echo</hl> page.
+
+Then there are two <hl>/echo</hl> routes. One that will handle the GET request to this URL, that returns the
+content of the template, the other one that will pass the value of the <hl>text</hl> field of the HTML form
+to the template engine.
+
+One important thing to mention. In order to know whre the root of the application is and from there to deduct
+where the <hl>views</hl> directory is, Bailador makes some calculations in its <hl>import</hl> function.
+As of this writing Rakudo 2015.07 does not automatically call this function thus after loading Bailador
+we had to include a call: 
+
+<code lang="perl6">
+Bailador::import;
+</code>
+
+<h2>Temlate::Mojo</h2>
+
+The template itself is basically a subroutine in which the first line accepts the parameters from
+the call to the <hl>template</hl> function. (Except that the name of the template file is not passed to the template
+engine. Only the hash atfter it.
+
+<code lang="perl6">
+% my ($h) = @_;
+</code>
+
+Lines in the template that start with <hl>%<hl> are considered Perl 6 code.
+Snippets that that are embedded in <hl>&lt;%=  %&gt;</hl> tags are values interpolated
+in the HTML document:
+
+<code lang="perl6">
+% if $h<text> {
+	You said <%= $h<text> %>
+% }
+</code>
+
+The full template looks like this.
+
+<include file="bailador/echo_template/views/echo.tt" />
+
+We can run <hl>perl6 app.pl6</hl> which will launch a small web server on port 3000. We can then visit http://127.0.0.1:3000/
+and follow the link to <hl>Echo</hl> where we'll see the form to be filled.
+
+

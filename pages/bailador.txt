@@ -16,6 +16,7 @@ which in turn started as a clone of the Ruby Sinatra project.  The Perl 6 Maven 
 <ul>
   <li><a href="/getting-started-with-bailador">Getting Started with Bailador</a></li>
   <li><a href="/echo-text-with-bailador">Echo text with Bailador</a></li>
+  <li><a href="/echo-text-with-bailador-using-templat-mojo">Echo text with Bailador using Template::Mojo</a></li>
 </ul>
 
 

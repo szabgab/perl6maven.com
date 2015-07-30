@@ -1,0 +1,9 @@
+% my ($h) = @_;
+
+<h2>Echo</h2>
+<form method="POST" action="/echo"><input name="text"><input type="submit"></form>
+
+% if $h<text> {
+	You said <%= $h<text> %>
+% }
+

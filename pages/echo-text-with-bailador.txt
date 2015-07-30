@@ -1,7 +1,7 @@
 =title Echo text with Bailador
 =timestamp 2015-01-10T14:52:02
 =author szabgab
-=keywords 
+=keywords Bailador
 =status show
 =archive 1        
 
