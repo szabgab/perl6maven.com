@@ -1,0 +1,19 @@
+=subject Web development using Perl 6
+
+Hi,
+
+at YAPC::EU in Granada, I am going to give a talk about Web development using Perl 6.
+I am plannng to use Bailador as the framework and thus in the coming weeks, as I am preparing
+my talk, I am going to blog about the subject.
+
+Web Development using Perl 6
+http://perl6maven.com/web-development-using-perl6
+
+
+Echo text with Bailador using Template::Mojo
+http://perl6maven.com/echo-text-with-bailador-using-template-mojo
+
+
+regards
+  Gabor
+
