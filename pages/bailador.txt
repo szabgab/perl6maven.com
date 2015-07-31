@@ -17,8 +17,109 @@ which in turn started as a clone of the Ruby Sinatra project.  The Perl 6 Maven 
   <li><a href="/getting-started-with-bailador">Getting Started with Bailador</a></li>
   <li><a href="/echo-text-with-bailador">Echo text with Bailador</a></li>
   <li><a href="/echo-text-with-bailador-using-templat-mojo">Echo text with Bailador using Template::Mojo</a></li>
+  <li><a href="/bailador-app-in-a-module">Bailador application in a separate modules</a></li>
 </ul>
 
 
+<h2>Routes</h2>
+
+<h3>Fixed routes</h3>
+
+<code lang="perl6">
+get '/' => sub {
+    return 'Home';
+}
+</code>
+
+<code lang="perl6">
+get '/about' => sub {
+    return 'About';
+}
+</code>
+
+<h3>Regex routes</h3>
+
+<code lang="perl6">
+get /id\-(.+)/ => sub ($x) {
+    return "I got $x";
+}
+</code>
+
+<h3>Junction routes</h3>
+
+<code lang="perl6">
+get any('/h', '/help', '/halp') => sub {
+    return 'Help in many ways';
+}
+</code>
+
+<h2>Supported HTTP methods</h2>
+
+<ul>
+  <li>get</li>
+  <li>post</li>
+</ul>
+
+<h2>GET parameters</h2>
+
+The <hl>request</hl> keyword rpresents the request object. It has a method called <hl>params</hl>
+that returns a hash containing the parameters passed in a GET request.
+
+<hl>/echo?text=blabla</hl> handled by
+
+<code lang="perl6">
+get '/echo' => sub {
+    return 'echo via GET: ' ~ (request.params<text> // '');
+}
+</code>
+
+<h2>POST parameters</h2>
+
+<h2>Templating systems</h2>
+
+<h2>Hooks</h2>
+
+
+<h2>request</h2>
+
+The <hl>request</hl> keyword returns the request object.
+The <hl>params</hl> method returns a hash of the parameters recived via GET and POST methods.
+As Dancer2 also mixes GET and POST params and overwrites the GET params by the POST params, the same happens
+in Bailador, though this might change in the future.
+
+<ul>
+  <li>params</li>
+  <li>port</li>
+  <li>request_uri</li>
+  <li>uri</li>
+  <li>path</li>
+  <li>method</li>
+  <li>is_get</li>
+  <li>is_post</li>
+  <li>is_put</li>
+  <li>is_delete</li>
+  <li>is_head</li>
+  <li>is_patch</li>
+  <li>content_type</li>
+  <li>content_length</li>
+  <li>body</li>
+</ul>
+
+
+<h2>TODO</h2>
+
+<ul>
+  <li>Separate GET and POST parameters</li>
+  <li>Add Hooks</li>
+  <li>Sessions</li>
+  <li>Logging</li>
+  <li>Configurtion</li>
+</ul>
+
+
+<!--
+<code lang="perl6">
+</code>
+-->
 
 
