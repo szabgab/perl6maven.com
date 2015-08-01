@@ -39,7 +39,7 @@ we had to include a call:
 Bailador::import;
 </code>
 
-<h2>Temlate::Mojo</h2>
+<h2>Template::Mojo</h2>
 
 The template itself is basically a subroutine in which the first line accepts the parameters from
 the call to the <hl>template</hl> function. (Except that the name of the template file is not passed to the template
