@@ -1,0 +1,17 @@
+=subject Bailador Application in a module
+
+Hi,
+
+a new article creating a Bailador Application in a module
+http://perl6maven.com/bailador-app-in-a-module
+
+and I've also started to add documentation of Bailador to
+the main page: http://perl6maven.com/bailador
+
+I hope by the time of YAPC::EU, this will become a really usable framework.
+Your questions and suggestions would be appreciated!
+
+
+regards
+  Gabor
+
