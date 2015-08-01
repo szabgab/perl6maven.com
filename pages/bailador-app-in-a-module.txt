@@ -1,0 +1,58 @@
+=title Bailador Application in a module
+=timestamp 2015-08-01T20:00:00
+=author szabgab
+=keywords Bailador
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+In the previous examples using <a href="/bailador">Bailador</a> we put all the code in a single <hl>app.pl</hl> file. At one point
+we moved the HTML template to the <hl>views/</hl> subdirectory, but for larger applications and for reusable code, we'll
+want to be able to put code in separate files. That's what we are going to do now.
+
+=abstract end
+
+<h2>The template</h2>
+
+The template does not have anything new. It accepts data in the <hl>$h</hl> variable and
+then uses that variable to display the version number and the current time - in seconds since the epoch.
+
+<include file="bailador/code_in_module/views/index.tt" />
+
+<h2>The module</h2>
+
+The file contains all the code in a class:
+
+<code lang="perl6">
+unit class Demo;
+</code>
+
+It loads Bailador in order to have the Domain Specific Language (DSL) that makes it easy for us
+to define the routes.
+
+<code lang="perl6">
+use Bailador;
+</code>
+
+Most importantly, it contains the routes.
+
+<include file="bailador/code_in_module/views/lib/Demo.pm" />
+
+<h2>The script launching the application</h2>
+
+<include file="bailador/code_in_module/app.pl" />
+
+The part that might be interesting is this snippet:
+
+<code lang="perl6">
+use lib callframe(0).file.IO.dirname ~ '/lib';
+</code>
+
+It calculates the root directory of the project - assuming the <hl>app.pl</hl> file
+is in root directory - and then adds the <hl>/lib</hl> subdirectory to the list
+of places where perl is going to look for extra modules. This makes it possible for
+it to load the Demo.pm file that can be found in the <hl>lib/</hl> subdirectory.
+
+

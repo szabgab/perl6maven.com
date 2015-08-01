@@ -1,0 +1,15 @@
+% my ($h) = @_;
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bailador App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  </head>
+  <body>
+    <h1>Bailador App</h1>
+    <div>
+      Version <%= $h<version> %> Current time: <%= $h<date> %>
+    </div>
+  </body>
+</html>
