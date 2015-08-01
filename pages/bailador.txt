@@ -9,7 +9,7 @@
 =abstract start
 
 <a href="https://github.com/tadzik/Bailador/">Bailador</a> is route-based web development framework trying to imitate the Perl Dancer framework
-which in turn started as a clone of the Ruby Sinatra project.  The Perl 6 Maven site runs on it and there are a number of articles describing it:
+which in turn started as a clone of the Ruby Sinatra project.  The Perl 6 Maven site runs on it.
 
 =abstract end
 
@@ -37,6 +37,14 @@ get '/about' => sub {
 }
 </code>
 
+<h2>Route with placeholder</h2>
+
+<code lang="perl6">
+get '/hello/:name' => sub ($name) {
+    "Hello $name!"
+};
+</code>
+
 <h3>Regex routes</h3>
 
 <code lang="perl6">
@@ -58,6 +66,8 @@ get any('/h', '/help', '/halp') => sub {
 <ul>
   <li>get</li>
   <li>post</li>
+  <li>put</li>
+  <li>delete</li>
 </ul>
 
 <h2>GET parameters</h2>
@@ -104,6 +114,17 @@ in Bailador, though this might change in the future.
   <li>content_length</li>
   <li>body</li>
 </ul>
+
+<h2>response</h2>
+
+The <hl>content_type</hl> function sets the content-type of the response.
+
+The <hl>header</hl> function sets the header of the response.
+
+The <hl>status</hl> function sets the status code of the response.
+
+
+<h2>template</h2>
 
 
 <h2>TODO</h2>

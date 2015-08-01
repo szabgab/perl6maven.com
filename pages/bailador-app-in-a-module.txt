@@ -38,7 +38,7 @@ use Bailador;
 
 Most importantly, it contains the routes.
 
-<include file="bailador/code_in_module/views/lib/Demo.pm" />
+<include file="bailador/code_in_module/lib/Demo.pm" />
 
 <h2>The script launching the application</h2>
 
