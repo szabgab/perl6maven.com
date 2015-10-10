@@ -11,7 +11,7 @@
 <a href="https://travis-ci.org/">Travis-CI</a> is a service that offers Continuous Integration to open source project hosted on GitHub free of charge.
 It supports a number of languages, including several versions of Perl 5, and Perl 6.
 
-There are plenty of <a href="http://modules.perl6.org/">Perl 6 modules</a> hosted on GitHub. Some of them already use Travi-CI,
+There are plenty of <a href="http://modules.perl6.org/">Perl 6 modules</a> hosted on GitHub. Some of them already use Travis-CI,
 others not yet. In this article we'll write a Perl 6 script that will find the repositories without a <hl>.travis.yml</hl>.
 
 It would a nice improvement to start using Travis-CI for all the other Perl 6 projects.
@@ -35,14 +35,14 @@ As of 2015.10.10 311 out of 379 module don't use Travis-CI yet.
 
 
 <ol>
-  <li>If there is no .travis.yml in the repository, check if there is already a pull request adding it. Proceede only if you'll be the first one.</li>
+  <li>If there is no .travis.yml in the repository, check if there is already a pull request adding it. Proceed only if you'll be the first one.</li>
   <li>Fork the repository on GitHub</li>
   <li>Go to your <a href="https://travis-ci.org/">Travis-CI</a> page</a>, click on Your Name/Accounts and then on the <b>Sync</b> button.</li>
   <li>After the sync has finished enable Travis-CI for the newly forked repository.</li>
   <li>Clone the forked repository to your local disk</li>
   <li>Make sure tests pass on your local system: <hl>prove -e "perl6 -Ilib"</hl></li>
   <li>Add the .travis.yml file</li>
-  <li>Use the example below (after updating the <hl>panda insall</hl> list from the <hl>META.info</hl> file from the repository, or follow the instructions for <a href="http://docs.travis-ci.com/user/languages/perl6/">Perl 6 on Travis-CI</a>
+  <li>Use the example below (after updating the <hl>panda install</hl> list from the <hl>META.info</hl> file from the repository, or follow the instructions for <a href="http://docs.travis-ci.com/user/languages/perl6/">Perl 6 on Travis-CI</a>
     <ol>
       <li>git checkout -b travis</li>
       <li>git add .travis.yml</li>
