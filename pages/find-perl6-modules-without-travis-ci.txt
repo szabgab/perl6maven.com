@@ -65,7 +65,7 @@ perl6:
   - latest
 install:
   - rakudobrew build-panda
-  - panda install URI Template::Mojo HTTP::Easy Template::Mustache
+  - panda installdeps .
 </code>
 
 
