@@ -15,7 +15,20 @@ In this article you'll see how can you set up a Perl 6 based project to use the 
 
 =abstract end
 
-Follow the instructions for <a href="http://docs.travis-ci.com/user/languages/perl6/">Perl 6 on Travis-CI</a>.
+Use this sample as <hl>.travis.yml</hl> or follow the instructions for <a href="http://docs.travis-ci.com/user/languages/perl6/">Perl 6 on Travis-CI</a>.
+
+<code>
+branches:
+  except:
+    - gh-pages
+language: perl6
+perl6:
+  - latest
+install:
+  - rakudobrew build-panda
+  - panda install URI Template::Mojo HTTP::Easy Template::Mustache
+</code>
+
 
 
 <h2>Old Article</h2>
