@@ -6,7 +6,7 @@ say @duplicates.perl;
 # prints Array.new(1, 1, 2, 5, 1, 4, 3, 2, 1)
 
 
-my @unique = uniq @duplicates;
+my @unique = unique @duplicates;
 say @unique.perl;
 
 # prints Array.new(1, 2, 5, 4, 3)
@@ -17,7 +17,7 @@ say @chars.perl;
 
 # prints Array.new("b", "c", "a", "d", "b", "a", "a", "a", "b")
 
-my @singles = uniq @chars;
+my @singles = unique @chars;
 say @singles.perl;
 
 # prints Array.new("b", "c", "a", "d")

@@ -5,7 +5,7 @@ sub rdir($path = '.') {
 	my @things = dir($path).map({ $_.basename });
 	my @files = @things.grep({ "$path/$_".IO.f });
 	for @things.grep({ "$path/$_".IO.d }) -> $d {
-		@files.push( rdir("$path/$d").map({ "$d/$_" }) );
+		@files.append: rdir("$path/$d").map({ "$d/$_" });
 	}
 	return @files;
 }
@@ -34,7 +34,6 @@ my @files = rdir('files').grep( -> $f { substr($f, *-3) eq '.p6' }).grep( -> $f 
 plan 2 * @files.elems;
 
 for @files -> $file {
-	#say $file;
 	#next if substr($file, *-3) ne '.p6';
 	#next if $file eq 'tutorial/intro/hello_world_bare.p6';
 
