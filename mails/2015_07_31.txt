@@ -3,7 +3,7 @@
 Hi,
 
 at YAPC::EU in Granada, I am going to give a talk about Web development using Perl 6.
-I am plannng to use Bailador as the framework and thus in the coming weeks, as I am preparing
+I am planning to use Bailador as the framework and thus in the coming weeks, as I am preparing
 my talk, I am going to blog about the subject.
 
 Web Development using Perl 6
