@@ -35,6 +35,7 @@ As of 2015.10.10 59 out of 71 module don't use Travis-CI yet.
 
 
 <ol>
+  <li>If there is no .travis.yml in the repository, check if there is already a pull request adding it. Proceede only if you'll be the first one.</li>
   <li>Fork the repository on GitHub</li>
   <li>Go to your <a href="https://travis-ci.org/">Travis-CI</a> page</a>, click on Your Name/Accounts and then on the <b>Sync</b> button.</li>
   <li>After the sync has finished enable Travis-CI for the newly forked repository.</li>
