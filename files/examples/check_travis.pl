@@ -8,7 +8,7 @@ my $urls = 0;
 my $missing = 0;
 for $html.split(/\n/) -> $line {
 	# Capturing ttps://github.com/tadzik/Bailador/
-	if $line ~~ /\"(https\:\/\/github.com\/\w+\/\w+)\/?\"/ {
+	if $line ~~ /\"(https\:\/\/github.com\/<[\w\-]>+\/<[\w\-]>+)\/?\"/ {
 		my $url = $0;
 		$urls++;
 		

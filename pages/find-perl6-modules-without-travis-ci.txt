@@ -31,7 +31,7 @@ Then for each GitHub repository we try to download the <hl>.travis.yml</hl> file
 but there seems to be a <a href="https://github.com/cosimo/perl6-lwp-simple/issues/61">bug</a> that stopped me from doing that.
 The second best thing was to use <hl>curl</hl>.
 
-As of 2015.10.10 59 out of 71 module don't use Travis-CI yet.
+As of 2015.10.10 311 out of 379 module don't use Travis-CI yet.
 
 
 <ol>
