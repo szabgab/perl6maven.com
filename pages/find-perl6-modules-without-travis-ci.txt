@@ -21,10 +21,10 @@ It would a nice improvement to start using Travis-CI for all the other Perl 6 pr
 <include file="examples/check_travis.pl" />
 
 The first thing is to use the <hl>get</hl> method of <a href="https://github.com/cosimo/perl6-lwp-simple/">LWP::Simple</a>
-to fecth the web page <a href="http://modules.perl6.org/">listing the Perl 6 modules</a>.
+to fetch the web page <a href="http://modules.perl6.org/">listing the Perl 6 modules</a>.
 
 Then we go over line-by-line and use a regular expression to locate all the URLs that lead to GitHub projects.
-It might be better to use and HTML Parser, for example <a href="https://github.com/tony-o/perl6-html-parser-xml/">HTML::Parser::XML</a>,
+It might be better to use an HTML Parser, for example <a href="https://github.com/tony-o/perl6-html-parser-xml/">HTML::Parser::XML</a>,
 but I found the regex solution simpler.
 
 Then for each GitHub repository we try to download the <hl>.travis.yml</hl> file. I tried to use LWP::Simple for this,
