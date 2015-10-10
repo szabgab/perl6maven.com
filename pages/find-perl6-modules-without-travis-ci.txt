@@ -59,6 +59,7 @@ As of 2015.10.10 59 out of 71 module don't use Travis-CI yet.
 branches:
   except:
     - gh-pages
+sudo: false
 language: perl6
 perl6:
   - latest

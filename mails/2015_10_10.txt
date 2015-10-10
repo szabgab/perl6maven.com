@@ -1,0 +1,21 @@
+=subject Find Perl 6 modules without Travis CI
+
+Hi,
+
+Since the previous message a new version of Rakudo Start has been released ( http://rakudo.org/ )
+and the Perl 6 site got a nice face lift: http://perl6.org/ .
+
+I have published the "Perl Development Environment" a Vagrant/VirtualBox that has
+the latest Perl 5 and Perl 6 environment:
+http://perlmaven.com/vagrant-perl-development-environment
+
+Today I wrote a small Perl 6 script that will locate the Perl 6 Modules on GitHub that are
+not (yet) using Travis-CI for continuous integration: http://perl6maven.com/find-perl6-modules-without-travis-ci
+59 out of th 71 modules do NOT use Travis-CI yet!
+
+If you have some time and would like to contribute to Perl 6, then adding the .travis.yml file, making
+sure the tests pass, and sending a pull requests might be a good idea.
+
+regards
+  Gabor
+

@@ -21,6 +21,7 @@ Use this sample as <hl>.travis.yml</hl> or follow the instructions for <a href="
 branches:
   except:
     - gh-pages
+sudo: false
 language: perl6
 perl6:
   - latest
