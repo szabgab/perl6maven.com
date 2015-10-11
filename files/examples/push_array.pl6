@@ -24,5 +24,5 @@ my @d;
 say @d.perl;       # [["foo", "bar"], ["abc", "def"]]
 
 my @e;
-@e.append: @a, @x; # [["foo", "bar"], ["abc", "def"]]
-say @e.perl;
+@e.append: @a, @x;
+say @e.perl;       # [["foo", "bar"], ["abc", "def"]]
