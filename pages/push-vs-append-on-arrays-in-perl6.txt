@@ -1,0 +1,19 @@
+=title push vs. append on arrays in Perl 6
+=timestamp 2015-10-11T10:11:15
+=author szabgab
+=keywords push, append
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+<hl>push</hl> treats the supplied parameters as individual entities and pushes them onto the original array without flattening them.
+
+<hl>append</hl> (introduced new after 2015.09 release) will flatten the supplied array - if there was only one array supplied,
+but will reat them as individual entities if more than one arrays are supplied.
+
+=abstract end
+
+<include file="examples/push_array.pl6" />
+
