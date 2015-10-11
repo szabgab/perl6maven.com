@@ -1,5 +1,5 @@
 =title Installing Rakudo Perl 6
-=timestamp 2015-09-26T07:01:03
+=timestamp 2015-10-11T07:01:03
 =author szabgab
 =keywords Linux, OSX, Windows, Rakudo, MoarVM
 =archive 1
@@ -42,5 +42,41 @@ You can also <a href="http://perltricks.com/article/135/2014/11/18/Building-Perl
 
 For up-to-date instructions, please visit
 the <a href="http://rakudo.org/how-to-get-rakudo/">Rakudo web site</a>.
+
+
+<h2>Linux / OSX development version</h2>
+
+<code>
+$ git clone https://github.com/rakudo/rakudo.git
+$ cd rakudo
+$ perl Configure.pl --backend=moar --gen-moar
+$ make
+$ make test
+$ make install
+</code>
+
+Change the <hl>PATH</hl> to include the directory where you've installed Rakudo.
+(Note, we need to include two directories. One for the <hl>perl6</hl> executable and one for all the scripts
+that are installed later. Including <hl>panda</hl>.)
+
+e.g.:
+
+<code>
+export PATH=/home/gabor/work/rakudo/install/share/perl6/site/bin:/home/gabor/work/rakudo/install/bin:$PATH
+</code>
+
+<code>
+$ cd ..
+$ git clone --recursive https://github.com/tadzik/panda.git
+$ cd panda
+$ perl6 bootstrap.pl
+</code>
+
+Then you can install <a href="http://modules.perl6.org/">modules</a>
+
+<code>
+$ panda install URI
+$ panda install Bailador
+</code>
 
 
