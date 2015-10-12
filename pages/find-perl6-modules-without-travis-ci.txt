@@ -14,7 +14,7 @@ It supports a number of languages, including several versions of Perl 5, and Per
 There are plenty of <a href="http://modules.perl6.org/">Perl 6 modules</a> hosted on GitHub. Some of them already use Travis-CI,
 others not yet. In this article we'll write a Perl 6 script that will find the repositories without a <hl>.travis.yml</hl>.
 
-It would a nice improvement to start using Travis-CI for all the other Perl 6 projects.
+It would be helpful if all the other Perl 6 projects start using Travis-CI as well.
 
 =abstract end
 
@@ -29,16 +29,16 @@ but I found the regex solution simpler.
 
 Then for each GitHub repository we try to download the <hl>.travis.yml</hl> file. I tried to use LWP::Simple for this,
 but there seems to be a <a href="https://github.com/cosimo/perl6-lwp-simple/issues/61">bug</a> that stopped me from doing that.
-The second best thing was to use <hl>curl</hl>.
+The second best option was to use <hl>curl</hl>.
 
-As of 2015.10.10 311 out of 379 module don't use Travis-CI yet.
+As of 2015.10.10, 311 out of 379 modules aren't using Travis-CI yet.
 
 
 <ol>
   <li>If there is no .travis.yml in the repository, check if there is already a pull request adding it. Proceed only if you'll be the first one.</li>
   <li>Fork the repository on GitHub</li>
-  <li>Go to your <a href="https://travis-ci.org/">Travis-CI</a> page</a>, click on Your Name/Accounts and then on the <b>Sync</b> button.</li>
-  <li>After the sync has finished enable Travis-CI for the newly forked repository.</li>
+  <li>Go to your <a href="https://travis-ci.org/">Travis-CI</a> page, click on Your Name/Accounts and then on the <b>Sync</b> button.</li>
+  <li>After the sync has finished, enable Travis-CI for the newly forked repository.</li>
   <li>Clone the forked repository to your local disk</li>
   <li>Make sure tests pass on your local system: <hl>prove -e "perl6 -Ilib"</hl></li>
   <li>Add the .travis.yml file</li>
@@ -50,7 +50,7 @@ As of 2015.10.10 311 out of 379 module don't use Travis-CI yet.
       <li>git push --set-upstream origin travis</li>
     </ol></li>.
   <li>Wait for Travis-CI to run the test.</li>
-  <li>Fix any issues that might arises. (I know this can be a very open-ended step)</li>
+  <li>Fix any issues that might arise. (I know this can be a very open-ended step.)</li>
   <li>Send a pull-request to the author.</li>
 </ol>
 
