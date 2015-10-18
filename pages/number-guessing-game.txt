@@ -5,11 +5,8 @@
 =status show
 =archive 1
 =comments 1
-
-<!--
-  =perl5url 
-  =perl5title Number guessing game in Perl 5
--->
+=perl5url http://perlmaven.com/beginner-perl-maven-solution-number-guessing-game
+=perl5title Number guessing game in Perl 5
 
 =abstract start
 

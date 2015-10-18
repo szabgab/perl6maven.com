@@ -49,7 +49,7 @@ the <a href="http://rakudo.org/how-to-get-rakudo/">Rakudo web site</a>.
 <code>
 $ git clone https://github.com/rakudo/rakudo.git
 $ cd rakudo
-$ perl Configure.pl --backend=moar --gen-moar
+$ perl Configure.pl --gen-moar --gen-nqp --backends=moar
 $ make
 $ make test
 $ make install
