@@ -1,0 +1,33 @@
+=title Number guessing game in Perl 6
+=timestamp 2015-10-18T12:52:02
+=author szabgab
+=keywords pick, prompt
+=status show
+=archive 1
+=comments 1
+
+<!--
+  =perl5url 
+  =perl5title Number guessing game in Perl 5
+-->
+
+=abstract start
+
+This is the Perl 6 solution to the <a href="http://code-maven.com/exercises">exercise</a> which is the beginning of a game called
+the <a href="http://code-maven.com/exercise-number-guessing-game">Number Guessing game</a>.
+
+=abstract end
+
+<include file="examples/number_guessing.pl" />
+
+Perl 6 has a function called <a href="http://doc.perl6.org/routine/rand">rand</a> to generate random numbers,
+but as I was told, the idiomatic way to generate random integers is to
+<a href="http://doc.perl6.org/routine/pick">pick</a> them from a range or to
+<a href="http://doc.perl6.org/routine/roll">roll</a> a dice.
+
+Once we have the <hl>$hidden</hl> value we use the <a href="http://doc.perl6.org/routine/prompt">prompt</a> function
+to ask for the user input.
+
+Unlike in <a href="http://code-maven.com/number-guessing-in-ruby">Ruby</a> or in <a href="http://code-maven.com/number-guessing-in-python">Python</a>
+Perl does not require special conversion of the input to a number. We can go directly to the look at the 3 cases and provide
+the appropriate feedback to the user.
