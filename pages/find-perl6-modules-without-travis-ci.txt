@@ -8,11 +8,11 @@
 
 =abstract start
 
-<a href="https://travis-ci.org/">Travis-CI</a> is a service that offers Continuous Integration to open source project hosted on GitHub free of charge.
+<a href="https://travis-ci.org/">Travis-CI</a> is a service that offers a free-of-charge Continuous Integration service to open source projects hosted on GitHub.
 It supports a number of languages, including several versions of Perl 5, and Perl 6.
 
 There are plenty of <a href="http://modules.perl6.org/">Perl 6 modules</a> hosted on GitHub. Some of them already use Travis-CI,
-others not yet. In this article we'll write a Perl 6 script that will find the repositories without a <hl>.travis.yml</hl>.
+while others do not use it yet. In this article we'll write a Perl 6 script that will find the repositories without a <hl>.travis.yml</hl> file.
 
 It would be helpful if all the other Perl 6 projects start using Travis-CI as well.
 
