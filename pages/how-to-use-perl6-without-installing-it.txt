@@ -8,7 +8,7 @@
 
 =abstract start
 
-The Perl 6 developers hang out on the <b>#perl6</b> channel on frenode.net. This screencast will show how to connect to
+The Perl 6 developers hang out on the <b>#perl6</b> channel on irc.freenode.net. This screencast will show how to connect to
 the channel using a browser and how to get help on the channel.
 
 =abstract end
