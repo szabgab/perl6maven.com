@@ -8,6 +8,7 @@
 
 Any text editor.
 
+
 <a href="http://padre.perlide.org/">Padre, the Perl IDE</a> has some Perl 6 support.
 
 <b>vim</b> with syntax highlighting using
@@ -15,5 +16,9 @@ Any text editor.
 
 <b>emacs</b> with perl6 mode using utils/cperl-mode.el
 from the Pugs repository.
+
+<a href="http://atom.io">Atom editor</a>
+with <a href="https://atom.io/packages/language-perl6fe">language-perl6fe plugin</a>
+
 
 
