@@ -23,12 +23,12 @@ Actually you don't even need all the 3 lines, this example would also work if yo
 
 <include file="tutorial/intro/hello_world_bare.p6" />
 
-<h2>sh-bang - only for Unix/Linux</h2>
+<h2>hash-bang - only for Unix/Linux</h2>
 
 The first line in the first example is called the <b>hash-bang</b>. In general it is not necessary,
 but if you would like to let the users run your Perl 6 code without explicitely typing in perl6 before the name of the script, then you need this line.
 At least on Unix/Linux systems. It tells the Unix/Linux shell you are using to look for the first executable called "perl6" in your <b>PATH</b> and
-run the script using that interpreter. In addition to the sh-bang line, you will also have to set the executable bit on the file. You do that by typing
+run the script using that interpreter. In addition to the hash-bang line, you will also have to set the executable bit on the file. You do that by typing
 <b>chmod u+x hello_world.p6</b>. Once you have both, you can run your script as <b>./hello_world.p6</b>. If the directory where the script is located
 is listed in the <b>PATH</b> environment variable, then you can even run it as <b>hello_world.p6</b>.
 
