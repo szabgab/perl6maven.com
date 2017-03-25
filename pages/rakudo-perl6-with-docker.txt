@@ -1,0 +1,298 @@
+=title Getting started with Rakudo Perl 6 in a Docker container
+=timestamp 2017-03-25T09:32:02
+=author szabgab
+=keywords Docker, Rakudo, zef, Terminal::Readsecret, apt-get
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+
+=abstract end
+
+<a href="https://www.docker.com/">Download and Install Docker</a>
+
+Launch the Docker daemon 
+
+Run 
+
+<code>
+docker run -it rakudo-star
+</code>
+
+This might take some time as it needs to download the Rakudo Docker image.
+The output will look something like this:
+
+<code>
+Unable to find image 'rakudo-star:latest' locally
+latest: Pulling from library/rakudo-star
+693502eb7dfb: Already exists
+081cd4bfd521: Pull complete
+5d2dc01312f3: Pull complete
+e090aa29a3ec: Pull complete
+c3439586dbe8: Pull complete
+Digest: sha256:eac1ce2634c62857ee7e5e3f23b2156206edef779da47c08c4ac508f905ca60d
+Status: Downloaded newer image for rakudo-star:latest
+To exit type 'exit' or '^D'
+>
+</code>
+
+Then you can type in your Perl 6 code:
+
+<code>
+> say 'Hello Rakudo'
+Hello Rakudo
+</code>
+
+This Rakudo runs on a Linux box. Let's look around:
+
+The Current Working Directory can be accessed via the <hl>$*CWD</hl> variable:
+
+<code>
+> say "$*CWD"
+/
+</code>
+
+We can also list all the directories:
+
+<code>
+> for dir() -> $f { say "$f" }
+usr
+media
+etc
+root
+mnt
+boot
+proc
+lib
+sys
+home
+run
+lib64
+tmp
+bin
+dev
+opt
+var
+srv
+sbin
+.dockerenv
+</code>
+
+We can check out the version of Perl:
+
+<code>
+> $*PERL
+Perl 6 (6.c)
+</code>
+
+and the location of the current Perl 6 executable:
+
+<code>
+> $*EXECUTABLE
+"/usr/bin/perl6".IO
+</code>
+
+If we type <hl>exit</hl> we will leave the Perl 6 interactive shell and with that we'll leave the
+Docker Image and get back to the prompt of our host operating system.
+
+<h2>Perl 6 from terminal</h2>
+
+If we run the following Docker command:
+
+<code>
+docker run -it --name rakudo -v $(pwd):/opt rakudo-star bash
+</code>
+
+(On Windows, you will need to replace <hl>$(pwd)</hl> the path to the current directory.)
+
+it will launch a Docker container called "rakudo" based on the "rakudo-star"
+image. It will map the current working directory of the host operating system
+to /opt inside the container, and finally, instead of launching the interactive
+shell, it will launch a regular shell running bash.
+
+You'll see a prompt like this one:
+
+<code>
+root@1fa71fb0cfcb:/#
+</code>
+
+You can execute subset of the regular Unix/Linux Bash commands such as "pwd" and "ls".
+If you type "ls -l opt/" you'll see the content of the directory on the host OS.
+If you need other command, you can install them using <hl>apt-get</hl>.
+In order for that to work properly first we need to update the package list:
+
+<code>
+root@7d03b913aeca:/# apt-get update
+
+0% [Working]
+Get:1 http://security.debian.org jessie/updates InRelease [63.1 kB]
+Ign http://deb.debian.org jessie InRelease
+Get:2 http://deb.debian.org jessie-updates InRelease [145 kB]
+Get:3 http://deb.debian.org jessie Release.gpg [2373 B]
+Get:4 http://deb.debian.org jessie Release [148 kB]
+Get:5 http://security.debian.org jessie/updates/main amd64 Packages [453 kB]
+Get:6 http://deb.debian.org jessie-updates/main amd64 Packages [17.6 kB]
+Get:7 http://deb.debian.org jessie/main amd64 Packages [9049 kB]
+Fetched 9878 kB in 15s (644 kB/s)
+Reading package lists... Done
+</code>
+
+<h2>Install less, make, and gcc</h2>
+
+The Linux-box is so bare-bones that <hl>less</hl> is not installed
+and we'll need it to use <hl>p6doc</hl>. In addition we'll need
+<hl>make</hl> and <hl>gcc</hl> for some of the additional installation.
+
+In order to check what is the name of the package that contains the
+<hl>less</hl> command type in:
+
+<code>
+# apt-cache search less| grep ^less
+
+less - pager program similar to more
+</code>
+
+Then to install it type in:
+
+<code>
+# apt-get install -y less
+</code>
+
+You can verify that the installation succeeded by typing
+
+<code>
+# which less
+
+/usr/bin/less
+</code>
+
+In order to install <hl>make</hl> and <hl>gcc</hl> type in:
+
+<code>
+# apt-get install make gcc
+</code>
+
+
+<h2>First Perl 6 script</h2>
+
+Using your tools on the host Operating system, create a file called
+<b>hello_world.pl</b> in the directory where you launched the Docker container,
+and add the following two lines:
+
+<code>
+use v6;
+say "Hello from Perl 6";
+</code>
+
+Now you can run the script by typing in the following:
+
+<hl>perl6 opt/hello_world.pl</hl>
+
+<code>
+@1fa71fb0cfcb:/# perl6 opt/hello_world.pl
+Hello from Perl 6
+</code>
+
+
+<h2>Getting Help with p6doc</h2>
+
+<hl>p6doc</hl> is the command-line tool to read documentation of Perl 6.
+Try it!
+
+<code>
+# p6doc
+# p6doc -l
+# p6doc io
+</code>
+
+Alternatively, visit <a href="https://docs.perl6.org/">The Perl 6 documentation</a>.
+
+<h2>Installing modules</h2>
+
+The <a href="http://modules.perl6.org/">CPAN of Perl 6</a> is more limited
+than the CPAN of Perl 5, but a lot of things that are implemented in Perl 5 modules
+are already available in the core of Perl 6.
+
+In any case you can find 3rd-party modules for Perl 6.
+
+You can install modules using <hl>zef</hl>. For example we can install 
+<a href="https://github.com/titsuki/p6-Terminal-Readsecret">Terminal::Readsecret</a>
+in order to read passwords on the command-line without echoing back to the screen:
+
+<code>
+# zef install Terminal::Readsecret
+
+===> Searching for: Terminal::Readsecret
+===> Building: Terminal::Readsecret:ver('0.0.2')
+===> Building [OK] for Terminal::Readsecret:ver('0.0.2')
+===> Testing: Terminal::Readsecret:ver('0.0.2')
+t/01-basic.t ..... ok
+passwordXXXX
+t/02-password.t .. ok
+All tests successful.
+Files=2, Tests=2,  3 wallclock secs
+Result: PASS
+===> Testing [OK] for Terminal::Readsecret:ver('0.0.2')
+===> Installing: Terminal::Readsecret:ver('0.0.2')
+</code>
+
+<h2>Using Terminal::Readsecret</h2>
+
+Create a small script copying on the example from the README of
+<a href="https://github.com/titsuki/p6-Terminal-Readsecret">Terminal::Readsecret</a>.
+
+Save this content as <hl>read_secret.pl</hl> in the directory where you launched
+the Docker container:
+
+<code lang="perl6">
+use Terminal::Readsecret;
+my $password = getsecret("password:" );
+say "your password is: " ~ $password;
+</code>
+
+Then run
+
+<code>
+perl6 opt/read_secret.pl
+</code>
+
+
+<h2>Exit and restart the container</h2>
+
+Now you can type <hl>exit</hl> (this is the Unix exit command) which
+will leave and close the Docker container.
+
+<h2>Running the container again</h2>
+
+If you try to run the same container again using the same command:
+
+<code>
+# docker run -it --name rakudo -v $(pwd):/opt rakudo-star bash
+</code>
+
+it will fail with a message like this:
+
+<code>
+docker: Error response from daemon: Conflict. The container name "/rakudo" is already in use by container 7d03b913aeca4c45e386b2e73d060428d7e3b07ab0b7e56a8c6f8eb0b2eb582a. You have to remove (or rename) that container to be able to reuse that name..
+See 'docker run --help'.
+</code>
+
+That's because we've already created a container called "rakudo".
+We could remove it or we could create a new container with another name, but then
+we would need to start the installations again. Instead of that we could use the existing
+container:
+
+<code>
+# docker start rakudo && docker attach rakudo
+</code>
+
+It will print "rakudo" and then it will seem to hanged without showing a prompt.
+You have to press <hl>ENTER</hl> again in order to get to the prompt.
+
+With this you are back to your same prompt, with all the installed stuff.
+With the mounting of your directory to <hl>/opt/</hl> and even with your
+Bash History.
+
+Enjoy Perl 6 in your Docker!
