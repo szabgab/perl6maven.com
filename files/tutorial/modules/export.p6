@@ -1,8 +1,6 @@
 use v6;
 
-BEGIN {
-	push @*INC, 'examples/modules';
-}
+use lib 'modules';
 
 use A;
 
