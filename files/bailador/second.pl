@@ -7,7 +7,7 @@ get '/' => sub {
 
 get '/hello/:first/:family' => sub ($fname, $lname) {
     "Hello $fname! And hi $lname"
-};
+}
 
 
 baile;
