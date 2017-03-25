@@ -25,7 +25,7 @@ Actually you don't even need all the 3 lines, this example would also work if yo
 
 <h2>sh-bang - only for Unix/Linux</h2>
 
-The first line in the first example is called the <b>she-bang</b> or <b>sh-bang</b>. In general it is not necessary,
+The first line in the first example is called the <b>hash-bang</b>. In general it is not necessary,
 but if you would like to let the users run your Perl 6 code without explicitely typing in perl6 before the name of the script, then you need this line.
 At least on Unix/Linux systems. It tells the Unix/Linux shell you are using to look for the first executable called "perl6" in your <b>PATH</b> and
 run the script using that interpreter. In addition to the sh-bang line, you will also have to set the executable bit on the file. You do that by typing
