@@ -1,0 +1,82 @@
+=title Fetching time from Google using Perl 6
+=timestamp 2017-04-10T10:02:02
+=author szabgab
+=keywords WWW::Google::Time, dd, JSON, JSON::Fast
+=status draft
+=archive 1
+=comments 1
+
+=abstract start
+
+If you type "<a href="https://www.google.com/search?q=time+in+Kiskunfélegyháza">time in Kiskunfélegyháza</a>" in Google,
+it will show you the current time in <a href="https://en.wikipedia.org/wiki/Kiskunf%C3%A9legyh%C3%A1za">Kiskunfélegyháza</a>
+in the South East of Hungary. If you have trouble to pronounce that name, you can visit
+<a href="https://translate.google.com/#hu/en/Kiskunf%C3%A9legyh%C3%A1za">Google Translate</a> and click on the
+sound symbol. It would be nice if Wikipedia had this service for all the entries it has.
+
+=abstract end
+
+<h2>WWW::Google:Time</h2>
+
+<a href="https://github.com/zoffixznet/perl6-WWW-Google-Time">WWW::Google:Time</a> is a screen-scraper that
+runs a Google search and extracts the time from the result.
+
+It exports a single function called <hl>google-time-in</hl>.
+
+The function accepts a string which should be the name of the place where
+we would like to check the time.
+
+The resulting hash has a number of keys:
+
+<include file="examples/google_time.pl" />
+
+<code>
+Time in Kiskunfélegyháza, Hungary is 5:01 PM GMT+2, Friday, April 7, 2017
+------------------------------
+Location:         Kiskunfélegyháza, Hungary
+Time:             5:01 PM
+Time zone:        GMT+2
+Day of the week:  Friday
+Month:            April
+Day of the month: 7
+Year:             2017
+Full time string: 5:01 PM GMT+2, Friday, April 7, 2017
+DateTime object:  2017-04-07T17:01:56.396232+02:00
+</code>
+
+<h2>Debugging using dd</h2>
+
+If you don't know the keys of a resulting hash you can use the built-in
+<hl>dd</hl> function to print out the content of the hash:
+
+<include file="examples/debug_google_time.pl" />
+
+Unfortunately the result is not very readable:
+
+<code>
+Hash %time = {:DateTime(DateTime.new(2017,4,7,17,4,46.3787512779236,:timezone(7200))), :month("April"), :month-day("7"), :str("5:04 PM GMT+2, Friday, April 7, 2017"), :time("5:04 PM"), :tz("GMT+2"), :week-day("Friday"), :where("Kiskunfélegyháza, Hungary"), :year("2017")}
+</code>
+
+<h2>JSON::Fast</h2>
+
+It seems that using the <hl>JSON::Fast</hl> module provides nicer output: 
+
+<include file="examples/json_google_time.pl" />
+
+<code>
+# perl6 json_google_time.pl
+{
+  "DateTime": {
+    "0": null
+  },
+  "month-day": "7",
+  "time": "5:06 PM",
+  "where": "Kiskunfélegyháza, Hungary",
+  "week-day": "Friday",
+  "tz": "GMT+2",
+  "str": "5:06 PM GMT+2, Friday, April 7, 2017",
+  "month": "April",
+  "year": "2017"
+}
+</code>
+
