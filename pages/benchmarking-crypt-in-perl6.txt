@@ -1,0 +1,158 @@
+=title Benchmarking crypt with SHA-512 in Perl 6
+=timestamp 2017-04-16T12:32:02
+=author szabgab
+=keywords Crypt::Libcrypt, SHA-512, Bench, Benchmark, time, now
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+Earlier I've explained how to <a href="/encrypt-a-password-with-sha-512">encrypt asswords in Perl 6 using crypt and SHA-512</a>.
+Some of the commenters have suggested that it can be further improved by adding a "round-factor" further increasing the
+computation time and thereby making it similar to PBKDF or scrypt.
+
+In this article we'll see how and what is the impact of this extra work.
+
+=abstract end
+
+<h2>Encrypt with rounds</h2>
+
+Apparently an (undocumented?) feature of <hl>crytp</hl> is that one can pass another field called <hl>rounds</hl> that
+instructs <hl>crypt</hl> to encrypt the already encrypted password several additional times. Thereby increasing
+the calculation time required to verify a password. When a regular user tries to log-in, this extra computation
+makes the process a bit slower but does not have a huge impact on the user. On the other hand if someone tries
+to figure out what could have been the password, this extra time will make it impossible to use brute force to find
+the right password. Even if the attacker has received a copy of the encrypted password.
+
+The way to pass the number of rounds is by adding it to the prefix of the salt:
+
+<hl>$6$rounds=ROUNDS$SALT</hl>
+
+Where ROUNDS is the number of times the password has to be re-encrypted.
+
+The following program demonstrates the use.
+
+<include file="encryp_with_rounds.pl">
+
+In addition to printing the encrypted password this program also prints the salt used and the 
+time it too to encrypt the password:
+
+<code>
+
+0
+$6$abcdefghIJKLMOPQ
+Elapsed time: 0.04111855
+$6$abcdefghIJKLMOPQ$k7/p0miPUkmsxrxWKDuP5Apnb6MZ6.vfG6xulRYIRCnRtDXXgf5rA7M3yb5TeUdg1I8Hxux6BDbsf.ZABF/re.
+
+1
+$6$rounds=1$abcdefghIJKLMOPQ
+Elapsed time: 0.0017339
+$6$rounds=1000$abcdefghIJKLMOPQ$OcJQW0dfxJ6UxjuOg86iAj9seVPfZ.3Kz9FQ3psUOpFEeKCZZ6ccrPKDUwSGa925S1ed8sJN1V8JbOcgAMehS/
+
+42
+$6$rounds=42$abcdefghIJKLMOPQ
+Elapsed time: 0.0018392
+$6$rounds=1000$abcdefghIJKLMOPQ$OcJQW0dfxJ6UxjuOg86iAj9seVPfZ.3Kz9FQ3psUOpFEeKCZZ6ccrPKDUwSGa925S1ed8sJN1V8JbOcgAMehS/
+
+1000
+$6$rounds=1000$abcdefghIJKLMOPQ
+Elapsed time: 0.00167532
+$6$rounds=1000$abcdefghIJKLMOPQ$OcJQW0dfxJ6UxjuOg86iAj9seVPfZ.3Kz9FQ3psUOpFEeKCZZ6ccrPKDUwSGa925S1ed8sJN1V8JbOcgAMehS/
+
+50000
+$6$rounds=50000$abcdefghIJKLMOPQ
+Elapsed time: 0.0360235
+$6$rounds=50000$abcdefghIJKLMOPQ$QmLwmcn0vf4dsVNj3f/iuZLfM8s6ddbzif6UsRFMMHoq1cpf.Aut4tfciwgsnllM3Eko/Tb8b8OUV59G/7qkq.
+
+200000
+$6$rounds=200000$abcdefghIJKLMOPQ
+Elapsed time: 0.1321950
+$6$rounds=200000$abcdefghIJKLMOPQ$HsRzx4rmtlGaD9ohLjeBLY09cOSJfSx2J42SJXrp5TxCkl7LQaBG85N.MBj0o7iHq1LxRRLRS.GQsxsyxLVfp.
+
+1000000
+$6$rounds=1000000$abcdefghIJKLMOPQ
+Elapsed time: 0.6521933
+$6$rounds=1000000$abcdefghIJKLMOPQ$RM5BrpnL219ylybDDHBYRbTPk1XvDOPjbzS6Wwc4qA/SlQLyUSFumxoRbAb8ZQvrfELanff.4FQfcPlb8kF5D.
+</code>
+
+Based on these numbers I can see that the minimal number of rounds is 1000.
+There is also something strange in the results as it seems to indicate that <hl>crypt</hl> without any rounds works about 50
+times slower that <hl>crypt</hl> with 1000 rounds. (50,000 rounds seems to take about the same time.)
+This might need more investigation.
+
+We can also see that the encrypted passwords differ.
+
+At 1,000,000 rounds the waiting time can be really felt already.
+
+It still seems acceptable though for the one-time password check when someone logs in.
+
+
+<h2>Benchmarking using Benchmark</h2>
+
+I found two Perl 6 modules for benchmarking. The older and simpler <hl>Benchmark</hl> module that has
+the nice advantage of returning the results instead of just printing them.
+
+<include file="benchmark_crypt.pl">
+
+The result, (after some manual aligning of the data):
+
+<code>
+1000000 1492331790 1492331854 64 0.64
+200000  1492331854 1492331867 13 0.13
+none    1492331854 1492331854 0  0
+</code>
+
+The values in the result line are the following:
+
+<code>
+NAME    START-time      END-time    Elapsed-time  Average time
+</code>
+
+From this we can already see that 1,000,000 rounds is roughly 5 times slower than 200,000 which is the expected
+number and that they are both unmeasurably slower that no-rounds.
+
+
+Actually the big drawback of this module is that currently it used the <hl>time</hl> function that measures
+only full seconds while it could use the <hl>now</hl> function that returns a high-resolution timestamp.
+I patched it and got this result (after some manual layout cosmetics):
+
+<code>
+1000000 1492334514.729730   1492334586.011102   71.281372     0.712813718928151
+200000  1492334586.013800   1492334599.485665   13.47186421   0.134718642148155
+none    1492334599.486490   1492334599.846348   0.35985759    0.00359857592694458
+</code>
+
+This time it is much clearer that the 200,000 rounds version is about 40 times
+slower than the no-round version.
+
+<h2>Benchmarking using Bench</h2>
+
+Another module for benchmariking is the newer Bench module.
+
+<include file="bench_crypt.pl">
+
+The result looks like this:
+
+<code>
+Benchmark:
+Timing 100 iterations of 1000000, 200000, none...
+   1000000: 65.9749 wallclock secs @ 1.5157/s (n=100)
+    200000: 12.9219 wallclock secs @ 7.7388/s (n=100)
+      none: 0.3153 wallclock secs @ 317.1891/s (n=100)
+            (warning: too few iterations for a reliable count)
+</code>
+
+<h2>More iterations for the benchmark</h2>
+
+In order to provide a more accurate measurement we should probably
+use a higher iteration count than 100, but at a 1,000,000 rounds
+that would become really slow. (That's what we really want, but
+it is uncomfortable when benchmarking.)
+
+<h2>Conclusion</h2>
+
+The Benchmark modules seem to work.
+Having a round of 200,000 already has a 40-fold impact, but as far as I know
+the recommendation is to use the highest round-number that is still usable.
+
