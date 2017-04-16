@@ -33,7 +33,7 @@ Where ROUNDS is the number of times the password has to be re-encrypted.
 
 The following program demonstrates the use.
 
-<include file="encryp_with_rounds.pl" />
+<include file="examples/encryp_with_rounds.pl" />
 
 In addition to printing the encrypted password this program also prints the salt used and the 
 time it too to encrypt the password:
@@ -93,7 +93,7 @@ It still seems acceptable though for the one-time password check when someone lo
 I found two Perl 6 modules for benchmarking. The older and simpler <hl>Benchmark</hl> module that has
 the nice advantage of returning the results instead of just printing them.
 
-<include file="benchmark_crypt.pl" />
+<include file="examples/benchmark_crypt.pl" />
 
 The result, (after some manual aligning of the data):
 
@@ -130,7 +130,7 @@ slower than the no-round version.
 
 Another module for benchmariking is the newer Bench module.
 
-<include file="bench_crypt.pl" />
+<include file="examples/bench_crypt.pl" />
 
 The result looks like this:
 
