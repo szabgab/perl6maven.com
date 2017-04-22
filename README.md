@@ -1,4 +1,4 @@
-###Status
+###  Status
 [![Build Status](https://travis-ci.org/szabgab/perl6maven.com.png)](https://travis-ci.org/szabgab/perl6maven.com)
 
 These are the source files of the Perl 6 Maven site http://perl6maven.com/
@@ -50,23 +50,22 @@ The pages.yml file contains the hierarchy of the pages.
 Skeleton header and content
 ----------------------------
 
-=title
-=timestamp 2015-01-04T16:52:02
-=author szabgab
-=keywords
-=status draft
-=archive 1
-=perl5url
-=perl5title
+    =title
+    =timestamp 2015-01-04T16:52:02
+    =author szabgab
+    =keywords
+    =status draft
+    =archive 1
+    =perl5url
+    =perl5title
 
-=abstract start
+    =abstract start
 
-=abstract end
+    =abstract end
 
+```html
 <include file="" />
 
 <code lang="perl6">
 </code>
-
-
-
+```
