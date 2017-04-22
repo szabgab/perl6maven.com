@@ -18,7 +18,7 @@ In this article we'll see how and what is the impact of this extra work.
 
 <h2>Encrypt with rounds</h2>
 
-Apparently an (undocumented?) feature of <hl>crytp</hl> is that one can pass another field called <hl>rounds</hl> that
+Apparently an (undocumented?) feature of <hl>crypt</hl> is that one can pass another field called <hl>rounds</hl> that
 instructs <hl>crypt</hl> to encrypt the already encrypted password several additional times. Thereby increasing
 the calculation time required to verify a password. When a regular user tries to log-in, this extra computation
 makes the process a bit slower but does not have a huge impact on the user. On the other hand if someone tries
