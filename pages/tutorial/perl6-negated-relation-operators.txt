@@ -15,8 +15,8 @@ Luckily those both have their own Short-cut version that are spelled
 
 
 Other operators too have negated versions so you can write
-!>=  which means not greate than (for numbers) and you can write
-!gt  which is the same for strings. I am not fully sold why do we need thes.
+!>=  which means less than (for numbers) and you can write
+!ge  which is the same for strings. I am not fully sold why do we need thes.
 
 
 One advantage I can see is that if you create an operator called I

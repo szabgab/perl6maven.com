@@ -4,16 +4,13 @@
 =keywords <=> 
 =status show
 
-Reversed operators will reverse the meaning of the two operands.
-So instead of switching the two arguments as in   $b cmp $a
+Reversed operators will swap the position of the two operands.
+So instead of switching the two arguments as in $b cmp $a
 one can write $a Rcmp $b.
 
-It is not yet implemented in Rakudo and frankly I don't yet see
-any use of it but I am sure others will.
 
+Frankly I don't yet see any use of it but I am sure others will.
 
-I wonder if the same would also work on operators such as gt ?
-Could I use   $x Rgt $y meaning $y gt $x ? Why is that good?
 
 <include file="tutorial/arrays/reversed_operators.p6" />
 
