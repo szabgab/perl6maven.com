@@ -32,7 +32,7 @@ One can also declare a variable without giving it an inital value:
 my $x;
 </code>
 
-In such case the value of the variable will be <b>Any()</b> which
+In such case the value of the variable will be <b>(Any)</b> which
 is just case of being not <b>defined</b>.
 
 
