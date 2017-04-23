@@ -1,11 +1,12 @@
 #!/usr/bin/env perl6
 use v6;
 
-my $x = 1|2;                              # junction
+my $x = 1|2;                            # junction
 if $x == 1 { say 't' } else { say 'f' } # t
 if $x == 2 { say 't' } else { say 'f' } # t
 if $x == 3 { say 't' } else { say 'f' } # f 
-if $x != 1 { say 't' } else { say 'f' } # f    which is the same as
+if $x != 1 { say 't' } else { say 'f' } # f
+# which is the same as
 if !($x == 1) { say 't' } else { say 'f' } # f
 
 
@@ -27,4 +28,3 @@ if !($x == 1) { say 't' } else { say 'f' } # f
 #                    # there is only one element because multiple same booleans are irrelevant
 #                    # this is the same reduction we saw with 1|1|2
 #
-
