@@ -10,13 +10,13 @@
 After <a href="/getting-started-with-bailador">getting started with Bailador</a> serving simple text,
 we saw how we can accept input from the user and <a href="/echo-text-with-bailador">echo it back</a>, but we had the HTML
 snippets embedded in our Perl 6 code. That can work for really small applications, but if we would like
-to build a real web application we need to move the HTML out to externale template files.
+to build a real web application we need to move the HTML out to external template files.
 
-Bailador user Template::Mojo as its default templating system.
+Bailador uses Template::Mojo as its default templating system.
 
 =abstract end
 
-<h2>Bailador web appication</h2>
+<h2>Bailador web application</h2>
 
 In our example we use two files. One of them is the main Perl 6 script called <hl>app.pl6</hl>
 and the other one is the <hl>views/echo.tt</hl> located in the <hl>views</hl> subdirectory:
@@ -30,7 +30,7 @@ Then there are two <hl>/echo</hl> routes. One that will handle the GET request t
 content of the template, the other one that will pass the value of the <hl>text</hl> field of the HTML form
 to the template engine.
 
-One important thing to mention. In order to know whre the root of the application is and from there to deduct
+One important thing to mention. In order to know where the root of the application is and from there to deduct
 where the <hl>views</hl> directory is, Bailador makes some calculations in its <hl>import</hl> function.
 As of this writing Rakudo 2015.07 does not automatically call this function thus after loading Bailador
 we had to include a call: 
@@ -43,7 +43,7 @@ Bailador::import;
 
 The template itself is basically a subroutine in which the first line accepts the parameters from
 the call to the <hl>template</hl> function. (Except that the name of the template file is not passed to the template
-engine. Only the hash atfter it.
+engine. Only the hash after it.
 
 <code lang="perl6">
 % my ($h) = @_;
