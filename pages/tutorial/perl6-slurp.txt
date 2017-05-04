@@ -10,4 +10,4 @@ the contents of a whole file into a scalar variable.
 
 <include file="tutorial/files/slurp_file.p6" />
 
-
+One can also spurt contents to files using spurt() method.
