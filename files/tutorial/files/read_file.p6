@@ -4,7 +4,7 @@ use v6;
 my $filename = $*PROGRAM-NAME;
 
 my $fh = open $filename;
-for $fh.lines -> $line {
+for $fh.IO.lines -> $line {
     say $line;
 }
 
