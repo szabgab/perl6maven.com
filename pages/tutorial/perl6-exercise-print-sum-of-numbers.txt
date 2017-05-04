@@ -5,7 +5,8 @@
 =status show
 
 
-Take a file that has one number on every line Print the sum of the numbers.
+Take a file that has one number on every line.
+Print the sum of the numbers.
 
 <include file="tutorial/numbers.txt" />
 
@@ -14,5 +15,4 @@ The script should print 36.
 Improve it to also print average, minimum and maximum.
 
 Can you also think about way to print median and standard deviation?
-
 
