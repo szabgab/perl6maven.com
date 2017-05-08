@@ -6,7 +6,7 @@
 
 
 In order to write to a file first we need to open the file for writing
-with the :w mode. If this is successful we get back a filehandler on which
+with the :w mode. If this is successful we get back a file handler on which
 we can use the regular output methods such as print(), say() or printf().
 
 <include file="tutorial/files/write_file.p6" />

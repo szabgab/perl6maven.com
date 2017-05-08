@@ -1,7 +1,7 @@
 =title Twigils and special variables
 =timestamp 2012-01-01T01:02:05
 =author szabgab
-=keywords $*, $*PROGRAM-NAME, $*PROGRAM, $*CWD, $*IN, @*INC, $*PID, $EXECUTABLE_NAME, $*EXECUTABLE, $*TMPDIR
+=keywords $*, $*PROGRAM-NAME, $*PROGRAM, $*CWD, $*IN, $*PID, $EXECUTABLE-NAME, $*EXECUTABLE, $*TMPDIR
 =status show
 
 
@@ -17,17 +17,14 @@ and the name of the variable.
 Examples:
 <ul>
  <li><emp>$*PROGRAM-NAME</emp> relative path to the currently running Perl 6 script.</li>
- <li><emp>$*PROGRAM</emp> full path to the currently running Perl 6 cript</li>
+ <li><emp>$*PROGRAM</emp> full path to the currently running Perl 6 cript.</li>
  <li><emp>$*CWD</emp> contains a path to the current working directory.</li>
- <li><emp>$*IN</emp> is the standard input (STDIN). You can read a line using $*IN.get</li>
- <li><emp>@*INC</emp> search path for modules.</li>
- <li><emp>$*PID</emp> Process ID</li>
- <li><emp>$EXECUTABLE_NAME</emp> Relative path to the current binary. Most likely <b>perl6</b></li>
- <li><emp>$EXECUTABLE</emp> Full path to <b>perl6</b></li>
- <li><emp>$*TMPDIR</emp> ??</li>
+ <li><emp>$*IN</emp> is the standard input (STDIN). You can read a line using $*IN.get.</li>
+ <li><emp>$*PID</emp> Process ID.</li>
+ <li><emp>$*EXECUTABLE-NAME</emp> Relative path to the current binary. Most likely <b>perl6</b>.</li>
+ <li><emp>$*EXECUTABLE</emp> Full path to <b>perl6</b>.</li>
+ <li><emp>$*TMPDIR</emp> full path to the temp file directory.</li>
 
 </ul>
 
 You can read more about them in <a href="http://perlcabal.org/syn/S28.html">S28</a></p>
-
-

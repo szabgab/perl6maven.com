@@ -6,8 +6,9 @@
 
 
 <pre>
-:r  - read
-:w  - write
-:a  - append
+:r  - read-only mode
+:w  - write-only mode
+:rw - read-write mode
+:a  - append mode
 </pre>
 
