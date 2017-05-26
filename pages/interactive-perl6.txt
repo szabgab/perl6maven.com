@@ -1,0 +1,274 @@
+=title Interactive Perl 6 - types in $
+=timestamp 2017-05-26T10:32:02
+=author szabgab
+=keywords list, keys, values, Int, Pair, Hash, List, Array
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+When learning Perl 6 one of the best things you can do is to experiment with the language in the interactive shell.
+(Also known as <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL = Read Eval Print Loop</a>)
+
+Once you have <a href="http://rakudo.org/">Rakudo Perl 6</a> installed open a Terminal (or Command Prompt in MS Windows)
+and type in <b>perl6</b>. After a second or so you will see:
+
+=abstract end
+
+<code>
+To exit type 'exit' or '^D'
+>
+</code>
+
+(TBD: Is this the same on Windows?)
+
+The &gt; sign is the prompt. You can now type in any Perl 6 expression.
+Let's start with a few simple ones:
+
+<code>
+> say "hello world"
+hello world
+> say 42
+42
+> 19 + 23
+42
+</code>
+
+<hl>say</hl> is the keyword to <b>print</b> something to the screen and add a trailing newline.
+
+Strings are in double-quotes. Numbers don't have quotes.
+
+We can use Perl 6 as a calculator. In the interactve shell we don't even need to call <b>say</b>
+as it will automatiaclly print the result of the last statement. (The P is in the name REPL for a reason.)
+
+
+<h2>Variables</h2>
+
+Most variables in Perl 6 have one or two special characters at the beginning. The first such character is called
+Sigil, the secoond, optional character is called Twigil.
+
+The <hl>$</hl> sigil means the variable can contain any item.
+Let's try to assign a number to a variable that starts with a <hl>$</hl>:
+
+<code>
+> $x = 42
+===SORRY!=== Error while compiling:
+Variable '$x' is not declared
+------> <BOL>⏏$x = 42
+</code>
+
+Even the interactive shell requires us to declare our variables using the <hl>my</hl> keyword:
+
+<code>
+> my $x = 42
+42
+> $x
+42
+> $x - 7
+35
+</code>
+
+After the declaration and the assignment we can use the variable in arithmetic operations.
+
+Using the <hl>WHAT</hl> method we can also ask the variable what type is it. In this case it is of type <hl>Int</hl>:
+
+<code>
+> $x.WHAT
+(Int)
+</code>
+
+
+We can replace the content of the variable with a string, and then, when we ask <b>WHAT</b>
+is it, we get back that it is a <b>Str</b>.
+
+<code>
+> $x = "abc"
+abc
+
+> $x.WHAT
+(Str)
+</code>
+
+Some people love this kind of flexibility, for others this looks crazy dangerous. Don't worry,
+in other areas of Perl 6 you can be much stricter with your variable types.
+
+You can put all kind of other types in that variable:
+
+<code>
+> $x = 3.14
+3.14
+> $x.WHAT
+(Rat)
+
+> $x = ["foo", "bar", "qux"]
+[foo bar qux]
+> $x.WHAT
+(Array)
+
+> $x = ("foo", "bar", "qux")
+(foo bar qux)
+> $x.WHAT
+(List)
+
+> $x = {name => "Foo", answer => 42}
+{answer => 42, name => Foo}
+> $x.WHAT
+(Hash)
+
+> $x = name => "Foo"
+name => Foo
+> $x.WHAT
+(Pair)
+</code>
+
+
+We'll look at these types later on.
+
+<h2>Pair</h2>
+
+<code>
+> $x = name => "Foo"
+name => Foo
+> $x.WHAT
+(Pair)
+> $x.gist
+name => Foo
+> $x.key
+name
+> $x.value
+Foo
+</code>
+
+<h2>Hash</h2>
+
+We can create a hash using curly-braces and assigning it to a variable starting with a <hl>$</hl>:
+
+<code>
+> my $x = {name => "Foo", answer => 42};
+{answer => 42, name => Foo}
+</code>
+
+It is a hash:
+
+<code>
+> $x.WHAT
+(Hash)
+</code>
+
+We can access the values of the individual keys both with quotes around the keys:
+
+<code>
+> $x{"name"}
+Foo
+> $x{"answer"}
+42
+</code>
+
+And without any quotes:
+
+<code>
+> $x&lt;name>
+Foo
+> $x&lt;answer>
+42
+</code>
+
+We can fetch the <hl>keys</hl> of the hash and the <hl>values</hl>
+separately:
+
+<code>
+> $x.keys
+(name answer)
+
+> $x.values
+(Foo 42)
+</code>
+
+What <hl>keys</hl> really returns is a <hl>Seq</hl> (Sequence) object:
+
+<code>
+> my $z = $x.keys
+(name answer)
+> $z.WHAT
+(Seq)
+</code>
+
+We can also iterate over the individual keys using the <hl>for</hl> loop.
+($k is the loop variable that will get each key on its turn.)
+
+<code>
+> for $x.keys -> $k { say $k }
+name
+answer
+</code>
+
+Using the keys we can access the respective values:
+
+<code>
+> for $x.keys -> $k { say $k; say $x{$k} }
+name
+Foo
+answer
+42
+</code>
+
+Alternatively we can fetch a list of <hl>pairs</hl>
+and on each <hl>Pair</hl> object we can call the <hl>key</hl>
+and the <hl>value</hl> methods:
+
+<code>
+> for $x.pairs -> $p { say $p.WHAT; say $p.key; say $p.value}
+(Pair)
+name
+Foo
+(Pair)
+answer
+42
+</code>
+
+
+<h2>List</h2>
+
+If we wrap the right-hand side in parenthese we het a <hl>List</hl>
+on the left-hand side:
+
+<code>
+> $x = ("foo", "bar", "qux")
+(foo bar qux)
+> $x.WHAT
+(List)
+</code>
+
+In order to iterate over its elements we need to call the <hl>list</hl>
+method on it:
+
+<code>
+> for $x.list -> $v { say $v }
+foo
+bar
+qux
+</code>
+
+<h2>Array</h2>
+
+If we put square brackets around the values on the right-hand side, we 
+get an <hl>Array</hl>
+
+<code>
+> $x = ["foo", "bar", "qux"]
+[foo bar qux]
+> $x.WHAT
+(Array)
+</code>
+
+Here too we need to call the <hl>list</hl> method in order to iterate over the elements:
+
+<code>
+> for $x.list -> $i { say $i }
+foo
+bar
+qux
+</code>
+
+
