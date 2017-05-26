@@ -91,7 +91,20 @@ abc
 </code>
 
 Some people love this kind of flexibility, for others this looks crazy dangerous. Don't worry,
-in other areas of Perl 6 you can be much stricter with your variable types.
+In Perl 6 ou can be much stricter with your variable types during declaration. If that's your thing:
+
+<code>
+> my Int $w = 42
+42
+> $w.WHAT
+(Int)
+
+> $w = "hello"
+Type check failed in assignment to $w; expected Int but got Str ("hello")
+  in block <unit> at <unknown file> line 1
+
+>
+</code>
 
 You can put all kind of other types in that variable:
 
@@ -141,6 +154,8 @@ Foo
 </code>
 
 <h2>Hash</h2>
+
+A Hash is a key-value store. In other languages it might be called <hl>Associative Array</hl> or <hl>Dictionary</hl>.
 
 We can create a hash using curly-braces and assigning it to a variable starting with a <hl>$</hl>:
 
