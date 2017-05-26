@@ -1,4 +1,4 @@
-=title Interactive Perl 6 - types in $
+=title Perl 6 Interactive Shell - values in $ variables
 =timestamp 2017-05-26T10:32:02
 =author szabgab
 =keywords list, keys, values, Int, Pair, Hash, List, Array
