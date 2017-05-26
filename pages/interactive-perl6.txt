@@ -8,11 +8,11 @@
 
 =abstract start
 
-When learning Perl 6 one of the best things you can do is to experiment with the language in the interactive shell.
+When learning Perl 6, one of the best things you can do is to experiment with the language in the interactive shell.
 (Also known as <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL = Read Eval Print Loop</a>)
 
-Once you have <a href="http://rakudo.org/">Rakudo Perl 6</a> installed open a Terminal (or Command Prompt in MS Windows)
-and type in <b>perl6</b>. After a second or so you will see:
+Once you have <a href="http://rakudo.org/">Rakudo Perl 6</a> installed, open a Terminal (or Command Prompt in MS Windows)
+and type in <b>perl6</b>. After a second or so, you will see:
 
 =abstract end
 
@@ -39,14 +39,14 @@ hello world
 
 Strings are in double-quotes. Numbers don't have quotes.
 
-We can use Perl 6 as a calculator. In the interactve shell we don't even need to call <b>say</b>
-as it will automatiaclly print the result of the last statement. (The P is in the name REPL for a reason.)
+We can use Perl 6 as a calculator. In the interactive shell we don't even need to call <b>say</b>
+as it will automatically print the result of the last statement. (The P is in the name REPL for a reason.)
 
 
 <h2>Variables</h2>
 
 Most variables in Perl 6 have one or two special characters at the beginning. The first such character is called
-Sigil, the secoond, optional character is called Twigil.
+Sigil, the second, optional character is called Twigil.
 
 The <hl>$</hl> sigil means the variable can contain any item.
 Let's try to assign a number to a variable that starts with a <hl>$</hl>:
@@ -69,7 +69,7 @@ Even the interactive shell requires us to declare our variables using the <hl>my
 35
 </code>
 
-After the declaration and the assignment we can use the variable in arithmetic operations.
+After the declaration and the assignment, we can use the variable in arithmetic operations.
 
 Using the <hl>WHAT</hl> method we can also ask the variable what type is it. In this case it is of type <hl>Int</hl>:
 
@@ -91,7 +91,7 @@ abc
 </code>
 
 Some people love this kind of flexibility, for others this looks crazy dangerous. Don't worry,
-In Perl 6 ou can be much stricter with your variable types during declaration. If that's your thing:
+In Perl , you can be much stricter with your variable types during declaration. If that's your thing:
 
 <code>
 > my Int $w = 42
@@ -106,7 +106,7 @@ Type check failed in assignment to $w; expected Int but got Str ("hello")
 >
 </code>
 
-In this case we've declared the $w variable to be <hl>Int</hl> so we won't be able to
+In this case, we've declared the $w variable to be <hl>Int</hl> so we won't be able to
 assign any other type to it.
 
 
@@ -161,7 +161,7 @@ Foo
 
 A Hash is a key-value store. In other languages it might be called <hl>Associative Array</hl> or <hl>Dictionary</hl>.
 
-We can create a hash using curly-braces and assigning it to a variable starting with a <hl>$</hl>:
+We can create a hash using curly-braces, and assign it to a variable starting with a <hl>$</hl>:
 
 <code>
 > my $x = {name => "Foo", answer => 42};
@@ -249,7 +249,7 @@ answer
 
 <h2>List</h2>
 
-If we wrap the right-hand side in parenthese we het a <hl>List</hl>
+If we wrap the right-hand side in parentheses, we get a <hl>List</hl>
 on the left-hand side:
 
 <code>
@@ -259,7 +259,7 @@ on the left-hand side:
 (List)
 </code>
 
-In order to iterate over its elements we need to call the <hl>list</hl>
+In order to iterate over its elements, we need to call the <hl>list</hl>
 method on it:
 
 <code>
@@ -271,7 +271,7 @@ qux
 
 <h2>Array</h2>
 
-If we put square brackets around the values on the right-hand side, we 
+If we put square brackets around the values on the right-hand side, we
 get an <hl>Array</hl>
 
 <code>
