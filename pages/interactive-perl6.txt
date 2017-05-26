@@ -106,7 +106,11 @@ Type check failed in assignment to $w; expected Int but got Str ("hello")
 >
 </code>
 
-You can put all kind of other types in that variable:
+In this case we've declared the $w variable to be <hl>Int</hl> so we won't be able to
+assign any other type to it.
+
+
+Back to our type declaration free variable, you can put all kind of other types in that variable:
 
 <code>
 > $x = 3.14
