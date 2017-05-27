@@ -4,21 +4,20 @@ use v6;
 my @colors = "Blue", "Yellow", "Brown", "White";
 say @colors;
 
-say "--------------------------------";              # just for separation...
+say "--------------------------------";
 
-say "@colors";                                       # no interpolation!
+say "@colors";                                       # says "@colors" directly!
 
-say "--------------------------------";              # just for separation...
+say "--------------------------------";
 
-say "{@colors}";
+say "{@colors}";                                     # says the items in the list with spaces as seperation
 
-say "--------------------------------";              # just for separation...
+say "--------------------------------";
 
-say "@colors[]";
+say "@colors[]";                                     # says the items in the list with spaces as seperation
 
-say "--------------------------------";              # just for separation...
+say "--------------------------------";
 
 for @colors -> $color {
     say $color;
 }
-
