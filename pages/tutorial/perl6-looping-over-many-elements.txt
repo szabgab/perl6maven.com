@@ -10,10 +10,10 @@ Let's say we just extracted the results of the Spanish Liga football
 games from the soccer website http://soccernet.espn.go.com/ .
 Those come in groups of 4 values:
 
-home team,
-score of home team
-score of guest team
-guest team
+home team, 
+score of home team, 
+score of guest team, 
+guest team, 
 
 
 We can loop over the values using a for statement with
