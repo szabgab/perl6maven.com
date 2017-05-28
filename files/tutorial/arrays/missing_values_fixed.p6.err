@@ -1,2 +1,3 @@
-use of uninitialized value of type Mu in string context  in block  at examples/arrays/missing_values_fixed.p6:5
-
+Use of uninitialized value of type Mu in string context.
+Methods .^name, .perl, .gist, or .say can be used to stringify it to something meaningful.
+  in block  at examples/arrays/missing_values_fixed.p6 line 5
