@@ -8,8 +8,7 @@
 Arrays start with am at mark <emp>@</emp> and the name of the array.
 You can assign a list of values to the array.
 
-Printing the array as is, shows them with no space between them.
-One can also put the arry within a string (interpolating) but then
+One can put the arry within a string (interpolating) but then
 it needs to be enclosed in {} curly braces. This will print spaces
 between the values.
 
@@ -22,15 +21,4 @@ are optional.
 
 Output:
 
-<pre>
-BlueYellowBrownWhite
---------------------------------
-Blue Yellow Brown White
---------------------------------
-Blue
-Yellow
-Brown
-White
-</pre>
-
-
+<include file="tutorial/arrays/list_colors_array.p6.out" />
