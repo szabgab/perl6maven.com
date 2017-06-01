@@ -1,5 +1,5 @@
 =title Getting Started with Bailador
-=timestamp 2015-01-05T23:12:02
+=timestamp 2017-06-01T20:12:02
 =author szabgab
 =keywords Bailador, web, get
 =status show
@@ -9,18 +9,29 @@
 
 =abstract start
 
-<a href="https://github.com/tadzik/Bailador/">Bailador</a> is a bare-bones port of the
+<a href="http://bailador.net/">Bailador</a> is a bare-bones port of the
 <a href="http://perldancer.org/">Perl Dancer</a> web development framework. It comes with a few examples.
 In this article we'll take a look at the basics to get started writing a web application.
 
 =abstract end
 
+The easiest way to get Perl 6 on you system is to install <a href="http://rakudo.org/">Rakudo Star</a>.
+For MS Windows an Mac OSX there are binary packages. On Linux you need to compile it yourself, but
+the instructions are straight forward.
 
-<a href="http://rakudo.org/">Rakudo Star</a> already includes the latest version of Bailador, so
-once you <a href="/tutorial/perl6-installing-rakudo">installed Rakudo</a> you don't need to worry about further installations.
+Once you have Rakudo Start on your system make sure you can run <hl>perl6</hl> on the command line.
 
+Rakudo Star comes with <hl>zef</hl>, the command line package installer.
 
-You can just create a single file like this
+In orer to install Bailador you need to type:
+
+<code>
+zef install Bailador
+</code>
+
+Then you can start simple.
+
+Create a file like this:
 
 <include file="bailador/first.pl" />
 
@@ -30,16 +41,16 @@ It will launch a small web-server and let you know that you can access it via po
 
 <code>
 perl6 files/bailador/first.pl 
-Entering the development dance floor: http://0.0.0.0:3000
+Entering the development dance floor: http://127.0.0.1:3000
 [2015-01-03T22:39:13Z] Started HTTP server.
 </code>
 
-In Bailador we need to map HTTP request methods, and the path on the server to anonymous subroutines
-that will returnt the content. In this example we mapped the <b>get</b> HTTP request for the root
-of the site <b>/</b> we told it to return the string <b>hello world</b>. If you launch the application
-and then browse to <a href="http://0.0.0.0:3000/">http://0.0.0.0:3000/</a> you will see this text.
+In Bailador we need to map HTTP request methods, and the paths on the server to anonymous subroutines
+that will return the content. In this example we mapped the <b>get</b> HTTP request for the root
+of the site <b>/</b>. We told it to return the string <b>hello world</b>. If you launch the application
+and then browse to <a href="http://127.0.0.1:3000/">http://127.0.0.1:3000/</a> you will see this text.
 
-We can also map other path-es. For example this code:
+We can also map other paths. For example this code:
 
 <code lang="perl6">
 get '/about' => sub {
@@ -47,7 +58,7 @@ get '/about' => sub {
 }
 </code>
 
-will map the <a href="http://0.0.0.0:3000/about">http://0.0.0.0:3000/about</a> url to return "about me".
+will map the <a href="http://127.0.0.1:3000/about">http://127.0.0.1:3000/about</a> url to return "about me".
 
 <h2>Placeholder in the path</h2>
 
@@ -62,7 +73,7 @@ get '/hello/:name' => sub ($name) {
 The <b>:name</b> part can match any string except of a slash <b>/</b> and the value it matched will be assigned to the <b>$name</b> variable
 of the anonymous subroutine.
 
-You can have more than one such placeholders, and the actual name of the placeholder does not matter. The values caught by the
+You can have more than one such placeholders. The name of the placeholder does not matter. The values caught by the
 placeholders will be assigned to the parameters of the function in the same order as they've appeared in the url.
 
 <code lang="perl6">
@@ -73,7 +84,7 @@ get '/hello/:first/:family' => sub ($fname, $lname) {
 
 In this example whatever the <b>:first</b> placeholder catches will be assigned to the <b>$fname</b> parameter, and whatever
 was caught by the <b>:family</b> placeholder, will be assigned to the <b>$lname</b> parameter. For example the url
-<a href="http://0.0.0.0:3000/hello/Foo/Bar">http://0.0.0.0:3000/hello/Foo/Bar</a> will generate the response:
+<a href="http://127.0.0.1:3000/hello/Foo/Bar">http://127.0.0.1:3000/hello/Foo/Bar</a> will generate the response:
 
 <code>
 Hello Foo! And hi Bar!
