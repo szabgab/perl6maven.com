@@ -71,23 +71,23 @@ Even the interactive shell requires us to declare our variables using the <hl>my
 
 After the declaration and the assignment, we can use the variable in arithmetic operations.
 
-Using the <hl>WHAT</hl> method we can also ask the variable what type is it. In this case it is of type <hl>Int</hl>:
+Using the <hl>^name</hl> method we can also ask the variable what type is it. In this case it is of type <hl>Int</hl>:
 
 <code>
-> $x.WHAT
-(Int)
+> $x.^name
+Int
 </code>
 
 
-We can replace the content of the variable with a string, and then, when we ask <b>WHAT</b>
-is it, we get back that it is a <b>Str</b>.
+We can replace the content of the variable with a string, and then, when we ask what is
+the <b>^name</b> of its type, we get back that it is a <b>Str</b>.
 
 <code>
 > $x = "abc"
 abc
 
-> $x.WHAT
-(Str)
+> $x.^name
+Str
 </code>
 
 Some people love this kind of flexibility, for others this looks crazy dangerous. Don't worry,
@@ -96,8 +96,8 @@ In Perl , you can be much stricter with your variable types during declaration. 
 <code>
 > my Int $w = 42
 42
-> $w.WHAT
-(Int)
+> $w.^name
+Int
 
 > $w = "hello"
 Type check failed in assignment to $w; expected Int but got Str ("hello")
@@ -115,28 +115,28 @@ Back to our type declaration free variable, you can put all kind of other types 
 <code>
 > $x = 3.14
 3.14
-> $x.WHAT
-(Rat)
+> $x.^name
+Rat
 
 > $x = ["foo", "bar", "qux"]
 [foo bar qux]
-> $x.WHAT
-(Array)
+> $x.^name
+Array
 
 > $x = ("foo", "bar", "qux")
 (foo bar qux)
-> $x.WHAT
-(List)
+> $x.^name
+List
 
 > $x = {name => "Foo", answer => 42}
 {answer => 42, name => Foo}
-> $x.WHAT
-(Hash)
+> $x.^name
+Hash
 
 > $x = name => "Foo"
 name => Foo
-> $x.WHAT
-(Pair)
+> $x.^name
+Pair
 </code>
 
 
@@ -147,8 +147,8 @@ We'll look at these types later on.
 <code>
 > $x = name => "Foo"
 name => Foo
-> $x.WHAT
-(Pair)
+> $x.^name
+Pair
 > $x.gist
 name => Foo
 > $x.key
@@ -171,8 +171,8 @@ We can create a hash using curly-braces, and assign it to a variable starting wi
 It is a hash:
 
 <code>
-> $x.WHAT
-(Hash)
+> $x.^name
+Hash
 </code>
 
 We can access the values of the individual keys both with quotes around the keys:
@@ -209,8 +209,8 @@ What <hl>keys</hl> really returns is a <hl>Seq</hl> (Sequence) object:
 <code>
 > my $z = $x.keys
 (name answer)
-> $z.WHAT
-(Seq)
+> $z.^name
+Seq
 </code>
 
 We can also iterate over the individual keys using the <hl>for</hl> loop.
@@ -237,11 +237,11 @@ and on each <hl>Pair</hl> object we can call the <hl>key</hl>
 and the <hl>value</hl> methods:
 
 <code>
-> for $x.pairs -> $p { say $p.WHAT; say $p.key; say $p.value}
-(Pair)
+> for $x.pairs -> $p { say $p.^name; say $p.key; say $p.value}
+Pair
 name
 Foo
-(Pair)
+Pair
 answer
 42
 </code>
@@ -255,8 +255,8 @@ on the left-hand side:
 <code>
 > $x = ("foo", "bar", "qux")
 (foo bar qux)
-> $x.WHAT
-(List)
+> $x.^name
+List
 </code>
 
 In order to iterate over its elements, we need to call the <hl>list</hl>
@@ -277,8 +277,8 @@ get an <hl>Array</hl>
 <code>
 > $x = ["foo", "bar", "qux"]
 [foo bar qux]
-> $x.WHAT
-(Array)
+> $x.^name
+Array
 </code>
 
 Here too we need to call the <hl>list</hl> method in order to iterate over the elements:
