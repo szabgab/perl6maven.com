@@ -1,7 +1,7 @@
 =title Data serialization with JSON in Perl 6
 =timestamp 2017-06-02T15:02:02
 =author szabgab
-=keywords JSON, JSON::Fast, JSON::Tiny
+=keywords JSON, JSON::Fast, JSON::Tiny, :=, |
 =status show
 =archive 1
 =comments 1
