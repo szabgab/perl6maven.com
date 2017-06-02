@@ -1,0 +1,100 @@
+=title Data serialization with JSON in Perl 6
+=timestamp 2017-06-02T15:02:02
+=author szabgab
+=keywords JSON, JSON::Fast, JSON::Tiny
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+<a href="http://json.org/">JSON</a> is one of the most common ways to communicate between applications that might have been written in
+different languages. Especially in web applications where the code running in the browser is usually in a different language than the code running on the server.
+
+However JSON can be great even if both the sender and the receiver are in the same language. In our case in Perl 6.
+
+=abstract end
+
+There are basically two complex data structures that need serialization and deserialization.
+Hashes (or Associative Arrays, or Dictionaries) on one hand and Arrays (or Lists) on the other hand.
+
+In Perl 6, due to the special behavior of the assignment, we need to be careful as the deserialization needs to be a bit different in the two cases.
+
+<h2>Round trip: Serializing and deserializing hashes</h2>
+
+The JSON::Fast module exports the <hl>to-json</hl> and <hl>from-json</hl> function that can be use to convert a Perl 6 data structure to JSON
+and to convert from a JSON string to a Perl 6 data structure.
+
+<include file="examples/json_hash.pl" />
+
+The output looks like this:
+
+<code>
+{:id(42), :name("Foo")}
+Hash
+Foo
+42
+
+{
+  "name": "Foo",
+  "id": 42
+}
+
+{:id(42), :name("Foo")}
+Hash
+Foo
+42
+
+{:id(42), :name("Foo")}
+Hash
+Foo
+42
+</code>
+
+The <hl>.perl</hl> method displays the Hash in a different representation than the way we created it,
+but that's still the same hash.
+ 
+You can also notice that both the regular assignment <hl>=</hl> and the binding assignment <hl>:=</hl> works the same way.
+
+<h2>Round trip: Serializing and deserializing arrays</h2>
+
+With arrays we need to be a bit more careful.
+
+<include file="examples/json_array.pl" />
+
+The output looks like this:
+
+<code>
+["Blue", "White", "Green"]
+[
+  "Blue",
+  "White",
+  "Green"
+]
+[["Blue", "White", "Green"],]
+["Blue", "White", "Green"]
+["Blue", "White", "Green"]
+</code>
+
+The serialization goes well, the JSON string looks as we expect, but when we convert the JSON string back to Perl data structure
+and assign it to an array, we get an array inside another array. Not what we started with.
+
+The problem, as <a href="http://www.nntp.perl.org/group/perl.perl6.users/2017/06/msg3845.html">explained by Lloyd Fournier</a> on the
+<a href="https://lists.perl.org/list/perl6-users.html">perl6-users</a> mailing list, is not with what <hl>from-json</hl>
+returns, but the way the assignment works.
+
+<hl>from-json</hl> returns the data structure as a single item. When we put that single item in an array
+it became a single item in the array. Thus we got an array of an array. Not what we started with.
+
+We have (at least) two ways to solve this: We can use the prefix <a href="https://docs.perl6.org/routine/|">|</a> operator to flatten the list.
+
+Alternatively we can use <a href="https://docs.perl6.org/routine/:=">:=</a>, the binding assignment operator.
+
+In both cases we get back the data structure we started with.
+
+<h2>Conclusion</h2>
+
+JSON can be used for serialization and deserialization of Perl 6 data structures as well, but in the deserialization part we need to make a decision.
+Either we remember to write different code for hash and array deserialization (<hl>=</hl> for hash and <hl>= |</hl> for array) or
+we use the binding assignment for both: <hl>:=</hl>.
+
