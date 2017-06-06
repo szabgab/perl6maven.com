@@ -37,26 +37,26 @@ $[7, "Ilan Ramon", "Israel", "June 20, 1954"]
 DBIish is a generic, database independent interface to relational databases. Currently, AFAIK, it supports SQLite, MySQL, and PostgreSQL.
 
 The <hl>connect</hl> method of DBIish establishes the connection to the database. As SQLite is a serverless database we only need to give it the path of the database file as the value of the <hl>database</hl> parameter. In our case <hl>:database($dbfile)</hl>
-means the same as <hl>databse => $dbfile</hl> which is passing a key-value pair to the <hl>connect</hl> method.
+means the same as <hl>database => $dbfile</hl> which is passing a key-value pair to the <hl>connect</hl> method.
 The first parameter told <hl>connect</hl> that we are talking to an SQLite database.
 
-We assign the datbase connection object to a variable called <hl>$dbh</hl>. (It is an arbitrary variable name, but it is recomended as dbh stands for database handle.)
+We assign the database connection object to a variable called <hl>$dbh</hl>. (It is an arbitrary variable name, but it is recommended as dbh stands for database handle.)
 
 Using the Database handle we can call the <hl>do</hl> method an execute any SQL statement the specific engine is ready to accept.
 
 The first such statement will delete the 'astronaut' table if it existed earlier. e.g from a previous run of the same code.
 
-In the second <hl>do</hl> statement we use a here-docoument to inlcude a multi-line sql statement. The expression <hl>q:to/STATEMENT/</hl> tells
+In the second <hl>do</hl> statement we use a here-document to include a multi-line sql statement. The expression <hl>q:to/STATEMENT/</hl> tells
 Perl to look for a line that matches the <hl>STATEMENT</hl> regular expression and that's the end of the string.
 This second <hl>do</hl> call will create the table. (In SQLite you don't need special permissions for either dropping a table or creating one.)
 
 <h2>INSERT</h2>
 
-Then we instert the data. First we call the <hl>prepare</hl> method with an SQL statement that uses <hl>?</hl> placeholders. These placeholder have two functions:
+Then we insert the data. First we call the <hl>prepare</hl> method with an SQL statement that uses <hl>?</hl> placeholders. These placeholder have two functions:
 They allow us to reuse a prepared statement with several sets of data, thereby improving the speed of our code. They also help us avoid
 <a href="http://bobby-tables.com/">SQL injection attacks</a>.
 
-The returned object is assigned to a variable that is usually called sth-something as it is a "statement handle". As this example has two different statemen
+The returned object is assigned to a variable that is usually called sth-something as it is a "statement handle". As this example has two different statement
 handles I used two such variables.
 
 Then we have the names of the astronauts in an array of lists and a loop that iterates over the elements of the array. The <hl>|</hl> in front of <hl>$p</hl>
