@@ -14,8 +14,8 @@ is <a href="http://sqlite.org/">SQLite</a>, an embedded SQL database. In this ex
 When I was at <a href="http://www.yapcna.org/yn2016/">YAPC::NA 2016 in Orlando, Florida</a>, I also took a day off visiting the
 <a href="https://www.kennedyspacecenter.com/">Kennedy Space Center</a> with my family. It is a very impressive presentation,
 especially with the space-shuttle hanging there. They also had a room remembering the Astronauts we lost during the Shuttle flights.
-In this example I am going to use the names of 7 Astronauts who died in the
-<a href="https://en.wikipedia.org/wiki/Space_Shuttle_Columbia_disaster">Space Shuttle Columbia disaster</a>.
+To honour them, I am going to use the names of 7 astronauts who perished in the
+<a href="https://en.wikipedia.org/wiki/Space_Shuttle_Columbia_disaster">Space Shuttle Columbia disaster</a> in this example.
 
 =abstract end
 
@@ -34,11 +34,11 @@ $[6, "Laurel Clark", "USA", "March 10, 1961"]
 $[7, "Ilan Ramon", "Israel", "June 20, 1954"]
 </code>
 
-DBIish is a generic, databae independent interface to relational databases. Currently, AFAIK, it supports SQLite, MySQL, and PostgreSQL.
+DBIish is a generic, database independent interface to relational databases. Currently, AFAIK, it supports SQLite, MySQL, and PostgreSQL.
 
 The <hl>connect</hl> method of DBIish establishes the connection to the database. As SQLite is a serverless database we only need to give it the path of the database file as the value of the <hl>database</hl> parameter. In our case <hl>:database($dbfile)</hl>
 means the same as <hl>databse => $dbfile</hl> which is passing a key-value pair to the <hl>connect</hl> method.
-The first parameter told <hl>connect</hl> that we are taling to an SQLite database.
+The first parameter told <hl>connect</hl> that we are talking to an SQLite database.
 
 We assign the datbase connection object to a variable called <hl>$dbh</hl>. (It is an arbitrary variable name, but it is recomended as dbh stands for database handle.)
 
@@ -52,14 +52,14 @@ This second <hl>do</hl> call will create the table. (In SQLite you don't need sp
 
 <h2>INSERT</h2>
 
-Then we instert the data. Firs we call the <hl>prepare</hl> method with an SQL statement that uses <hl>?</hl> placeholders. These placeholder have two functions:
-They allow us to reuse a prepared statement with several sets of data, therby improving the speed of our code. They also help us avoid
+Then we instert the data. First we call the <hl>prepare</hl> method with an SQL statement that uses <hl>?</hl> placeholders. These placeholder have two functions:
+They allow us to reuse a prepared statement with several sets of data, thereby improving the speed of our code. They also help us avoid
 <a href="http://bobby-tables.com/">SQL injection attacks</a>.
 
 The returned object is assigned to a variable that is usually called sth-something as it is a "statement handle". As this example has two different statemen
 handles I used two such variables.
 
-Then we have the names of the astronauts in an array of lists and a loop that iterates over the elements of the array. The <hl>|</hl> infront of <hl>$p</hl>
+Then we have the names of the astronauts in an array of lists and a loop that iterates over the elements of the array. The <hl>|</hl> in front of <hl>$p</hl>
 converts the List item into the individual elements of the list. (We could have written <hl>@$p</hl> for the same result.)
 
 <h2>SELECT</h2>
@@ -70,6 +70,6 @@ Then <hl>execute</hl> it.
 
 Then fetch all the rows.
 
-Finally we close the database connecttion by calling <hl>dispose</hl>.
+Finally we close the database connection by calling <hl>dispose</hl>.
 
 
