@@ -8,7 +8,7 @@
 
 =abstract start
 
-Earlier I've explained how to <a href="/encrypt-a-password-with-sha-512">encrypt asswords in Perl 6 using crypt and SHA-512</a>.
+Earlier I've explained how to <a href="/encrypt-a-password-with-sha-512">encrypt passwords in Perl 6 using crypt and SHA-512</a>.
 Some of the commenters have suggested that it can be further improved by adding a "round-factor" further increasing the
 computation time and thereby making it similar to PBKDF or scrypt.
 
@@ -128,7 +128,7 @@ slower than the no-round version.
 
 <h2>Benchmarking using Bench</h2>
 
-Another module for benchmariking is the newer Bench module.
+Another module for benchmarking is the newer Bench module.
 
 <include file="examples/bench_crypt.pl" />
 
