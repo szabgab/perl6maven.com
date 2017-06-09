@@ -101,9 +101,9 @@ in <hl>@$s</hl>.
 The naive approach would be to just assign the $-variable back to a @-variable, but that does not take in account the fact that the generic $-variable see its content as a single element. So in the first attempt we get back an array in which there is only one element which is the array we had in the generic variable. This is basically a two-dimensional array with only one element in it.
 We can access the individual elements inside the internal array using two square-brackets. We can also observe that that internal array is identical to the one in the generic variable.
 
-So we need to dereference the generic variable in some way. Similar to what we saw in the previous example.
+So we need to turn the generic variable into an array in some way. Similar to what we saw in the previous example.
 
-We can use the <hl>@$s</hl> construct in which case we really dereference the array in the generic variable. This creates a copy of the array. (They have the same content (<hl>==</hl>) but they are not the same container. They are not identical (<hl>===</hl>).
+We can use the <hl>@$s</hl> construct in which case we get back the array from the generic variable. This creates a copy of the array. (They have the same content (<hl>==</hl>) but they are not the same container. They are not identical (<hl>===</hl>).
 
 We can use the same construct but with <hl>:=</hl> binding instead of <hl>=</hl> assignment. That works too and in that case we get back an array which is identical (same container) to the content of the generic variable.
 
