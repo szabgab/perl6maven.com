@@ -103,7 +103,7 @@ We can access the individual elements inside the internal array using two square
 
 So we need to turn the generic variable into an array in some way. Similar to what we saw in the previous example.
 
-We can use the <hl>@$s</hl> construct in which case we get back the array from the generic variable. This creates a copy of the array. (They have the same content (<hl>==</hl>) but they are not the same container. They are not identical (<hl>===</hl>).
+We can assign the <hl>@$s</hl> construct to a array variable in which case we get back the array from the generic variable. This creates a copy of the array. (They have the same content (<hl>==</hl>) but they are not the same container. They are not identical (<hl>===</hl>).
 
 We can use the same construct but with <hl>:=</hl> binding instead of <hl>=</hl> assignment. That works too and in that case we get back an array which is identical (same container) to the content of the generic variable.
 
