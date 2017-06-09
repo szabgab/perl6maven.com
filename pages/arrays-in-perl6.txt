@@ -65,8 +65,6 @@ Not only is the content of the two the same they are actually identical.
 We can also assign an array in a <hl>@</hl> variable to a variable that starts with a <hl>$</hl> sign
 that for now I'll call generic variable.
 
-<include file="examples/array_to_generic.pl" />
-
 Using the <hl>^name</hl> attribute we can see that it remained an Array. Using the <hl>===</hl>
 operator we can see that they are identical. So this assignment does not create a copy, but a
 reference to the same area in the memory.
@@ -77,6 +75,8 @@ Their representation using the <hl>perl</hl> method is slightly different due to
 the generic variable (starting with <hl>$</hl>) sees the data as a single item,
 while the array variable (staring with <hl>@</hl>)
 sees the values as separate elements.
+
+<include file="examples/array_to_generic.pl" />
 
 <h2>Iterate over array in generic variable</h2>
 
@@ -112,5 +112,4 @@ We could also use the <hl>|</hl> flattening operator. That will also create a co
 Trying to use <hl>:=</hl>, the binding operator here just confuses me. It still creates a copy but this time it is not even an Array any more. It is a <a href="https://docs.perl6.org/type/Slip">Slip</a> which is another list-like container type.
 
 <include file="examples/array_to_generic_and_back.pl" />
-
 
