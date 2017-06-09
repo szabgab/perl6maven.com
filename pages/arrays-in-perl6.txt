@@ -87,7 +87,7 @@ For example we can use the square-bracket indexing to get an element. In this ca
 We could also iterate over the elements using a <hl>for</hl> loop, but that does not work as expected. The <hl>$</hl> variable sees the array as a single item, therefore when we iterate over its elements, we only see one iteration that returns a single element. That contains the original array.
 
 There are (at least) two ways to iterate over the values of the original array. One of them is
-to use the <hl>@</hl> to prefix the <hl>$</hl> variable, effectively de-referencing it.
+to use the <hl>@</hl> to prefix the <hl>$</hl> variable.
 
 The other way is to use the <hl>|</hl> flattening operator.
 
