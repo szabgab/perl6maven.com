@@ -13,7 +13,7 @@ though they can also be stored in variables starting with a <hl>$</hl>.
 
 =abstract end
 
-Apparently I made quute a few mistakes when writing this article. I pull it till I have time to fix it.
+Apparently I made quite a few mistakes when writing this article. I pull it till I have time to fix it.
 
 <!--
 
