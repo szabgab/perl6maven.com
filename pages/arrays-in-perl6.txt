@@ -13,6 +13,10 @@ though they can also be stored in variables starting with a <hl>$</hl>.
 
 =abstract end
 
+Apparently I made quute a few mistakes when writing this article. I pull it till I have time to fix it.
+
+<!--
+
 <h2>Creating an array</h2>
 
 We can declare an array using <hl>my</hl> and immediately assign a list of values to it. That assignment creates an array in <hl>@fruits</hl>.
@@ -113,3 +117,4 @@ Trying to use <hl>:=</hl>, the binding operator here just confuses me. It create
 
 <include file="examples/array_to_generic_and_back.pl" />
 
+-->
