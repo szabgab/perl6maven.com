@@ -1,7 +1,7 @@
 =title Arrays in Perl 6
 =timestamp 2017-06-09T10:02:02
 =author szabgab
-=keywords arrays, ==, ===, :=, @$, |$, |
+=keywords arrays, eqv, ===, :=, @$, |$, |
 =status show
 =archive 1
 =comments 1
@@ -42,7 +42,7 @@ If we change the content of one of the elements in one of the arrays, it does no
 
 <h2>Equality and Identity</h2>
 
-We can use the <hl>==</hl> operator to check if two arrays have the same content. (They have).
+We can use the <hl>eqv</hl> operator to check if two arrays have the same content. (They have).
 We can also use the <hl>===</hl> operator to check if the two arrays are identical. (They are not. They are copies.)
 
 Once we change the content of one of them, they are not even equal any more.
@@ -55,7 +55,7 @@ We can use the <hl>:=</hl> operator to bind two variables together.
 That means the two variables now point to the exact same place in the memory. To the same container.
 If we change the element of one of them, we change the element of the other one as well.
 
-We can compare the two using <hl>==</hl> or with <hl>===</hl> and both of these will return True:
+We can compare the two using <hl>eqv</hl> or with <hl>===</hl> and both of these will return True:
 Not only is the content of the two the same they are actually identical.
 
 <include file="examples/array_binding.pl" />
@@ -101,15 +101,15 @@ in <hl>@$s</hl>.
 The naive approach would be to just assign the $-variable back to a @-variable, but that does not take in account the fact that the generic $-variable see its content as a single element. So in the first attempt we get back an array in which there is only one element which is the array we had in the generic variable. This is basically a two-dimensional array with only one element in it.
 We can access the individual elements inside the internal array using two square-brackets. We can also observe that that internal array is identical to the one in the generic variable.
 
-So we need to turn the generic variable into an array in some way. Similar to what we saw in the previous example.
+So we need to turn the content of the generic variable into a flat array in some way. Similar to what we saw in the previous example.
 
-We can assign the <hl>@$s</hl> construct to a array variable in which case we get back the array from the generic variable. This creates a copy of the array. (They have the same content (<hl>==</hl>) but they are not the same container. They are not identical (<hl>===</hl>).
+We can assign the <hl>@$s</hl> construct to a array variable in which case we get back the array from the generic variable. This creates a copy of the array. (They have the same content (<hl>eqv</hl>) but they are not the same container. They are not identical (<hl>===</hl>).
 
 We can use the same construct but with <hl>:=</hl> binding instead of <hl>=</hl> assignment. That works too and in that case we get back an array which is identical (same container) to the content of the generic variable.
 
 We could also use the <hl>|</hl> flattening operator. That will also create a copy of the content. Just like <hl>@$s</hl> did.
 
-Trying to use <hl>:=</hl>, the binding operator here just confuses me. It still creates a copy but this time it is not even an Array any more. It is a <a href="https://docs.perl6.org/type/Slip">Slip</a> which is another list-like container type.
+Trying to use <hl>:=</hl>, the binding operator here just confuses me. It creates a <a href="https://docs.perl6.org/type/Slip">Slip</a> which is another list-like container type.
 
 <include file="examples/array_to_generic_and_back.pl" />
 

@@ -7,5 +7,5 @@ my @other := @fruits;
 say @fruits.perl;        # ["Apple", "Mango", "Peach"]
 say @other.perl;         # ["Apple", "Mango", "Peach"]
 
-say @other == @fruits;   # True
+say @other eqv @fruits;  # True
 say @other === @fruits;  # True
