@@ -1,6 +1,0 @@
-
-<ul>
-  <li><a href="http://perl6maven.com/getting-started-with-bailador">Getting Started with Bailador</a></li>
-  <li><a href="http://perl6maven.com/echo-text-with-bailador">Echo text with Bailador</a></li>
-</ul>
-
