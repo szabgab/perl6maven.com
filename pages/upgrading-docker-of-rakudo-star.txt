@@ -55,7 +55,7 @@ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 rakudo-star         latest              118af315b797        5 weeks ago         338 MB
 rakudo-star         <none>              8b00c91fa5c0        7 weeks ago         334 MB
-<code>
+</code>
 
 <h2>Remove old image</h2>
 
