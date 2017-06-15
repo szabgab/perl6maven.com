@@ -2,7 +2,7 @@
 =timestamp 2017-06-15T11:32:02
 =author szabgab
 =keywords Docker, Rakudo, zef, Terminal::Readsecret, apt-get
-=status draft
+=status show
 =archive 1
 =comments 1
 
