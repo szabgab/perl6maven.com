@@ -8,6 +8,8 @@
 
 =abstract start
 
+<a href="http://docker.com/">Docker</a> is a container of a light-weight Linux system that can run on Linux, MS Windows, and Mac OSX.
+In this article you'll see how to use it to start writing Perl 6 code.
 
 =abstract end
 
@@ -87,11 +89,27 @@ We can check out the version of Perl:
 Perl 6 (6.c)
 </code>
 
+the version of Rakudo:
+
+<code>
+> $*VM
+moar (2017.01)
+</code>
+
 and the location of the current Perl 6 executable:
 
 <code>
 > $*EXECUTABLE
 "/usr/bin/perl6".IO
+</code>
+
+We can also check the Linux distribution used for this Docker image and the version of the Linux kernel:
+
+<code>
+> $*DISTRO
+debian (8.jessie)
+> $*KERNEL
+linux (4.9.27.moby)
 </code>
 
 If we type <hl>exit</hl> we will leave the Perl 6 interactive shell and with that we'll leave the
@@ -120,8 +138,13 @@ root@1fa71fb0cfcb:/#
 
 You can execute subset of the regular Unix/Linux Bash commands such as "pwd" and "ls".
 If you type "ls -l opt/" you'll see the content of the directory on the host OS.
-If you need other command, you can install them using <hl>apt-get</hl>.
-In order for that to work properly first we need to update the package list:
+
+<h2>Install security fixes</h2>
+
+If you need other commands, you can install them using <hl>apt-get</hl>.
+In order for that to work properly first we need to update the package list
+and if we have done that we can also install the recent security fixes of
+the Linux distribution used.
 
 <code>
 root@7d03b913aeca:/# apt-get update
@@ -139,6 +162,10 @@ Fetched 9878 kB in 15s (644 kB/s)
 Reading package lists... Done
 </code>
 
+<code>
+root@7d03b913aeca:/# apt-get -y upgrade
+</code>
+
 <h2>Install less, make, and gcc</h2>
 
 The Linux-box is so bare-bones that <hl>less</hl> is not installed
@@ -149,7 +176,7 @@ In order to check what is the name of the package that contains the
 <hl>less</hl> command type in:
 
 <code>
-# apt-cache search less| grep ^less
+# apt-cache search less | grep ^less
 
 less - pager program similar to more
 </code>
@@ -171,7 +198,7 @@ You can verify that the installation succeeded by typing
 In order to install <hl>make</hl> and <hl>gcc</hl> type in:
 
 <code>
-# apt-get install make gcc
+# apt-get -y install make gcc
 </code>
 
 
@@ -181,17 +208,14 @@ Using your tools on the host Operating system, create a file called
 <b>hello_world.pl</b> in the directory where you launched the Docker container,
 and add the following two lines:
 
-<code>
-use v6;
-say "Hello from Perl 6";
-</code>
+<include file="examples/hello_world.pl" />
 
 Now you can run the script by typing in the following:
 
-<hl>perl6 opt/hello_world.pl</hl>
+<hl>perl6 /opt/hello_world.pl</hl>
 
 <code>
-@1fa71fb0cfcb:/# perl6 opt/hello_world.pl
+@1fa71fb0cfcb:/# perl6 /opt/hello_world.pl
 Hello from Perl 6
 </code>
 
@@ -246,18 +270,18 @@ Create a small script copying on the example from the README of
 Save this content as <hl>read_secret.pl</hl> in the directory where you launched
 the Docker container:
 
-<code lang="perl6">
-use Terminal::Readsecret;
-my $password = getsecret("password:" );
-say "your password is: " ~ $password;
-</code>
+<include file="examples/read_secret.pl" />
 
 Then run
 
 <code>
-perl6 opt/read_secret.pl
+perl6 /opt/read_secret.pl
+
+password:
+your password is: Hello World
 </code>
 
+It is supposed to prompt for a password. As you type in the text it should not show anything. Then when you press enter it should display the password.
 
 <h2>Exit and restart the container</h2>
 
@@ -288,7 +312,7 @@ container:
 # docker start rakudo && docker attach rakudo
 </code>
 
-It will print "rakudo" and then it will seem to hanged without showing a prompt.
+It will print "rakudo" and then it will seem to hang without showing a prompt.
 You have to press <hl>ENTER</hl> again in order to get to the prompt.
 
 With this you are back to your same prompt, with all the installed stuff.

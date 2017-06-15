@@ -1,0 +1,128 @@
+=title Upgrading the Docker container of Rakudo Star
+=timestamp 2017-06-15T11:32:02
+=author szabgab
+=keywords Docker, Rakudo, zef, Terminal::Readsecret, apt-get
+=status draft
+=archive 1
+=comments 1
+
+=abstract start
+
+A few week ago we saw how to <a href="/rakudo-perl6-with-docker">get started with Perl 6 in a Docker container</a>.
+Since then a new version of <a href="http://rakudo.org/">Rakudo Star</a> was release (version 2017.04) and I wanted to see
+how can I upgrade it.
+
+In a nutshell: I need to start from scratch.
+
+=abstract end
+
+Assuming you have followed the instructions <a href="/rakudo-perl6-with-docker">using Docker with Perl 6</a> you can restart the Docker container again:
+
+<code>
+docker start rakudo && docker attach rakudo
+</code>
+
+and then run <hl>perl6 -v</hl> to see the version of Rakudo:
+
+<code>
+root@5367bca6f844:/# perl6 -v
+This is Rakudo version 2017.01 built on MoarVM version 2017.01
+implementing Perl 6.c.
+</code>
+
+It is out of date as the most recent release of Rakudo Star was 2017.04
+
+<h2>Upgrade Docker Image</h2>
+
+Let's start by listing the Docker images we have on the system:
+
+<code>
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+rakudo-star         latest              8b00c91fa5c0        7 weeks ago         334 MB
+</code>
+
+Use the <hl>pull</hl> command to fetch the newer version of the already downloaded image:
+
+<code>
+$ docker pull rakudo-star
+</code>
+
+Then check the images again:
+
+<code>
+docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+rakudo-star         latest              118af315b797        5 weeks ago         338 MB
+rakudo-star         <none>              8b00c91fa5c0        7 weeks ago         334 MB
+<code>
+
+<h2>Remove old image</h2>
+
+At this point I tried to remove the old image, but Docker did not let me do it:
+
+<code>
+$ docker rmi 8b00c91fa5c0
+Error response from daemon: conflict: unable to delete 8b00c91fa5c0 (must be forced) - image is being used by stopped container 5367bca6f844
+</code>
+
+So I listed all the Docker containers I had:
+
+<code>
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+5367bca6f844        rakudo-star         "bash"              56 minutes ago      Exited (0) 5 seconds ago                        rakudo
+4af6f99aab3d        rakudo-star         "perl6"             About an hour ago   Exited (0) 54 minutes ago                       cocky_lalande
+</code>
+
+and removed them:
+
+<code>
+$ docker rm 5367bca6f844 4af6f99aab3d
+</code>
+
+Then I could remove the old and outdated image:
+
+<code>
+$ docker rmi 8b00c91fa5c0
+</code>
+
+<h2>Start new Docker image</h2>
+
+At this point I basically have a clean system. The Docker image is already here, but
+all the installation I did are gone. So I start from scratch launching a new Docker container:
+
+<code>
+docker run -it --name rakudo -v $(pwd):/opt rakudo-star bash
+</code>
+
+Then checking the version of Perl 6:
+
+<code>
+root@fcc044e9bb30:/# perl6  -v
+This is Rakudo version 2017.04.3 built on MoarVM version 2017.04-53-g66c6dda
+implementing Perl 6.c.
+</code>
+
+So we have the newer version now.
+
+<h2>Install additional packages and Perl 6 modules</h2>
+
+Then we can install the additional Linux packages we might need:
+
+<code>
+# apt-get update
+# apt-get -y upgrade
+# apt-get -y install less make gcc
+</code>
+
+and the Perl 6 modules we wanted for our experimental Perl 6 code.
+
+<code>
+# zef install Terminal::Readsecret
+</code>
+
+Check out the <a href="/rakudo-perl6-with-docker">previous article</a> for two sample Perl 6 scripts.
+
+
+
