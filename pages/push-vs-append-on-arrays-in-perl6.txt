@@ -1,5 +1,5 @@
 =title push vs. append on arrays in Perl 6
-=timestamp 2015-10-11T10:11:15
+=timestamp 2017-06-16T14:11:15
 =author szabgab
 =keywords push, append
 =status show
@@ -34,7 +34,7 @@ It will treat them as individual entities if more than one arrays are supplied:
 
 <h2>push and append of scalars</h2>
 
-If we <hl>push</hl> or <hl>appen</hl> individual elements to an array,
+If we <hl>push</hl> or <hl>append</hl> individual elements to an array,
 they will be used as elements of that array:
 
 <include file="examples/push_array_scalars.pl6" />
