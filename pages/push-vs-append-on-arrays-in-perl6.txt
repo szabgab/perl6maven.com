@@ -8,12 +8,18 @@
 
 =abstract start
 
-<hl>push</hl> treats the supplied parameters as individual entities and pushes them onto the original array without flattening them.
-
-<hl>append</hl> (introduced new after 2015.09 release) will flatten the supplied array - if there was only one array supplied,
-but will reat them as individual entities if more than one arrays are supplied.
-
 =abstract end
 
+<hl>push</hl> treats the supplied parameters as individual entities and pushes them onto the original array without flattening them.
+
 <include file="examples/push_array.pl6" />
+
+<hl>append</hl> will flatten the supplied array - if there was only one array supplied,
+but will treat them as individual entities if more than one arrays are supplied.
+
+<include file="examples/append_array.pl6" />
+
+<h2>push and append of scalars</h2>
+
+<include file="examples/push_array_scalars.pl6" />
 
