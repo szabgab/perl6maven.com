@@ -11,6 +11,6 @@ say @b.perl;           # ["abc"]
 @a.push: "def", "ghi";
 say @a.perl;           # ["abc", "def", "ghi"]
 
-@b.push: "def", "ghi";
+@b.append: "def", "ghi";
 say @b.perl;           # ["abc", "def", "ghi"]
 
