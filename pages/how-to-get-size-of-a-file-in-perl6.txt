@@ -15,5 +15,5 @@ IO class and its <b>s</b> method: <b>$file.IO.s</b>.
 
 =abstract end
 
-<include file="file_size.pl6" />
+<include file="examples/file_size.pl6" />
 

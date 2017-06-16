@@ -21,13 +21,13 @@ and give one of the names, e.g. 'DEBUG', how can we know which element is it?
 
 In Perl 6 it is easy. There is a method called <b>grep-index</b> that will return the index of the matching element.
 
-<include file="array_element_index_grep.pl6" />
+<include file="examples/array_element_index_grep.pl6" />
 
 The <b>WHAT</b> method here revealed that the <b>grep-index</b> method actually returns a List. That's especialy usefule
 if the same element appears more than once. In that case <b>grep-index</b> will return the list of all the indices
 and if we want, we can access each individual index using square brackets:
 
-<include file="array_element_index_grep_duplicate.pl6" />
+<include file="examples/array_element_index_grep_duplicate.pl6" />
 
 
 <h2>index</h2>
@@ -35,5 +35,5 @@ and if we want, we can access each individual index using square brackets:
 I was a bit surprised to see that the plain <b>index</b> method converts the array into a string and
 returns the location of the value passed to it within that string:
 
-<include file="array_element_index.pl6" />
+<include file="examples/array_element_index.pl6" />
 
