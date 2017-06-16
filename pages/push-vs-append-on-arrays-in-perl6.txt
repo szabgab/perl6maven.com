@@ -10,16 +10,32 @@
 
 =abstract end
 
+<h2>push</h2>
+
 <hl>push</hl> treats the supplied parameters as individual entities and pushes them onto the original array without flattening them.
+
+Both when we push one array:
 
 <include file="examples/push_array.pl6" />
 
-<hl>append</hl> will flatten the supplied array - if there was only one array supplied,
-but will treat them as individual entities if more than one arrays are supplied.
+and when we push multiple arrays:
+
+<include file="examples/push_2_arrays.pl6" />
+
+<h2>append</h2>
+
+<hl>append</hl> will flatten the supplied array if there was only one array supplied.
 
 <include file="examples/append_array.pl6" />
 
+It will treat them as individual entities if more than one arrays are supplied:
+
+<include file="examples/append_2_arrays.pl6" />
+
 <h2>push and append of scalars</h2>
+
+If we <hl>push</hl> or <hl>appen</hl> individual elements to an array,
+they will be used as elements of that array:
 
 <include file="examples/push_array_scalars.pl6" />
 
