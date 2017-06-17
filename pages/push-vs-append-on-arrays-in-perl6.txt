@@ -32,10 +32,14 @@ It will treat them as individual entities if more than one arrays are supplied:
 
 <include file="examples/append_2_arrays.pl6" />
 
+An explanation of this can be found on
+<a href="https://www.reddit.com/r/perl/comments/6hlyny/push_vs_append_on_arrays_in_perl_6/">Reddit</a>.
+
 <h2>push and append of scalars</h2>
 
 If we <hl>push</hl> or <hl>append</hl> individual elements to an array,
 they will be used as elements of that array:
 
 <include file="examples/push_array_scalars.pl6" />
+
 
