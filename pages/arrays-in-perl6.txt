@@ -8,8 +8,7 @@
 
 =abstract start
 
-Arrays are one of the fundamental container types in Perl 6. They are usually stored in a variable starting with a <hl>@</hl> sigil,
-though they can also be stored in variables starting with a <hl>$</hl>.
+Arrays are one of the fundamental container types in Perl 6. They are usually stored in a variable starting with a <hl>@</hl> sigil, though they can also be stored in variables starting with a <hl>$</hl>.
 
 =abstract end
 
