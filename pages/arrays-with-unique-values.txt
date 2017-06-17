@@ -12,22 +12,38 @@
 
 How to get rid of duplicate values in an array in Perl 6?
 
-=abstract end
-
-<h2>Arrays with unique values</h2>
-
 Basically we show various ways how one can take a list
 of values and return a sublist of the same values
 after eliminating the duplicates.
 
+=abstract end
+
+<h2>Arrays with unique values</h2>
+
 With Perl 6 its quite easy to eliminate duplicate values from a list as there
-is a built-in called <hl>unique</hl> that will do the job.
+is a built-in called <a href="https://docs.perl6.org/routine/unique">unique</a> that will do the job.
 
 <include file="examples/unique_numbers.pl6" />
 
 This works on strings as well:
 
 <include file="examples/unique_strings.pl6" />
+
+<h2>Eliminate consecutive duplicate values with squish</h2>
+
+If you long to the behaviur of the Unix <hl>uniq</hl> command that
+would only eliminate the consecutive duplicates then you might be happy to hear
+that Perl 6 has a function for you. It is called <a href="https://docs.perl6.org/routine/squish">squish</a>. (Learning Perl 6 has the advantage that you also learn new words in English :).
+
+Anyway, here is an example:
+
+<include file="examples/squish_strings.pl6" />
+
+<h2>Count number of occurances with .Bag</h2>
+
+There is however another slightly related tool called a <a href="https://docs.perl6.org/routine/Bag">Bag</a> which is a method, that will count the number of occorances of each element and create a <a href="https://docs.perl6.org/type/Bag">Bag</a> out of them.
+
+We can coerce it to be a Hash if we assign it to a %-sigiled variable.
 
 <h2>Perl 6 Comments</h2>
 
