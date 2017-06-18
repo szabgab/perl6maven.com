@@ -43,8 +43,6 @@ Anyway, here is an example:
 
 There is however another slightly related tool called a <a href="https://docs.perl6.org/routine/Bag">Bag</a> which is a method, that will count the number of occurrences of each element and create a <a href="https://docs.perl6.org/type/Bag">Bag</a> out of them.
 
-We can coerce it to be a Hash if we assign it to a %-sigiled variable though we don't have to as the Bag already functions as a Hash.
-
 <include file="examples/bag_strings.pl6" />
 
 <h2>Perl 6 Comments</h2>
