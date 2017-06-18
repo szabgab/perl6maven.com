@@ -1,4 +1,4 @@
-=title Arrays with unique values
+=title Arrays with unique values in Perl 6
 =timestamp 2017-06-18T08:52:02
 =author szabgab
 =keywords arrays, unique, squish, Bag
