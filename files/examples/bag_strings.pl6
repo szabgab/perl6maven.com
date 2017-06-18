@@ -13,3 +13,9 @@ my %cnt  = @chars.Bag;
 say %cnt.^name;     # Hash
 say %cnt.perl;      # {:a(4), :b(3), :c(1), :d(1)}
 say %cnt<a>;        # 4
+
+my %cntx  := @chars.Bag;
+say %cntx.^name;     # Bag 
+say %cntx.perl;      # ("d"=>1,"b"=>3,"a"=>4,"c"=>1).Bag
+say %cntx<a>;        # 4
+
