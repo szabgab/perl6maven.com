@@ -1,6 +1,6 @@
 use v6.c;
 
-my @chars = <b c a d b a a a b>;
+my @chars = qw/b c a d b a a a b/;
 say @chars.perl;        # ["b", "c", "a", "d", "b", "a", "a", "a", "b"]
 
 my $count  = @chars.Bag;
