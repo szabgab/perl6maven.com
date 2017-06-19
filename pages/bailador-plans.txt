@@ -28,3 +28,9 @@ A few ideas, some of them might be really bad:
   <li>Easy startup and integration with various HTML/CSS frameworks and with various JavaScript frameworks.</li>
 </ul>
 
+
+<h2>How to help?</h2>
+
+If you are interested to get involved, we have a Slack channel for communication. Let me know by e-mail and I can send you an invite.
+
+If you don't have time now, <a href="/book">support the Bailador book</a> that will give you more time to flash out the ideas and then to describe them in the book.
