@@ -1,0 +1,30 @@
+=title Bailador Plans
+=timestamp 2017-06-19T08:00:00
+=author szabgab
+=keywords Bailador
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+As the <a href="/book">crowdfunding campaign</a> for the <a href="http://leanpub.com/bailador/">Bailador book</a> started to run, the work on <a href="http://bailador.net/">Bailador, the Perl 6 web framework</a> spiked.
+
+New contributors arrived and some additional people have started to use it.
+
+In the meantime I have started to think about Bailador itself and in what way can it be unique. In what way can it fit task
+<a href="https://szabgab.com/batteries-included.html">better than any other framework</a>.
+
+=abstract end
+
+A few ideas, some of them might be really bad:
+
+<ul>
+  <li>API first - especially good for Microservices where the clients are other programs. See <a href="https://github.com/Bailador/Bailador/issues/124">this issue</a> for more details.</li>
+  <li>Gradual development of content driven sites. See <a href="https://github.com/Bailador/Bailador/issues/120">this issue</a>.</li>
+  <li>Out of the box User Management (register, login/logut, reset password, etc.) (can this be made backend independent or better have a standard, SQLite based implementation?)</li>
+  <li>Easy display of Relational databases: Given an existing database provide read and write access to the tables. Then allow better ORM modeling.</li>
+  <li>Easy use of various NoSQL databases (MongoDB, Cassandra)</li>
+  <li>Easy startup and integration with various HTML/CSS frameworks and with various JavaScript frameworks.</li>
+</ul>
+
