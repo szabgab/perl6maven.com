@@ -28,6 +28,9 @@ A few ideas, some of them might be really bad:
   <li>Easy startup and integration with various HTML/CSS frameworks and with various JavaScript frameworks.</li>
 </ul>
 
+<h2>What would you like to see?</h2>
+
+Comment here, send me an e-mail, open an <a href="https://github.com/Bailador/Bailador">issue</a>. Let us know what would you like to have in the Bailador project.
 
 <h2>How to help?</h2>
 
