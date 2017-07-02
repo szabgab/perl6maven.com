@@ -29,4 +29,131 @@ multi MAIN(Bool :$repos, Str :$outdir!) {
 
 
 
+<h2>Boolean argument with a default value</h2>
+
+In the next example, we extended the signature. In addition to the <hl>$source</hl>
+field we are now expecting a boolean value to be assigned to <hl>$debug</hl>.
+We also gave it a default value, making this parameter optional.
+
+<code lang="perl6">
+use v6;
+
+sub MAIN($source, Bool $debug = False) {
+  say "source: $source";
+  say "debug:  $debug";
+}
+</code>
+
+Save the code and run it as <b>perl6 cli.pl6</b>.
+
+You will find the output quite clear. We have to supply the source parameter
+and optionally the debug parameter.
+
+<code>
+Usage:
+  cli.pl6 <source> [<debug>]
+</code>
+
+Let's try it again running it with one parameter: <b>perl6 cli.pl6 data.txt</b>
+
+We get this output:
+
+<code>
+source: data.txt
+debug:  False
+</code>
+
+And try it again, now supplying both parameters: <b>perl6 cli.pl6 data.txt True</b>
+
+<code>
+source: data.txt
+debug:  True
+</code>
+
+You cannot pass the values in the opposite order and the boolean values must be <hl>True</hl> or <hl>False</hl>.
+
+If we try something else: <b>perl6 cli.pl6 data.txt 1</b> we get the usage message again:
+
+<code>
+Usage:
+  cli.pl6 <source> [<debug>]
+</code>
+
+<code lang="perl6">
+use v6;
+
+sub MAIN($source, Bool :$debug = False) {
+  say "source: $source";
+  say "debug:  $debug";
+}
+</code>
+
+Let's see what happens if we execute the code without any parameter: <b>perl6 cli.pl6</b>
+
+The usage message indicated that now we need to used the --debug flag if we want to turn on
+debugging and that the named parameters must come <b>before</b> the positional parameters.
+
+<code>
+Usage:
+  cli.pl6 [--debug] <source>
+</code>
+
+Try this: <b>perl6 cli.pl6 data.txt</b>
+
+<code>
+source: data.txt
+debug:  False
+</code>
+
+And now try <b>perl6 cli.pl6 --debug data.txt</b>
+
+<code>
+source: data.txt
+debug:  True
+</code>
+
+You cannot change the order of the parameters as positional parameters have
+to arrive after the named parameters. try <b>perl6 cli.pl6 data.txt --debug</b>
+and you'll get the usage message.
+
+<h2>All the parameters are named</h2>
+
+In the next example we turn the source parameter to be named as well by preceding it
+with a colon <hl>:</hl>:
+
+<code lang="perl6">
+use v6;
+
+sub MAIN(:$source, Bool :$debug = False) {
+  say "source: $source";
+  say "debug:  $debug";
+}
+</code>
+
+Try without any parameters: <b>perl6 cli.pl6</b> and get:
+
+<code>
+use of uninitialized value of type Any in string context  in method Str at ...
+
+source:
+debug:  True
+</code>
+
+
+In order to supply the value for the source, currently you have to use exactly the above form
+
+<b>perl6 cli.pl6 --source=data.txt</b>
+
+<code>
+source: data.txt
+debug:  False
+</code>
+
+If you happen to try the other common way:
+
+<b>perl6 cli.pl6 --source data.txt</b>
+
+You will get the usage message as <a href="http://rakudo.org/">Rakudo</a>
+currently does not yet support this form.
+
 

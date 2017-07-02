@@ -1,6 +1,6 @@
 use v6;
 
-sub MAIN(:$source!, :$target!, :$count = 3, :$debug = False, *@files) {
+sub MAIN(Str :$source!, Str :$target!, Int :$count = 3, Bool :$debug = False, *@files) {
     say "source: $source";
     say "target: $target";
     say "count:  $count";

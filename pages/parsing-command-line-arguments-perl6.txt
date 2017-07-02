@@ -320,7 +320,7 @@ We can do that by mixing named parameters and a slurpy array:
 
 <code>
 Usage:
-  named_and_slurpy.pl6 --source=<Any> --target=<Any> [--count=<Any>] [--debug=<Any>] [<files> ...]
+  named_and_slurpy.pl6 --source=<Str> --target=<Str> [--count=<Int>] [--debug] [<files> ...]
 </code>
 
 <hl>perl6 named_and_slurpy.pl6 --source=from --target=to one two.txt "3 4 5"</hl>
