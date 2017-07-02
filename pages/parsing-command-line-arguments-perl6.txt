@@ -1,4 +1,4 @@
-=title Parsing command line arguments in Perl 6
+=title Parsing command line arguments in Perl 6 - ARGS - ARGV - MAIN
 =timestamp 2012-09-14T10:52:03
 =author szabgab
 =keywords @*ARGS, @ARGV, MAIN, :, !
@@ -25,23 +25,19 @@ When Perl 6 is launched it fills the system variable <hl>@*ARGS</hl>
 with all the values from the command line. A simple script like the
 following can demonstrate what we get:
 
-<code lang="perl6">
-use v6;
+<include file="examples/cli/args.pl6" />
 
-say @*ARGS.perl;
-</code>
+Save as args.pl6 and run
 
-Save as cli.pl6 and run
-
-<b>perl6 cli.pl6 first --second "third and fourth"</b>
+<hl>perl6 args.pl6 first --second "third and fourth"</hl>
 
 The output will be
 
 <code>
-Array.new("first", "--second", "third and fourth")
+["first", "--second", "third and fourth"]
 </code>
 
-The <hl>@*ARGS</hl> in Perl 6 is the same as <hl>@ARGV</hl> in Perl 5.
+The <hl>@*ARGS</hl> in Perl 6 is the same as <hl>@ARGV</hl> in Perl 5 and similar to <hl>sys.argv</hl> in Python.
 It does NOT contain the name of the executable itself as it is done in C and Python for example.
 
 We could now write some code that goes over the values in <hl>@*ARGS</hl>, but luckily Perl 6 provides
@@ -59,27 +55,21 @@ Furthermore, the signature of that subroutine is the expected list of arguments 
 
 Let's see a simple example:
 
-<code lang="perl6">
-use v6;
+<include file="examples/cli/source.pl6" />
 
-sub MAIN($source) {
-  say "source: $source";
-}
-</code>
-
-Save it as cli.pl6 and run it as <b>perl6 cli.pl6</b>.
+Save it as source.pl6 and run it as <b>perl6 source.pl6</b>.
 
 You will get:
 
 <code>
 Usage:
-  cli.pl6 <source>
+  source.pl6 <source>
 </code>
 
 That's because the <hl>MAIN</hl> subroutine expects a single positional argument
-that will be assigned t the <hl>$source</hl> variable.
+that will be assigned to the <hl>$source</hl> variable.
 
-Now run <b>perl6 cli.pl6 input.txt</b>.
+Now run <b>perl6 source.pl6 input.txt</b>.
 
 The output will be:
 
@@ -90,186 +80,257 @@ source: input.txt
 That means, the command line parameter was accepted and the MAIN sub was called with <hl>$source</hl> having the value
 "input.txt".
 
-<h2>Boolean argument with a default value</h2>
-
-In the next example, we extended the signature. In addition to the <hl>$source</hl>
-field we are now expecting a boolean value to be assigned to <hl>$debug</hl>.
-We also gave it a default value, making this parameter optional.
-
-<code lang="perl6">
-use v6;
-
-sub MAIN($source, Bool $debug = False) {
-  say "source: $source";
-  say "debug:  $debug";
-}
-</code>
-
-Save the code and run it as <b>perl6 cli.pl6</b>.
-
-You will find the output quite clear. We have to supply the source parameter
-and optionally the debug parameter.
+However if you run <b>perl6 source.pl6 --name</b> or <b>perl6 source.pl6 -n</b> you'll get the same usage report:
 
 <code>
 Usage:
-  cli.pl6 <source> [<debug>]
+  source.pl6 <source>
 </code>
 
-Let's try it again running it with one parameter: <b>perl6 cli.pl6 data.txt</b>
+<h2>More than one positional</h2>
 
-We get this output:
+We can, of course, expect more than one positional values:
 
-<code>
-source: data.txt
-debug:  False
-</code>
+<include file="examples/cli/positionals.pl6" />
 
-And try it again, now supplying both parameters: <b>perl6 cli.pl6 data.txt True</b>
-
-<code>
-source: data.txt
-debug:  True
-</code>
-
-You cannot pass the values in the opposite order and the boolean values must be <hl>True</hl> or <hl>False</hl>.
-
-If we try something else: <b>perl6 cli.pl6 data.txt 1</b> we get the usage message again:
+If we run it without any parameter <hl>perl6 positionals.pl6</hl>
+or without the expected number of (4) parameters: <hl>perl6 positionals.pl6 one two</hl>
+or with too many parameters: <hl>perl6 positionals.pl6 one two three 4 5</hl>
+we will see the usage message:
 
 <code>
 Usage:
-  cli.pl6 <source> [<debug>]
+  positionals.pl6 <source> <target> <count> <debug>
+</code>
+
+We must use the correct number of parameters:
+
+<code>
+$ perl6 positionals.pl6 egy ketto 3 yes
+source: egy
+target: ketto
+count:  3
+debug:  yes
 </code>
 
 <h2>Named parameter</h2>
 
-As in regular subroutines, Perl 6 allows to turn arguments into named parameter.
+Positional parameters are usually not very usefule as you must supply them in the expected order
+and even if some of them are marked optional by the developer, you cannot leave out the 2nd parameter
+if you'd like to supply the third. A much better approach is to expect and supply named parameters.
 
-Put a colon <hl>:</hl> in front of the variable name to turn it into a named variable:
+Just as in regular subroutines, Perl 6 allows us to turn arguments into named parameter in the MAIN sub as well.
 
-<code lang="perl6">
-use v6;
+We just need to put a colon <hl>:</hl> in front of the variable name to turn it into a named variable:
 
-sub MAIN($source, Bool :$debug = False) {
-  say "source: $source";
-  say "debug:  $debug";
-}
+<include file="examples/cli/named.pl6" />
+
+If we run <hl>perl6 named.pl6</hl> We get lots of warnings:
+
+<code>
+Use of uninitialized value $source of type Any in string context.
+Methods .^name, .perl, .gist, or .say can be used to stringify it to something meaningful.
+  in sub MAIN at files/examples/cli/named.pl6 line 4
+source:
+Use of uninitialized value $target of type Any in string context.
+Methods .^name, .perl, .gist, or .say can be used to stringify it to something meaningful.
+  in sub MAIN at files/examples/cli/named.pl6 line 5
+target:
+Use of uninitialized value $count of type Any in string context.
+Methods .^name, .perl, .gist, or .say can be used to stringify it to something meaningful.
+  in sub MAIN at files/examples/cli/named.pl6 line 6
+count:
+Use of uninitialized value $debug of type Any in string context.
+Methods .^name, .perl, .gist, or .say can be used to stringify it to something meaningful.
+  in sub MAIN at files/examples/cli/named.pl6 line 7
+debug:
 </code>
 
-Let's see what happens if we execute the code without any parameter: <b>perl6 cli.pl6</b>
+That happens because the named parameters are, by default, optional but their value is not initialized.
+So if we blindly print them out we will get these warnings.
 
-The usage message indicated that now we need to used the --debug flag if we want to turn on
-debugging and that the named parameters must come <b>before</b> the positional parameters.
+There are several ways to fix this.
+
+<h3>Check if arguments are defined?</h3>
+
+One would be to check if the values are defined before printing them:
+
+<include file="examples/cli/named_defined.pl6" />
+
+This allows us to run: <hl>perl6 named_defined.pl6</hl> that would print nothing,
+We could run <hl>perl6 named_defined.pl6 --source=hello --debug=yes</hl> that would print
+
+<code>
+source: hello
+debug:  yes
+</code>
+
+And <hl>perl6 named_defined.pl6 --help</hl> or <hl>perl6 named_defined.pl6 --qqrq</hl>
+or any other incorrect name that would print the usage string:
 
 <code>
 Usage:
-  cli.pl6 [--debug] <source>
+  named_defined.pl6 [--source=<Any>] [--target=<Any>] [--count=<Any>] [--debug=<Any>]
 </code>
 
-Try this: <b>perl6 cli.pl6 data.txt</b>
+<h3>Set default values</h3>
+
+The other, probably much better way, is to set default values to the attributes:
+
+<include file="examples/cli/named_defaults.pl6" />
+
+In this case we set default values to the <hl>debug</hl> and <hl>count</hl> parameters
+and hope that the user will always supply the <hl>source</hl> and <hl>target</hl>.
+
+The normal operation would look like this:
+
+<hl>perl6 named_defaults.pl6 --source=here --target=there</hl>
 
 <code>
-source: data.txt
+source: here
+target: there
+count:  3
 debug:  False
 </code>
 
-And now try <b>perl6 cli.pl6 --debug data.txt</b>
+but one could override both the debug and the count parameters: 
+<hl>perl6 named_defaults.pl6 --source=here --target=there --debug=no --count=17</hl>:
 
 <code>
-source: data.txt
-debug:  True
+source: here
+target: there
+count:  17
+debug:  no
 </code>
 
-You cannot change the order of the parameters as positional parameters have
-to arrive after the named parameters. try <b>perl6 cli.pl6 data.txt --debug</b>
-and you'll get the usage message.
+<h3>Empty defaults</h3>
 
-<h2>All the parameters are named</h2>
-
-In the next example we turn the source parameter to be named as well by preceding it
-with a colon <hl>:</hl>:
+In rare cases you might want to set the default values to the empty string or the number zero:
 
 <code lang="perl6">
-use v6;
-
-sub MAIN(:$source, Bool :$debug = False) {
-  say "source: $source";
-  say "debug:  $debug";
-}
+sub MAIN(:$source = '', :$count = 0) { } 
 </code>
 
-Try without any parameters: <b>perl6 cli.pl6</b> and get:
-
-<code>
-use of uninitialized value of type Any in string context  in method Str at ...
-
-source:
-debug:  True
-</code>
-
-That happens because named parameters are optional and the code will run without any parameter.
-When we try to print the content of the <hl>$source</hl> variable, it will be undef and generate
-this warning.
-
-
-There are several ways to fix this:
-
-We could set a default value, even if that is an empty string:
-
-<code lang="perl6">
-sub MAIN(:$source = '', Bool :$debug = False) {
-</code>
 
 <h2>Required parameters</h2>
 <img src="/img/exclamation_point.png" alt="Exclamation point" style="float:right" />
 
-We could also tell Perl, that <hl>$source</hl> is a required parameter by adding
-a trailing exclamation point <hl>!</hl>.
+By default each named parameter is optional, but we could also tell Perl 6, that some of the parameters are required
+by adding a trailing exclamation point <hl>!</hl>. For example here we requred that both <hl>$source</hl>
+and <hl>$target</hl> will be supplied by the user.
 
 
-<code lang="perl6">
-sub MAIN(:$source!, Bool :$debug = False) {
+<hl>perl6 named_required.pl6 --source=here --target=there --debug=no --count=1</hl>
+
+<code>
+source: here
+target: there
+count:  1
+debug:  no
 </code>
 
-Try to run the program now without any parameter <b>perl6 cli.pl6</b>
+If one or more of the required parameters are missing like <hl>$target</hl> in this example:
+<hl>perl6 named_required.pl6 --source=here --debug=no --count=1</hl>
 
-and you'll get the new usage message.
+Then we get the usage string:
 
 <code>
 Usage:
-  code\cli.pl6 --source=<Any> [--debug]
+  files/examples/cli/named_required.pl6 --source=<Any> --target=<Any> [--count=<Any>] [--debug=<Any>]
 </code>
 
-You could, of course, declare that the $source variable should be an integer
-<hl>Int</hl> or some other data type, if that was the requirement.
-For example like this:
+<h2>Type restrictions</h2>
 
-<code lang="perl6">
-sub MAIN(Int :$source!, Bool :$debug = False) {
-</code>
+Perl 6 supports what is called <b>gradual typing</b> which means that while we can declar variables
+without any type restrictions, we can, as we understand more about our application, add type declarations
+to variables and let Perl 6 enforce the type checking. This can be also used to enhance the command line parameter processing.
 
-In that case the usage message will indicate the required data type:
+You could declare that the <hl>$count</hl> variable should be an integer <hl>Int</hl> or that the <hl>$debug</hl>
+
+<include file="examples/cli/typed.pl6" />
+
+In that case the usage message will indicate the required data type: <hl>perl6 typed.pl6</hl>
 
 <code>
 Usage:
-  code\cli.pl6 --source=<Int> [--debug]
+  typed.pl6 --source=<Str> --target=<Str> [--count=<Int>] [--debug]
 </code>
 
-In order to supply the value for the source, currently you have to use exactly the above form
+If we supply an invalid value, for examples a string to the <hl>$count</hl> parameter
+we get the usage string: <hl>perl6 typed.pl6 --source=here --target=there --count=abc</hl>
+So by declaring that a parameter is of type <hl>Int</hl> we added parameter checking as well.
 
-<b>perl6 cli.pl6 --source=data.txt</b>
+An even more interesting aspect is when we set a parameter to be <hl>Bool</hl>. Then suddenly
+we are not expected to supply a value to the name. The mere presence of the flag will flip the
+default <hl>False</hl> to <hl>True</hl>:
+
+<hl>perl6 typed.pl6 --source=here --target=there --count=7 --debug</hl>
 
 <code>
-source: data.txt
+source: here
+target: there
+count:  7
+debug:  True
+</code>
+
+Though if we really wanted to, we could still supply the value of the <hl>$debug</hl> flag:
+
+<code>perl6 typed.pl6 --source=here --target=there --count=7 --debug=False</hl>
+
+<code>
+source: here
+target: there
+count:  7
 debug:  False
 </code>
 
-If you happen to try the other common way:
+<h2>Any number of parameters</h2>
 
-<b>perl6 cli.pl6 --source data.txt</b>
+Finally, there are many cases when after a number of named parameters we would like to accept an arbitrary number of extra values.
+These are usually filenames we want to act upon, but not necessarily. In order to accept arbitrary number of values, we can declare
+a slurpy array as one of the parameters:
 
-You will get the usage message as <a href="http://rakudo.org/">Rakudo</a>
-currently does not yet support this form.
+<include file="examples/cli/slurp.pl6" />
 
+All the values from the command line will be slurped in to that array.
+
+<hl>perl6 slurp.pl6 one two.txt "name with space.doc"</hl>
+
+<code>
+files: ["one", "two.txt", "name with space.doc"]
+</code>
+
+If no parameter is supplied it is still ok. We get back an empty array:
+
+<hl>perl6 slurp.pl6</hl>
+
+<code>
+files: []
+</code>
+
+<h2>Named params and slurpy param</h2>
+
+In many cases we will need to accept a few named parameters and then an arbitrary number of extra values.
+We can do that by mixing named parameters and a slurpy array:
+
+<include file="examples/cli/named_and_slurpy.pl6" />
+
+<hl>$ perl6 named_and_slurpy.pl6</hl>
+
+<code>
+Usage:
+  named_and_slurpy.pl6 --source=<Any> --target=<Any> [--count=<Any>] [--debug=<Any>] [<files> ...]
+</code>
+
+<hl>perl6 named_and_slurpy.pl6 --source=from --target=to one two.txt "3 4 5"</hl>
+
+<code>
+source: from
+target: to
+count:  3
+debug:  False
+files: ["one", "two.txt", "3 4 5"]
+</code>
 
 <h2>Conclusion</h2>
 
