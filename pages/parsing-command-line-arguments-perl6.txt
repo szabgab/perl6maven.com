@@ -17,7 +17,7 @@ you might want to supply the name of the logfile on the command line.
 If the application needs to send an e-mail report, it is more generic if
 the user can supply the address as a command line parameter: --to boss@company
 
-How can you let your Perl 6 application to accept command line arguments?
+How can you let your Perl 6 application accept command line arguments?
 
 =abstract end
 
@@ -45,7 +45,7 @@ a built-in mechanism for that. It is the same mechanism that works for <a href="
 subroutines</a>.
 After all the command line parameters of a program are very similar to the arguments of a function.
 
-<h2>MAIN</h2>
+<h2>MAIN - positional parameters</h2>
 
 There is a special name in Perl 6 called <hl>MAIN</hl>. If your main program file
 contains a subroutine called MAIN, that subroutine will be executed when the program is
@@ -80,7 +80,7 @@ source: input.txt
 That means, the command line parameter was accepted and the MAIN sub was called with <hl>$source</hl> having the value
 "input.txt".
 
-However if you run <b>perl6 source.pl6 --name</b> or <b>perl6 source.pl6 -n</b> you'll get the same usage report:
+However if you run <b>perl6 source.pl6 --name</b> or <b>perl6 source.pl6 -n</b>, or <hl>perl6 source.pl6 one two</hl>  you'll get the usage report:
 
 <code>
 Usage:
@@ -113,11 +113,11 @@ count:  3
 debug:  yes
 </code>
 
-<h2>Named parameter</h2>
+<h2>Named parameters</h2>
 
-Positional parameters are usually not very usefule as you must supply them in the expected order
-and even if some of them are marked optional by the developer, you cannot leave out the 2nd parameter
-if you'd like to supply the third. A much better approach is to expect and supply named parameters.
+Positional parameters are usually not very useful as the user must supply them in the expected order
+and even if some of them are marked optional by the developer, the user cannot leave out the 2nd parameter
+if you'd like to supply the 3rd. A much better approach is to expect and supply named parameters.
 
 Just as in regular subroutines, Perl 6 allows us to turn arguments into named parameter in the MAIN sub as well.
 
@@ -245,11 +245,12 @@ Perl 6 supports what is called <b>gradual typing</b> which means that while we c
 without any type restrictions, we can, as we understand more about our application, add type declarations
 to variables and let Perl 6 enforce the type checking. This can be also used to enhance the command line parameter processing.
 
-You could declare that the <hl>$count</hl> variable should be an integer <hl>Int</hl> or that the <hl>$debug</hl>
+You could declare that the <hl>$count</hl> variable should be an integer <hl>Int</hl> or that the <hl>$debug</hl> variable
+must be a boolean <hl>Bool</hl>.
 
 <include file="examples/cli/typed.pl6" />
 
-In that case the usage message will indicate the required data type: <hl>perl6 typed.pl6</hl>
+In this case the usage message will indicate the required data type: <hl>perl6 typed.pl6</hl>
 
 <code>
 Usage:
@@ -275,7 +276,7 @@ debug:  True
 
 Though if we really wanted to, we could still supply the value of the <hl>$debug</hl> flag:
 
-<code>perl6 typed.pl6 --source=here --target=there --count=7 --debug=False</hl>
+<hl>perl6 typed.pl6 --source=here --target=there --count=7 --debug=False</hl>
 
 <code>
 source: here
