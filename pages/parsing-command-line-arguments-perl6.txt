@@ -216,7 +216,7 @@ sub MAIN(:$source = '', :$count = 0) { }
 <img src="/img/exclamation_point.png" alt="Exclamation point" style="float:right" />
 
 By default each named parameter is optional, but we could also tell Perl 6, that some of the parameters are required
-by adding a trailing exclamation point <hl>!</hl>. For example here we requred that both <hl>$source</hl>
+by adding a trailing exclamation point <hl>!</hl>. For example here we required that both <hl>$source</hl>
 and <hl>$target</hl> will be supplied by the user.
 
 
@@ -241,7 +241,7 @@ Usage:
 
 <h2>Type restrictions</h2>
 
-Perl 6 supports what is called <b>gradual typing</b> which means that while we can declar variables
+Perl 6 supports what is called <b>gradual typing</b> which means that while we can declare variables
 without any type restrictions, we can, as we understand more about our application, add type declarations
 to variables and let Perl 6 enforce the type checking. This can be also used to enhance the command line parameter processing.
 
