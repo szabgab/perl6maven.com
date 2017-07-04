@@ -21,7 +21,7 @@ How can you let your Perl 6 application accept command line arguments?
 
 =abstract end
 
-When Perl 6 is launched it fills the system variable <hl>@*ARGS</hl>
+When Perl 6 is launched, it fills the system variable <hl>@*ARGS</hl>
 with all the values from the command line. A simple script like the
 following can demonstrate what we get:
 
@@ -337,5 +337,5 @@ files: ["one", "two.txt", "3 4 5"]
 
 There is more of course, for example we could defined the <hl>MAIN</hl> sub as a <hl>multi</hl> and then we
 can have multiple definitions, but this is enough for now.
-This can already get you started writing applications Perl 6 that accept parameters on the command line.
+This can already get you started writing Perl 6 applications that accept parameters on the command line.
 
