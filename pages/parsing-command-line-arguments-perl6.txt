@@ -1,5 +1,5 @@
 =title Parsing command line arguments in Perl 6 - ARGS - ARGV - MAIN
-=timestamp 2012-09-14T10:52:03
+=timestamp 2017-07-04T10:52:03
 =author szabgab
 =keywords @*ARGS, @ARGV, MAIN, :, !
 =status show
@@ -335,6 +335,7 @@ files: ["one", "two.txt", "3 4 5"]
 
 <h2>Conclusion</h2>
 
-There is more of course, but I think this can already get you started
-writing applications Perl 6 that accept parameters on the command line.
+There is more of course, for example we could defined the <hl>MAIN</hl> sub as a <hl>multi</hl> and then we
+can have multiple definitions, but this is enough for now.
+This can already get you started writing applications Perl 6 that accept parameters on the command line.
 
