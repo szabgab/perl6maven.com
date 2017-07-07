@@ -1,0 +1,172 @@
+=title MongoDB with Perl 6 on Linux
+=timestamp 2017-07-07T16:32:02
+=author szabgab
+=keywords Rakudo, zef, MongoDB, apt-get
+=status draft
+=archive 1
+=comments 1
+
+=abstract start
+
+<a href="http://mongodb.org/">MongoDB</a> is the leading Open Source document database. In this article we'll see how
+to use it in a <a href="https://perl6.org/">Perl 6</a> script using the <a href="http://rakudo.org/">Rakudo Star</a> distribution.
+
+=abstract end
+
+<h2>Install MongoDB on Ubuntu Linux</h2>
+
+Usually it is a good idea to update your Ubuntu with the latest security and other important fixes:
+
+<code>
+$ sudo apt-get update
+$ sudo apt-get -y upgrade
+</code>
+
+Then we can install the MongoDB server packaged by the Debian/Ubuntu developers:
+
+<code>
+$ apt-get -y install mongodb
+</code>
+
+Then we install <hl>gcc</hl> and <hl>make</hl> needed to compile some Perl 6 modules that are written in C.
+
+<code>
+$ sudo apt-get -y install make gcc
+</code>
+
+We also install <hl>libssl-dev</hl> which is required by one of the dependencies of the MongoDB driver.
+
+<code>
+$ sudo apt-get -y install libssl-dev
+</code>
+
+Then we can install the MongoDB driver using <hl>zef</hl>:
+
+<code>
+zef install MongoDB
+</code>
+
+<h2>Check MongoDB manually</h2>
+
+Before we try to access it using Perl 6, let's make sure the MongoDB server is already running.
+Type <hl>mongo</hl> in the Linux terminal. It will print something like this:
+
+<code>
+MongoDB shell version: 3.2.11
+connecting to: test
+</code>
+
+potentially followed by some warnings. For now we can disregard the warnings.
+
+At the end we can see the prompt:
+<code>
+>
+</code>
+
+there we can type in
+
+<code>
+> show dbs
+</code>
+
+that will print something like
+
+<code>
+local  0.000GB
+</code>
+
+You can type in <hl>help</hl> and play around with MongoDB manually, but for our purposes this was enough. Let's leave the MongoDB client by typing
+<hl>exit</hl> or pressing <hl>Ctrl-D</hl>.
+
+<h2>Insert document into MongoDB</h2>
+
+<include file="examples/mongodb_insert.pl" />
+
+First we create a MongoDB::Client object that connects to the local MongoDB server.
+
+Then using the client we retrieve an object representing the database. This database might not even exist at this point.
+
+Then instead of getting a collection object as it is done in some other implementation of the MongoDB client, we create a
+BSON document that includes the command and name of the collection (<hl>insert => 'people'</hl>) and the documents we would like
+to insert. In this case a simple key-value pair for which we got the value from the command line.
+
+The <hl>run-command</hl> actually executes the command and insert the document in the given collection of the given database.
+If either the collection or the database did not exist, then they will be created.
+
+Try the following:
+
+<code>
+perl6 mongodb_insert.pl "Marcel Timmerman"
+perl6 mongodb_insert.pl "Larry Wall"
+</code>
+
+<h2>Find documents in MongoDB</h2>
+
+<include file="examples/mongodb_find.pl" />
+
+To retreive data from MongoDB we need to call the <hl>find</hl> method of a collection. It returns a MongoDB::Cursor object
+that we can use to iterate over the returned documents.
+
+Try the following:
+
+<code>
+perl6 mongodb_find.pl
+
+Name: Larry Wall
+Name: Marcel Timmerman
+</code>
+
+<h2>Fully annotated version of insert and find</h2>
+
+Perl 6 allows us to annotate the variables with types that will be then used to enforce type-checking.
+The following examples are the "fully annotated" versions of the above code.
+
+<h3>insert</h3>
+
+<include file="examples/mongodb_insert_with_types.pl" />
+
+<h3>find</h3>
+
+<include file="examples/mongodb_find_with_types.pl" />
+
+<h2>Inspect manually and delete the MongoDB database</h2>
+
+If you'd like to start from scratch you can use the MongoDB client to delete the content of the newly created database:
+
+Connect to MongoDB:
+
+<code>
+$ mongo
+</code>
+
+List the Databases:
+
+<code>
+> show dbs
+local      0.000GB
+myProject  0.000GB
+</code>
+
+Switch to the database you'd like to delete:
+
+<code>
+> use myProject
+</code>
+
+Before you delete the database you might want to inspect it manually:
+
+<code>
+> db.people.find()
+
+{ "_id" : ObjectId("595f844e31d4268291806ee6"), "name" : "Larry Wall" }
+{ "_id" : ObjectId("595f860a31d4268291806ee7"), "name" : "Marcel Timmerman" }
+</code>
+
+Delete the database:
+
+<code>
+> db.dropDatabase()
+{ "dropped" : "myProject", "ok" : 1 }
+</code>
+
+
