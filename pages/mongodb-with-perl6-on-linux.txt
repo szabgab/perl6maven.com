@@ -104,7 +104,7 @@ perl6 mongodb_insert.pl "Larry Wall"
 
 <include file="examples/mongodb_find.pl" />
 
-To retreive data from MongoDB we need to call the <hl>find</hl> method of a collection. It returns a MongoDB::Cursor object
+To retrieve data from MongoDB we need to call the <hl>find</hl> method of a collection. It returns a MongoDB::Cursor object
 that we can use to iterate over the returned documents.
 
 Try the following:
