@@ -1,8 +1,8 @@
 =title MongoDB with Perl 6 on Linux
-=timestamp 2017-07-07T16:32:02
+=timestamp 2017-07-08T16:32:02
 =author szabgab
 =keywords Rakudo, zef, MongoDB, apt-get
-=status draft
+=status show
 =archive 1
 =comments 1
 
