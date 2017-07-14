@@ -1,0 +1,192 @@
+=title LWP::Simple - a simple web client in Perl 6
+=timestamp 2017-06-09T10:02:02
+=author szabgab
+=keywords LWP::Simple, get, http, https, post
+=status draft
+=archive 1
+=comments 1
+
+=abstract start
+
+There are a lot of cases when you'd want to have some code accessing a web site. It might be to automate some human interaction
+or it can be because you would like to talk to an API. Let's see a few simple examples in Perl 6.
+
+<a href="http://httpbin.org/">httpbin.org</a> is an excellent web site that allows us to try all kinds of web client code.
+We are going to use that in our examples.
+
+=abstract end
+
+<h2>Install LWP::Simple</h2>
+
+Before you use it, you'll need to install LWP::Simple. Just run:
+
+<code>
+zef install LWP::Simple
+</code>
+
+<h2>GET http</h2>
+
+Probably the most simple request is the HTTP GET request.
+
+We just need to create an instance of LWP::Simple and call the <hl>get</hl> method of it.
+
+<include file="examples/http_get.pl6" />
+
+The response will look something like this, containing your IP address or at least the IP address of the gateway you are using to access the Internet.
+
+<code>
+{
+  "origin": "17.19.208.37"
+}
+</code>
+
+<h2>GET https</h2>
+
+Using plain HTTP is fine for public data, but once you start sending and receiving private information, such as passwords, most of the web sites will work only on top of HTTPS. Luckily httpbin.org is available over https as well, so we can try out code switching http to https in our request:
+
+<include file="examples/https_get.pl6" />
+
+If you run this you might get an error message:
+
+<hl>501 Protocol scheme 'https' is only supported if IO::Socket::SSL is installed</hl>
+
+You will then need to install IO::Scoket::SSL for this to work.
+
+<code>
+zef IO::Socket::SSL
+</code>
+
+After it is successfully installed, running the above program again will get you the same response as before.
+
+<h2>HTTP GET with parameters in the URL</h2>
+
+A slightly more interesting HTTP request would be another GET request, but this time with some parameters.
+
+<include file="examples/http_get_params.pl6" />
+
+In this we pass two parameters with their respective values:
+
+<code>
+  name     => "Larry Wall"
+  language => "Perl"
+  math     => "19+23=42"
+</code>
+
+In the URL it looks like this:
+
+<code>
+?name=Larry%20Wall&language=Perl&math=19%2B23%3D42
+</code>
+
+The <hl>?</hl> separates the web address from the parameters.
+<hl>&amp;</hl> separates the key-value pairs.
+Each pair is has the key followed by <hl>=</hl>, followed by the value.
+
+The most problematic part though is that we need to escape the special characters passed in the URL.
+Before we take a look at how we can generate that, let's see the result of the above request:
+
+<code>
+{
+  "args": {
+    "language": "Perl",
+    "math": "19+23=42",
+    "name": "Larry Wall"
+  },
+  "headers": {
+    "Connection": "close",
+    "Host": "httpbin.org",
+    "User-Agent": "LWP::Simple/0.090 Perl6/rakudo"
+  },
+  "origin": "17.19.208.37",
+  "url": "http://httpbin.org/get?name=Larry Wall&language=Perl"
+}
+</code>
+
+In the <hl>args</hl> field we see the key-value pairs as we intended. So the server saw them correctly and could return them to us.
+Then we see the header our request generated. You can see the <hl>User-Agent</hl> field was set by the LWP::Simple library to reveal itself.
+
+Finally we see our IP address and the original request.
+
+<h2>URI::Escape</h2>
+
+The <hl>URI::Escape</hl> module is part of the <hl>URI</hl> library. If you don't have it, install it using
+
+<code>
+zef install URI
+</code>
+
+Given a hash of key-value pairs we can use the following code snippet to generate the parameter
+part of the request:
+
+<include file="examples/uri_escape.pl6" />
+
+
+<h2>HTTP GET with URI::Escape</h2>
+
+Combining the two we get the following script:
+
+<include file="examples/http_get_uri_escape.pl6" />
+
+It looks much more readable than the previous solution.
+
+<h2>HTTP POST requests</h2>
+
+HTTP POST requests can be sent and tested in a similar way.
+
+<include file="examples/http_post.pl6" />
+
+Here we call the <hl>post</hl> method, pass an empty hash, we'll get to it later,
+and then we pass a URI-Escaped string of the parameters.
+
+The result of the request is quite similar to the previous one, but instead of having the request data parsed in the <hl>args</hl> field, we get it back in the <hl>data</hl> field.
+
+<code>
+{
+  "args": {},
+  "data": "name=Larry%20Wall&language=Perl&math=19%2B23%3D42",
+  "files": {},
+  "form": {},
+  "headers": {
+    "Connection": "close",
+    "Content-Length": "49",
+    "Host": "httpbin.org",
+    "User-Agent": "LWP::Simple/0.090 Perl6/rakudo"
+  },
+  "json": null,
+  "origin": "37.26.148.213",
+  "url": "http://httpbin.org/post"
+}
+</code>
+
+<h2>Set the User-Agent</h2>
+
+Earlier we have noted that the <hl>User-Agent</hl> identifying our "browser" was set to <hl>LWP::Simple/0.090 Perl6/rakudo</hl> by LWP::Simple. We can however change that. The empty hash in the POST request we have seen can be used to set any header values, including the User-Agent.
+
+So in the next example we do just that. Set the User-Agent:
+
+<include file="examples/http_post_set_user_agent.pl6" />
+
+The result looks like this:
+
+<code>
+{
+  "args": {},
+  "data": "name=Larry%20Wall&language=Perl&math=19%2B23%3D42",
+  "files": {},
+  "form": {},
+  "headers": {
+    "Connection": "close",
+    "Content-Length": "49",
+    "Host": "httpbin.org",
+    "User-Agent": "Perl 6 Maven"
+  },
+  "json": null,
+  "origin": "37.26.148.213",
+  "url": "http://httpbin.org/post"
+}
+</code>
+
+Unfortunately, as far as I tried, the same feature is not working for GET requests.
+See <a href="https://github.com/perl6/perl6-lwp-simple/issues/14">issue</a>.
+
+

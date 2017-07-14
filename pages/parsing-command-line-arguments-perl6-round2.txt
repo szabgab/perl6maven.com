@@ -157,3 +157,19 @@ You will get the usage message as <a href="http://rakudo.org/">Rakudo</a>
 currently does not yet support this form.
 
 
+-----------
+
+MAIN can also be a multi.  need to explain what an allomorph is:
+
+$ 6 'multi MAIN(Int $a) { say "Int" }; multi MAIN(Str $b) { say "Str" }' foo
+Str
+
+$ 6 'multi MAIN(Int $a) { say "Int" }; multi MAIN(Str $b) { say "Str" }' 42
+Ambiguous call to 'MAIN'; these signatures all match:
+:(Int $a)
+:(Str $b)
+
+$ 6 'multi MAIN(IntStr $a) { say "Int" }; multi MAIN(Str $b) { say "Str" }' 42
+Int
+
+
