@@ -1,0 +1,101 @@
+=title Sleep in Parallel in Perl 6 (fork, async, etc.)
+=timestamp 2017-07-15T08:02:02
+=author szabgab
+=keywords sleep, Proc::Async, $*EXECUTABLE
+=status draft
+=archive 1
+=comments 1
+
+=abstract start
+
+Sleeping 5 times 2 seconds usually takes 10 seconds. But what if you could sleep in parallel?
+
+That sounds totally useless, until you learn that you could do other things in parallel. Not just sleep.
+
+=abstract end
+
+<h2>Sleep 5 times 2 seconds serially</h2>
+
+In this first example we call <hl>sleep</hl> 5 times one after the other.
+
+<include file="examples/sleep_5_times_2.pl6">
+
+We can run this (at lest on OSX and Linux) with the <hl>time</hl> command
+and after running the code it will display the elapsed time.
+
+<code>
+$ time perl6 sleep_5_times_2.pl6
+
+real    0m10.435s
+user    0m0.347s
+sys     0m0.047s
+</code>
+
+It takes slightly more than 10 seconds to sleep 5 time 2 seconds.
+
+The extra time is mostly spent on starting Perl 6 itself.
+
+<h2>Sleep in parallel using Proc::Async</h2>
+
+The built-in <a href="https://docs.perl6.org/type/Proc::Async">Proc::Async</a> allows us to run external command and then wait till they finish. In this example we call <hl>Proc::Async.new</hl> 5 times in a row starting 5 external Perl 6 processes (<hl>$*EXECUTABLE</hl> contains the path of the Perl 6 executable used to launch this process)
+
+The <hl>$proc.stdout.tap: -> $s { print $s };</hl> line captures whatever is printed to the Standard Output (STDOUT) of the the external program and because of the <hl>print $s</hl> inside it print it to the STDOUT of the main program.
+
+<hl>$proc.start</hl> is the call that actually launches the external program. It returns a <a href="https://docs.perl6.org/type/Promise">Promise</a> that we save in an array.
+
+Later on in the code we wait for each one of the promises to be fulfilled, in this case for the external process to finish.
+
+<include file="examples/sleep_async.pl6">
+
+Running the above file will yield the following output:
+
+<code>
+$ time perl6 sleep_async.pl6
+
+done
+done
+done
+done
+done
+
+real    0m2.765s
+user    0m1.441s
+sys     0m0.276s
+</code>
+
+This shows that it took 2.765 seconds to sleep 5 times 2 seconds.
+
+As you launch the main program you can switch to another terminal, run <hl>ps axuw | grep perl</hl> to see the processes. If this is the only perl program running on your system, and if you are fast enough to switch terminal and run the command in 2 seconds then you'll see that there are 6 perl processes running. The main one and 5 child-processes.
+
+If you aren't that fast, you can make the sleep-time longer so you'll have enough time to switch terminals and observe the processes.
+
+Once each child-process and the main process terminate, the output of <hl>ps axuw | grep perl</hl> should be empty.
+
+<h2>Uneven sleep time</h2>
+
+Just to show another fun case, let's inspect what will happen if the length of sleep time is not the same? If we know the expected length of several sub-jobs that we would like to run in parallel, the shortest overall time will be achieved if run the longest processes first.
+
+So in the next example we run 5 processes in parallel and let them sleep, 5, 4, 3, 2, 1 seconds respectively.
+
+<include file="examples/sleep_async_again.pl6">
+
+<code>
+$ time perl6 files/examples/sleep_async_again.pl6
+done 1
+done 2
+done 3
+done 4
+done 5
+
+real    0m5.638s
+user    0m1.404s
+sys     0m0.274s
+</code>
+
+There you go. Despite being launched first, the process that had to sleep 5 seconds finished last. As expected.
+
+
+<h2>Conclusion</h2>
+
+So we see how can we <hl>sleep</hl> in parallel. In a followup article we'll see how can we do something useful.
+
