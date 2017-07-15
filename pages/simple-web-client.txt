@@ -53,7 +53,7 @@ If you run this you might get an error message:
 You will then need to install IO::Scoket::SSL for this to work.
 
 <code>
-zef IO::Socket::SSL
+zef install IO::Socket::SSL
 </code>
 
 After it is successfully installed, running the above program again will get you the same response as before.
