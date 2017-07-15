@@ -7,5 +7,5 @@ my %params =
    math     => "19+23=42",
 ;
 
-say (map { "{.key}={uri-escape(.value)}" }, %params).join('&');
+say %params.kv.map( -> $k, $v { "$k=&uri-escape($v)" }).join('&');
 
