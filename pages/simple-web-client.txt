@@ -83,7 +83,7 @@ The <hl>?</hl> separates the web address from the parameters.
 Each pair is has the key followed by <hl>=</hl>, followed by the value.
 
 The most problematic part though is that we need to escape the special characters passed in the URL.
-Before we take a look at how we can generate that, let's see the result of the above request:
+Before we take a look at how we can generate that, let's see the result of the above Perl script:
 
 <code>
 {
@@ -98,7 +98,7 @@ Before we take a look at how we can generate that, let's see the result of the a
     "User-Agent": "LWP::Simple/0.090 Perl6/rakudo"
   },
   "origin": "17.19.208.37",
-  "url": "http://httpbin.org/get?name=Larry Wall&language=Perl"
+  "url": "http://httpbin.org/get?name=Larry Wall&language=Perl&math=19%2B23%3D42"
 }
 </code>
 
@@ -106,6 +106,10 @@ In the <hl>args</hl> field we see the key-value pairs as we intended. So the ser
 Then we see the header our request generated. You can see the <hl>User-Agent</hl> field was set by the LWP::Simple library to reveal itself.
 
 Finally we see our IP address and the original request.
+
+BTW You could also try the above URL in your own browser. Just follow <a href="http://httpbin.org/get?name=Larry%20Wall&language=Perl&math=19%2B23%3D42">this link</a>.
+The output will be similar, but the <hl>User-Agent</hl> field will contain information about your browser and there will be probably a lot more fields in the <hl>header</hl>.
+
 
 <h2>URI::Escape</h2>
 
