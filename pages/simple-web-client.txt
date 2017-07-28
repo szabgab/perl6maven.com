@@ -190,7 +190,22 @@ The result looks like this:
 }
 </code>
 
-Unfortunately the same feature does not appear to be working for GET requests.
-See <a href="https://github.com/perl6/perl6-lwp-simple/issues/14">issue</a>.
+<h2>Setting User-Agent and other header fields in GET</h2>
 
+Recent versions of LWP::Simple also allow us to set the header in GET requests.
+We just need to pass a hash of the header fields:
 
+<include file="examples/http_get_change_header.pl6" />
+
+In the response we can see that the server saw the new User-Agent and also the arbitrry field "Zone".
+
+<code>
+{
+  "headers": {
+    "Connection": "close",
+    "Host": "httpbin.org",
+    "User-Agent": "Perl 6 Maven articles",
+    "Zone": "q"
+  }
+}
+</code>
