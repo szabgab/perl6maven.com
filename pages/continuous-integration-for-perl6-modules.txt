@@ -42,4 +42,11 @@ You just need to set them up in your clone and then send a
 Pull-Request to the authors so they can also enable Travis and Appveyor
 and merge your .travis.yml and appveyor.yml files.
 
+<h2>Status</h2>
+
+The module list also shows the current number of Perl 6 modules (859), the number of modules with Travis-CI configured (675)
+and the number of modules with Appveyor configured (40). (On August 2, 2017)
+
+Let's see how will these numbers improve in the coming weeks/months.
+
 
