@@ -64,7 +64,7 @@ A slightly more interesting HTTP request would be another GET request, but this 
 
 <include file="examples/http_get_params.pl6" />
 
-In this we pass two parameters with their respective values:
+In this we pass three parameters with their respective values:
 
 <code>
   name     => "Larry Wall"

@@ -21,15 +21,17 @@ Use this sample as <hl>.travis.yml</hl> or follow the instructions for <a href="
 branches:
   except:
     - gh-pages
-sudo: false
 language: perl6
+sudo: false
 perl6:
   - latest
 install:
-  - rakudobrew build-panda
-  - panda installdeps .
+  - rakudobrew build-zef
+  - zef install Test::META
+  - zef --depsonly install .
+env:
+  - AUTHOR_TESTING=1
 </code>
-
 
 
 <h2>Old Article</h2>

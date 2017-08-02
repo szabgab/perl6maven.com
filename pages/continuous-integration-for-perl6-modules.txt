@@ -1,0 +1,45 @@
+=head1 Continuous Integration for Perl 6 modules
+=timestamp 2017-08-02T22:46:02
+=author szabgab
+=keywords Travis-CI, Appveyor, Testing
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+<a href="https://travis-ci.org/">Travis-CI</a> is a service that offers Continuous Integration on Linux to open source project hosted on GitHub free of charge.
+
+<a href="https://www.appveyor.com/">Appveyor</a> offers similar service on MS Windows.
+
+=abstract end
+
+A while ago I wrote <a href="/continuous-integration-for-perl6-modules-using-travis-ci">how to set up Travis-CI for Perl 6 projects</a> and 
+recently brian d foy wrote <a href="https://www.learningperl6.com/2017/04/02/rakudo-star-on-appveyor/">Rakudo Star on AppVeyor</a>
+and later updated it with 
+<a href="https://www.learningperl6.com/2017/05/01/rakudo-in-chocolatey-makes-appveyor-easier/">Rakudo in Chocolatey makes AppVeyor easier</a>.
+
+In a nutshell, there are easy instructions on how to add Continuous Integration to Perl 6 based GitHub repositories.
+
+<h2>Module list</h2>
+
+The <a href="http://modules.perl6.org/">Perl 6 modules list</a> has two columns indicating the status of each module
+on Travis, and whether the Appveyor was configured. (No Appveyor status yet.)
+
+This makes it easy for the potential volunteer to spot the modules that have not been configured to use either one of those.
+
+Actually a volunteer would better focus on modules that have been updated recently.
+Let's say in the last half a year. There is a much bigger chance with those modules that a contribution to
+them will be accepted in a timely manner.
+
+Luckily the <a href="http://modules.perl6.org/#sort-col=5&sort-dir=d">module lists</a> can be ordered by most
+recent activity.
+
+So if you would like to contribute a bit to the Perl 6 ecosystem, helping an author to configure
+either or both of those CI systems could be a tremendous help with a relatively little effort.
+
+You just need to set them up in your clone and then send a
+Pull-Request to the authors so they can also enable Travis and Appveyor
+and merge your .travis.yml and appveyor.yml files.
+
+
