@@ -1,4 +1,4 @@
-=head1 Continuous Integration for Perl 6 modules
+=title Continuous Integration for Perl 6 modules
 =timestamp 2017-08-02T22:46:02
 =author szabgab
 =keywords Travis-CI, Appveyor, Testing
