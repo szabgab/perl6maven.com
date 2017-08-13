@@ -1,0 +1,97 @@
+=title Printing to Standard Error in Perl 6
+=timestamp 2017-08-13T12:52:02
+=author szabgab
+=keywords $*ERR, STDERRm note, dd
+=status draft
+=archive 1
+=comments 1
+=perl5url https://perlmaven.com/stdout-stderr-and-redirection
+=perl5title Standard output, standard error and command line redirection
+
+=abstract start
+
+When you run a program on the command line it automatically opens two channels for output.
+One is called <hl>Standard Output</hl> the other one is called <hl>Standard Error</hl>.
+
+By default they are both connected to the terminal where you ran the program, but you can separate them and redirect them or hide them separately.
+
+=abstract end
+
+As a programmer, when writing that program you need to use these two channels cleverly. The normal output of the program should go to the <hl>Standard Output channel</hl> and all the other messages, warnings, errors, debugging messages should go to the <hl>Standard Error channel</h2>
+
+That way you, the user (do you already feel the split identity that should come natural to every programmer?) can deicede to hide these error messages or save them in a file.
+
+If there is a program called <hl>cli-application</hl> you can run it as
+
+<code>
+cli-application 2> /dev/null
+</code>
+
+and all the output printed to the <hl>Standard Error channel</hl> will be throw away.
+
+If you run
+
+<code>
+cli-application 2> err.txt
+</code>
+
+then all the conten of the <hl>Standard Error</hl> will be saved in a file called <hl>err.txt</hl>.
+
+But we are not here to show how to redirect the output channels. We are here to show you how to print to the <hl>Standard Error channel</hl>.
+
+<h2>Printing to Standard Output</h2>
+
+Before that however let me just point out that if you use the regular <hl>print</hl> or <hl>say</hl> functions in Perl 6, the output will go to the Standard Output. That should be the normal output of the code.
+
+<h2>Printing to Standard Error</h2>
+
+There are several ways to print to Standard Error.
+
+As your Perl 6 program starts to run Rakudo automatically creates the channel to the Standard Error and assigns it to <hl>$*ERR</hl>. You can then print to Standard error by calling:
+
+<code>
+$*ERR.say: 'foo'
+</code>
+
+or some of the similar constructs.
+
+You can also use the <a href="https://docs.perl6.org/routine/note">note</a> function and method.
+It might be even preferable than using <hl>$*ERR</hl>.
+
+Finally the <a href="https://docs.perl6.org/programs/01-debugging#index-entry-dd">dd dumper function</a> also prints to the Standard Error. After all these are supposed to be debugging printouts.
+
+<h2>Sample code printing to Standard Error</h2>
+
+<include file="examples/print_to_stderr.pl6" />
+
+Try running it as
+
+<code>
+perl6 files/examples/print_to_stderr.pl6
+
+This goes to Standard Output
+The rest will go to Standard Error
+foo 1
+foo 2
+foo 3
+foo 4
+bar
+bar
+Hash %h = {:answer(42), :grades($[98, 73]), :name("Perl 6")}
+</code>
+
+Then redirect the Standard Output to the nothingness in <hl>/dev/null</hl>.
+What remains is the Standard Error.
+
+<code>
+perl6 files/examples/print_to_stderr.pl6 > /dev/null
+
+foo 1
+foo 2
+foo 3
+foo 4
+bar
+bar
+Hash %h = {:answer(42), :grades($[98, 73]), :name("Perl 6")}
+</code>
+
