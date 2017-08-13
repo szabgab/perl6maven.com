@@ -2,7 +2,7 @@
 =timestamp 2017-08-13T12:52:02
 =author szabgab
 =keywords $*ERR, STDERRm note, dd
-=status draft
+=status show
 =archive 1
 =comments 1
 =perl5url https://perlmaven.com/stdout-stderr-and-redirection
