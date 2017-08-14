@@ -1,7 +1,7 @@
 =title Printing to Standard Error in Perl 6
 =timestamp 2017-08-13T12:52:02
 =author szabgab
-=keywords $*ERR, STDERRm note, dd
+=keywords $*ERR, STDERR, note, dd
 =status show
 =archive 1
 =comments 1
@@ -19,7 +19,7 @@ By default they are both connected to the terminal where you ran the program, bu
 
 As a programmer, when writing that program you need to use these two channels cleverly. The normal output of the program should go to the <hl>Standard Output channel</hl> and all the other messages, warnings, errors, debugging messages should go to the <hl>Standard Error channel</h2>
 
-That way you, the user (do you already feel the split identity that should come natural to every programmer?) can deicede to hide these error messages or save them in a file.
+That way you, the user (do you already feel the split identity that should come natural to every programmer?) can decide to hide these error messages or save them in a file.
 
 If there is a program called <hl>cli-application</hl> you can run it as
 
@@ -35,7 +35,7 @@ If you run
 cli-application 2> err.txt
 </code>
 
-then all the conten of the <hl>Standard Error</hl> will be saved in a file called <hl>err.txt</hl>.
+then all the content of the <hl>Standard Error</hl> will be saved in a file called <hl>err.txt</hl>.
 
 But we are not here to show how to redirect the output channels. We are here to show you how to print to the <hl>Standard Error channel</hl>.
 
