@@ -13,9 +13,9 @@ multi sub add(Str $a, Str $b) {
     say "Str $a Str $b";
 }
 
-# this would be ambigous as two where clauses match
-# if they are mutually exclusive then it is ok to have
-# several subs with where clauses
+# This would be ambiguous as the two "where" clauses match.
+# If they are mutually exclusive, then it is ok to have
+# several subs with those "where" clauses.
 
 #  multi sub add(Int $a where { $^x % 2 } ) {
     #  say "Int $a  odd number";
