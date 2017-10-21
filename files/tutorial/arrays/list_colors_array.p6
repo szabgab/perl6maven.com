@@ -10,11 +10,11 @@ say "@colors";                                       # says "@colors" directly!
 
 say "--------------------------------";
 
-say "{@colors}";                                     # says the items in the list with spaces as seperation
+say "{@colors}";                                     # says the items in the list with spaces as separators
 
 say "--------------------------------";
 
-say "@colors[]";                                     # says the items in the list with spaces as seperation
+say "@colors[]";                                     # says the items in the list with spaces as separators
 
 say "--------------------------------";
 
