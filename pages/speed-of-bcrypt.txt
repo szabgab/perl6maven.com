@@ -1,0 +1,49 @@
+=title Speed of Bcrypt
+=timestamp 2017-12-03T11:55:00
+=status show
+=comments 1
+
+=abstract start
+
+<a href="http://modules.perl6.org/dist/Crypt::Bcrypt">Crypt::Bcrypt</a> can be used to encrypt passwords and it can be told how many times to encrypt the password. The more rounds, the longer it takes to encrypt the password and the longer it takes to verify it. The longer it takes to check one password, the more expensive it would be to mount an attack on the system, even if the encrupted password file leaked to the public.
+
+Let's see how fast the Perl 6 version of Bcrupt works. (Tested on an Macbook Air.)
+
+=abstract end
+
+<include file="examples/speed_of_bcrypt.pl6" />
+
+<code>
+hash  4  0.0224464
+match 4  0.00190766
+hash  5  0.0034416
+match 5  0.00318386
+hash  6  0.005926
+match 6  0.0063915
+hash  7  0.01221065
+match 7  0.0102838
+hash  8  0.024864
+match 8  0.0208310
+hash  9  0.0460490
+match 9  0.044395
+hash  10  0.0876536
+match 10  0.0847933
+hash  11  0.16753307
+match 11  0.1677716
+hash  12  0.331820
+match 12  0.33977756
+hash  13  0.6565040
+match 13  0.667601
+hash  14  1.3052052
+match 14  1.3162349
+hash  15  2.647807
+match 15  2.5993138
+hash  16  5.2211821
+match 16  5.2359821
+hash  17  10.5278777
+match 17  10.51981935
+</code>
+
+
+12 is the default. You can pass any number between 4-31, but as you can see above 12 it is starting to take quite a lot of time to compute the hash of a password or to verify if a given password matches the hash we have.
+
