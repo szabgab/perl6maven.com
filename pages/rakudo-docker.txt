@@ -1,0 +1,96 @@
+=title Using Rakudo Perl 6 in a Docker image
+=timestamp 2018-06-07T09:52:02
+=author szabgab
+=keywords Rakudo, Docker
+=status show
+=archive 1
+=comments 1
+
+=abstract start
+
+<a href="https://www.docker.com/">Docker</a> allows the creationg of small Linux containers that can make building environments and deploying applications easy. Let's see how can we use Rakudo with a Docker image.
+
+=abstract end
+
+
+There is a <a href="https://hub.docker.com/_/rakudo-star/">Docker image for Rakudo Star</a> we can easily us to develop Perl 6 code.
+
+Install <a href="https://www.docker.com/">Docker</a>
+
+<h2>Perl 6 one-liner</h2>
+
+<code>
+$ docker run rakudo-star perl6 -e 'say "Hello!"'
+</code>
+
+<h2>Perl 6 script</h2>
+
+Create a file locally on your host system called "hello_world.pl" with the following content:
+
+<code>
+use v6;
+say "Hello from Perl 6";
+</code>
+
+and then run it as:
+
+<code>
+docker run -v $(pwd):/opt rakudo-star perl6 /opt/hello_world.pl
+</code>
+
+The flag <hl>-v $(pwd):/opt</hl> will map the current working directory of your host machine to the /opt directory of
+the Docker container. If you have the "hello_world.pl" file in the current directory then it will be accessible by the
+container as "/opt/hello_world.pl".
+
+If you are running on an MS Windows machine then you'll probably write this:
+
+<code>
+docker run -v %cd%:/opt rakudo-star perl6 /opt/hello_world.pl
+</code>
+
+<h2>Perl 6 REPL</h2>
+
+If you'd like to explore Perl 6 using the interactive shell you can type the following:
+
+<code>
+docker run  -it rakudo-star
+</code>
+
+It will run Perl 6 and show you a prompt:
+
+<code>
+To exit type 'exit' or '^D'
+>
+</code>
+
+
+At this point you can type in some Perl 6 code:
+
+<code>
+say "hello"
+hello
+>
+</code>
+
+Once you are done, you can leave the shell and close the Docker container using:
+
+<code>
+exit
+</code>
+
+
+<h2>Cleaning up after yourself</h2>
+
+Docker will leave behind the exited containers. You can list them using:
+
+<code>
+docker ps -a
+</code>
+
+You can remove them with
+
+<code>
+docker rm $(docker ps -a -q)
+</code>
+
+
