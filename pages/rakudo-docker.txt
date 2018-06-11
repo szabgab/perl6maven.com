@@ -93,4 +93,21 @@ You can remove them with
 docker rm $(docker ps -a -q)
 </code>
 
+<h2>Autoremove</h2>
+
+Alternatively, include the <hl>--rm</hl> flag in the command line options of <hl>docker run</hl> and then
+the containers will be removed when they are exited.
+
+for example:
+
+<code>
+$ docker run --rm rakudo-star perl6 -e 'say "Hello!"'
+</code>
+
+or
+
+<code>
+$ docker run --rm rakudo-star perl6 -v
+</code>
+
 
