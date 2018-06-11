@@ -1,4 +1,4 @@
-=title Using Rakudo Perl 6 in a Docker image
+=title Using Rakudo Perl 6 in a Docker container
 =timestamp 2018-06-07T09:52:02
 =author szabgab
 =keywords Rakudo, Docker
